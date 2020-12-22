@@ -1,0 +1,124 @@
+.box-profile .list-group{list-style:none}
+.box-profile .list-group li{padding-left:20px;} 
+.users-list>li{width:auto; padding:0}
+.card-text{color:#666}
+.card-title{color:#000}
+.flex-container {
+  display: flex;
+ 
+}
+
+.flex-container > div {
+ 
+  margin: 10px;
+  padding: 20px;
+
+}
+.main-header .nav-link{font-size:14px; text-align:center}
+.nav-tabs {
+     overflow-x: auto;
+    overflow-y: hidden;
+    display: -webkit-box;  
+    display: -moz-box;   
+  }
+.nav-tabs>li {
+      float:none;
+    }
+	
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:65px;
+	right:40px;
+	background-color:#007bff;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+	margin-top:22px;
+}
+
+.offcanvas {
+    height: 100%;
+    width: 0;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    position: fixed;
+    z-index: 3;
+    overflow-x: hidden;
+    transition: .5s;
+
+    padding-top: 60px;
+	    box-shadow: 0 14px 28px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.22)!important
+}
+@media (min-width: 576px) {  
+.w-100 {
+    width: 100%!important;
+}
+ .login-container{display:flex;flex: 1;height: 100vh; flex-direction: column; align-items: stretch;}
+ .login-left, .login-right{width:100%; text-align:center;}
+ 
+ .fixed-bottom {
+    position:static !important;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;
+}
+}
+@media (min-width: 300px) { 
+ .fixed-bottom {
+    position:static !important;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;
+}
+}
+@media (min-width: 768px) { 
+.w-100 {
+    width: 40%!important;
+}
+ .login-container{display:flex;flex: 1;height: 100vh; flex-direction: row-reverse;align-items: stretch;}
+ .login-left, .login-right{width:50%; text-align:center;}
+ 
+ 
+ .fixed-bottom {
+    position: fixed !important;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;
+}
+}
+.filter-content{margin-left:20px; margin-right:20px}
+.closeOffcanvas{float:right; font-size:30px; margin-top: -12px; margin-right: 20px;}
+
+
+.login-left{background-color:#007bff;}
+.login-left .content{padding:50px 100px; color:#fff; font-size:24px; text-align:left}
+.icheck-primary{text-align:left}
+
+
+
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 102px;
+}

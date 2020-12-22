@@ -1,13 +1,453 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>BookMySlotApp</title>
-  <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <title>Company Name</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  
+  <!-- Theme style -->
+  <!--<link rel="stylesheet" href="dist/css/adminlte.min.css">-->
+  <!-- overlayScrollbars -->
+  <!--<link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">-->
+  <!-- Theme style -->
+  <!--<link rel="stylesheet" href="dist/css/custom.css">-->
+  
 </head>
-<body>
-  <app-root></app-root>
+<body class="hold-transition layout-fixed">
+  <div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light fixed-top" id="main-header">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+      </ul>
+
+      <!-- SEARCH FORM -->
+      <form class="form-inline ml-3 d-inline w-100">
+        <div class="input-group input-group-sm">
+          <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-navbar" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Right navbar links -->
+
+    </nav>
+    <!-- /.navbar -->
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar elevation-4 sidebar-light-primary">
+      <!-- Brand Logo -->
+      <a href="index3.html" class="brand-link">
+        <span class="brand-text font-weight-light">BookMySlot</span>
+        
+      </a>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="card-body box-profile">
+          <div class="text-center">
+            <img class="profile-user-img img-fluid img-circle" src="dist/img/user4-128x128.jpg" alt="User profile picture">
+          </div>
+
+          <h3 class="profile-username text-center">Nina Mcintire</h3>
+
+          <p class="text-muted text-center">Software Engineer</p>
+          <hr />
+          <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <li class="nav-header">EXAMPLES</li>
+              <li class="nav-item">
+                <a href="index.html" class="nav-link">
+                  <i class="nav-icon far fa-home"></i>
+                  <p>
+                    Home
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../calendar.html" class="nav-link">
+                  <i class="nav-icon far fa-calendar-alt"></i>
+                  <p>
+                    Book Slot
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../calendar.html" class="nav-link">
+                  <i class="nav-icon far fa-calendar-alt"></i>
+                  <p>
+                    Share slot
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../calendar.html" class="nav-link">
+                  <i class="nav-icon far fa-calendar-alt"></i>
+                  <p>
+                    Shared Slots
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../calendar.html" class="nav-link">
+                  <i class="nav-icon far fa-calendar-alt"></i>
+                  <p>
+                    Booked Slots
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../gallery.html" class="nav-link">
+                  <i class="nav-icon far fa-user-circle"></i>
+                  <p>
+                    Profile Settings
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../gallery.html" class="nav-link">
+                  <i class="nav-icon far fa-user-circle"></i>
+                  <p>
+                    About Us
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../gallery.html" class="nav-link">
+                  <i class="nav-icon far fa-phone"></i>
+                  <p>
+                    Contact Us
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="login.html" class="nav-link">
+                  <i class="nav-icon fas fa-sign-out"></i>
+                  <p>
+                    Logout
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+        </div>
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0">Feeds</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item active">Home</li>
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <!-- Small boxes (Stat box) -->
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="card card-primary card-outline">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <ul class="users-list clearfix">
+                        <li>
+                          <img src="dist/img/user8-128x128.jpg" alt="User Image" style="width:67px; height:67px;">
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-sm-10">
+                      <h5 class="card-title">Jeo Michle</h5>
+
+                      <p class="card-text">
+                        Software Developer
+                        <br />
+                        10h 30m
+                      </p>
+
+                      <a href="book-slot-create.html" class="card-link">Book Slot</a>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- /.card -->
+            </div>
+            <div class="col-md-6">
+
+              <div class="card card-primary card-outline">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <ul class="users-list clearfix">
+                        <li>
+                          <img src="dist/img/user8-128x128.jpg" alt="User Image" style="width:67px; height:67px;">
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-sm-10">
+                      <h5 class="card-title">Jeo Michle</h5>
+
+                      <p class="card-text">
+                        Software Developer
+                        <br />
+                        10h 30m
+                      </p>
+
+                      <a href="book-slot-create.html" class="card-link">Book Slot</a>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- /.card -->
+            </div>
+            <div class="col-md-6">
+
+              <div class="card card-primary card-outline">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <ul class="users-list clearfix">
+                        <li>
+                          <img src="dist/img/user8-128x128.jpg" alt="User Image" style="width:67px; height:67px;">
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-sm-10">
+                      <h5 class="card-title">Jeo Michle</h5>
+
+                      <p class="card-text">
+                        Software Developer
+                        <br />
+                        10h 30m
+                      </p>
+
+                      <a href="book-slot-create.html" class="card-link">Book Slot</a>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- /.card -->
+            </div>
+            <div class="col-md-6">
+
+              <div class="card card-primary card-outline">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <ul class="users-list clearfix">
+                        <li>
+                          <img src="dist/img/user8-128x128.jpg" alt="User Image" style="width:67px; height:67px;">
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-sm-10">
+                      <h5 class="card-title">Jeo Michle</h5>
+
+                      <p class="card-text">
+                        Software Developer
+                        <br />
+                        10h 30m
+                      </p>
+
+                      <a href="book-slot-create.html" class="card-link">Book Slot</a>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- /.card -->
+            </div>
+            <!-- /.col-md-6 -->
+
+          </div>
+
+        </div>
+        <!-- /.row (main row) -->
+    </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+  <a href="javascript:openOffcanvas1()" class="float">
+    <i class="fa fa-filter my-float"></i>
+  </a>
+  <div id="myOffcanvas" class="offcanvas">
+    <a href="javascript:void(0)" class="closeOffcanvas" onclick="closeOffcanvas()">×</a>
+    <div class="filter-content">
+      <div class="form-group">
+        <h5>Fav Topic</h5>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox">
+          <label class="form-check-label">Checkbox</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" checked="">
+          <label class="form-check-label">Checkbox checked</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" disabled="">
+          <label class="form-check-label">Checkbox disabled</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="radio1">
+          <label class="form-check-label">Radio</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="radio1" checked="">
+          <label class="form-check-label">Radio checked</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" disabled="">
+          <label class="form-check-label">Radio disabled</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Book Slot</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Title</label>
+            <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Date</label>
+
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+              </div>
+              <input type="text" class="form-control is-invalid" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">
+              <span id="exampleInputEmail1-error" class="error invalid-feedback">Please enter a email address</span>
+            </div>
+
+            <!-- /.input group -->
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <!-- select -->
+              <div class="form-group">
+                <label>Start Time</label>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <select class="form-control">
+                      <option>option 1</option>
+                      <option>option 2</option>
+                      <option>option 3</option>
+                      <option>option 4</option>
+                      <option>option 5</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <select class="form-control">
+                      <option>option 1</option>
+                      <option>option 2</option>
+                      <option>option 3</option>
+                      <option>option 4</option>
+                      <option>option 5</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>End Time</label>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <select class="form-control">
+                      <option>option 1</option>
+                      <option>option 2</option>
+                      <option>option 3</option>
+                      <option>option 4</option>
+                      <option>option 5</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <select class="form-control">
+                      <option>option 1</option>
+                      <option>option 2</option>
+                      <option>option 3</option>
+                      <option>option 4</option>
+                      <option>option 5</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Slot Duration</label><br />
+            1 hr
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <!--<script src="plugins/jquery/jquery.min.js"></script>-->
+  <!-- jQuery UI 1.11.4 -->
+  <!--<script src="plugins/jquery-ui/jquery-ui.min.js"></script>-->
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <!-- Bootstrap 4 -->
+  <!--<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+  
+  
+  <!-- date-range-picker -->
+  <!--<script src="plugins/daterangepicker/daterangepicker.js"></script>-->
+  <!-- overlayScrollbars -->
+  <!--<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>-->
+  <!-- AdminLTE App -->
+  <!--<script src="dist/js/adminlte.js"></script>-->
+  <!-- AdminLTE for demo purposes -->
+  <!--<script src="dist/js/demo.js"></script>-->
+
 </body>
 </html>
