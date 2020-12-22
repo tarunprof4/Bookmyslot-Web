@@ -1,5 +1,156 @@
-<h1>{{title}}</h1>
-<nav>
-  <a routerLink="/home">Heroes</a>
-</nav>
-<router-outlet></router-outlet>
+  <div class="wrapper">
+
+  <!-- Navbar -->
+  <app-header></app-header>
+  <!-- /.navbar -->
+  <!-- Main Sidebar Container -->
+  <app-nav-bar></app-nav-bar>
+
+  <!-- Content Wrapper. Contains page content -->
+  <router-outlet></router-outlet>
+  <!--<app-home></app-home>-->
+  <!-- /.content -->
+</div>
+  <!-- /.content-wrapper -->
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+  
+  <!-- ./wrapper -->
+  <a href="javascript:openOffcanvas1()" class="float">
+    <i class="fa fa-filter my-float"></i>
+  </a>
+  <div id="myOffcanvas" class="offcanvas">
+    <a href="javascript:void(0)" class="closeOffcanvas" onclick="closeOffcanvas()">×</a>
+    <div class="filter-content">
+      <div class="form-group">
+        <h5>Fav Topic</h5>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox">
+          <label class="form-check-label">Checkbox</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" checked="">
+          <label class="form-check-label">Checkbox checked</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" disabled="">
+          <label class="form-check-label">Checkbox disabled</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="radio1">
+          <label class="form-check-label">Radio</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="radio1" checked="">
+          <label class="form-check-label">Radio checked</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" disabled="">
+          <label class="form-check-label">Radio disabled</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Book Slot</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Title</label>
+            <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Date</label>
+
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+              </div>
+              <input type="text" class="form-control is-invalid" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">
+              <span id="exampleInputEmail1-error" class="error invalid-feedback">Please enter a email address</span>
+            </div>
+
+            <!-- /.input group -->
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <!-- select -->
+              <div class="form-group">
+                <label>Start Time</label>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <select class="form-control">
+                      <option>option 1</option>
+                      <option>option 2</option>
+                      <option>option 3</option>
+                      <option>option 4</option>
+                      <option>option 5</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <select class="form-control">
+                      <option>option 1</option>
+                      <option>option 2</option>
+                      <option>option 3</option>
+                      <option>option 4</option>
+                      <option>option 5</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>End Time</label>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <select class="form-control">
+                      <option>option 1</option>
+                      <option>option 2</option>
+                      <option>option 3</option>
+                      <option>option 4</option>
+                      <option>option 5</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <select class="form-control">
+                      <option>option 1</option>
+                      <option>option 2</option>
+                      <option>option 3</option>
+                      <option>option 4</option>
+                      <option>option 5</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Slot Duration</label><br />
+            1 hr
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
