@@ -17,7 +17,9 @@ export class ProfileSettingsComponent implements OnInit {
   public genders: string[];
 
   ngOnInit(): void {
-    this.profileSettings = this.customerService.getProfileSettings();
+    var email = "a@gmail.com";
+
+    this.customerService.getProfileSettings(email).subscribe(profileSettings => this.profileSettings = profileSettings);
     this.genders = this.genderService.getGenders();
   }
 

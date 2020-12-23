@@ -12,6 +12,7 @@ import { SharedSlotsComponent } from './shared-slots/shared-slots.component';
 import { BookedSlotsComponent } from './booked-slots/booked-slots.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
