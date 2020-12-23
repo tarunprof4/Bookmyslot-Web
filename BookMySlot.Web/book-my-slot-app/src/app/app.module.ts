@@ -11,6 +11,7 @@ import { ShareSlotComponent } from './share-slot/share-slot.component';
 import { SharedSlotsComponent } from './shared-slots/shared-slots.component';
 import { BookedSlotsComponent } from './booked-slots/booked-slots.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ProfileSettingsComponent } from './profile-settings/profile-settings.co
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'booked-slots', component: BookedSlotsComponent },
   { path: 'profile-settings', component: ProfileSettingsComponent },
   
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/profile-settings', pathMatch: 'full' },
 ];
 
 @NgModule({
