@@ -8,6 +8,17 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BookMySlot.Web.Common\BookMySlot.Web.Common.csproj" />
+    <ProjectReference Include="..\BookMySlot.Web.Injections\BookMySlot.Web.Injections.csproj" />
+    <ProjectReference Include="..\BookMySlot.Web.Logging\BookMySlot.Web.Logging.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
