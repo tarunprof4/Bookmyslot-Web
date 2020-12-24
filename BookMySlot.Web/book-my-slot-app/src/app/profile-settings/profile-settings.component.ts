@@ -11,7 +11,7 @@ import { ProfileSettings } from '../shared/profile-settings';
 })
 export class ProfileSettingsComponent implements OnInit {
 
-  constructor(private customerService: CustomerService,private genderService: GenderService) { }
+  constructor(private customerService: CustomerService, private genderService: GenderService) { }
 
   public profileSettings: ProfileSettings;
   public genders: string[];
@@ -23,13 +23,21 @@ export class ProfileSettingsComponent implements OnInit {
     this.genders = this.genderService.getGenders();
   }
 
-  
 
-  onSave(profileSettingsForm: NgForm) {
+
+  onSave(profileSettingsForm: NgForm, profileSettings: ProfileSettings) {
     console.log(profileSettingsForm.value);  // { first: '', last: '' }
     console.log(profileSettingsForm.valid);  // false
+
+    this.customerService.saveProfileSettings(profileSettings).subscribe();
   }
 
+  onUpdate(profileSettingsForm: NgForm) {
+    this.customerService.updateProfileSettings(this.profileSettings).subscribe();
+  }
 
+  onDelete(profileSettingsForm: NgForm) {
+    this.customerService.deleteProfileSettings(this.profileSettings.email).subscribe(a =>console.log(a));
+  }
 
 }

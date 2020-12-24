@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { ProfileSettings } from '../shared/profile-settings';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-
+import { catchError, tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -11,20 +10,23 @@ import { catchError } from 'rxjs/operators';
 })
 export class CustomerService {
 
-  private profileSettingsUrl = '/api/profileSettings';  
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
+  private profileSettingsUrl = '/api/profileSettings';
+
 
   constructor(private httpClient: HttpClient) { }
 
   public getProfileSettings(email: string): Observable<ProfileSettings> {
 
-    var profileSettingsUrlById = `${this.profileSettingsUrl}/${email}`;
+    let profileSettingsUrlById = `${this.profileSettingsUrl}/${email}`;
 
     return this.httpClient.get<ProfileSettings>(profileSettingsUrlById)
       .pipe(
         catchError(this.handleError<ProfileSettings>('getProfileSettings', new ProfileSettings()))
       );
 
-    
     //profileSettings.firstName = "FirstName Name";
     //profileSettings.middleName = "Middle name Name";
     //profileSettings.lastName = "Lastname Name";
@@ -34,17 +36,31 @@ export class CustomerService {
     //return profileSettings;
   }
 
-  public createProfileSettings(profileSettings: ProfileSettings): string {
-    return "";
+
+  public saveProfileSettings(profileSettings: ProfileSettings): Observable<string> {
+    return this.httpClient.post<string>(this.profileSettingsUrl, profileSettings, this.httpOptions).pipe(
+      //tap((email: string) => console.log(email)),
+      catchError(this.handleError<string>('save failed'))
+    );
   }
 
-  public updateProfileSettings(profileSettings: ProfileSettings): boolean {
-    return true;
+  public updateProfileSettings(profileSettings: ProfileSettings): Observable<boolean> {
+    return this.httpClient.put<boolean>(this.profileSettingsUrl, profileSettings, this.httpOptions).pipe(
+      
+      catchError(this.handleError<boolean>('update failed'))
+    );
   }
 
-  public deleteProfileSettings(profileSettings: ProfileSettings): boolean {
-    return true;
+
+  public deleteProfileSettings(email: string): Observable<boolean> {
+    let profileSettingsUrlById = `${this.profileSettingsUrl}/${email}`;
+
+    return this.httpClient.delete<boolean>(profileSettingsUrlById, this.httpOptions).pipe(
+      //tap(_ => this.log(`deleted hero id=${id}`)),
+      catchError(this.handleError<boolean>('delete user'))
+    );
   }
+ 
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

@@ -72,7 +72,9 @@
 
           </div>
           <div class="card-footer">
-            <button type="button" class="btn bg-gradient-primary" (click)="onSave(profileSettingsForm)">Save</button>
+            <button type="button" class="btn bg-gradient-primary" (click)="onSave(profileSettingsForm, profileSettings)">Save</button>
+            <button type="button" class="btn bg-gradient-primary" (click)="onUpdate(profileSettingsForm, profileSettings)">Update</button>
+            <button type="button" class="btn bg-gradient-primary" (click)="onDelete(profileSettingsForm, profileSettings)">Delete</button>
             <!--<button type="button" class="btn btn-default">Cancel</button>-->
           </div>
           <!-- /.card -->
