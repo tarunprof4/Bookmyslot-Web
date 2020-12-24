@@ -19,14 +19,14 @@ namespace BookyMySlot.Web.Business
             return await this.profileSettingsService.GetProfileSettings(email);
         }
 
-        public Task<Response<string>> SaveProfileSettings(ProfileSettings profileSettings)
+        public async Task<Response<string>> SaveProfileSettings(ProfileSettings profileSettings)
         {
-            throw new NotImplementedException();
+            return await this.profileSettingsService.SaveProfileSettings(profileSettings);
         }
 
-        public Task<Response<bool>> UpdateProfileSettings(ProfileSettings profileSettings)
+        public async Task<Response<bool>> UpdateProfileSettings(ProfileSettings profileSettings)
         {
-            throw new NotImplementedException();
+            return await this.profileSettingsService.UpdateProfileSettings(profileSettings);
         }
     }
 }

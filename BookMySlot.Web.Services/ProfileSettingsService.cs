@@ -18,23 +18,37 @@ namespace BookMySlot.Web.Services
 
         public async Task<Response<ProfileSettings>> GetProfileSettings(string email)
         {
-            HttpResponseMessage response = await client.GetAsync(customerApi);
-            if (response.IsSuccessStatusCode)
-            {
-                var profileSetting = await response.Content.ReadAsAsync<ProfileSettings>();
-                return new Response<ProfileSettings>() { Result = profileSetting };
-            }
-            return null;
+            //HttpResponseMessage response = await client.GetAsync(customerApi);
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    var profileSetting = await response.Content.ReadAsAsync<ProfileSettings>();
+            //    return new Response<ProfileSettings>() { Result = profileSetting };
+            //}
+            //return null;
+            var profileSettingsResponse = new Response<ProfileSettings>();
+            var profileSettings = new ProfileSettings();
+            profileSettings.FirstName = "TAF";
+            profileSettings.MiddleName = "TAM";
+            profileSettings.LastName = "TAL";
+            profileSettings.Gender = "Female";
+            profileSettings.Email = "a@gmail.com";
+            profileSettingsResponse.Result = profileSettings;
+
+            return await Task.FromResult<Response<ProfileSettings>>(profileSettingsResponse);
         }
 
-        public Task<Response<string>> SaveProfileSettings(ProfileSettings profileSettings)
+        public async Task<Response<string>> SaveProfileSettings(ProfileSettings profileSettings)
         {
-            throw new NotImplementedException();
+            var profileSettingsResponse = new Response<string>();
+            profileSettingsResponse.Result = "a@gmail.com";
+            return await Task.FromResult<Response<string>>(profileSettingsResponse);
         }
 
-        public Task<Response<bool>> UpdateProfileSettings(ProfileSettings profileSettings)
+        public async Task<Response<bool>> UpdateProfileSettings(ProfileSettings profileSettings)
         {
-            throw new NotImplementedException();
+            var profileSettingsResponse = new Response<bool>();
+            profileSettingsResponse.Result = true;
+            return await Task.FromResult<Response<bool>>(profileSettingsResponse);
         }
     }
 }

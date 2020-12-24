@@ -1,0 +1,4 @@
+19:08 (1.0.0) [Information] (1) Starting web host
+19:08 (1.0.0) [Information] (4) Get Profile Settings a@gmail.com
+19:10 (1.0.0) [Information] (1) Starting web host
+19:11 (1.0.0) [Information] (4) Get Profile Settings a@gmail.com
