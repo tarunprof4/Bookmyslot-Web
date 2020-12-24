@@ -18,71 +18,107 @@
   <!-- /.content-header -->
   <!-- Main content -->
   <section class="content">
-    <div class="container-fluid">
-      <!-- Small boxes (Stat box) -->
 
-      <form #profileSettingsForm="ngForm">
+    
 
-        <div class="card card-primary card-outline card-outline-tabs">
-          <div class="card-body">
 
-            <div class="row">
-              <div class="form-group col-sm-6 col-md-4">
-                <label for="exampleInputEmail1">Title</label>
-                <input type="text" name="firstName" class="form-control" placeholder="First Name" [(ngModel)]="profileSettings.firstName" required />
-                <input type="text" name="middleName" class="form-control" placeholder="Middle Name" [(ngModel)]="profileSettings.middleName" />
-                <input type="text" name="lastName" class="form-control" placeholder="Last Name" [(ngModel)]="profileSettings.lastName" required />
+      <div class="container-fluid" *ngIf="profileSettings">
+        <!-- Small boxes (Stat box) -->
 
-                <!--<textarea class="form-control" rows="1" placeholder="Enter ..."></textarea>-->
-              </div>
-              <div class=" col-sm-6 col-md-4">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <!-- select -->
-                    <div class="form-group">
-                      <label>Gender</label>
-                      <div class="row">
-                        <div class="col-sm-6">
-                          <!--<select class="form-control">
-                            <option>Select</option>
-                            <option>Male</option>
-                            <option>Female</option>
-                            <option>Other</option>
-                          </select>-->
+        <form #profileSettingsForm="ngForm">
 
-                          <select name="gender" [(ngModel)]="profileSettings.gender" class="form-control" required>
-                            <option disabled>Select</option>
-                            <option *ngFor="let gender of genders" [value]="gender">{{gender}}</option>
-                          </select>
+          <div class="card card-primary card-outline card-outline-tabs">
+            <div class="card-body">
+
+              <div class="row">
+                <div class="form-group col-sm-6 col-md-4">
+                  <label for="exampleInputEmail1">Title</label>
+
+                  <input type="text" name="firstName" class="form-control" placeholder="First Name" [(ngModel)]="profileSettings.firstName" required #firstName="ngModel" pattern="regexConstants.OnlyAlphabets" />
+                  <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+                       class="alert alert-danger">
+                    <div *ngIf="firstName.errors.required">
+                      First Name is required.
+                    </div>
+                    <div *ngIf="firstName.errors.pattern">
+                      Only Aplhabets are valid
+                    </div>
+                  </div>
+
+                  <!--<input type="text" name="middleName" class="form-control" placeholder="Middle Name" [(ngModel)]="profileSettings.middleName" #middleName="ngModel" pattern="regexConstants.OnlyAlphabets" />
+                  <div *ngIf="middleName.invalid && (middleName.dirty || middleName.touched)"
+                       class="alert alert-danger">
+                    <div *ngIf="middleName.errors.pattern">
+                      Only Aplhabets are valid
+                    </div>
+                  </div>
+
+
+                  <input type="text" name="lastName" class="form-control" placeholder="Last Name" [(ngModel)]="profileSettings.lastName" required #lastName="ngModel" pattern="regexConstants.OnlyAlphabets" />
+                  <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+                       class="alert alert-danger">
+                    <div *ngIf="lastName.errors.required">
+                      Last Name is required.
+                    </div>
+                    <div *ngIf="lastName.errors.pattern">
+                      Only Aplhabets are valid
+                    </div>
+                  </div>-->
+
+
+                  <!--<textarea class="form-control" rows="1" placeholder="Enter ..."></textarea>-->
+                </div>
+                <div class=" col-sm-6 col-md-4">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>Gender</label>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <!--<select class="form-control">
+                          <option>Select</option>
+                          <option>Male</option>
+                          <option>Female</option>
+                          <option>Other</option>
+                        </select>-->
+
+                            <select name="gender" [(ngModel)]="profileSettings.gender" class="form-control" required>
+                              <option disabled>Select</option>
+                              <option *ngFor="let gender of genders" [value]="gender">{{gender}}</option>
+                            </select>
+                          </div>
+
                         </div>
-
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="form-group col-sm-6 col-md-4">
-                <label for="exampleInputEmail1">Email</label><br>
-                <span>{{profileSettings.email}}</span>
-                <!--<span [ngModel]="profileSettings.email"></span>-->
+                <div class="form-group col-sm-6 col-md-4">
+                  <label for="exampleInputEmail1">Email</label><br>
+                  <span>{{profileSettings.email}}</span>
+                  <!--<span [ngModel]="profileSettings.email"></span>-->
+
+                </div>
 
               </div>
 
             </div>
-
+            <div class="card-footer">
+              <button type="button" class="btn bg-gradient-primary" (click)="onSave(profileSettingsForm, profileSettings)">Save</button>
+              <button type="button" class="btn bg-gradient-primary" (click)="onUpdate(profileSettingsForm, profileSettings)">Update</button>
+              <button type="button" class="btn bg-gradient-primary" (click)="onDelete(profileSettingsForm, profileSettings)">Delete</button>
+              <!--<button type="button" class="btn btn-default">Cancel</button>-->
+            </div>
+            <!-- /.card -->
           </div>
-          <div class="card-footer">
-            <button type="button" class="btn bg-gradient-primary" (click)="onSave(profileSettingsForm, profileSettings)">Save</button>
-            <button type="button" class="btn bg-gradient-primary" (click)="onUpdate(profileSettingsForm, profileSettings)">Update</button>
-            <button type="button" class="btn bg-gradient-primary" (click)="onDelete(profileSettingsForm, profileSettings)">Delete</button>
-            <!--<button type="button" class="btn btn-default">Cancel</button>-->
-          </div>
-          <!-- /.card -->
-        </div>
 
-      </form>
-    </div>
-    <!-- /.row (main row) -->
-  </section>
+        </form>
+      </div>
+      <!-- /.row (main row) -->
+
+
+      
+</section>
   <!-- /.content -->
 </div>
