@@ -1,7 +1,9 @@
 ﻿using BookMySlot.Web.Common.Contracts.Constants;
+using BookMySlot.Web.Services.Bookmyslot.Api.Client.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 
 namespace BookMySlot.Web.Injections
@@ -17,7 +19,14 @@ namespace BookMySlot.Web.Injections
                 client.BaseAddress = new Uri(appConfigurations[AppConfigurations.CustomerApiUrl]);
                 client.Timeout = new TimeSpan(0, 0, 30);
                 client.DefaultRequestHeaders.Clear();
+            })
+            .AddHttpMessageHandler(handler => new AuthenticationHandler())
+            .ConfigurePrimaryHttpMessageHandler(handler =>
+            new HttpClientHandler()
+            {
+                AutomaticDecompression = System.Net.DecompressionMethods.GZip
             });
+
         }
     }
 }

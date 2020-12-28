@@ -35,7 +35,6 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
             var uri = "api/v1/customer/" + email;
             var request = new HttpRequestMessage(HttpMethod.Get, uri);
             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            request.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
 
             using (var response = await httpClient.SendAsync(request,
                 HttpCompletionOption.ResponseHeadersRead,
