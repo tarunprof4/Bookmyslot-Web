@@ -10,7 +10,7 @@ namespace BookMySlot.Web.Common
     {
         private IActionResult InternalServerError<T>(Response<T> response)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, response.Messages.First());
+            return StatusCode(StatusCodes.Status500InternalServerError, response.Messages);
         }
         protected virtual IActionResult CreateGetHttpResponse<T>(Response<T> response)
         {
@@ -22,12 +22,12 @@ namespace BookMySlot.Web.Common
 
             else if (response.ResultType == ResultType.Empty)
             {
-                return StatusCode(StatusCodes.Status404NotFound, response.Messages.First());
+                return StatusCode(StatusCodes.Status404NotFound, response.Messages);
             }
 
             else if (response.ResultType == ResultType.ValidationError)
             {
-                return this.BadRequest(response.Messages.First());
+                return this.BadRequest(response.Messages);
             }
 
             return InternalServerError(response);
@@ -43,7 +43,7 @@ namespace BookMySlot.Web.Common
 
             else if (response.ResultType == ResultType.ValidationError)
             {
-                return this.BadRequest(response.Messages.First());
+                return this.BadRequest(response.Messages);
             }
 
             return InternalServerError(response);
@@ -58,12 +58,12 @@ namespace BookMySlot.Web.Common
 
             else if (response.ResultType == ResultType.ValidationError)
             {
-                return this.BadRequest(response.Messages.First());
+                return this.BadRequest(response.Messages);
             }
 
             if (response.ResultType == ResultType.Empty)
             {
-                return StatusCode(StatusCodes.Status404NotFound, response.Messages.First());
+                return StatusCode(StatusCodes.Status404NotFound, response.Messages);
             }
 
             return InternalServerError(response);
@@ -79,12 +79,12 @@ namespace BookMySlot.Web.Common
 
             else if (response.ResultType == ResultType.ValidationError)
             {
-                return this.BadRequest(response.Messages.First());
+                return this.BadRequest(response.Messages);
             }
 
             if (response.ResultType == ResultType.Empty)
             {
-                return StatusCode(StatusCodes.Status404NotFound, response.Messages.First());
+                return StatusCode(StatusCodes.Status404NotFound, response.Messages);
             }
 
             return InternalServerError(response);

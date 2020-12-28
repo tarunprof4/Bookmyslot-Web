@@ -42,7 +42,6 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
             using (var request = new HttpRequestMessage(HttpMethod.Post, string.Empty))
             {
                 request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                request.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
                 request.Content = new StringContent(serializedProfileSetting);
                 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
@@ -53,12 +52,17 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
                     if (!response.IsSuccessStatusCode)
                     {
                         var errorStream = await response.Content.ReadAsStreamAsync();
-                        var validationErrors = errorStream.ReadAndDeserializeFromJson();
-                        //if (response.StatusCode == System.Net.HttpStatusCode.UnprocessableEntity)
-                        //{
-                        //    var errorStream = await response.Content.ReadAsStreamAsync();
-                        //    var validationErrors = errorStream.ReadAndDeserializeFromJson();
-                        //}
+                        var errors = errorStream.ReadAndDeserializeFromJson<List<string>>();
+
+                        if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                        {
+                            return Response<string>.ValidationError(errors);
+                        }
+
+                        else if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+                        {
+                            return Response<string>.Failed(errors);
+                        }
                     }
 
                     var stream = await response.Content.ReadAsStreamAsync();
@@ -75,7 +79,7 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
             using (var request = new HttpRequestMessage(HttpMethod.Delete, email))
             {
                 request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                request.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
+                
 
                 using (var response = await httpClient.SendAsync(request,
                         HttpCompletionOption.ResponseHeadersRead,
@@ -84,12 +88,22 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
                     if (!response.IsSuccessStatusCode)
                     {
                         var errorStream = await response.Content.ReadAsStreamAsync();
-                        var validationErrors = errorStream.ReadAndDeserializeFromJson();
-                        //if (response.StatusCode == System.Net.HttpStatusCode.UnprocessableEntity)
-                        //{
-                        //    var errorStream = await response.Content.ReadAsStreamAsync();
-                        //    var validationErrors = errorStream.ReadAndDeserializeFromJson();
-                        //}
+                        var errors = errorStream.ReadAndDeserializeFromJson<List<string>>();
+
+                        if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                        {
+                            return Response<bool>.Empty(errors);
+                        }
+
+                        else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                        {
+                            return Response<bool>.ValidationError(errors);
+                        }
+
+                        else if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+                        {
+                            return Response<bool>.Failed(errors);
+                        }
                     }
 
                     var stream = await response.Content.ReadAsStreamAsync();
@@ -111,23 +125,26 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
             {
                 if (!response.IsSuccessStatusCode)
                 {
+                    var errorStream = await response.Content.ReadAsStreamAsync();
+                    var errors = errorStream.ReadAndDeserializeFromJson<List<string>>();
+
                     if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
                     {
-
+                       return Response<ProfileSettings>.Empty(errors);
                     }
 
                     else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
                     {
+                        return Response<ProfileSettings>.ValidationError(errors);
                     }
 
                     else if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
                     {
+                        return Response<ProfileSettings>.Failed(errors);
                     }
-
                 }
 
                 var stream = await response.Content.ReadAsStreamAsync();
-                response.EnsureSuccessStatusCode();
                 var customerModel = stream.ReadAndDeserializeFromJson<CustomerModel>();
 
                 var profileSetting = this.profileSettingsResponseAdaptor.GetProfileSettings(customerModel);
@@ -145,7 +162,7 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
             using (var request = new HttpRequestMessage(HttpMethod.Put, string.Empty))
             {
                 request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                request.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
+                
                 request.Content = new StringContent(serializedProfileSetting);
                 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
@@ -156,12 +173,22 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
                     if (!response.IsSuccessStatusCode)
                     {
                         var errorStream = await response.Content.ReadAsStreamAsync();
-                        var validationErrors = errorStream.ReadAndDeserializeFromJson();
-                        //if (response.StatusCode == System.Net.HttpStatusCode.UnprocessableEntity)
-                        //{
-                        //    var errorStream = await response.Content.ReadAsStreamAsync();
-                        //    var validationErrors = errorStream.ReadAndDeserializeFromJson();
-                        //}
+                        var errors = errorStream.ReadAndDeserializeFromJson<List<string>>();
+
+                        if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                        {
+                            return Response<bool>.Empty(errors);
+                        }
+
+                        else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                        {
+                            return Response<bool>.ValidationError(errors);
+                        }
+
+                        else if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+                        {
+                            return Response<bool>.Failed(errors);
+                        }
                     }
 
                     var stream = await response.Content.ReadAsStreamAsync();

@@ -29,6 +29,13 @@ namespace BookMySlot.Web.Common.Contracts
             return response;
         }
 
+        public static Response<T> Empty(List<string> errorMessage)
+        {
+            var response = new Response<T> { ResultType = ResultType.Empty, Messages = errorMessage };
+
+            return response;
+        }
+
 
         public static Response<T> Failed(List<string> errorMessages)
         {
