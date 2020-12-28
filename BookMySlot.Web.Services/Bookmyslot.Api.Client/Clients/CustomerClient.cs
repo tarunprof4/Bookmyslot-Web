@@ -51,18 +51,7 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
                 {
                     if (!response.IsSuccessStatusCode)
                     {
-                        var errorStream = await response.Content.ReadAsStreamAsync();
-                        var errors = errorStream.ReadAndDeserializeFromJson<List<string>>();
-
-                        if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
-                        {
-                            return Response<string>.ValidationError(errors);
-                        }
-
-                        else if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
-                        {
-                            return Response<string>.Failed(errors);
-                        }
+                        return await response.HandleError<string>();
                     }
 
                     var stream = await response.Content.ReadAsStreamAsync();
@@ -87,27 +76,11 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
                 {
                     if (!response.IsSuccessStatusCode)
                     {
-                        var errorStream = await response.Content.ReadAsStreamAsync();
-                        var errors = errorStream.ReadAndDeserializeFromJson<List<string>>();
-
-                        if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                        {
-                            return Response<bool>.Empty(errors);
-                        }
-
-                        else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
-                        {
-                            return Response<bool>.ValidationError(errors);
-                        }
-
-                        else if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
-                        {
-                            return Response<bool>.Failed(errors);
-                        }
+                        return await response.HandleError<bool>();
                     }
 
                     var stream = await response.Content.ReadAsStreamAsync();
-                    var profileEmail = stream.ReadAndDeserializeFromJson<string>();
+                    var profileEmail = stream.ReadAndDeserializeFromJson<bool>();
                     return new Response<bool>() { Result = true };
                 }
             }
@@ -125,23 +98,7 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    var errorStream = await response.Content.ReadAsStreamAsync();
-                    var errors = errorStream.ReadAndDeserializeFromJson<List<string>>();
-
-                    if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                    {
-                       return Response<ProfileSettings>.Empty(errors);
-                    }
-
-                    else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
-                    {
-                        return Response<ProfileSettings>.ValidationError(errors);
-                    }
-
-                    else if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
-                    {
-                        return Response<ProfileSettings>.Failed(errors);
-                    }
+                    return await response.HandleError<ProfileSettings>();
                 }
 
                 var stream = await response.Content.ReadAsStreamAsync();
@@ -152,7 +109,6 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
             }
 
         }
-
 
         public async Task<Response<bool>> UpdateCustomer(ProfileSettings profileSettings)
         {
@@ -172,27 +128,11 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
                 {
                     if (!response.IsSuccessStatusCode)
                     {
-                        var errorStream = await response.Content.ReadAsStreamAsync();
-                        var errors = errorStream.ReadAndDeserializeFromJson<List<string>>();
-
-                        if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                        {
-                            return Response<bool>.Empty(errors);
-                        }
-
-                        else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
-                        {
-                            return Response<bool>.ValidationError(errors);
-                        }
-
-                        else if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
-                        {
-                            return Response<bool>.Failed(errors);
-                        }
+                        return await response.HandleError<bool>();
                     }
 
                     var stream = await response.Content.ReadAsStreamAsync();
-                    var profileEmail = stream.ReadAndDeserializeFromJson<string>();
+                    var profileEmail = stream.ReadAndDeserializeFromJson<bool>();
                     return new Response<bool>() { Result = true };
                 }
             }
