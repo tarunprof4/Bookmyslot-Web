@@ -8,8 +8,11 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Interfaces
 {
     public interface ICustomerClient
     {
-        Task<Response<IEnumerable<ProfileSettings>>> GetCustomers();
-
         Task<Response<ProfileSettings>> GetCustomerByEmail(string email);
+        Task<Response<string>> CreateCustomer(ProfileSettings profileSettings);
+        Task<Response<bool>> DeleteCustomer(string email);
+        Task<Response<bool>> UpdateCustomer(ProfileSettings profileSettings);
     }
+
+
 }

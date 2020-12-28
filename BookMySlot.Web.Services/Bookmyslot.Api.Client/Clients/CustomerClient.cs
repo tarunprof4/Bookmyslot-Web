@@ -5,6 +5,7 @@ using BookMySlot.Web.Services.Adaptors.Interfaces;
 using BookMySlot.Web.Services.Bookmyslot.Api.Client.Interfaces;
 using BookMySlot.Web.Services.Bookmyslot.Api.Client.Models;
 using Marvin.StreamExtensions;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -29,6 +30,73 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
             this.profileSettingsAdaptor = profileSettingsAdaptor;
         }
 
+
+
+        public async Task<Response<string>> CreateCustomer(ProfileSettings profileSettings)
+        {
+            var httpClient = httpClientFactory.CreateClient(ApiClient.CustomerApiClient);
+
+            var serializedProfileSetting = JsonConvert.SerializeObject(profileSettings);
+            using (var request = new HttpRequestMessage(HttpMethod.Post, string.Empty))
+            {
+                request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                request.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
+                request.Content = new StringContent(serializedProfileSetting);
+                request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                using (var response = await httpClient.SendAsync(request,
+                        HttpCompletionOption.ResponseHeadersRead,
+                        cancellationTokenSource.Token))
+                {
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        var errorStream = await response.Content.ReadAsStreamAsync();
+                        var validationErrors = errorStream.ReadAndDeserializeFromJson();
+                        //if (response.StatusCode == System.Net.HttpStatusCode.UnprocessableEntity)
+                        //{
+                        //    var errorStream = await response.Content.ReadAsStreamAsync();
+                        //    var validationErrors = errorStream.ReadAndDeserializeFromJson();
+                        //}
+                    }
+
+                    var stream = await response.Content.ReadAsStreamAsync();
+                    var profileEmail = stream.ReadAndDeserializeFromJson<string>();
+                    return new Response<string>() { Result = profileEmail };
+                }
+            }
+        }
+
+        public async Task<Response<bool>> DeleteCustomer(string email)
+        {
+            var httpClient = httpClientFactory.CreateClient(ApiClient.CustomerApiClient);
+
+            using (var request = new HttpRequestMessage(HttpMethod.Delete, email))
+            {
+                request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                request.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
+
+                using (var response = await httpClient.SendAsync(request,
+                        HttpCompletionOption.ResponseHeadersRead,
+                        cancellationTokenSource.Token))
+                {
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        var errorStream = await response.Content.ReadAsStreamAsync();
+                        var validationErrors = errorStream.ReadAndDeserializeFromJson();
+                        //if (response.StatusCode == System.Net.HttpStatusCode.UnprocessableEntity)
+                        //{
+                        //    var errorStream = await response.Content.ReadAsStreamAsync();
+                        //    var validationErrors = errorStream.ReadAndDeserializeFromJson();
+                        //}
+                    }
+
+                    var stream = await response.Content.ReadAsStreamAsync();
+                    var profileEmail = stream.ReadAndDeserializeFromJson<string>();
+                    return new Response<bool>() { Result = true };
+                }
+            }
+        }
+
         public async Task<Response<ProfileSettings>> GetCustomerByEmail(string email)
         {
             var httpClient = httpClientFactory.CreateClient(ApiClient.CustomerApiClient);
@@ -43,7 +111,7 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
                     {
-                        
+
                     }
 
                     else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
@@ -66,33 +134,39 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
 
         }
 
-        public async Task<Response<IEnumerable<ProfileSettings>>> GetCustomers()
+
+        public async Task<Response<bool>> UpdateCustomer(ProfileSettings profileSettings)
         {
-            var httpClient = httpClientFactory.CreateClient("CustomerClient");
+            var httpClient = httpClientFactory.CreateClient(ApiClient.CustomerApiClient);
 
-            var request = new HttpRequestMessage(HttpMethod.Get, "api/v1/customer");
-            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            request.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
-
-            using (var response = await httpClient.SendAsync(request,
-                HttpCompletionOption.ResponseHeadersRead,
-                cancellationTokenSource.Token))
+            var serializedProfileSetting = JsonConvert.SerializeObject(profileSettings);
+            using (var request = new HttpRequestMessage(HttpMethod.Put, string.Empty))
             {
-                if (!response.IsSuccessStatusCode)
+                request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                request.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
+                request.Content = new StringContent(serializedProfileSetting);
+                request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                using (var response = await httpClient.SendAsync(request,
+                        HttpCompletionOption.ResponseHeadersRead,
+                        cancellationTokenSource.Token))
                 {
-                    if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    if (!response.IsSuccessStatusCode)
                     {
+                        var errorStream = await response.Content.ReadAsStreamAsync();
+                        var validationErrors = errorStream.ReadAndDeserializeFromJson();
+                        //if (response.StatusCode == System.Net.HttpStatusCode.UnprocessableEntity)
+                        //{
+                        //    var errorStream = await response.Content.ReadAsStreamAsync();
+                        //    var validationErrors = errorStream.ReadAndDeserializeFromJson();
+                        //}
                     }
 
-                    response.EnsureSuccessStatusCode();
+                    var stream = await response.Content.ReadAsStreamAsync();
+                    var profileEmail = stream.ReadAndDeserializeFromJson<string>();
+                    return new Response<bool>() { Result = true };
                 }
-
-                var stream = await response.Content.ReadAsStreamAsync();
-                response.EnsureSuccessStatusCode();
-                var movies = stream.ReadAndDeserializeFromJson<List<CustomerModel>>();
             }
-
-            return null;
         }
     }
 }

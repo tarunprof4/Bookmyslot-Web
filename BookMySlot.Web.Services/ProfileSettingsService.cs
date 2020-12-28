@@ -16,7 +16,7 @@ namespace BookMySlot.Web.Services
 
         public async Task<Response<ProfileSettings>> GetProfileSettings(string email)
         {
-            await this.customerClient.GetCustomerByEmail("a@gmail.com");
+            await this.customerClient.GetCustomerByEmail(email);
 
             return await Task.FromResult<Response<ProfileSettings>>(null);
         }
