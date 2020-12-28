@@ -1,7 +1,6 @@
 ﻿using BookMySlot.Web.Common.Contracts;
 using BookMySlot.Web.Contracts;
 using BookMySlot.Web.Contracts.Interfaces;
-using System;
 using System.Threading.Tasks;
 
 namespace BookyMySlot.Web.Business

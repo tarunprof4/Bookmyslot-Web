@@ -1,40 +1,24 @@
 ﻿using BookMySlot.Web.Common.Contracts;
 using BookMySlot.Web.Contracts;
 using BookMySlot.Web.Contracts.Interfaces;
-using System;
-using System.Net.Http;
+using BookMySlot.Web.Services.Bookmyslot.Api.Client.Interfaces;
 using System.Threading.Tasks;
 
 namespace BookMySlot.Web.Services
 {
     public class ProfileSettingsService : IProfileSettingsService
     {
-        private readonly HttpClient client = new HttpClient();
-        private readonly string customerApi = "api/customer/a@gmail.com";
-        public ProfileSettingsService()
+        private readonly ICustomerClient customerClient;
+        public ProfileSettingsService(ICustomerClient customerClient)
         {
-            client.BaseAddress = new Uri("https://localhost:44364/");
+            this.customerClient = customerClient;
         }
 
         public async Task<Response<ProfileSettings>> GetProfileSettings(string email)
         {
-            //HttpResponseMessage response = await client.GetAsync(customerApi);
-            //if (response.IsSuccessStatusCode)
-            //{
-            //    var profileSetting = await response.Content.ReadAsAsync<ProfileSettings>();
-            //    return new Response<ProfileSettings>() { Result = profileSetting };
-            //}
-            //return null;
-            var profileSettingsResponse = new Response<ProfileSettings>();
-            var profileSettings = new ProfileSettings();
-            profileSettings.FirstName = "TAF";
-            profileSettings.MiddleName = "TAM";
-            profileSettings.LastName = "TAL";
-            profileSettings.Gender = "Female";
-            profileSettings.Email = "a@gmail.com";
-            profileSettingsResponse.Result = profileSettings;
+            await this.customerClient.GetCustomerByEmail("a@gmail.com");
 
-            return await Task.FromResult<Response<ProfileSettings>>(profileSettingsResponse);
+            return await Task.FromResult<Response<ProfileSettings>>(null);
         }
 
         public async Task<Response<string>> SaveProfileSettings(ProfileSettings profileSettings)

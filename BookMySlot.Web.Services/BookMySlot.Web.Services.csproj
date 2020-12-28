@@ -5,11 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Net.Http.Formatting.Extension" Version="5.2.3" />
+    <ProjectReference Include="..\BookMySlot.Web.Contracts\BookMySlot.Web.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BookMySlot.Web.Contracts\BookMySlot.Web.Contracts.csproj" />
+    <PackageReference Include="Marvin.StreamExtensions" Version="1.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
   </ItemGroup>
 
 </Project>

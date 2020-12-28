@@ -1,0 +1,18 @@
+18:04 (1.0.0) [Information] (1) Starting web host
+18:04 (1.0.0) [Fatal] (1) Host terminated unexpectedly
+System.ArgumentException: Cannot instantiate implementation type 'BookMySlot.Web.Services.Bookmyslot.Api.Client.Interfaces.ICustomerClient' for service type 'BookMySlot.Web.Services.Bookmyslot.Api.Client.Interfaces.ICustomerClient'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.Populate()
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory..ctor(IEnumerable`1 descriptors)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine..ctor(IEnumerable`1 serviceDescriptors)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CompiledServiceProviderEngine..ctor(IEnumerable`1 serviceDescriptors)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.DefaultServiceProviderFactory.CreateServiceProvider(IServiceCollection containerBuilder)
+   at Microsoft.Extensions.Hosting.Internal.ServiceFactoryAdapter`1.CreateServiceProvider(Object containerBuilder)
+   at Microsoft.Extensions.Hosting.HostBuilder.CreateServiceProvider()
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at BookMySlot.Web.Program.Main(String[] args) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web\Program.cs:line 27
+18:06 (1.0.0) [Information] (1) Starting web host
+18:06 (1.0.0) [Information] (5) Get Profile Settings a
+18:14 (1.0.0) [Information] (1) Starting web host
+18:26 (1.0.0) [Information] (1) Starting web host
+18:28 (1.0.0) [Information] (1) Starting web host

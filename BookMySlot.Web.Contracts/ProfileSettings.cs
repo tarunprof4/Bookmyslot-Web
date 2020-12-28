@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace BookMySlot.Web.Contracts
+﻿namespace BookMySlot.Web.Contracts
 {
     public class ProfileSettings
     {
