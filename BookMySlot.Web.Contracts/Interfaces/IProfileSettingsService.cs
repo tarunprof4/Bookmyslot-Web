@@ -8,5 +8,7 @@ namespace BookMySlot.Web.Contracts.Interfaces
         Task<Response<ProfileSettings>> GetProfileSettings(string email);
         Task<Response<string>> SaveProfileSettings(ProfileSettings profileSettings);
         Task<Response<bool>> UpdateProfileSettings(ProfileSettings profileSettings);
+
+        Task<Response<bool>> DeleteProfileSettings(string email);
     }
 }

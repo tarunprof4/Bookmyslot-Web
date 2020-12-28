@@ -17,7 +17,8 @@ namespace BookMySlot.Web.Injections
             services.AddTransient<IProfileSettingsService, ProfileSettingsService>();
 
             services.AddScoped<ICustomerClient, CustomerClient>();
-            services.AddScoped<IProfileSettingsAdaptor, ProfileSettingsAdaptor>();
+            services.AddScoped<IProfileSettingsRequestAdaptor, ProfileSettingsRequestAdaptor>();
+            services.AddScoped<IProfileSettingsResponseAdaptor, ProfileSettingsResponseAdaptor>();
         }
     }
 }

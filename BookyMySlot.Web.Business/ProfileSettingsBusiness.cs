@@ -13,6 +13,11 @@ namespace BookyMySlot.Web.Business
             this.profileSettingsService = profileSettingsService;
         }
 
+        public async Task<Response<bool>> DeleteProfileSettings(string email)
+        {
+            return await this.profileSettingsService.DeleteProfileSettings(email);
+        }
+
         public async Task<Response<ProfileSettings>> GetProfileSettings(string email)
         {
             return await this.profileSettingsService.GetProfileSettings(email);

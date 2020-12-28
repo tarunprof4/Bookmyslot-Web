@@ -14,25 +14,24 @@ namespace BookMySlot.Web.Services
             this.customerClient = customerClient;
         }
 
+        public async Task<Response<bool>> DeleteProfileSettings(string email)
+        {
+            return await this.customerClient.DeleteCustomer(email);
+        }
+
         public async Task<Response<ProfileSettings>> GetProfileSettings(string email)
         {
-            await this.customerClient.GetCustomerByEmail(email);
-
-            return await Task.FromResult<Response<ProfileSettings>>(null);
+            return await this.customerClient.GetCustomerByEmail(email);
         }
 
         public async Task<Response<string>> SaveProfileSettings(ProfileSettings profileSettings)
         {
-            var profileSettingsResponse = new Response<string>();
-            profileSettingsResponse.Result = "a@gmail.com";
-            return await Task.FromResult<Response<string>>(profileSettingsResponse);
+            return await this.customerClient.CreateCustomer(profileSettings);
         }
 
         public async Task<Response<bool>> UpdateProfileSettings(ProfileSettings profileSettings)
         {
-            var profileSettingsResponse = new Response<bool>();
-            profileSettingsResponse.Result = true;
-            return await Task.FromResult<Response<bool>>(profileSettingsResponse);
+            return await this.customerClient.UpdateCustomer(profileSettings);
         }
     }
 }

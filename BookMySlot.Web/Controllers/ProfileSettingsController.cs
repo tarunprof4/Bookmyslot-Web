@@ -66,7 +66,7 @@ namespace BookMySlot.Web
         public async Task<IActionResult> Delete(string email)
         {
             Log.Information("Delete Profile Settings " + email);
-            var profileSettingsResponse = await this.profileSettingsBusiness.UpdateProfileSettings(new ProfileSettings());
+            var profileSettingsResponse = await this.profileSettingsBusiness.DeleteProfileSettings(email);
             return this.CreateDeleteHttpResponse(profileSettingsResponse);
         }
     }

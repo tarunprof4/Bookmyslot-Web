@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BookMySlot.Web.Services.Adaptors.Interfaces
 {
-    public interface IProfileSettingsAdaptor
+    public interface IProfileSettingsResponseAdaptor
     {
         ProfileSettings GetProfileSettings(CustomerModel customerModel);
     }

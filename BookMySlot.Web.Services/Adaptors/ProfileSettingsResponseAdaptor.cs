@@ -8,7 +8,7 @@ using System.Text;
 
 namespace BookMySlot.Web.Services.Adaptors
 {
-    public class ProfileSettingsAdaptor : IProfileSettingsAdaptor
+    public class ProfileSettingsResponseAdaptor : IProfileSettingsResponseAdaptor
     {
         public ProfileSettings GetProfileSettings(CustomerModel customerModel)
         {
@@ -19,6 +19,18 @@ namespace BookMySlot.Web.Services.Adaptors
                 LastName = customerModel.LastName,
                 Gender = customerModel.Gender,
                 Email = customerModel.Email,
+            };
+        }
+
+        public CustomerModel GetCustomerModel(ProfileSettings profileSettings)
+        {
+            return new CustomerModel()
+            {
+                FirstName = profileSettings.FirstName,
+                MiddleName = profileSettings.MiddleName,
+                LastName = profileSettings.LastName,
+                Gender = profileSettings.Gender,
+                Email = profileSettings.Email,
             };
         }
     }

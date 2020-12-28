@@ -19,15 +19,17 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
     public class CustomerClient : ICustomerClient
     {
         private readonly IHttpClientFactory httpClientFactory;
-        private readonly IProfileSettingsAdaptor profileSettingsAdaptor;
+        private readonly IProfileSettingsRequestAdaptor profileSettingsRequestAdaptor;
+        private readonly IProfileSettingsResponseAdaptor profileSettingsResponseAdaptor;
         private readonly CancellationTokenSource cancellationTokenSource =
             new CancellationTokenSource();
 
 
-        public CustomerClient(IHttpClientFactory httpClientFactory, IProfileSettingsAdaptor profileSettingsAdaptor)
+        public CustomerClient(IHttpClientFactory httpClientFactory, IProfileSettingsRequestAdaptor profileSettingsRequestAdaptor, IProfileSettingsResponseAdaptor profileSettingsResponseAdaptor)
         {
             this.httpClientFactory = httpClientFactory;
-            this.profileSettingsAdaptor = profileSettingsAdaptor;
+            this.profileSettingsRequestAdaptor = profileSettingsRequestAdaptor;
+            this.profileSettingsResponseAdaptor = profileSettingsResponseAdaptor;
         }
 
 
@@ -36,7 +38,7 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
         {
             var httpClient = httpClientFactory.CreateClient(ApiClient.CustomerApiClient);
 
-            var serializedProfileSetting = JsonConvert.SerializeObject(profileSettings);
+            var serializedProfileSetting = JsonConvert.SerializeObject(this.profileSettingsRequestAdaptor.GetCustomerModel(profileSettings));
             using (var request = new HttpRequestMessage(HttpMethod.Post, string.Empty))
             {
                 request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -128,7 +130,7 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
                 response.EnsureSuccessStatusCode();
                 var customerModel = stream.ReadAndDeserializeFromJson<CustomerModel>();
 
-                var profileSetting = this.profileSettingsAdaptor.GetProfileSettings(customerModel);
+                var profileSetting = this.profileSettingsResponseAdaptor.GetProfileSettings(customerModel);
                 return new Response<ProfileSettings>() { Result = profileSetting };
             }
 
