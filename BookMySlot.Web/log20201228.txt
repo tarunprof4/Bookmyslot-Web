@@ -21,3 +21,10 @@ System.ArgumentException: Cannot instantiate implementation type 'BookMySlot.Web
 18:47 (1.0.0) [Information] (1) Starting web host
 18:47 (1.0.0) [Information] (4) Get Profile Settings a
 18:47 (1.0.0) [Information] (9) Get Profile Settings a
+18:49 (1.0.0) [Information] (1) Starting web host
+18:49 (1.0.0) [Information] (4) Get Profile Settings a
+18:50 (1.0.0) [Information] (1) Starting web host
+18:50 (1.0.0) [Information] (4) Get Profile Settings a
+19:02 (1.0.0) [Information] (1) Starting web host
+19:03 (1.0.0) [Information] (4) Get Profile Settings a
+19:03 (1.0.0) [Information] (10) Get Profile Settings a

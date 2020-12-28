@@ -16,11 +16,13 @@ namespace BookMySlot.Web.Common
         {
             if (response.ResultType == ResultType.Success)
             {
-                if (response.HasResult)
-                    return this.Ok(response.Result);
+                return this.Ok(response.Result);
 
-                else
-                    return StatusCode(StatusCodes.Status404NotFound, AppBusinessMessages.NoRecordsFound);
+            }
+
+            else if (response.ResultType == ResultType.Empty)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, response.Messages.First());
             }
 
             else if (response.ResultType == ResultType.ValidationError)
@@ -59,6 +61,11 @@ namespace BookMySlot.Web.Common
                 return this.BadRequest(response.Messages.First());
             }
 
+            if (response.ResultType == ResultType.Empty)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, response.Messages.First());
+            }
+
             return InternalServerError(response);
         }
 
@@ -75,7 +82,12 @@ namespace BookMySlot.Web.Common
                 return this.BadRequest(response.Messages.First());
             }
 
-            return this.BadRequest(response.Messages.First());
+            if (response.ResultType == ResultType.Empty)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, response.Messages.First());
+            }
+
+            return InternalServerError(response);
         }
     }
 }

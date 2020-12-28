@@ -32,8 +32,7 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
         public async Task<Response<ProfileSettings>> GetCustomerByEmail(string email)
         {
             var httpClient = httpClientFactory.CreateClient(ApiClient.CustomerApiClient);
-            var uri = "api/v1/customer/" + email;
-            var request = new HttpRequestMessage(HttpMethod.Get, uri);
+            var request = new HttpRequestMessage(HttpMethod.Get, email);
             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             using (var response = await httpClient.SendAsync(request,
@@ -44,9 +43,17 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
                     {
+                        
                     }
 
-                    response.EnsureSuccessStatusCode();
+                    else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                    {
+                    }
+
+                    else if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+                    {
+                    }
+
                 }
 
                 var stream = await response.Content.ReadAsStreamAsync();
@@ -54,9 +61,9 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
                 var customerModel = stream.ReadAndDeserializeFromJson<CustomerModel>();
 
                 var profileSetting = this.profileSettingsAdaptor.GetProfileSettings(customerModel);
+                return new Response<ProfileSettings>() { Result = profileSetting };
             }
 
-            return null;
         }
 
         public async Task<Response<IEnumerable<ProfileSettings>>> GetCustomers()
