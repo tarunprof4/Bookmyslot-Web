@@ -21,7 +21,13 @@ export class ProfileSettingsComponent implements OnInit {
   ngOnInit(): void {
     var email = "a@gmail.com";
     
-    this.customerService.getProfileSettings(email).subscribe(profileSettings => this.profileSettings = profileSettings);
+    this.customerService.getProfileSettings(email).subscribe(profileSettings =>
+      this.profileSettings = profileSettings
+
+      //console.log(profileSettings)
+
+
+    );
     this.genders = this.genderService.getGenders();
   }
 

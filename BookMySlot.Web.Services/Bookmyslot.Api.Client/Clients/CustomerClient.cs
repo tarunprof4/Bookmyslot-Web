@@ -32,8 +32,6 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
             this.profileSettingsResponseAdaptor = profileSettingsResponseAdaptor;
         }
 
-
-
         public async Task<Response<string>> CreateCustomer(ProfileSettings profileSettings)
         {
             var httpClient = httpClientFactory.CreateClient(ApiClient.CustomerApiClient);
