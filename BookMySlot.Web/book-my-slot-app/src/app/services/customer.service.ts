@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ProfileSettings } from '../shared/profile-settings';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { ResolverError } from '../shared/resolver-error';
+import { HttpStatusConstants } from '../shared/constants/http-status-constants';
 
 
 @Injectable({
@@ -18,13 +20,19 @@ export class CustomerService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getProfileSettings(email: string): Observable<ProfileSettings> {
+  public getProfileSettings(email: string): Observable<ProfileSettings | ResolverError> {
 
     let profileSettingsUrlById = `${this.profileSettingsUrl}/${email}`;
 
+    //return this.httpClient.get<ProfileSettings>(profileSettingsUrlById)
+    //  .pipe(
+    //    catchError(this.handleError<ProfileSettings>('getProfileSettings', new ProfileSettings()))
+    //  );
+
+
     return this.httpClient.get<ProfileSettings>(profileSettingsUrlById)
       .pipe(
-        catchError(this.handleError<ProfileSettings>('getProfileSettings', new ProfileSettings()))
+        catchError(err => this.handleHttpError(err))
       );
 
     //profileSettings.firstName = "FirstName Name";
@@ -59,6 +67,34 @@ export class CustomerService {
       //tap(_ => this.log(`deleted hero id=${id}`)),
       catchError(this.handleError<boolean>('delete user'))
     );
+  }
+
+
+  private handleHttpError(error: HttpErrorResponse): Observable<ResolverError> {
+    let resolverError = new ResolverError();
+    
+    resolverError.statusCode = error.status;
+    console.log(error);
+
+
+    if (resolverError.statusCode == HttpStatusConstants.NotFound) {
+      resolverError.errors.push("No records found");
+    }
+
+    else if (resolverError.statusCode == HttpStatusConstants.BadRequest) {
+      resolverError.errors = error.error;
+    }
+
+    else if (resolverError.statusCode == HttpStatusConstants.InternalServerError) {
+      resolverError.errors.push("Some issue with service please try later");
+    }
+
+
+    else if (resolverError.statusCode == HttpStatusConstants.GatewayTimeOut) {
+      resolverError.errors.push("Some issue with service please try later");
+    }
+
+    return throwError(resolverError);
   }
  
 
