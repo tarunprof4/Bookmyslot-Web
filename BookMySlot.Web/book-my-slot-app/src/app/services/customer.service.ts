@@ -24,48 +24,35 @@ export class CustomerService {
 
     let profileSettingsUrlById = `${this.profileSettingsUrl}/${email}`;
 
-    //return this.httpClient.get<ProfileSettings>(profileSettingsUrlById)
-    //  .pipe(
-    //    catchError(this.handleError<ProfileSettings>('getProfileSettings', new ProfileSettings()))
-    //  );
-
-
     return this.httpClient.get<ProfileSettings>(profileSettingsUrlById)
       .pipe(
         catchError(err => this.handleHttpError(err))
       );
-
-    //profileSettings.firstName = "FirstName Name";
-    //profileSettings.middleName = "Middle name Name";
-    //profileSettings.lastName = "Lastname Name";
-    //profileSettings.gender = "Female";
-    //profileSettings.email = "a@gmail.com";
-
-    //return profileSettings;
+    
   }
 
 
-  public saveProfileSettings(profileSettings: ProfileSettings): Observable<string> {
+  public saveProfileSettings(profileSettings: ProfileSettings): Observable<string | ResolverError> {
     return this.httpClient.post<string>(this.profileSettingsUrl, profileSettings, this.httpOptions).pipe(
       //tap((email: string) => console.log(email)),
-      catchError(this.handleError<string>('save failed'))
+      catchError(err => this.handleHttpError(err))
     );
   }
 
-  public updateProfileSettings(profileSettings: ProfileSettings): Observable<boolean> {
+  public updateProfileSettings(profileSettings: ProfileSettings): Observable<boolean | ResolverError> {
     return this.httpClient.put<boolean>(this.profileSettingsUrl, profileSettings, this.httpOptions).pipe(
       
-      catchError(this.handleError<boolean>('update failed'))
+      catchError(err => this.handleHttpError(err))
     );
   }
 
 
-  public deleteProfileSettings(email: string): Observable<boolean> {
+  public deleteProfileSettings(email: string): Observable<boolean | ResolverError> {
     let profileSettingsUrlById = `${this.profileSettingsUrl}/${email}`;
 
     return this.httpClient.delete<boolean>(profileSettingsUrlById, this.httpOptions).pipe(
       //tap(_ => this.log(`deleted hero id=${id}`)),
-      catchError(this.handleError<boolean>('delete user'))
+      catchError(err => this.handleHttpError(err))
     );
   }
 
@@ -98,18 +85,5 @@ export class CustomerService {
   }
  
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      //this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
 
 }

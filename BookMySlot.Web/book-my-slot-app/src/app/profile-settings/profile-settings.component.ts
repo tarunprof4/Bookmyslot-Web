@@ -22,60 +22,52 @@ export class ProfileSettingsComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-    
     let initProfileSettings: ProfileSettings | ResolverError = this.route.snapshot.data['resolvedProfileSettings'];
 
     if (initProfileSettings instanceof ResolverError) {
     }
     else {
-      
+
       this.profileSettings = initProfileSettings;
     }
-
-
-    //this.customerService.getProfileSettings(email).subscribe(profileSettings =>
-    //  this.profileSettings = profileSettings
-
-    //  //console.log(profileSettings)
-
-
-    //);
     this.genders = this.genderService.getGenders();
   }
 
 
 
   onSave(profileSettingsForm: NgForm, profileSettings: ProfileSettings) {
+    //console.log(profileSettingsForm.value);  // { first: '', last: '' }
+    //console.log(profileSettingsForm.valid);  // false
 
-    
-    console.log(profileSettingsForm.value);  // { first: '', last: '' }
-    console.log(profileSettingsForm.valid);  // false
-
-    this.customerService.saveProfileSettings(profileSettings).subscribe();
+    this.customerService.saveProfileSettings(profileSettings)
+      .subscribe(
+        (data: string) => {
+          console.log("saved " + data);
+        },
+        (err: any) => console.log(err)
+      );
   }
 
   onUpdate(profileSettingsForm: NgForm, profileSettings: ProfileSettings) {
-    this.customerService.updateProfileSettings(this.profileSettings).subscribe();
+    this.customerService.updateProfileSettings(profileSettings)
+      .subscribe(
+        (data: boolean) => {
+          console.log("saved " + data);
+        },
+        (err: any) => console.log(err)
+      );
   }
 
   onDelete(profileSettingsForm: NgForm, profileSettings: ProfileSettings) {
-    this.customerService.deleteProfileSettings(this.profileSettings.email).subscribe(a =>console.log(a));
+    this.customerService.deleteProfileSettings(profileSettings.email)
+      .subscribe(
+        (data: boolean) => {
+          console.log("saved " + data);
+        },
+        (err: any) => console.log(err)
+      );
   }
 
 
-
-
-
-  //deleteBook(bookID: number): void {
-  //  this.dataService.deleteBook(bookID)
-  //    .subscribe(
-  //      (data: void) => {
-  //        let index: number = this.allBooks.findIndex(book => book.bookID === bookID);
-  //        this.allBooks.splice(index, 1);
-  //      },
-  //      (err: any) => console.log(err)
-  //    );
-  //}
 
 }

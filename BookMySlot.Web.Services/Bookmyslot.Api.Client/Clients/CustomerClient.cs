@@ -77,8 +77,6 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
                         return await response.HandleError<bool>();
                     }
 
-                    var stream = await response.Content.ReadAsStreamAsync();
-                    var profileEmail = stream.ReadAndDeserializeFromJson<bool>();
                     return new Response<bool>() { Result = true };
                 }
             }
@@ -129,8 +127,6 @@ namespace BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients
                         return await response.HandleError<bool>();
                     }
 
-                    var stream = await response.Content.ReadAsStreamAsync();
-                    var profileEmail = stream.ReadAndDeserializeFromJson<bool>();
                     return new Response<bool>() { Result = true };
                 }
             }

@@ -202,3 +202,390 @@
 15:15 (1.0.0) [Information] (33) Get Profile Settings a@gmail.com
 15:17 (1.0.0) [Information] (33) Get Profile Settings a@gmail.com
 15:19 (1.0.0) [Information] (33) Get Profile Settings a@gmail.com
+15:45 (1.0.0) [Information] (1) Starting web host
+15:45 (1.0.0) [Information] (12) Get Profile Settings a@gmail.com
+15:46 (1.0.0) [Information] (12) Save Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+15:46 (1.0.0) [Information] (19) Get Profile Settings a@gmail.com
+17:57 (1.0.0) [Information] (1) Starting web host
+18:00 (1.0.0) [Information] (9) Get Profile Settings a@gmail.com
+18:00 (1.0.0) [Information] (20) Save Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:02 (1.0.0) [Information] (22) Save Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:03 (1.0.0) [Information] (22) Get Profile Settings a@gmail.com
+18:03 (1.0.0) [Information] (22) Save Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:04 (1.0.0) [Information] (22) Save Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:06 (1.0.0) [Information] (22) Get Profile Settings a@gmail.com
+18:07 (1.0.0) [Information] (22) Save Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:08 (1.0.0) [Information] (22) Get Profile Settings a@gmail.com
+18:08 (1.0.0) [Information] (22) Get Profile Settings a@gmail.com
+18:08 (1.0.0) [Information] (22) Get Profile Settings a@gmail.com
+18:08 (1.0.0) [Information] (22) Save Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:09 (1.0.0) [Information] (22) Save Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:10 (1.0.0) [Information] (22) Save Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:10 (1.0.0) [Information] (22) Get Profile Settings a@gmail.com
+18:11 (1.0.0) [Information] (22) Get Profile Settings a@gmail.com
+18:11 (1.0.0) [Information] (22) Get Profile Settings a@gmail.com
+18:11 (1.0.0) [Information] (22) Get Profile Settings a@gmail.com
+18:11 (1.0.0) [Information] (22) Get Profile Settings a@gmail.com
+18:11 (1.0.0) [Information] (22) Get Profile Settings a@gmail.com
+18:11 (1.0.0) [Information] (22) Get Profile Settings a@gmail.com
+18:11 (1.0.0) [Information] (22) Get Profile Settings a@gmail.com
+18:12 (1.0.0) [Information] (22) Get Profile Settings a@gmail.com
+18:12 (1.0.0) [Information] (47) Update Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:13 (1.0.0) [Information] (54) Update Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:13 (1.0.0) [Error] (58) No JSON content found and type 'System.Boolean' is not nullable. Path '', line 0, position 0.
+
+18:13 (1.0.0) [Error] (58)    at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize[T](JsonReader reader)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean leaveOpen, JsonSerializerSettings jsonSerializerSettings)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, JsonSerializerSettings jsonSerializerSettings)
+   at BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients.CustomerClient.UpdateCustomer(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\Bookmyslot.Api.Client\Clients\CustomerClient.cs:line 132
+   at BookMySlot.Web.Services.ProfileSettingsService.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\ProfileSettingsService.cs:line 34
+   at BookyMySlot.Web.Business.ProfileSettingsBusiness.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookyMySlot.Web.Business\ProfileSettingsBusiness.cs:line 33
+   at BookMySlot.Web.ProfileSettingsController.Put(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web\Controllers\ProfileSettingsController.cs:line 99
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+18:14 (1.0.0) [Information] (48) Update Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:14 (1.0.0) [Error] (58) No JSON content found and type 'System.Boolean' is not nullable. Path '', line 0, position 0.
+
+18:15 (1.0.0) [Error] (58)    at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize[T](JsonReader reader)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean leaveOpen, JsonSerializerSettings jsonSerializerSettings)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, JsonSerializerSettings jsonSerializerSettings)
+   at BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients.CustomerClient.UpdateCustomer(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\Bookmyslot.Api.Client\Clients\CustomerClient.cs:line 132
+   at BookMySlot.Web.Services.ProfileSettingsService.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\ProfileSettingsService.cs:line 34
+   at BookyMySlot.Web.Business.ProfileSettingsBusiness.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookyMySlot.Web.Business\ProfileSettingsBusiness.cs:line 33
+   at BookMySlot.Web.ProfileSettingsController.Put(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web\Controllers\ProfileSettingsController.cs:line 99
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+18:16 (1.0.0) [Information] (52) Update Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:16 (1.0.0) [Error] (58) No JSON content found and type 'System.Boolean' is not nullable. Path '', line 0, position 0.
+
+18:17 (1.0.0) [Error] (58)    at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize[T](JsonReader reader)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean leaveOpen, JsonSerializerSettings jsonSerializerSettings)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, JsonSerializerSettings jsonSerializerSettings)
+   at BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients.CustomerClient.UpdateCustomer(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\Bookmyslot.Api.Client\Clients\CustomerClient.cs:line 132
+   at BookMySlot.Web.Services.ProfileSettingsService.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\ProfileSettingsService.cs:line 34
+   at BookyMySlot.Web.Business.ProfileSettingsBusiness.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookyMySlot.Web.Business\ProfileSettingsBusiness.cs:line 33
+   at BookMySlot.Web.ProfileSettingsController.Put(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web\Controllers\ProfileSettingsController.cs:line 99
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+18:17 (1.0.0) [Information] (46) Update Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:17 (1.0.0) [Error] (58) No JSON content found and type 'System.Boolean' is not nullable. Path '', line 0, position 0.
+
+18:17 (1.0.0) [Error] (58)    at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize[T](JsonReader reader)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean leaveOpen, JsonSerializerSettings jsonSerializerSettings)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, JsonSerializerSettings jsonSerializerSettings)
+   at BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients.CustomerClient.UpdateCustomer(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\Bookmyslot.Api.Client\Clients\CustomerClient.cs:line 132
+   at BookMySlot.Web.Services.ProfileSettingsService.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\ProfileSettingsService.cs:line 34
+   at BookyMySlot.Web.Business.ProfileSettingsBusiness.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookyMySlot.Web.Business\ProfileSettingsBusiness.cs:line 33
+   at BookMySlot.Web.ProfileSettingsController.Put(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web\Controllers\ProfileSettingsController.cs:line 99
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+18:18 (1.0.0) [Information] (48) Delete Profile Settings asjk@fm.com
+18:18 (1.0.0) [Information] (48) Delete Profile Settings asjk@fm.com
+18:19 (1.0.0) [Information] (36) Delete Profile Settings asjk@fm.com
+18:19 (1.0.0) [Information] (48) Get Profile Settings a@gmail.com
+18:23 (1.0.0) [Information] (48) Update Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:23 (1.0.0) [Error] (27) The request was canceled due to the configured HttpClient.Timeout of 30 seconds elapsing.
+
+18:23 (1.0.0) [Error] (27)    at System.Net.Http.HttpClient.SendAsyncCore(HttpRequestMessage request, HttpCompletionOption completionOption, Boolean async, Boolean emitTelemetryStartStop, CancellationToken cancellationToken)
+   at BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients.CustomerClient.UpdateCustomer(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\Bookmyslot.Api.Client\Clients\CustomerClient.cs:line 123
+   at BookMySlot.Web.Services.ProfileSettingsService.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\ProfileSettingsService.cs:line 34
+   at BookyMySlot.Web.Business.ProfileSettingsBusiness.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookyMySlot.Web.Business\ProfileSettingsBusiness.cs:line 33
+   at BookMySlot.Web.ProfileSettingsController.Put(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web\Controllers\ProfileSettingsController.cs:line 99
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+18:29 (1.0.0) [Information] (1) Starting web host
+18:29 (1.0.0) [Information] (4) Get Profile Settings a@gmail.com
+18:29 (1.0.0) [Information] (5) Update Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:30 (1.0.0) [Error] (6) No JSON content found and type 'System.Boolean' is not nullable. Path '', line 0, position 0.
+
+18:30 (1.0.0) [Error] (6)    at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize[T](JsonReader reader)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean leaveOpen, JsonSerializerSettings jsonSerializerSettings)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, JsonSerializerSettings jsonSerializerSettings)
+   at BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients.CustomerClient.UpdateCustomer(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\Bookmyslot.Api.Client\Clients\CustomerClient.cs:line 132
+   at BookMySlot.Web.Services.ProfileSettingsService.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\ProfileSettingsService.cs:line 34
+   at BookyMySlot.Web.Business.ProfileSettingsBusiness.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookyMySlot.Web.Business\ProfileSettingsBusiness.cs:line 33
+   at BookMySlot.Web.ProfileSettingsController.Put(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web\Controllers\ProfileSettingsController.cs:line 99
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+18:30 (1.0.0) [Information] (15) Update Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:30 (1.0.0) [Error] (6) No JSON content found and type 'System.Boolean' is not nullable. Path '', line 0, position 0.
+
+18:30 (1.0.0) [Error] (6)    at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize[T](JsonReader reader)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean leaveOpen, JsonSerializerSettings jsonSerializerSettings)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, JsonSerializerSettings jsonSerializerSettings)
+   at BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients.CustomerClient.UpdateCustomer(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\Bookmyslot.Api.Client\Clients\CustomerClient.cs:line 132
+   at BookMySlot.Web.Services.ProfileSettingsService.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\ProfileSettingsService.cs:line 34
+   at BookyMySlot.Web.Business.ProfileSettingsBusiness.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookyMySlot.Web.Business\ProfileSettingsBusiness.cs:line 33
+   at BookMySlot.Web.ProfileSettingsController.Put(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web\Controllers\ProfileSettingsController.cs:line 99
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+18:31 (1.0.0) [Information] (15) Update Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:31 (1.0.0) [Error] (6) No JSON content found and type 'System.Boolean' is not nullable. Path '', line 0, position 0.
+
+18:31 (1.0.0) [Error] (6)    at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize[T](JsonReader reader)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean leaveOpen, JsonSerializerSettings jsonSerializerSettings)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, JsonSerializerSettings jsonSerializerSettings)
+   at BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients.CustomerClient.UpdateCustomer(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\Bookmyslot.Api.Client\Clients\CustomerClient.cs:line 132
+   at BookMySlot.Web.Services.ProfileSettingsService.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\ProfileSettingsService.cs:line 34
+   at BookyMySlot.Web.Business.ProfileSettingsBusiness.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookyMySlot.Web.Business\ProfileSettingsBusiness.cs:line 33
+   at BookMySlot.Web.ProfileSettingsController.Put(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web\Controllers\ProfileSettingsController.cs:line 99
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+18:49 (1.0.0) [Information] (15) Update Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:50 (1.0.0) [Error] (19) No JSON content found and type 'System.Boolean' is not nullable. Path '', line 0, position 0.
+
+18:50 (1.0.0) [Error] (19)    at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize[T](JsonReader reader)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean leaveOpen, JsonSerializerSettings jsonSerializerSettings)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, JsonSerializerSettings jsonSerializerSettings)
+   at BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients.CustomerClient.UpdateCustomer(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\Bookmyslot.Api.Client\Clients\CustomerClient.cs:line 132
+   at BookMySlot.Web.Services.ProfileSettingsService.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\ProfileSettingsService.cs:line 34
+   at BookyMySlot.Web.Business.ProfileSettingsBusiness.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookyMySlot.Web.Business\ProfileSettingsBusiness.cs:line 33
+   at BookMySlot.Web.ProfileSettingsController.Put(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web\Controllers\ProfileSettingsController.cs:line 99
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+18:50 (1.0.0) [Information] (15) Update Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:50 (1.0.0) [Error] (19) No JSON content found and type 'System.Boolean' is not nullable. Path '', line 0, position 0.
+
+18:50 (1.0.0) [Error] (19)    at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize[T](JsonReader reader)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean leaveOpen, JsonSerializerSettings jsonSerializerSettings)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, JsonSerializerSettings jsonSerializerSettings)
+   at BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients.CustomerClient.UpdateCustomer(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\Bookmyslot.Api.Client\Clients\CustomerClient.cs:line 132
+   at BookMySlot.Web.Services.ProfileSettingsService.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\ProfileSettingsService.cs:line 34
+   at BookyMySlot.Web.Business.ProfileSettingsBusiness.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookyMySlot.Web.Business\ProfileSettingsBusiness.cs:line 33
+   at BookMySlot.Web.ProfileSettingsController.Put(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web\Controllers\ProfileSettingsController.cs:line 99
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+18:52 (1.0.0) [Information] (25) Update Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+18:52 (1.0.0) [Error] (26) No JSON content found and type 'System.Boolean' is not nullable. Path '', line 0, position 0.
+
+18:52 (1.0.0) [Error] (26)    at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize[T](JsonReader reader)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean leaveOpen, JsonSerializerSettings jsonSerializerSettings)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, JsonSerializerSettings jsonSerializerSettings)
+   at BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients.CustomerClient.UpdateCustomer(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\Bookmyslot.Api.Client\Clients\CustomerClient.cs:line 132
+   at BookMySlot.Web.Services.ProfileSettingsService.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\ProfileSettingsService.cs:line 34
+   at BookyMySlot.Web.Business.ProfileSettingsBusiness.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookyMySlot.Web.Business\ProfileSettingsBusiness.cs:line 33
+   at BookMySlot.Web.ProfileSettingsController.Put(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web\Controllers\ProfileSettingsController.cs:line 99
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+19:05 (1.0.0) [Information] (22) Get Profile Settings a@gmail.com
+19:05 (1.0.0) [Information] (33) Update Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+19:06 (1.0.0) [Error] (26) No JSON content found and type 'System.Boolean' is not nullable. Path '', line 0, position 0.
+
+19:06 (1.0.0) [Error] (26)    at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize[T](JsonReader reader)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean leaveOpen, JsonSerializerSettings jsonSerializerSettings)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, JsonSerializerSettings jsonSerializerSettings)
+   at BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients.CustomerClient.UpdateCustomer(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\Bookmyslot.Api.Client\Clients\CustomerClient.cs:line 132
+   at BookMySlot.Web.Services.ProfileSettingsService.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\ProfileSettingsService.cs:line 34
+   at BookyMySlot.Web.Business.ProfileSettingsBusiness.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookyMySlot.Web.Business\ProfileSettingsBusiness.cs:line 33
+   at BookMySlot.Web.ProfileSettingsController.Put(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web\Controllers\ProfileSettingsController.cs:line 99
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+19:08 (1.0.0) [Information] (34) Update Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+19:08 (1.0.0) [Error] (26) No JSON content found and type 'System.Boolean' is not nullable. Path '', line 0, position 0.
+
+19:08 (1.0.0) [Error] (26)    at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize[T](JsonReader reader)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean leaveOpen, JsonSerializerSettings jsonSerializerSettings)
+   at Marvin.StreamExtensions.StreamExtensions.ReadAndDeserializeFromJson[T](Stream stream, JsonSerializerSettings jsonSerializerSettings)
+   at BookMySlot.Web.Services.Bookmyslot.Api.Client.Clients.CustomerClient.UpdateCustomer(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\Bookmyslot.Api.Client\Clients\CustomerClient.cs:line 132
+   at BookMySlot.Web.Services.ProfileSettingsService.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web.Services\ProfileSettingsService.cs:line 34
+   at BookyMySlot.Web.Business.ProfileSettingsBusiness.UpdateProfileSettings(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookyMySlot.Web.Business\ProfileSettingsBusiness.cs:line 33
+   at BookMySlot.Web.ProfileSettingsController.Put(ProfileSettings profileSettings) in C:\Users\taruna\Desktop\BookMySlot-Web\BookMySlot-Web\BookMySlot.Web\Controllers\ProfileSettingsController.cs:line 99
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+19:12 (1.0.0) [Information] (1) Starting web host
+19:13 (1.0.0) [Information] (4) Update Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+19:14 (1.0.0) [Information] (13) Delete Profile Settings a@gmail.com
+19:15 (1.0.0) [Information] (14) Get Profile Settings aa@gmail.com
+19:16 (1.0.0) [Information] (14) Get Profile Settings aa@gmail.com
