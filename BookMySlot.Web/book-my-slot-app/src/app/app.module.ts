@@ -12,7 +12,9 @@ import { SharedSlotsComponent } from './shared-slots/shared-slots.component';
 import { BookedSlotsComponent } from './booked-slots/booked-slots.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CustomerService } from './services/customer.service';
+import { AddHeaderInterceptor } from './shared/Interceptors/add-header.interceptor';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    CustomerService,
+    { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

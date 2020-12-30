@@ -12,9 +12,7 @@ import { HttpStatusConstants } from '../shared/constants/http-status-constants';
 })
 export class CustomerService {
 
-  private httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  };
+
   private profileSettingsUrl = '/api/profileSettings';
 
 
@@ -33,14 +31,14 @@ export class CustomerService {
 
 
   public saveProfileSettings(profileSettings: ProfileSettings): Observable<string | ResolverError> {
-    return this.httpClient.post<string>(this.profileSettingsUrl, profileSettings, this.httpOptions).pipe(
+    return this.httpClient.post<string>(this.profileSettingsUrl, profileSettings).pipe(
       //tap((email: string) => console.log(email)),
       catchError(err => this.handleHttpError(err))
     );
   }
 
   public updateProfileSettings(profileSettings: ProfileSettings): Observable<boolean | ResolverError> {
-    return this.httpClient.put<boolean>(this.profileSettingsUrl, profileSettings, this.httpOptions).pipe(
+    return this.httpClient.put<boolean>(this.profileSettingsUrl, profileSettings).pipe(
       
       catchError(err => this.handleHttpError(err))
     );
@@ -50,7 +48,7 @@ export class CustomerService {
   public deleteProfileSettings(email: string): Observable<boolean | ResolverError> {
     let profileSettingsUrlById = `${this.profileSettingsUrl}/${email}`;
 
-    return this.httpClient.delete<boolean>(profileSettingsUrlById, this.httpOptions).pipe(
+    return this.httpClient.delete<boolean>(profileSettingsUrlById).pipe(
       //tap(_ => this.log(`deleted hero id=${id}`)),
       catchError(err => this.handleHttpError(err))
     );

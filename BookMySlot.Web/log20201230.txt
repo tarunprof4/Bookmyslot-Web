@@ -1,0 +1,4 @@
+13:10 (1.0.0) [Information] (1) Starting web host
+13:16 (1.0.0) [Information] (8) Get Profile Settings aa@gmail.com
+13:16 (1.0.0) [Information] (19) Get Profile Settings aa@gmail.com
+13:16 (1.0.0) [Information] (22) Update Profile Settings BookMySlot.Web.Contracts.ProfileSettings
