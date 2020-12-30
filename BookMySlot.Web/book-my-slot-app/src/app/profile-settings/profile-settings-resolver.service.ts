@@ -16,7 +16,7 @@ export class ProfileSettingsResolverService implements Resolve<ProfileSettings |
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ProfileSettings | ResolverError> {
     //let emailId = route.data['emailId'];
-    return this.customerService.getProfileSettings("aa@gmail.com")
+    return this.customerService.getProfileSettings("b@gmail.com")
       .pipe(
         catchError(
           err =>

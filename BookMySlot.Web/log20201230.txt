@@ -2,3 +2,7 @@
 13:16 (1.0.0) [Information] (8) Get Profile Settings aa@gmail.com
 13:16 (1.0.0) [Information] (19) Get Profile Settings aa@gmail.com
 13:16 (1.0.0) [Information] (22) Update Profile Settings BookMySlot.Web.Contracts.ProfileSettings
+13:18 (1.0.0) [Information] (23) Get Profile Settings aa@gmail.com
+13:28 (1.0.0) [Information] (23) Get Profile Settings aa@gmail.com
+13:30 (1.0.0) [Information] (23) Get Profile Settings aa@gmail.com
+13:30 (1.0.0) [Information] (41) Get Profile Settings aa@gmail.com

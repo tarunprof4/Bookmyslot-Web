@@ -13,7 +13,8 @@ import { HttpStatusConstants } from '../shared/constants/http-status-constants';
 export class CustomerService {
 
 
-  private profileSettingsUrl = '/api/profileSettings';
+  //private profileSettingsUrl = '/api/v1/profileSettings';
+  private profileSettingsUrl = '/api/v1/customer';
 
 
   constructor(private httpClient: HttpClient) { }
