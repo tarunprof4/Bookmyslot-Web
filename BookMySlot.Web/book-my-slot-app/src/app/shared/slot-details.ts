@@ -3,9 +3,8 @@ import { Time } from '@angular/common';
 export class SlotDetails {
   id: string;
   title: string;
-  createdBy: string;
-  slotTimeZone: string;
+  timeZone: string;
   slotDate: Date;
-  slotStartTime: Time;
-  slotEndTime: Time;
+  startTime: Time;
+  endTime: Time;
 }

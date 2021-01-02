@@ -35,8 +35,7 @@
                   <label for="exampleInputEmail1">Title</label>
 
                   <input type="text" name="firstName" class="form-control" placeholder="First Name" [(ngModel)]="profileSettings.firstName" required #firstName="ngModel" pattern="regexConstants.OnlyAlphabets" />
-                  <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
-                       class="alert alert-danger">
+                  <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
                     <div *ngIf="firstName.errors.required">
                       First Name is required.
                     </div>

@@ -1,1 +1,269 @@
-<p>share-slot works!</p>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Book Slot</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <!--<li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Book Slot</li>-->
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+
+      <form #slotDetailsForm="ngForm">
+        <!-- Small boxes (Stat box) -->
+        <div class="card card-primary card-outline card-outline-tabs">
+          <div class="card-body">
+
+
+            <div class="row">
+
+              <div class="form-group col-sm-6 col-md-4">
+                <div class="form-group">
+                  <label>TimeZone</label>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <select name="timeZone" [(ngModel)]="slotDetails.timeZone" class="form-control" required>
+                        <option disabled>Select</option>
+                        <option *ngFor="let timeZone of timeZones" [value]="timeZone">{{timeZone}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="form-group col-sm-6 col-md-4">
+                <label for="title">Title</label>
+                <!--<input type="text" name="title" class="form-control" placeholder="Title" [(ngModel)]="slotDetails.title" required #title="ngModel"  />-->
+                <textarea id="title" type="text" name="title" required #title="ngModel" [(ngModel)]="slotDetails.title" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+                  <div *ngIf="title.errors.required">
+                    Title is required.
+                  </div>
+                </div>
+
+      
+              </div>
+
+
+
+
+
+
+
+              <div class="form-group col-sm-6 col-md-4">
+                <label>Date</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                  </div>
+                  <input type="text" ngbDatepicker #d="ngbDatepicker" />
+
+                  <!--<input type="text" class="form-control is-invalid" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">-->
+                  <span id="exampleInputEmail1-error" class="error invalid-feedback">Please enter a email address</span>
+                </div>
+              </div>
+
+
+
+
+
+
+              <div class=" col-sm-6 col-md-4">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <!-- select -->
+                    <div class="form-group">
+                      <label>Start Time</label>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <select class="form-control">
+                            <option>option 1</option>
+                            <option>option 2</option>
+                            <option>option 3</option>
+                            <option>option 4</option>
+                            <option>option 5</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <select class="form-control">
+                            <option>option 1</option>
+                            <option>option 2</option>
+                            <option>option 3</option>
+                            <option>option 4</option>
+                            <option>option 5</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>End Time</label>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <select class="form-control">
+                            <option>option 1</option>
+                            <option>option 2</option>
+                            <option>option 3</option>
+                            <option>option 4</option>
+                            <option>option 5</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <select class="form-control">
+                            <option>option 1</option>
+                            <option>option 2</option>
+                            <option>option 3</option>
+                            <option>option 4</option>
+                            <option>option 5</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-sm-6 col-md-4">
+                <label for="exampleInputEmail1">Slot Duration</label><br>
+                1 hr
+              </div>
+
+            </div>
+
+          </div>
+          <div class="card-footer">
+            <button type="button" class="btn bg-gradient-primary" (click)="saveSlot(slotDetailsForm, slotDetails)">Save</button>
+            <button type="button" class="btn btn-default">Cancel</button>
+          </div>
+          <!-- /.card -->
+        </div>
+
+      </form>
+    </div>
+    <!-- /.row (main row) -->
+  </section>
+</div><!-- /.container-fluid -->
+<!-- ./wrapper -->
+<a href="javascript:openOffcanvas1()" class="float">
+  <i class="fa fa-filter my-float"></i>
+</a>
+
+
+<div id="myOffcanvas" class="offcanvas">
+  <a href="javascript:void(0)" class="closeOffcanvas" onclick="closeOffcanvas()">×</a>
+  <div class="filter-content">
+    <div class="">
+      <div class=" ">
+        <button type="button" class="btn bg-gradient-primary toastsDefaultSuccess">Apply</button>
+        <button type="button" class="btn btn-default">Reset</button>
+      </div>
+      <div class="form-group">
+        <label>Start Date</label>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+          </div>
+          <input type="text" class="form-control is-invalid" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">
+          <span id="exampleInputEmail1-error" class="error invalid-feedback">Please enter a email address</span>
+        </div>
+
+        <!-- /.input group -->
+      </div>
+      <div class="form-group">
+        <label>End Date</label>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+          </div>
+          <input type="text" class="form-control is-invalid" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">
+          <span id="exampleInputEmail1-error" class="error invalid-feedback">Please enter a email address</span>
+        </div>
+
+        <!-- /.input group -->
+      </div>
+      <div class="row">
+
+        <div class="col-sm-12">
+          <!-- select -->
+          <div class="form-group">
+            <label>Start Time</label>
+            <div class="row">
+              <div class="col-sm-6">
+                <select class="form-control">
+                  <option>option 1</option>
+                  <option>option 2</option>
+                  <option>option 3</option>
+                  <option>option 4</option>
+                  <option>option 5</option>
+                </select>
+              </div>
+              <div class="col-sm-6">
+                <select class="form-control">
+                  <option>option 1</option>
+                  <option>option 2</option>
+                  <option>option 3</option>
+                  <option>option 4</option>
+                  <option>option 5</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label>End Time</label>
+            <div class="row">
+              <div class="col-sm-6">
+                <select class="form-control">
+                  <option>option 1</option>
+                  <option>option 2</option>
+                  <option>option 3</option>
+                  <option>option 4</option>
+                  <option>option 5</option>
+                </select>
+              </div>
+              <div class="col-sm-6">
+                <select class="form-control">
+                  <option>option 1</option>
+                  <option>option 2</option>
+                  <option>option 3</option>
+                  <option>option 4</option>
+                  <option>option 5</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Slot Duration</label><br>
+        1 hr
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Slot Duration</label>
+        <div class="slider-blue">
+          <input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200"
+                 data-slider-step="5" data-slider-value="[-100,100]" data-slider-orientation="horizontal"
+                 data-slider-selection="before" data-slider-tooltip="show">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
