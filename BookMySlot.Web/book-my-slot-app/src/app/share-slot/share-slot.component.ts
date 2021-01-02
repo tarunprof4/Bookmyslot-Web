@@ -21,6 +21,7 @@ export class ShareSlotComponent implements OnInit {
   ngOnInit(): void {
 
     
+    
     this.timeZones = this.timezoneService.getTimeZones();
 
     this.slotDetails = new SlotDetails();
