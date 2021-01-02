@@ -1,8 +1,6 @@
-﻿using BookMySlot.Web.Common.Constants;
-using BookMySlot.Web.Common.Contracts;
+﻿using BookMySlot.Web.Common.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 
 namespace BookMySlot.Web.Common
 {

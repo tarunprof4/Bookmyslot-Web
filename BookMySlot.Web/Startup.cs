@@ -1,6 +1,7 @@
 using BookMySlot.Web.Common.Contracts.Constants;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,6 +26,43 @@ namespace BookMySlot.Web
             Injections.ProfileSettingsInjections.WebInjections(services);
 
             services.AddControllers();
+
+
+            services.AddOpenApiDocument(config =>
+            {
+                config.PostProcess = document =>
+                {
+                    document.Info.Version = "v1";
+                    document.Info.Title = "Bookmyslot";
+                    document.Info.Description = "Bookmyslot";
+                    document.Info.TermsOfService = "None";
+                    document.Info.Contact = new NSwag.OpenApiContact
+                    {
+                        Name = "Tarun Aggarwal",
+                        Email = string.Empty,
+                        //Url = "https://twitter.com/spboyer"
+                    };
+                    document.Info.License = new NSwag.OpenApiLicense
+                    {
+                        //Name = "Use under LICX",
+                        //Url = "https://example.com/license"
+                    };
+                };
+            });
+
+
+            services.AddMvc()
+        .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+        .ConfigureApiBehaviorOptions(options =>
+        {
+            options.InvalidModelStateResponseFactory = context =>
+            {
+                var problems = new BadRequestExceptionHandler(context);
+                return new BadRequestObjectResult(problems.ErrorMessages);
+            };
+        });
+
+
         }
 
         private Dictionary<string, string> GetAppConfigurations()
@@ -47,6 +85,10 @@ namespace BookMySlot.Web
             app.UseHttpsRedirection();
 
             app.ConfigureGlobalExceptionHandler();
+
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
+
 
             app.UseRouting();
 
