@@ -55,7 +55,7 @@
                   </div>
                 </div>
 
-      
+
               </div>
 
 
@@ -67,14 +67,32 @@
               <div class="form-group col-sm-6 col-md-4">
                 <label>Date</label>
                 <div class="input-group">
-                  <div class="input-group-prepend">
+
+                  <!--<button class="btn btn-success" type="button">Date Picker</button>-->
+                  <div (click)="slotDatePicker.toggle()" [attr.aria-expanded]="slotDatePicker.isOpen" class="input-group-prepend">
                     <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                   </div>
-                  <input type="text" name="slotDate"   #slotDate="ngModel" bsDatepicker [bsConfig]="{ isAnimated: true, dateInputFormat: 'MMMM Do YYYY, h:mm:ss a',  containerClass: 'theme-dark-blue', showWeekNumbers: false }" [(ngModel)]="slotDetails.slotDate"
-                         [minDate]="slotMinDate" [maxDate]="slotMaxDate"/>
 
-                  <span id="exampleInputEmail1-error" class="error invalid-feedback">Please enter a email address</span>
+                  <!--<input type="text"
+                         class="form-control"
+                         #dp="bsDatepicker"
+                         bsDatepicker
+                         >-->
+
+                  <input type="text" name="slotDate" #slotDatePicker="bsDatepicker" #slotDate="ngModel"  bsDatepicker [(ngModel)]="slotDetails.slotDate"
+                         [minDate]="slotMinDate" [maxDate]="slotMaxDate" required />
+
+                  <div *ngIf="slotDate.invalid && (slotDate.dirty || slotDate.touched)" class="alert alert-danger">
+                    <div *ngIf="slotDate.errors.required">
+                      Slot Date is required.
+                    </div>
+                  </div>
+
+
+
                 </div>
+
+
               </div>
 
 
@@ -89,24 +107,7 @@
                     <div class="form-group">
                       <label>Start Time</label>
                       <div class="row">
-                        <div class="col-sm-6">
-                          <select class="form-control">
-                            <option>option 1</option>
-                            <option>option 2</option>
-                            <option>option 3</option>
-                            <option>option 4</option>
-                            <option>option 5</option>
-                          </select>
-                        </div>
-                        <div class="col-sm-6">
-                          <select class="form-control">
-                            <option>option 1</option>
-                            <option>option 2</option>
-                            <option>option 3</option>
-                            <option>option 4</option>
-                            <option>option 5</option>
-                          </select>
-                        </div>
+                        <timepicker name="slotStartTime" #slotStartTime="ngModel" [(ngModel)]="slotDetails.startTime"></timepicker>
                       </div>
                     </div>
                   </div>
@@ -114,24 +115,7 @@
                     <div class="form-group">
                       <label>End Time</label>
                       <div class="row">
-                        <div class="col-sm-6">
-                          <select class="form-control">
-                            <option>option 1</option>
-                            <option>option 2</option>
-                            <option>option 3</option>
-                            <option>option 4</option>
-                            <option>option 5</option>
-                          </select>
-                        </div>
-                        <div class="col-sm-6">
-                          <select class="form-control">
-                            <option>option 1</option>
-                            <option>option 2</option>
-                            <option>option 3</option>
-                            <option>option 4</option>
-                            <option>option 5</option>
-                          </select>
-                        </div>
+                        <timepicker name="slotEndTime" #slotStartTime="ngModel" [(ngModel)]="slotDetails.endTime"></timepicker>
                       </div>
                     </div>
                   </div>
@@ -158,112 +142,5 @@
   </section>
 </div><!-- /.container-fluid -->
 <!-- ./wrapper -->
-<a href="javascript:openOffcanvas1()" class="float">
-  <i class="fa fa-filter my-float"></i>
-</a>
 
-
-<div id="myOffcanvas" class="offcanvas">
-  <a href="javascript:void(0)" class="closeOffcanvas" onclick="closeOffcanvas()">×</a>
-  <div class="filter-content">
-    <div class="">
-      <div class=" ">
-        <button type="button" class="btn bg-gradient-primary toastsDefaultSuccess">Apply</button>
-        <button type="button" class="btn btn-default">Reset</button>
-      </div>
-      <div class="form-group">
-        <label>Start Date</label>
-
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-          </div>
-          <input type="text" class="form-control is-invalid" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">
-          <span id="exampleInputEmail1-error" class="error invalid-feedback">Please enter a email address</span>
-        </div>
-
-        <!-- /.input group -->
-      </div>
-      <div class="form-group">
-        <label>End Date</label>
-
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-          </div>
-          <input type="text" class="form-control is-invalid" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">
-          <span id="exampleInputEmail1-error" class="error invalid-feedback">Please enter a email address</span>
-        </div>
-
-        <!-- /.input group -->
-      </div>
-      <div class="row">
-
-        <div class="col-sm-12">
-          <!-- select -->
-          <div class="form-group">
-            <label>Start Time</label>
-            <div class="row">
-              <div class="col-sm-6">
-                <select class="form-control">
-                  <option>option 1</option>
-                  <option>option 2</option>
-                  <option>option 3</option>
-                  <option>option 4</option>
-                  <option>option 5</option>
-                </select>
-              </div>
-              <div class="col-sm-6">
-                <select class="form-control">
-                  <option>option 1</option>
-                  <option>option 2</option>
-                  <option>option 3</option>
-                  <option>option 4</option>
-                  <option>option 5</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="form-group">
-            <label>End Time</label>
-            <div class="row">
-              <div class="col-sm-6">
-                <select class="form-control">
-                  <option>option 1</option>
-                  <option>option 2</option>
-                  <option>option 3</option>
-                  <option>option 4</option>
-                  <option>option 5</option>
-                </select>
-              </div>
-              <div class="col-sm-6">
-                <select class="form-control">
-                  <option>option 1</option>
-                  <option>option 2</option>
-                  <option>option 3</option>
-                  <option>option 4</option>
-                  <option>option 5</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Slot Duration</label><br>
-        1 hr
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Slot Duration</label>
-        <div class="slider-blue">
-          <input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200"
-                 data-slider-step="5" data-slider-value="[-100,100]" data-slider-orientation="horizontal"
-                 data-slider-selection="before" data-slider-tooltip="show">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 

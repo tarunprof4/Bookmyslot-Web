@@ -33,8 +33,8 @@ export class ShareSlotComponent implements OnInit {
     //this.slotDetails.title = "test";
     this.slotDetails.timeZone = "India Standard Time";
     this.slotDetails.slotDate = new Date();
-    //slotDetails.startTime =  Time(2,2);
-    //slotDetails.endTime = "10";
+    this.slotDetails.startTime = this.slotDetails.slotDate;
+    this.slotDetails.endTime = this.slotDetails.slotDate;
 
     console.log("slotDetails" + this.slotDetails);
   }

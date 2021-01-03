@@ -15,8 +15,33 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CustomerService } from './services/customer.service';
 import { AddHeaderInterceptor } from './shared/Interceptors/add-header.interceptor';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BsDatepickerConfig, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TimepickerConfig, TimepickerModule } from 'ngx-bootstrap/timepicker';
+
+export function getDatepickerConfig(): BsDatepickerConfig {
+  return Object.assign(new BsDatepickerConfig(), {
+    containerClass: 'theme-dark-blue',
+    showWeekNumbers: false,
+    isAnimated: true,
+    dateInputFormat: 'MMM D, YYYY'
+  });
+}
+
+
+export function getTimepickerConfig(): TimepickerConfig {
+  return Object.assign(new TimepickerConfig(), {
+    hourStep: 1,
+    minuteStep: 10,
+    showMeridian: false,
+    mousewheel: false,
+    showMinutes: true,
+    showSeconds: false,
+    allowArrowKeys: true,
+    hoursPlaceholder: 'hrs',
+    minutesPlaceholder: 'mm',
+  });
+}
 
 @NgModule({
   declarations: [
@@ -28,7 +53,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ShareSlotComponent,
     SharedSlotsComponent,
     BookedSlotsComponent,
-    ProfileSettingsComponent
+    ProfileSettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,10 +62,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
+    TimepickerModule.forRoot(),
   ],
   providers: [
     CustomerService,
-    { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },],
+    { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },
+    { provide: BsDatepickerConfig, useFactory: getDatepickerConfig },
+    { provide: TimepickerConfig, useFactory: getTimepickerConfig  },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
