@@ -16,11 +16,15 @@ export class ShareSlotComponent implements OnInit {
 
   public slotDetails: SlotDetails;
   public timeZones: string[];
-  //public slotDetailsForm: NgForm;
+  public slotMinDate: Date;
+  public slotMaxDate: Date;
+
 
   ngOnInit(): void {
 
-    
+    this.slotMinDate = new Date();
+    this.slotMaxDate = new Date();
+    this.slotMaxDate.setDate(this.slotMaxDate.getDate() + 30);
     
     this.timeZones = this.timezoneService.getTimeZones();
 
@@ -28,7 +32,7 @@ export class ShareSlotComponent implements OnInit {
     //this.slotDetails.id = "00000000-0000-0000-0000-000000000000";
     //this.slotDetails.title = "test";
     this.slotDetails.timeZone = "India Standard Time";
-    //this.slotDetails.slotDate = new Date();
+    this.slotDetails.slotDate = new Date();
     //slotDetails.startTime =  Time(2,2);
     //slotDetails.endTime = "10";
 

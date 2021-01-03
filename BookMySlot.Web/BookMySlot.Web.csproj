@@ -22,4 +22,8 @@
     <ProjectReference Include="..\BookMySlot.Web.Logging\BookMySlot.Web.Logging.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="book-my-slot-app\src\app\shared\controls\" />
+  </ItemGroup>
+
 </Project>
