@@ -130,7 +130,13 @@
           </div>
           <div class="card-footer">
             <button type="button" class="btn bg-gradient-primary" (click)="saveSlot(slotDetailsForm)">Save</button>
-            <div>
+            <div *ngIf="validationErrors.length > 0">
+
+             
+
+              <!--<div *ngfor="let validationerror of validationerrors">
+                <p>{{validationerror}} </p>
+              </div>-->
 
             </div>
           </div>

@@ -5,6 +5,7 @@ import { TimezoneService } from '../services/timezone.service';
 import { NgForm } from '@angular/forms';
 import { SlotConstants } from '../shared/constants/slot-constants';
 import { TimezoneConstants } from '../shared/constants/timezone-constants';
+import { AppMessagesConstants } from '../shared/constants/app-messages-constants';
 
 @Component({
   selector: 'app-share-slot',
@@ -28,7 +29,7 @@ export class ShareSlotComponent implements OnInit {
   validstartTime = true;
   validendTime = true;
 
-
+  validationErrors: string[] = [];
   ngOnInit(): void {
     this.slotDetails = new SlotDetails();
     this.slotDetails.title = "";
@@ -39,11 +40,11 @@ export class ShareSlotComponent implements OnInit {
     this.slotDetails.timeZone = TimezoneConstants.India;
 
     this.slotMaxDate.setDate(this.slotMaxDate.getDate() + SlotConstants.SlotLastDateDifference);
-    this.slotDetails.slotDate.setDate(this.slotDetails.slotDate.getDate() + SlotConstants.SlotDateDifference);
+    this.slotDetails.slotDate.setDate(this.slotDetails.slotDate.getDate() + SlotConstants.DefaultSlotDateDifference);
 
 
     this.slotStartTime.setMinutes(this.slotDetails.slotDate.getMinutes());
-    this.slotEndTime.setMinutes(this.slotDetails.slotDate.getMinutes() + SlotConstants.SlotEndTimeDifference);
+    this.slotEndTime.setMinutes(this.slotDetails.slotDate.getMinutes() + SlotConstants.DefaultSlotDurationDifference);
 
     this.slotDuration = this.getSlotDuration(this.slotStartTime, this.slotEndTime);
     
@@ -51,14 +52,19 @@ export class ShareSlotComponent implements OnInit {
 
  
   saveSlot(slotDetailsForm: NgForm) {
+    this.validationErrors.length = 0;
     this.sanitizeSlotDetails(this.slotDetails);
     slotDetailsForm.control.markAllAsTouched();
-    
-    if (slotDetailsForm.valid && this.validstartTime && this.validendTime && this.slotDuration && this.slotDuration >= SlotConstants.SlotEndTimeDifference) {
+
+    if (!this.ValidateFormDetails(this.slotStartTime, this.slotEndTime)) {
+      return;
+    }
+
+    if (slotDetailsForm.valid && this.validstartTime && this.validendTime && this.slotDuration && this.slotDuration >= SlotConstants.DefaultSlotDurationDifference) {
       this.slotService.saveSlotDetails(this.slotDetails, this.slotStartTime, this.slotEndTime)
         .subscribe(
           (data: string) => {
-            console.log("saved slot Details" + data);
+            console.log("saved slot Details");
           },
           (err: any) => console.log(err)
         );
@@ -97,5 +103,16 @@ export class ShareSlotComponent implements OnInit {
 
   private sanitizeSlotDetails(slotDetails: SlotDetails): void {
     slotDetails.title = slotDetails.title.trim();
+  }
+
+  private ValidateFormDetails(slotStartTime: Date, slotEndTime: Date): boolean {
+    let areFormDetailsValid = true;
+    let slotDuration = this.getSlotDuration(slotStartTime, slotEndTime);
+    if (!slotDuration || slotDuration < SlotConstants.DefaultSlotDurationDifference) {
+      this.validationErrors.push(AppMessagesConstants.InvalidSlotDuration);
+
+      areFormDetailsValid = false;
+    }
+    return areFormDetailsValid;
   }
 }
