@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SlotService } from '../services/slot.service';
 import { SlotDetails } from '../shared/slot-details';
-import { Time } from '@angular/common';
 import { TimezoneService } from '../services/timezone.service';
 import { NgForm } from '@angular/forms';
+import { SlotConstants } from '../shared/constants/slot-constants';
+import { TimezoneConstants } from '../shared/constants/timezone-constants';
 
 @Component({
   selector: 'app-share-slot',
@@ -30,23 +31,22 @@ export class ShareSlotComponent implements OnInit {
 
   ngOnInit(): void {
     this.slotDetails = new SlotDetails();
-    this.slotDetails.id = "00000000-0000-0000-0000-000000000000";
     this.slotDetails.title = "";
     this.slotDetails.slotDate = this.getTodaysDate();
 
 
     this.timeZones = this.timezoneService.getTimeZones();
-    this.slotDetails.timeZone = "India Standard Time";
+    this.slotDetails.timeZone = TimezoneConstants.India;
 
-    this.slotMaxDate.setDate(this.slotMaxDate.getDate() + 30);
-    this.slotDetails.slotDate.setDate(this.slotDetails.slotDate.getDate() + 7);
+    this.slotMaxDate.setDate(this.slotMaxDate.getDate() + SlotConstants.SlotLastDateDifference);
+    this.slotDetails.slotDate.setDate(this.slotDetails.slotDate.getDate() + SlotConstants.SlotDateDifference);
 
 
-    this.slotStartTime.setMinutes(this.slotDetails.slotDate.getMinutes() + 0);
-    this.slotEndTime.setMinutes(this.slotDetails.slotDate.getMinutes() + 20);
+    this.slotStartTime.setMinutes(this.slotDetails.slotDate.getMinutes());
+    this.slotEndTime.setMinutes(this.slotDetails.slotDate.getMinutes() + SlotConstants.SlotEndTimeDifference);
 
     this.slotDuration = this.getSlotDuration(this.slotStartTime, this.slotEndTime);
-    console.log("slotDetails" + this.slotDetails);
+    
   }
 
  
@@ -54,36 +54,15 @@ export class ShareSlotComponent implements OnInit {
     this.sanitizeSlotDetails(this.slotDetails);
     slotDetailsForm.control.markAllAsTouched();
     
-    console.log(slotDetailsForm.value);
-    console.log("Validity check");
-    console.log(slotDetailsForm.valid);
-
-    if (slotDetailsForm.valid && this.validstartTime && this.validendTime && this.slotDuration && this.slotDuration >= 20) {
-
+    if (slotDetailsForm.valid && this.validstartTime && this.validendTime && this.slotDuration && this.slotDuration >= SlotConstants.SlotEndTimeDifference) {
+      this.slotService.saveSlotDetails(this.slotDetails, this.slotStartTime, this.slotEndTime)
+        .subscribe(
+          (data: string) => {
+            console.log("saved slot Details" + data);
+          },
+          (err: any) => console.log(err)
+        );
     }
-
-    else {
-      return;
-    }
-
-
-    return;
-
-    this.slotDetails.id = "00000000-0000-0000-0000-000000000000";
-    this.slotDetails.title = "test";
-    this.slotDetails.timeZone = "India Standard Time";
-    this.slotDetails.slotDate = new Date();
-    //slotDetails.startTime =  Time(2,2);
-    //slotDetails.endTime = "10";
-
-    console.log("slotDetails" + this.slotDetails);
-    this.slotService.saveSlotDetails(this.slotDetails)
-      .subscribe(
-        (data: string) => {
-          console.log("saved slot Details" + data);
-        },
-        (err: any) => console.log(err)
-      );
   }
 
 

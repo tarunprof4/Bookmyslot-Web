@@ -15,13 +15,20 @@ export class SlotService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public saveSlotDetails(slotDetails: SlotDetails): Observable<string | ResolverError> {
+  public saveSlotDetails(slotDetails: SlotDetails, slotStartTime: Date, slotEndTime: Date): Observable<string | ResolverError> {
+    slotDetails.slotStartTime = this.getTimeSpan(slotStartTime);
+    slotDetails.slotEndTime = this.getTimeSpan(slotEndTime);
     return this.httpClient.post<string>(this.slotDetailsUrl, slotDetails).pipe(
       //tap((email: string) => console.log(email)),
       catchError(err => this.handleHttpError(err))
     );
   }
 
+
+  public getTimeSpan(date: Date): string {
+    let timeSpan = date.getHours() + ":" + date.getMinutes() + ":" + "0";
+    return timeSpan;
+  }
 
   private handleHttpError(error: HttpErrorResponse): Observable<ResolverError> {
     let resolverError = new ResolverError();
