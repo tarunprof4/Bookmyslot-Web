@@ -5,6 +5,6 @@ export class SlotDetails {
   title: string;
   timeZone: string;
   slotDate: Date;
-  startTime: Date;
-  endTime: Date;
+  startTime: string;
+  endTime: string;
 }
