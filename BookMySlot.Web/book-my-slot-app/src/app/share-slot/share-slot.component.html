@@ -132,11 +132,9 @@
             <button type="button" class="btn bg-gradient-primary" (click)="saveSlot(slotDetailsForm)">Save</button>
             <div *ngIf="validationErrors.length > 0">
 
-             
-
-              <!--<div *ngfor="let validationerror of validationerrors">
-                <p>{{validationerror}} </p>
-              </div>-->
+              <div *ngFor="let validationError of validationErrors">
+                <p class="alert alert-danger">{{validationError}}</p>
+              </div>
 
             </div>
           </div>
