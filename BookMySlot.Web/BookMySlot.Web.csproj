@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <Folder Include="book-my-slot-app\src\app\shared\controls\" />
+    <Folder Include="book-my-slot-app\src\app\shared\common\" />
   </ItemGroup>
 
 </Project>

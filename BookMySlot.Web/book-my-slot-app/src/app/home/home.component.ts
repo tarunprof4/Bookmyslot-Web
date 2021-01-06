@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomerSlotService } from '../services/customer-slot.service';
+import { CustomerSlots } from '../shared/customer-slots';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  title = 'this is home feed';
+  customerSlots: CustomerSlots;
 
-  constructor() { }
+  constructor(private customerSlotService: CustomerSlotService) { }
 
   ngOnInit(): void {
+
+    this.customerSlotService.getCustomerSlotDetails(0,1)
+      .subscribe(
+        (data: CustomerSlots) => {
+          console.log("get customer slots " + data);
+          this.customerSlots = data;
+          console.log(this.customerSlots);
+        },
+        (err: any) => console.log(err)
+    );
+
   }
 
 }

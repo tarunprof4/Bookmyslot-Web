@@ -36,7 +36,10 @@
       <!-- Small boxes (Stat box) -->
       <div class="row">
 
-        <div class="col-md-6">
+
+   
+
+        <div class="col-md-6" *ngFor="let customerSlot of customerSlots">
 
           <div class="card card-primary card-outline">
             <div class="card-body">
@@ -49,20 +52,20 @@
                   </ul>
                 </div>
                 <div class="col-sm-10">
-                  <h5 class="card-title">Jeo Michle</h5>
+                  <h5 class="card-title"><span>{{customerSlot.customerModel.firstName}}</span><span>  &nbsp;&nbsp;  </span> <span>{{customerSlot.customerModel.lastName}}</span></h5>
 
                   <p class="card-text">
                     Software Developer
                     <br />
                   </p>
 
-                  <a href="book-slot-create.html" class="card-link">Book Slot</a>
+                  <a routerLink="/book-slot" class="card-link">Book Slot</a>
                 </div>
               </div>
             </div>
           </div><!-- /.card -->
         </div>
-    
+
       </div>
 
     </div>
