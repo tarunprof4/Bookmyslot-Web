@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'booked-slots', component: BookedSlotsComponent },
   { path: 'profile-settings', component: ProfileSettingsComponent, resolve: { resolvedProfileSettings: ProfileSettingsResolverService } },
   
-  { path: '', redirectTo: '/share-slot', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({
