@@ -65,7 +65,6 @@ export function getTimepickerConfig(): TimepickerConfig {
     TimepickerModule.forRoot(),
   ],
   providers: [
-    CustomerService,
     { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },
     { provide: BsDatepickerConfig, useFactory: getDatepickerConfig },
     { provide: TimepickerConfig, useFactory: getTimepickerConfig  },
