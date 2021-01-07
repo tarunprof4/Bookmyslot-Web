@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
   }
 
 
-  onLoad() {
+  getFeeds() {
     this.customerSlotService.getCustomerSlotDetails(1, PaginationConstants.PageSize)
       .subscribe(
         (data: CustomerSlots) => {

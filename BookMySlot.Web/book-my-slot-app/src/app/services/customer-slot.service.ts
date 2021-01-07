@@ -13,14 +13,13 @@ import { ResolverError } from '../shared/resolver-error';
 
 export class CustomerSlotService {
 
-  private customerSlotsUrl = '/api/v1/CustomerSlot/GetDistinctCustomersNearestSlotFromToday?pageNumber=0&pageSize=10';
+  private customerSlotsUrl = '/api/v1/CustomerSlot/GetDistinctCustomersNearestSlotFromToday';
 
   constructor(private httpClient: HttpClient) { }
 
   public getCustomerSlotDetails(pageNumber: number, pageSize: number): Observable<CustomerSlots | ResolverError> {
 
-    let customerSlotDetailsUrl = this.customerSlotsUrl;
-    //let customerSlotDetailsUrl = `${this.customerSlotsUrl + "?"}${+"pageNumber=" + pageNumber}/${+"pageSize=" + pageSize}`;
+    let customerSlotDetailsUrl = `${this.customerSlotsUrl + "?pageNumber=" + pageNumber +"&pageSize=" + pageSize}`;
     return this.httpClient.get<CustomerSlots>(customerSlotDetailsUrl)
       .pipe(
         catchError(err => this.handleHttpError(err))
