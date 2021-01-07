@@ -1,1 +1,254 @@
-<p>booked-slots works!</p>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0"></h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item active"></li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0"></h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item active"></li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Small boxes (Stat box) -->
+      <div class="card card-primary card-outline card-outline-tabs">
+        <div class="card-header p-0 border-bottom-0">
+          <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">Not Booked</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Booked</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="custom-tabs-four-messages-tab" data-toggle="pill" href="#custom-tabs-four-messages" role="tab" aria-controls="custom-tabs-four-messages" aria-selected="false">Cancelled</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="custom-tabs-four-messages-tab" data-toggle="pill" href="#custom-tabs-four-messages" role="tab" aria-controls="custom-tabs-four-messages" aria-selected="false">Completed</a>
+            </li>
+
+
+          </ul>
+        </div>
+        <div class="card-body">
+          <div class="tab-content" id="custom-tabs-four-tabContent">
+
+
+
+
+
+
+
+
+            <div class="tab-pane fade active show" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
+
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="dist/img/user1-128x128.jpg" alt="user image">
+                    <span class="username">
+                      <a href="#">Jonathan Burke Jr.</a>
+                    </span>
+                    <span class="description">Created by</span>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="text-muted row">
+                    <p class="text-sm col-md-4 col-sm-6">
+                      Slot Title
+                      <b class="d-block">Deveint Inc</b>
+                    </p>
+                    <p class="text-sm col-md-4 col-sm-6">
+                      Date
+                      <b class="d-block">12/12/20</b>
+                    </p>
+                    <p class="text-sm col-md-4 col-sm-6">
+                      Start Time
+                      <b class="d-block">12/12/20</b>
+                    </p>
+                    <p class="text-sm col-md-4 col-sm-6">
+                      End Time
+                      <b class="d-block">12/12/20</b>
+                    </p>
+                    <p class="text-sm col-md-4 col-sm-6">
+                      Duration
+                      <b class="d-block">12/12/20</b>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <button type="button" class="btn bg-gradient-primary">Resend Email</button>
+                  <button type="button" class="btn btn-default">Cancel</button>
+                </div>
+                <hr class="col-md-12">
+
+
+              </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
+              Booked
+            </div>
+            <div class="tab-pane fade" id="custom-tabs-four-messages" role="tabpanel" aria-labelledby="custom-tabs-four-messages-tab">
+              Cancelled
+            </div>
+
+            <div class="tab-pane fade" id="custom-tabs-four-messages" role="tabpanel" aria-labelledby="custom-tabs-four-messages-tab">
+              Completed
+            </div>
+          </div>
+        </div>
+        <!-- /.card -->
+      </div>
+
+    </div>
+    <!-- /.row (main row) -->
+
+  </section>
+</div><!-- /.container-fluid -->
+
+
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+<!-- ./wrapper -->
+<a href="javascript:openOffcanvas1()" class="float">
+  <i class="fa fa-filter my-float"></i>
+</a>
+<div id="myOffcanvas" class="offcanvas">
+  <a href="javascript:void(0)" class="closeOffcanvas" onclick="closeOffcanvas()">×</a>
+  <div class="filter-content">
+    <div class="">
+      <div class=" ">
+        <button type="button" class="btn bg-gradient-primary toastsDefaultSuccess">Apply</button>
+        <button type="button" class="btn btn-default">Reset</button>
+      </div>
+      <div class="form-group">
+        <label>Start Date</label>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+          </div>
+          <input type="text" class="form-control is-invalid" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">
+          <span id="exampleInputEmail1-error" class="error invalid-feedback">Please enter a email address</span>
+        </div>
+
+        <!-- /.input group -->
+      </div>
+      <div class="form-group">
+        <label>End Date</label>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+          </div>
+          <input type="text" class="form-control is-invalid" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">
+          <span id="exampleInputEmail1-error" class="error invalid-feedback">Please enter a email address</span>
+        </div>
+
+        <!-- /.input group -->
+      </div>
+      <div class="row">
+
+        <div class="col-sm-12">
+          <!-- select -->
+          <div class="form-group">
+            <label>Start Time</label>
+            <div class="row">
+              <div class="col-sm-6">
+                <select class="form-control">
+                  <option>option 1</option>
+                  <option>option 2</option>
+                  <option>option 3</option>
+                  <option>option 4</option>
+                  <option>option 5</option>
+                </select>
+              </div>
+              <div class="col-sm-6">
+                <select class="form-control">
+                  <option>option 1</option>
+                  <option>option 2</option>
+                  <option>option 3</option>
+                  <option>option 4</option>
+                  <option>option 5</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label>End Time</label>
+            <div class="row">
+              <div class="col-sm-6">
+                <select class="form-control">
+                  <option>option 1</option>
+                  <option>option 2</option>
+                  <option>option 3</option>
+                  <option>option 4</option>
+                  <option>option 5</option>
+                </select>
+              </div>
+              <div class="col-sm-6">
+                <select class="form-control">
+                  <option>option 1</option>
+                  <option>option 2</option>
+                  <option>option 3</option>
+                  <option>option 4</option>
+                  <option>option 5</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Slot Duration</label><br>
+        1 hr
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Slot Duration</label>
+        <div class="slider-blue">
+          <input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200"
+                 data-slider-step="5" data-slider-value="[-100,100]" data-slider-orientation="horizontal"
+                 data-slider-selection="before" data-slider-tooltip="show">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
