@@ -3,9 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { BookSlotComponent } from './book-slot/book-slot.component';
 import { BookedSlotsComponent } from './booked-slots/booked-slots.component';
 import { HomeComponent } from './home/home.component';
-import { ProfileSettingsResolverService } from './profile-settings/profile-settings-resolver.service';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { CustomerSlotResolverService } from './services/resolvers/customer-slot-resolver.service';
+import { ProfileSettingsResolverService } from './services/resolvers/profile-settings-resolver.service';
 import { ShareSlotComponent } from './share-slot/share-slot.component';
 import { SharedSlotsComponent } from './shared-slots/shared-slots.component';
 
