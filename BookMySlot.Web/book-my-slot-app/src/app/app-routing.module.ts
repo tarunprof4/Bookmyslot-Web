@@ -13,13 +13,14 @@ import { SharedSlotsComponent } from './shared-slots/shared-slots.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, resolve: { resolvedHomeSlots: HomeSlotResolverService } },
-  { path: 'book-slot', component: BookSlotComponent, resolve: { resolvedBookCustomerSlots: BookSlotResolverService } },
+  { path: 'book-slot/:key', component: BookSlotComponent, resolve: { resolvedBookCustomerSlots: BookSlotResolverService } },
   { path: 'share-slot', component: ShareSlotComponent },
   { path: 'shared-slots', component: SharedSlotsComponent },
   { path: 'booked-slots', component: BookedSlotsComponent },
   { path: 'profile-settings', component: ProfileSettingsComponent, resolve: { resolvedProfileSettings: ProfileSettingsResolverService } },
   
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({

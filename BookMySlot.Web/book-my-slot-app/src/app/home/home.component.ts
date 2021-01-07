@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerSlotService } from '../services/customer-slot.service';
 import { PaginationConstants } from '../shared/constants/pagination-constants';
 import { CustomerSlots } from '../shared/customer-slots';
@@ -16,9 +16,11 @@ export class HomeComponent implements OnInit {
 
   customerSlots: CustomerSlots[];
 
-  constructor(private customerSlotService: CustomerSlotService, private route: ActivatedRoute) { }
+  constructor(private customerSlotService: CustomerSlotService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+
+    
 
     let initCustomerSlots: CustomerSlots[] | ResolverError = this.route.snapshot.data['resolvedHomeSlots'];
 
@@ -35,6 +37,8 @@ export class HomeComponent implements OnInit {
 
   onBook(customerSlotInformation: string) {
     console.log("customer slot info " + customerSlotInformation);
+    this.router.navigate(['/book-slot/' + customerSlotInformation]);
+    
   }
 
   getFeeds() {
