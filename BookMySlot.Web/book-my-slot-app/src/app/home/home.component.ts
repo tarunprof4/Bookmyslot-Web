@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CustomerSlotService } from '../services/customer-slot.service';
+import { PaginationConstants } from '../shared/constants/pagination-constants';
 import { CustomerSlots } from '../shared/customer-slots';
+import { ResolverError } from '../shared/resolver-error';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +14,25 @@ export class HomeComponent implements OnInit {
 
   customerSlots: CustomerSlots;
 
-  constructor(private customerSlotService: CustomerSlotService) { }
+  constructor(private customerSlotService: CustomerSlotService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    this.customerSlotService.getCustomerSlotDetails(0,1)
+    let initCustomerSlots: CustomerSlots | ResolverError = this.route.snapshot.data['resolvedCustomerSlots'];
+
+    if (initCustomerSlots instanceof ResolverError) {
+    }
+    else {
+      
+      this.customerSlots = initCustomerSlots;
+      console.log(" resolver get customer slots " + this.customerSlots);
+    }
+
+  }
+
+
+  onLoad() {
+    this.customerSlotService.getCustomerSlotDetails(1, PaginationConstants.PageSize)
       .subscribe(
         (data: CustomerSlots) => {
           console.log("get customer slots " + data);
@@ -23,8 +40,6 @@ export class HomeComponent implements OnInit {
           console.log(this.customerSlots);
         },
         (err: any) => console.log(err)
-    );
-
+      );
   }
-
 }
