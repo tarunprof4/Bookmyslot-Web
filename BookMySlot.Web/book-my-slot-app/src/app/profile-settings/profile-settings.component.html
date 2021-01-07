@@ -44,14 +44,6 @@
                     </div>
                   </div>
 
-                  <input type="text" name="middleName" class="form-control" placeholder="Middle Name" [(ngModel)]="profileSettings.middleName" #middleName="ngModel" pattern="regexConstants.OnlyAlphabets" />
-                  <div *ngIf="middleName.invalid && (middleName.dirty || middleName.touched)"
-                       class="alert alert-danger">
-                    <div *ngIf="middleName.errors.pattern">
-                      Only Aplhabets are valid
-                    </div>
-                  </div>
-
 
                   <input type="text" name="lastName" class="form-control" placeholder="Last Name" [(ngModel)]="profileSettings.lastName" required #lastName="ngModel" pattern="regexConstants.OnlyAlphabets" />
                   <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
