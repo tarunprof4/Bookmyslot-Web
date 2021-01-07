@@ -11,7 +11,7 @@ import { ResolverError } from '../shared/resolver-error';
 })
 export class BookSlotComponent implements OnInit {
 
-  initCustomerAvailableSlots: CustomerSlots;
+  customerAvailableSlots: CustomerSlots;
 
   constructor(private customerSlotService: CustomerSlotService, private route: ActivatedRoute) { }
 
@@ -23,8 +23,8 @@ export class BookSlotComponent implements OnInit {
     }
     else {
 
-      this.initCustomerAvailableSlots = initCustomerAvailableSlots;
-      console.log(" resolver get customer slots " + this.initCustomerAvailableSlots);
+      this.customerAvailableSlots = initCustomerAvailableSlots;
+      console.log(" resolver get customer slots " + this.customerAvailableSlots);
     }
 
 

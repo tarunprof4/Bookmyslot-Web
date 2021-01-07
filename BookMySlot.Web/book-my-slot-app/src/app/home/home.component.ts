@@ -27,11 +27,15 @@ export class HomeComponent implements OnInit {
     else {
 
       this.customerSlots = initCustomerSlots;
-      console.log(" resolver get customer slots " + this.customerSlots);
+      console.log(" resolver get all customer slots " + this.customerSlots);
     }
 
   }
 
+
+  onBook(customerSlotInformation: string) {
+    console.log("customer slot info " + customerSlotInformation);
+  }
 
   getFeeds() {
     this.customerSlotService.getDistinctCustomersNearestSlotFromToday(1, PaginationConstants.PageSize)
