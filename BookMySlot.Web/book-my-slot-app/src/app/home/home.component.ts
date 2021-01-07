@@ -14,13 +14,13 @@ import { ResolverError } from '../shared/resolver-error';
 
 export class HomeComponent implements OnInit {
 
-  customerSlots: CustomerSlots;
+  customerSlots: CustomerSlots[];
 
   constructor(private customerSlotService: CustomerSlotService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    let initCustomerSlots: CustomerSlots | ResolverError = this.route.snapshot.data['resolvedCustomerSlots'];
+    let initCustomerSlots: CustomerSlots[] | ResolverError = this.route.snapshot.data['resolvedCustomerSlots'];
 
     if (initCustomerSlots instanceof ResolverError) {
     }
@@ -34,9 +34,9 @@ export class HomeComponent implements OnInit {
 
 
   getFeeds() {
-    this.customerSlotService.getCustomerSlotDetails(1, PaginationConstants.PageSize)
+    this.customerSlotService.getDistinctCustomersNearestSlotFromToday(1, PaginationConstants.PageSize)
       .subscribe(
-        (data: CustomerSlots) => {
+        (data: CustomerSlots[]) => {
           console.log("get customer slots " + data);
           this.customerSlots = data;
           console.log(this.customerSlots);

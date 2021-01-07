@@ -12,12 +12,12 @@ import { CustomerSlotService } from "../customer-slot.service";
   providedIn: 'root'
 })
 
-export class CustomerSlotResolverService implements Resolve<CustomerSlots | ResolverError> {
+export class CustomerSlotResolverService implements Resolve<CustomerSlots[] | ResolverError> {
 
   constructor(private customerSlotService: CustomerSlotService) { }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<CustomerSlots | ResolverError> {
-    return this.customerSlotService.getCustomerSlotDetails(PaginationConstants.StartPage, PaginationConstants.PageSize)
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<CustomerSlots[] | ResolverError> {
+    return this.customerSlotService.getDistinctCustomersNearestSlotFromToday(PaginationConstants.StartPage, PaginationConstants.PageSize)
       .pipe(
         catchError(
           err =>

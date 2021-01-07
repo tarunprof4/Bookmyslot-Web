@@ -4,6 +4,7 @@ import { BookSlotComponent } from './book-slot/book-slot.component';
 import { BookedSlotsComponent } from './booked-slots/booked-slots.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
+import { BookSlotResolverService } from './services/resolvers/book-slot-resolver.service';
 import { CustomerSlotResolverService } from './services/resolvers/customer-slot-resolver.service';
 import { ProfileSettingsResolverService } from './services/resolvers/profile-settings-resolver.service';
 import { ShareSlotComponent } from './share-slot/share-slot.component';
@@ -11,7 +12,7 @@ import { SharedSlotsComponent } from './shared-slots/shared-slots.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, resolve: { resolvedCustomerSlots: CustomerSlotResolverService } },
-  { path: 'book-slot', component: BookSlotComponent },
+  { path: 'book-slot', component: BookSlotComponent, resolve: { resolvedBookCustomerSlots: BookSlotResolverService } },
   { path: 'share-slot', component: ShareSlotComponent },
   { path: 'shared-slots', component: SharedSlotsComponent },
   { path: 'booked-slots', component: BookedSlotsComponent },
