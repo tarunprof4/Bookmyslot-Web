@@ -32,14 +32,16 @@ export class BookSlotComponent implements OnInit {
 
 
 
-  onBook(slotInformation: string) {
-    console.log("customer slot info " + slotInformation);
+  onBook(slotInformation: string, index: number) {
+
+    console.log("customer slot info " + index);
     let slotScheduler = new SlotScheduler();
     slotScheduler.slotModelKey = slotInformation;
     
     this.customerSlotService.scheduleSlot(slotScheduler)
       .subscribe(
         (data: boolean) => {
+          this.customerAvailableSlots.slotModelsInforamtion.splice(index, 1);
           console.log("get customer slots " + data);
           
           console.log(data);
