@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CustomerSlotService } from '../services/customer-slot.service';
+import { BookSlots } from '../shared/book-slots';
 import { CustomerSlots } from '../shared/customer-slots';
 import { ResolverError } from '../shared/resolver-error';
 import { SlotScheduler } from '../shared/slot-scheduler';
@@ -12,13 +13,13 @@ import { SlotScheduler } from '../shared/slot-scheduler';
 })
 export class BookSlotComponent implements OnInit {
 
-  customerAvailableSlots: CustomerSlots;
+  customerAvailableSlots: BookSlots;
 
   constructor(private customerSlotService: CustomerSlotService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    let initCustomerAvailableSlots: CustomerSlots | ResolverError = this.route.snapshot.data['resolvedBookCustomerSlots'];
+    let initCustomerAvailableSlots: BookSlots | ResolverError = this.route.snapshot.data['resolvedBookCustomerSlots'];
 
     if (initCustomerAvailableSlots instanceof ResolverError) {
     }

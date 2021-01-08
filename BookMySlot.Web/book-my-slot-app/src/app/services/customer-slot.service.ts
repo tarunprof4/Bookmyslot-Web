@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { BookSlots } from '../shared/book-slots';
 import { CustomerSlots } from '../shared/customer-slots';
 import { ResolverError } from '../shared/resolver-error';
 import { SlotScheduler } from '../shared/slot-scheduler';
@@ -29,10 +30,10 @@ export class CustomerSlotService {
   }
 
 
-  public getCustomerAvailableSlots(pageNumber: number, pageSize: number, key: string): Observable<CustomerSlots | ResolverError> {
+  public getCustomerAvailableSlots(pageNumber: number, pageSize: number, key: string): Observable<BookSlots | ResolverError> {
 
     let url = `${this.getCustomerAvailableSlotsUrl + "?pageNumber=" + pageNumber + "&pageSize=" + pageSize + "&customerInfo=" + key}`;
-    return this.httpClient.get<CustomerSlots>(url)
+    return this.httpClient.get<BookSlots>(url)
       .pipe(
         catchError(err => this.handleHttpError(err))
       );
