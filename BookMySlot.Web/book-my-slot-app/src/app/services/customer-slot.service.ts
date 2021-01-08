@@ -29,7 +29,7 @@ export class CustomerSlotService {
 
   public getCustomerAvailableSlots(pageNumber: number, pageSize: number, key: string): Observable<CustomerSlots | ResolverError> {
 
-    let url = `${this.getCustomerAvailableSlotsUrl + "?pageNumber=" + pageNumber + "&pageSize=" + pageSize + "&customerSlotModelKey=" + key}`;
+    let url = `${this.getCustomerAvailableSlotsUrl + "?pageNumber=" + pageNumber + "&pageSize=" + pageSize + "&customerInfo=" + key}`;
     return this.httpClient.get<CustomerSlots>(url)
       .pipe(
         catchError(err => this.handleHttpError(err))

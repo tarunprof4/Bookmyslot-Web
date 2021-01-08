@@ -26,6 +26,22 @@ export class BookSlotComponent implements OnInit {
       this.customerAvailableSlots = initCustomerAvailableSlots;
       console.log(" resolver get customer slots " + this.customerAvailableSlots);
     }
+  }
+
+
+
+  onBook(slotInformation: string) {
+    console.log("customer slot info " + slotInformation);
+
+    //this.customerSlotService.getDistinctCustomersNearestSlotFromToday(1, PaginationConstants.PageSize)
+    //  .subscribe(
+    //    (data: CustomerSlots[]) => {
+    //      console.log("get customer slots " + data);
+          
+    //      console.log(data);
+    //    },
+    //    (err: any) => console.log(err)
+    //  );
 
 
 
