@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CustomerSlotService } from '../services/customer-slot.service';
 import { CustomerSlots } from '../shared/customer-slots';
 import { ResolverError } from '../shared/resolver-error';
+import { SlotScheduler } from '../shared/slot-scheduler';
 
 @Component({
   selector: 'app-book-slot',
@@ -32,16 +33,18 @@ export class BookSlotComponent implements OnInit {
 
   onBook(slotInformation: string) {
     console.log("customer slot info " + slotInformation);
-
-    //this.customerSlotService.getDistinctCustomersNearestSlotFromToday(1, PaginationConstants.PageSize)
-    //  .subscribe(
-    //    (data: CustomerSlots[]) => {
-    //      console.log("get customer slots " + data);
+    let slotScheduler = new SlotScheduler();
+    slotScheduler.slotModelKey = slotInformation;
+    
+    this.customerSlotService.scheduleSlot(slotScheduler)
+      .subscribe(
+        (data: boolean) => {
+          console.log("get customer slots " + data);
           
-    //      console.log(data);
-    //    },
-    //    (err: any) => console.log(err)
-    //  );
+          console.log(data);
+        },
+        (err: any) => console.log(err)
+      );
 
 
 

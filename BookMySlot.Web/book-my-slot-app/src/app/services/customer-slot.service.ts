@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { CustomerSlots } from '../shared/customer-slots';
 import { ResolverError } from '../shared/resolver-error';
+import { SlotScheduler } from '../shared/slot-scheduler';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class CustomerSlotService {
 
   private getDistinctCustomersNearestSlotFromTodayUrl = '/api/v1/CustomerSlot/GetDistinctCustomersNearestSlotFromToday';
   private getCustomerAvailableSlotsUrl = '/api/v1/CustomerSlot/GetCustomerAvailableSlots';
+  private slotSchedulerUrl = '/api/v1/SlotScheduler';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -35,6 +37,14 @@ export class CustomerSlotService {
         catchError(err => this.handleHttpError(err))
       );
   }
+
+  public scheduleSlot(slotScheduler: SlotScheduler): Observable<boolean | ResolverError> {
+    return this.httpClient.post<boolean>(this.slotSchedulerUrl, slotScheduler).pipe(
+      //tap((email: string) => console.log(email)),
+      catchError(err => this.handleHttpError(err))
+    );
+  }
+
 
   private handleHttpError(error: HttpErrorResponse): Observable<ResolverError> {
     let resolverError = new ResolverError();
