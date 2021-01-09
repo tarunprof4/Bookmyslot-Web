@@ -8,18 +8,20 @@ import { BookSlotResolverService } from './services/resolvers/book-slot-resolver
 import { HomeSlotResolverService } from './services/resolvers/home-slot-resolver.service';
 
 import { ProfileSettingsResolverService } from './services/resolvers/profile-settings-resolver.service';
+import { SharedSlotResolverService } from './services/resolvers/shared-slot-resolver.service';
 import { ShareSlotComponent } from './share-slot/share-slot.component';
 import { SharedSlotsComponent } from './shared-slots/shared-slots.component';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, resolve: { resolvedHomeSlots: HomeSlotResolverService } },
   { path: 'book-slot/:key', component: BookSlotComponent, resolve: { resolvedBookCustomerSlots: BookSlotResolverService } },
   { path: 'share-slot', component: ShareSlotComponent },
-  { path: 'shared-slots', component: SharedSlotsComponent },
+  { path: 'shared-slots', component: SharedSlotsComponent, resolve: { resolvedCustomerBookedSlots: SharedSlotResolverService } },
   { path: 'booked-slots', component: BookedSlotsComponent },
   { path: 'profile-settings', component: ProfileSettingsComponent, resolve: { resolvedProfileSettings: ProfileSettingsResolverService } },
   
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/shared-slots', pathMatch: 'full' },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
