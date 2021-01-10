@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { BookedSlot } from '../shared/booked-slot';
+import { CancelledSlotDetails } from '../shared/cancelled-slot-details';
+import { CancelledSlotInformation } from '../shared/cancelled-slot-information';
 import { ResolverError } from '../shared/resolver-error';
 
 @Injectable({
@@ -34,13 +36,13 @@ export class BookedSlotService {
   }
 
 
-  //public getCustomerCancelledSlots(key: string): Observable<ShareSlot[] | ResolverError> {
-  //  let url = `${this.getCustomerCancelledSlotsUrl + "?customerId=" + key}`;
-  //  return this.httpClient.get<ShareSlot[]>(url)
-  //    .pipe(
-  //      catchError(err => this.handleHttpError(err))
-  //    );
-  //}
+  public getCustomerCancelledSlots(key: string): Observable<CancelledSlotInformation[] | ResolverError> {
+    let url = `${this.getCustomerCancelledSlotsUrl + "?customerId=" + key}`;
+    return this.httpClient.get<CancelledSlotInformation[]>(url)
+      .pipe(
+        catchError(err => this.handleHttpError(err))
+      );
+  }
 
 
 

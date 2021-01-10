@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookedSlotService } from '../services/booked-slot.service';
 import { BookedSlot } from '../shared/booked-slot';
+import { CancelledSlotInformation } from '../shared/cancelled-slot-information';
 import { ResolverError } from '../shared/resolver-error';
 
 @Component({
@@ -13,7 +14,7 @@ export class BookedSlotsComponent implements OnInit {
 
   customerBookedSlots: BookedSlot[] = [];
   customerCompletedSlots: BookedSlot[] = [];
-  customerCancelledSlots: BookedSlot[] = [];
+  customerCancelledSlots: CancelledSlotInformation[] = [];
 
   constructor(private bookedSlotService: BookedSlotService, private route: ActivatedRoute) { }
 
@@ -81,6 +82,17 @@ export class BookedSlotsComponent implements OnInit {
 
   getCancelledSlots() {
     var key = "10a5b1d6d1a7497eb4b59bf95e0793a2";
+    this.bookedSlotService.getCustomerCancelledSlots(key)
+      .subscribe(
+        (data: CancelledSlotInformation[]) => {
+          this.customerCancelledSlots = data;
+
+          console.log("got getCompletedSlots " + this.customerCompletedSlots);
+
+          console.log(data);
+        },
+        (err: any) => console.log(err)
+      );
 
 
   }

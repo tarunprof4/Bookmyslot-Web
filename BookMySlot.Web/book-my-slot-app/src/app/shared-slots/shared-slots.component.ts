@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SharedSlotService } from '../services/shared-slot.service';
+import { CancelledSlotDetails } from '../shared/cancelled-slot-details';
 import { ResolverError } from '../shared/resolver-error';
 import { ShareSlot } from '../shared/shared-slot';
 
@@ -15,7 +16,7 @@ export class SharedSlotsComponent implements OnInit {
   customerBookedSlots: ShareSlot[] = [];
   customerYetToBeBookedSlots: ShareSlot[] = [];
   customerCompletedSlots: ShareSlot[] = [];
-  customerCancelledSlots: ShareSlot[] = [];
+  customerCancelledSlots: CancelledSlotDetails[] = [];
 
   constructor(private sharedSlotService: SharedSlotService, private route: ActivatedRoute) { }
 
@@ -109,7 +110,7 @@ export class SharedSlotsComponent implements OnInit {
 
     this.sharedSlotService.getCustomerCancelledSlots(key)
       .subscribe(
-        (data: ShareSlot[]) => {
+        (data: CancelledSlotDetails[]) => {
           this.customerCancelledSlots = data;
 
           console.log("got getCompletedSlots " + this.customerYetToBeBookedSlots);

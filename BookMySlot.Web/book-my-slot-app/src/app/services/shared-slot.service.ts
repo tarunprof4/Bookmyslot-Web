@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { CancelledSlotDetails } from '../shared/cancelled-slot-details';
 import { ResolverError } from '../shared/resolver-error';
 import { ShareSlot } from '../shared/shared-slot';
 
@@ -43,9 +44,9 @@ export class SharedSlotService {
   }
 
 
-  public getCustomerCancelledSlots(key: string): Observable<ShareSlot[] | ResolverError> {
+  public getCustomerCancelledSlots(key: string): Observable<CancelledSlotDetails[] | ResolverError> {
     let url = `${this.getCustomerCancelledSlotsUrl + "?customerId=" + key}`;
-    return this.httpClient.get<ShareSlot[]>(url)
+    return this.httpClient.get<CancelledSlotDetails[]>(url)
       .pipe(
         catchError(err => this.handleHttpError(err))
       );
