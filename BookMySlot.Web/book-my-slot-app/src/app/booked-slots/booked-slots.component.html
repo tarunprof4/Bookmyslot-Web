@@ -38,19 +38,16 @@
       <div class="card card-primary card-outline card-outline-tabs">
         <div class="card-header p-0 border-bottom-0">
           <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">Not Booked</a>
+            <li class="nav-item" (click)="getBookedSlots()">
+              <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">Booked</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Booked</a>
+            <li class="nav-item" (click)="getCompletedSlots()">
+              <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Completed</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" (click)="getCancelledSlots()">
               <a class="nav-link" id="custom-tabs-four-messages-tab" data-toggle="pill" href="#custom-tabs-four-messages" role="tab" aria-controls="custom-tabs-four-messages" aria-selected="false">Cancelled</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" id="custom-tabs-four-messages-tab" data-toggle="pill" href="#custom-tabs-four-messages" role="tab" aria-controls="custom-tabs-four-messages" aria-selected="false">Completed</a>
-            </li>
-
+          
 
           </ul>
         </div>
@@ -66,12 +63,15 @@
 
             <div class="tab-pane fade active show" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
 
-              <div class="row">
+              <div *ngIf="customerBookedSlots.length  == 0">no slots found1</div>
+
+
+              <div class="row" *ngFor="let customerBookedSlot of customerBookedSlots">
                 <div class="col-md-4">
                   <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="dist/img/user1-128x128.jpg" alt="user image">
+                    <img class="img-circle img-bordered-sm" src="assets/dist/img/user1-128x128.jpg" alt="user image">
                     <span class="username">
-                      <a href="#">Jonathan Burke Jr.</a>
+                      <a href="#"><span>{{customerBookedSlot.createdByCustomerModel.firstName}}</span>&nbsp;&nbsp;&nbsp;<span>{{customerBookedSlot.createdByCustomerModel.lastName}}</span></a>
                     </span>
                     <span class="description">Created by</span>
                   </div>
@@ -80,23 +80,27 @@
                   <div class="text-muted row">
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Title
-                      <b class="d-block">Deveint Inc</b>
+                      <b class="d-block">{{customerBookedSlot.slotModel.title}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
                       Date
-                      <b class="d-block">12/12/20</b>
+                      <b class="d-block">{{customerBookedSlot.slotModel.slotDate}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
                       Start Time
-                      <b class="d-block">12/12/20</b>
+                      <b class="d-block">{{customerBookedSlot.slotModel.slotStartTime}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
                       End Time
-                      <b class="d-block">12/12/20</b>
+                      <b class="d-block">{{customerBookedSlot.slotModel.slotEndTime}}</b>
+                    </p>
+                    <p class="text-sm col-md-4 col-sm-6">
+                      End Time
+                      <b class="d-block">{{customerBookedSlot.slotModel.timeZone}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
                       Duration
-                      <b class="d-block">12/12/20</b>
+                      <b class="d-block">{{customerBookedSlot.slotModel.slotDuration}}</b>
                     </p>
                   </div>
                 </div>
@@ -120,15 +124,63 @@
 
 
             <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
-              Booked
+
+              <div *ngIf="customerCompletedSlots.length  == 0">no slots found</div>
+
+              <div class="row" *ngFor="let customerCompletedSlot of customerCompletedSlots">
+                <div class="col-md-4">
+                  <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="assets/dist/img/user1-128x128.jpg" alt="user image">
+                    <span class="username">
+                      <a href="#"><span>{{customerCompletedSlot.createdByCustomerModel.firstName}}</span>&nbsp;&nbsp;&nbsp;<span>{{customerCompletedSlot.createdByCustomerModel.lastName}}</span></a>
+                    </span>
+                    <span class="description">Created by</span>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="text-muted row">
+                    <p class="text-sm col-md-4 col-sm-6">
+                      Slot Title
+                      <b class="d-block">{{customerCompletedSlot.slotModel.title}}</b>
+                    </p>
+                    <p class="text-sm col-md-4 col-sm-6">
+                      Date
+                      <b class="d-block">{{customerCompletedSlot.slotModel.slotDate}}</b>
+                    </p>
+                    <p class="text-sm col-md-4 col-sm-6">
+                      Start Time
+                      <b class="d-block">{{customerCompletedSlot.slotModel.slotStartTime}}</b>
+                    </p>
+                    <p class="text-sm col-md-4 col-sm-6">
+                      End Time
+                      <b class="d-block">{{customerCompletedSlot.slotModel.slotEndTime}}</b>
+                    </p>
+                    <p class="text-sm col-md-4 col-sm-6">
+                      End Time
+                      <b class="d-block">{{customerCompletedSlot.slotModel.timeZone}}</b>
+                    </p>
+                    <p class="text-sm col-md-4 col-sm-6">
+                      Duration
+                      <b class="d-block">{{customerCompletedSlot.slotModel.slotDuration}}</b>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  
+                </div>
+                <hr class="col-md-12">
+
+
+              </div>
+
             </div>
             <div class="tab-pane fade" id="custom-tabs-four-messages" role="tabpanel" aria-labelledby="custom-tabs-four-messages-tab">
-              Cancelled
+
+              <div *ngIf="customerCancelledSlots.length  == 0">no slots found</div>
+              
             </div>
 
-            <div class="tab-pane fade" id="custom-tabs-four-messages" role="tabpanel" aria-labelledby="custom-tabs-four-messages-tab">
-              Completed
-            </div>
+            
           </div>
         </div>
         <!-- /.card -->

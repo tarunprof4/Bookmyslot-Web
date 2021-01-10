@@ -5,6 +5,7 @@ import { BookedSlotsComponent } from './booked-slots/booked-slots.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { BookSlotResolverService } from './services/resolvers/book-slot-resolver.service';
+import { BookedSlotResolverService } from './services/resolvers/booked-slot-resolver.service';
 import { HomeSlotResolverService } from './services/resolvers/home-slot-resolver.service';
 
 import { ProfileSettingsResolverService } from './services/resolvers/profile-settings-resolver.service';
@@ -18,10 +19,10 @@ const routes: Routes = [
   { path: 'book-slot/:key', component: BookSlotComponent, resolve: { resolvedBookCustomerSlots: BookSlotResolverService } },
   { path: 'share-slot', component: ShareSlotComponent },
   { path: 'shared-slots', component: SharedSlotsComponent, resolve: { resolvedCustomerBookedSlots: SharedSlotResolverService } },
-  { path: 'booked-slots', component: BookedSlotsComponent },
+  { path: 'booked-slots', component: BookedSlotsComponent, resolve: { resolvedCustomerBookedSlots: BookedSlotResolverService } },
   { path: 'profile-settings', component: ProfileSettingsComponent, resolve: { resolvedProfileSettings: ProfileSettingsResolverService } },
   
-  { path: '', redirectTo: '/shared-slots', pathMatch: 'full' },
+  { path: '', redirectTo: '/booked-slots', pathMatch: 'full' },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
