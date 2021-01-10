@@ -16,6 +16,7 @@ export class BookedSlotsComponent implements OnInit {
   customerBookedSlots: BookedSlot[] = [];
   customerCompletedSlots: BookedSlot[] = [];
   customerCancelledSlots: CancelledSlotInformation[] = [];
+  bookedBy: string = "26eca53c21344dea874c99cc1df9ceef";
 
   constructor(private bookedSlotService: BookedSlotService, private slotService: SlotService, private route: ActivatedRoute) { }
 
@@ -33,19 +34,17 @@ export class BookedSlotsComponent implements OnInit {
   }
 
 
-  onResendEmail() {
+  onResendEmail(bookedSlotModelInformation: string) {
 
   }
 
 
-  onBookedSlotCancel() {
+  onBookedSlotCancel(bookedSlotModelInformation: string, index: number) {
 
-    var key = "26eca53c21344dea874c99cc1df9ceef";
-
-    this.slotService.cancelSlot("", key)
+    this.slotService.cancelSlot(bookedSlotModelInformation, this.bookedBy)
       .subscribe(
         (data: boolean) => {
-          console.log("deleted slot " + data);
+          this.customerBookedSlots.splice(index, 1);
         },
         (err: any) => console.log(err)
       );
@@ -56,9 +55,8 @@ export class BookedSlotsComponent implements OnInit {
 
 
   getBookedSlots() {
-    var key = "26eca53c21344dea874c99cc1df9ceef";
 
-    this.bookedSlotService.getCustomerBookedSlots(key)
+    this.bookedSlotService.getCustomerBookedSlots(this.bookedBy)
       .subscribe(
         (data: BookedSlot[]) => {
           this.customerBookedSlots = data;
@@ -72,12 +70,8 @@ export class BookedSlotsComponent implements OnInit {
 
   }
 
-  
-
   getCompletedSlots() {
-    var key = "26eca53c21344dea874c99cc1df9ceef";
-
-    this.bookedSlotService.getCustomerCompletedSlots(key)
+    this.bookedSlotService.getCustomerCompletedSlots(this.bookedBy)
       .subscribe(
         (data: BookedSlot[]) => {
           this.customerCompletedSlots = data;
@@ -94,7 +88,7 @@ export class BookedSlotsComponent implements OnInit {
 
   getCancelledSlots() {
     var key = "26eca53c21344dea874c99cc1df9ceef";
-    this.bookedSlotService.getCustomerCancelledSlots(key)
+    this.bookedSlotService.getCustomerCancelledSlots(this.bookedBy)
       .subscribe(
         (data: CancelledSlotInformation[]) => {
           this.customerCancelledSlots = data;
@@ -105,8 +99,6 @@ export class BookedSlotsComponent implements OnInit {
         },
         (err: any) => console.log(err)
       );
-
-
   }
 
 }

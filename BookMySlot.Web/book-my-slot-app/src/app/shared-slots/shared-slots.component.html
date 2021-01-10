@@ -63,7 +63,7 @@
 
               <div *ngIf="customerBookedSlots.length  == 0">no slots found</div>
 
-              <div class="row" *ngFor="let customerBookedSlot of customerBookedSlots">
+              <div class="row" *ngFor="let customerBookedSlot of customerBookedSlots;let i = index">
 
                 <div class="col-md-8">
                   <div class="text-muted row">
@@ -100,7 +100,7 @@
                 </div>
                 <div class="col-md-12">
                   <button type="button" class="btn bg-gradient-primary" (click)="onResendEmail(customerBookedSlot.sharedSlotModelInformation)">Resend Email</button>
-                  <button type="button" class="btn btn-default" (click)="onBookedSlotCancel(customerBookedSlot.sharedSlotModelInformation)">Cancel</button>
+                  <button type="button" class="btn btn-default" (click)="onBookedSlotCancel(customerBookedSlot.sharedSlotModelInformation, i)">Cancel</button>
                 </div>
                 <hr class="col-md-12">
 
@@ -117,7 +117,7 @@
               <div *ngIf="customerYetToBeBookedSlots.length  == 0">no slots found</div>
 
 
-              <div class="row" *ngFor="let customerYetToBeBookedSlot of customerYetToBeBookedSlots">
+              <div class="row" *ngFor="let customerYetToBeBookedSlot of customerYetToBeBookedSlots;let i = index">
 
                 <div class="col-md-8">
                   <div class="text-muted row">
@@ -148,7 +148,7 @@
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <button type="button" class="btn btn-default" (click)="onYetToBeBookedSlotCancel(customerYetToBeBookedSlot.sharedSlotModelInformation)">Cancel</button>
+                  <button type="button" class="btn bg-gradient-primary" (click)="onYetToBeBookedSlotCancel(customerYetToBeBookedSlot.sharedSlotModelInformation, i)">Cancel</button>
                 </div>
                 <hr class="col-md-12">
 

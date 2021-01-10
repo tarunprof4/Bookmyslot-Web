@@ -66,7 +66,7 @@
               <div *ngIf="customerBookedSlots.length  == 0">no slots found1</div>
 
 
-              <div class="row" *ngFor="let customerBookedSlot of customerBookedSlots">
+              <div class="row" *ngFor="let customerBookedSlot of customerBookedSlots;let i = index">
                 <div class="col-md-4">
                   <div class="user-block">
                     <img class="img-circle img-bordered-sm" src="assets/dist/img/user1-128x128.jpg" alt="user image">
@@ -105,8 +105,8 @@
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <button type="button" class="btn bg-gradient-primary">Resend Email</button>
-                  <button type="button" class="btn btn-default">Cancel</button>
+                  <button type="button" class="btn bg-gradient-primary" (click)="onResendEmail(customerBookedSlot.bookedSlotModelInformation)">Resend Email</button>
+                  <button type="button" class="btn btn-default" (click)="onBookedSlotCancel(customerBookedSlot.bookedSlotModelInformation, i)">Cancel</button>
                 </div>
                 <hr class="col-md-12">
 
@@ -185,7 +185,7 @@
                     <span class="username">
                       <a href="#"><span>{{customerCancelledSlot.cancelledByCustomerModel.firstName}}</span>&nbsp;&nbsp;&nbsp;<span>{{customerCancelledSlot.cancelledByCustomerModel.lastName}}</span></a>
                     </span>
-                    <span class="description">Created by</span>
+                    <span class="description">Cancelled by</span>
                   </div>
                 </div>
                 <div class="col-md-8">
@@ -214,6 +214,7 @@
                       Duration
                       <b class="d-block">{{customerCancelledSlot.cancelledSlotModel.slotDuration}}</b>
                     </p>
+                  
                   </div>
                 </div>
                 <div class="col-md-12">
@@ -239,114 +240,3 @@
 </div><!-- /.container-fluid -->
 
 
-<aside class="control-sidebar control-sidebar-dark">
-  <!-- Control sidebar content goes here -->
-</aside>
-<!-- /.control-sidebar -->
-<!-- ./wrapper -->
-<a href="javascript:openOffcanvas1()" class="float">
-  <i class="fa fa-filter my-float"></i>
-</a>
-<div id="myOffcanvas" class="offcanvas">
-  <a href="javascript:void(0)" class="closeOffcanvas" onclick="closeOffcanvas()">×</a>
-  <div class="filter-content">
-    <div class="">
-      <div class=" ">
-        <button type="button" class="btn bg-gradient-primary toastsDefaultSuccess">Apply</button>
-        <button type="button" class="btn btn-default">Reset</button>
-      </div>
-      <div class="form-group">
-        <label>Start Date</label>
-
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-          </div>
-          <input type="text" class="form-control is-invalid" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">
-          <span id="exampleInputEmail1-error" class="error invalid-feedback">Please enter a email address</span>
-        </div>
-
-        <!-- /.input group -->
-      </div>
-      <div class="form-group">
-        <label>End Date</label>
-
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-          </div>
-          <input type="text" class="form-control is-invalid" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">
-          <span id="exampleInputEmail1-error" class="error invalid-feedback">Please enter a email address</span>
-        </div>
-
-        <!-- /.input group -->
-      </div>
-      <div class="row">
-
-        <div class="col-sm-12">
-          <!-- select -->
-          <div class="form-group">
-            <label>Start Time</label>
-            <div class="row">
-              <div class="col-sm-6">
-                <select class="form-control">
-                  <option>option 1</option>
-                  <option>option 2</option>
-                  <option>option 3</option>
-                  <option>option 4</option>
-                  <option>option 5</option>
-                </select>
-              </div>
-              <div class="col-sm-6">
-                <select class="form-control">
-                  <option>option 1</option>
-                  <option>option 2</option>
-                  <option>option 3</option>
-                  <option>option 4</option>
-                  <option>option 5</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="form-group">
-            <label>End Time</label>
-            <div class="row">
-              <div class="col-sm-6">
-                <select class="form-control">
-                  <option>option 1</option>
-                  <option>option 2</option>
-                  <option>option 3</option>
-                  <option>option 4</option>
-                  <option>option 5</option>
-                </select>
-              </div>
-              <div class="col-sm-6">
-                <select class="form-control">
-                  <option>option 1</option>
-                  <option>option 2</option>
-                  <option>option 3</option>
-                  <option>option 4</option>
-                  <option>option 5</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Slot Duration</label><br>
-        1 hr
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Slot Duration</label>
-        <div class="slider-blue">
-          <input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200"
-                 data-slider-step="5" data-slider-value="[-100,100]" data-slider-orientation="horizontal"
-                 data-slider-selection="before" data-slider-tooltip="show">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
