@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookedSlotService } from '../services/booked-slot.service';
+import { SlotService } from '../services/slot.service';
 import { BookedSlot } from '../shared/booked-slot';
 import { CancelledSlotInformation } from '../shared/cancelled-slot-information';
 import { ResolverError } from '../shared/resolver-error';
@@ -16,7 +17,7 @@ export class BookedSlotsComponent implements OnInit {
   customerCompletedSlots: BookedSlot[] = [];
   customerCancelledSlots: CancelledSlotInformation[] = [];
 
-  constructor(private bookedSlotService: BookedSlotService, private route: ActivatedRoute) { }
+  constructor(private bookedSlotService: BookedSlotService, private slotService: SlotService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -39,12 +40,23 @@ export class BookedSlotsComponent implements OnInit {
 
   onBookedSlotCancel() {
 
+    var key = "26eca53c21344dea874c99cc1df9ceef";
+
+    this.slotService.cancelSlot("", key)
+      .subscribe(
+        (data: boolean) => {
+          console.log("deleted slot " + data);
+        },
+        (err: any) => console.log(err)
+      );
+
+
   }
 
 
 
   getBookedSlots() {
-    var key = "10a5b1d6d1a7497eb4b59bf95e0793a2";
+    var key = "26eca53c21344dea874c99cc1df9ceef";
 
     this.bookedSlotService.getCustomerBookedSlots(key)
       .subscribe(
@@ -63,7 +75,7 @@ export class BookedSlotsComponent implements OnInit {
   
 
   getCompletedSlots() {
-    var key = "10a5b1d6d1a7497eb4b59bf95e0793a2";
+    var key = "26eca53c21344dea874c99cc1df9ceef";
 
     this.bookedSlotService.getCustomerCompletedSlots(key)
       .subscribe(
@@ -81,7 +93,7 @@ export class BookedSlotsComponent implements OnInit {
   }
 
   getCancelledSlots() {
-    var key = "10a5b1d6d1a7497eb4b59bf95e0793a2";
+    var key = "26eca53c21344dea874c99cc1df9ceef";
     this.bookedSlotService.getCustomerCancelledSlots(key)
       .subscribe(
         (data: CancelledSlotInformation[]) => {

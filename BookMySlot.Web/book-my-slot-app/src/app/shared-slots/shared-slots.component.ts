@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SharedSlotService } from '../services/shared-slot.service';
+import { SlotService } from '../services/slot.service';
 import { CancelledSlotDetails } from '../shared/cancelled-slot-details';
 import { ResolverError } from '../shared/resolver-error';
 import { ShareSlot } from '../shared/shared-slot';
@@ -18,7 +19,7 @@ export class SharedSlotsComponent implements OnInit {
   customerCompletedSlots: ShareSlot[] = [];
   customerCancelledSlots: CancelledSlotDetails[] = [];
 
-  constructor(private sharedSlotService: SharedSlotService, private route: ActivatedRoute) { }
+  constructor(private sharedSlotService: SharedSlotService, private slotService: SlotService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -44,17 +45,33 @@ export class SharedSlotsComponent implements OnInit {
   }
 
 
-  onBookedSlotCancel() {
+  onBookedSlotCancel(sharedSlotModelInformation: string) {
+    var key = "26eca53c21344dea874c99cc1df9ceef";
 
+    this.slotService.cancelSlot(sharedSlotModelInformation, key)
+      .subscribe(
+        (data: boolean) => {
+          console.log("deleted slot " + data);
+        },
+        (err: any) => console.log(err)
+      );
   }
 
-  onYetToBeBookedSlotCancel() {
+  onYetToBeBookedSlotCancel(sharedSlotModelInformation: string) {
+    var key = "26eca53c21344dea874c99cc1df9ceef";
 
+    this.slotService.cancelSlot(sharedSlotModelInformation, key)
+      .subscribe(
+        (data: boolean) => {
+          console.log("deleted slot " + data);
+        },
+        (err: any) => console.log(err)
+      );
   }
 
 
   getBookedSlots() {
-    var key = "10a5b1d6d1a7497eb4b59bf95e0793a2";
+    var key = "26eca53c21344dea874c99cc1df9ceef";
 
     this.sharedSlotService.getCustomerBookedSlots(key)
       .subscribe(
@@ -71,7 +88,7 @@ export class SharedSlotsComponent implements OnInit {
   }
 
   getYetToBeBookedSlots() {
-    var key = "10a5b1d6d1a7497eb4b59bf95e0793a2";
+    var key = "26eca53c21344dea874c99cc1df9ceef";
 
     this.sharedSlotService.getCustomerYetToBeBookedSlots(key)
       .subscribe(
@@ -88,7 +105,7 @@ export class SharedSlotsComponent implements OnInit {
   }
 
   getCompletedSlots() {
-    var key = "10a5b1d6d1a7497eb4b59bf95e0793a2";
+    var key = "26eca53c21344dea874c99cc1df9ceef";
 
     this.sharedSlotService.getCustomerCompletedSlots(key)
       .subscribe(
@@ -106,7 +123,7 @@ export class SharedSlotsComponent implements OnInit {
   }
 
   getCancelledSlots() {
-    var key = "10a5b1d6d1a7497eb4b59bf95e0793a2";
+    var key = "26eca53c21344dea874c99cc1df9ceef";
 
     this.sharedSlotService.getCustomerCancelledSlots(key)
       .subscribe(

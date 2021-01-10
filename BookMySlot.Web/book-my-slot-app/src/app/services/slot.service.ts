@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { CancelSlot } from '../shared/cancel-slot';
 import { HttpStatusConstants } from '../shared/constants/http-status-constants';
 import { ResolverError } from '../shared/resolver-error';
 import { SlotDetails } from '../shared/slot-details';
@@ -10,8 +11,9 @@ import { SlotDetails } from '../shared/slot-details';
   providedIn: 'root'
 })
 export class SlotService {
-
+  
   private slotDetailsUrl = '/api/v1/slot';
+  private cancelSlotUrl = 'api/v1/Slot/CancelSlot';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -24,8 +26,18 @@ export class SlotService {
     );
   }
 
+  public cancelSlot(slotKey: string, deletedBy: string): Observable<boolean | ResolverError> {
+    let cancelSlot = new CancelSlot();
+    cancelSlot.slotKey = slotKey;
+    cancelSlot.cancelledBy = deletedBy;
+    return this.httpClient.post<boolean>(this.cancelSlotUrl, cancelSlot).pipe(
+      catchError(err => this.handleHttpError(err))
+    );
 
-  public getTimeSpan(date: Date): string {
+  }
+
+
+  private getTimeSpan(date: Date): string {
     let timeSpan = date.getHours() + ":" + date.getMinutes() + ":" + "0";
     return timeSpan;
   }
