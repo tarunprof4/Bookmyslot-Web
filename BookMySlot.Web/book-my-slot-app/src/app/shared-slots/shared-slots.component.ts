@@ -12,10 +12,10 @@ import { ShareSlot } from '../shared/shared-slot';
 export class SharedSlotsComponent implements OnInit {
 
 
-  customerBookedSlots: ShareSlot[];
-  customerYetToBeBookedSlots: ShareSlot[];
-  customerCompletedSlots: ShareSlot[];
-  customerCancelledSlots: ShareSlot[];
+  customerBookedSlots: ShareSlot[] = [];
+  customerYetToBeBookedSlots: ShareSlot[] = [];
+  customerCompletedSlots: ShareSlot[] = [];
+  customerCancelledSlots: ShareSlot[] = [];
 
   constructor(private sharedSlotService: SharedSlotService, private route: ActivatedRoute) { }
 
@@ -38,7 +38,16 @@ export class SharedSlotsComponent implements OnInit {
   
 
 
-  onBookedCancel() {
+  onResendEmail() {
+
+  }
+
+
+  onBookedSlotCancel() {
+
+  }
+
+  onYetToBeBookedSlotCancel() {
 
   }
 

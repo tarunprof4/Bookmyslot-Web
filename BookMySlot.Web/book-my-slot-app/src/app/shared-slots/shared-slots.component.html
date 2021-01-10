@@ -48,7 +48,7 @@
               <a class="nav-link" id="custom-tabs-four-messages-tab" data-toggle="pill" href="#custom-tabs-four-messages" role="tab" aria-controls="custom-tabs-four-messages" aria-selected="false">Completed</a>
             </li>
             <li class="nav-item" (click)="getCancelledSlots()">
-              <a class="nav-link" id="custom-tabs-four-messages-tab" data-toggle="pill" href="#custom-tabs-four-messages" role="tab" aria-controls="custom-tabs-four-messages" aria-selected="false">Cancelled</a>
+              <a class="nav-link" id="custom-tabs-four-completed-tab" data-toggle="pill" href="#custom-tabs-four-completed" role="tab" aria-controls="custom-tabs-four-completed" aria-selected="false">Cancelled</a>
             </li>
 
 
@@ -59,14 +59,11 @@
 
 
 
-
-
-
-
-
             <div class="tab-pane fade active show" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
 
-              <div class="row" *ngFor="let customerBookedSlot of customerBookedSlots;let i = index">
+              <div *ngIf="customerBookedSlots.length  == 0">no slots found</div>
+
+              <div class="row" *ngFor="let customerBookedSlot of customerBookedSlots">
 
                 <div class="col-md-8">
                   <div class="text-muted row">
@@ -102,31 +99,25 @@
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <button type="button" class="btn bg-gradient-primary" (click)="onBookedCancel(customerBookedSlot.sharedSlotModelInformation, i)">Resend Email</button>
-                  <button type="button" class="btn btn-default">Cancel</button>
+                  <button type="button" class="btn bg-gradient-primary" (click)="onResendEmail(customerBookedSlot.sharedSlotModelInformation)">Resend Email</button>
+                  <button type="button" class="btn btn-default" (click)="onBookedSlotCancel(customerBookedSlot.sharedSlotModelInformation)">Cancel</button>
                 </div>
                 <hr class="col-md-12">
 
 
               </div>
 
-              
+
 
             </div>
 
 
-
-
-
-
-
-
-
             <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
 
+              <div *ngIf="customerYetToBeBookedSlots.length  == 0">no slots found</div>
 
 
-              <div class="row" *ngFor="let customerYetToBeBookedSlot of customerYetToBeBookedSlots;let i = index">
+              <div class="row" *ngFor="let customerYetToBeBookedSlot of customerYetToBeBookedSlots">
 
                 <div class="col-md-8">
                   <div class="text-muted row">
@@ -168,12 +159,14 @@
 
 
             </div>
+
+
             <div class="tab-pane fade" id="custom-tabs-four-messages" role="tabpanel" aria-labelledby="custom-tabs-four-messages-tab">
 
 
+              <div *ngIf="customerCompletedSlots.length  == 0">no slots found</div>
 
-
-              <div class="row" *ngFor="let customerCompletedSlot of customerCompletedSlots;let i = index">
+              <div class="row" *ngFor="let customerCompletedSlot of customerCompletedSlots">
 
                 <div class="col-md-8">
                   <div class="text-muted row">
@@ -210,7 +203,7 @@
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <button type="button" class="btn btn-default">Cancel</button>
+
                 </div>
                 <hr class="col-md-12">
 
@@ -222,11 +215,15 @@
 
             </div>
 
-            <div class="tab-pane fade" id="custom-tabs-four-messages" role="tabpanel" aria-labelledby="custom-tabs-four-messages-tab">
 
 
+            <div class="tab-pane fade" id="custom-tabs-four-completed" role="tabpanel" aria-labelledby="custom-tabs-four-completed-tab">
 
-              <div class="row" *ngFor="let customerCancelledSlot of customerCancelledSlots;let i = index">
+              <div *ngIf="customerCancelledSlots.length  == 0">no slots found</div>
+              
+
+
+              <div class="row" *ngFor="let customerCancelledSlot of customerCancelledSlots">
 
                 <div class="col-md-8">
                   <div class="text-muted row">
@@ -257,7 +254,7 @@
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <button type="button" class="btn btn-default">Cancel</button>
+
                 </div>
                 <hr class="col-md-12">
 
@@ -265,10 +262,19 @@
               </div>
 
 
-
-
-
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
           </div>
         </div>
         <!-- /.card -->
@@ -280,115 +286,3 @@
   </section>
 </div><!-- /.container-fluid -->
 
-
-<aside class="control-sidebar control-sidebar-dark">
-  <!-- Control sidebar content goes here -->
-</aside>
-<!-- /.control-sidebar -->
-<!-- ./wrapper -->
-<a href="javascript:openOffcanvas1()" class="float">
-  <i class="fa fa-filter my-float"></i>
-</a>
-<div id="myOffcanvas" class="offcanvas">
-  <a href="javascript:void(0)" class="closeOffcanvas" onclick="closeOffcanvas()">×</a>
-  <div class="filter-content">
-    <div class="">
-      <div class=" ">
-        <button type="button" class="btn bg-gradient-primary toastsDefaultSuccess">Apply</button>
-        <button type="button" class="btn btn-default">Reset</button>
-      </div>
-      <div class="form-group">
-        <label>Start Date</label>
-
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-          </div>
-          <input type="text" class="form-control is-invalid" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">
-          <span id="exampleInputEmail1-error" class="error invalid-feedback">Please enter a email address</span>
-        </div>
-
-        <!-- /.input group -->
-      </div>
-      <div class="form-group">
-        <label>End Date</label>
-
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-          </div>
-          <input type="text" class="form-control is-invalid" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">
-          <span id="exampleInputEmail1-error" class="error invalid-feedback">Please enter a email address</span>
-        </div>
-
-        <!-- /.input group -->
-      </div>
-      <div class="row">
-
-        <div class="col-sm-12">
-          <!-- select -->
-          <div class="form-group">
-            <label>Start Time</label>
-            <div class="row">
-              <div class="col-sm-6">
-                <select class="form-control">
-                  <option>option 1</option>
-                  <option>option 2</option>
-                  <option>option 3</option>
-                  <option>option 4</option>
-                  <option>option 5</option>
-                </select>
-              </div>
-              <div class="col-sm-6">
-                <select class="form-control">
-                  <option>option 1</option>
-                  <option>option 2</option>
-                  <option>option 3</option>
-                  <option>option 4</option>
-                  <option>option 5</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="form-group">
-            <label>End Time</label>
-            <div class="row">
-              <div class="col-sm-6">
-                <select class="form-control">
-                  <option>option 1</option>
-                  <option>option 2</option>
-                  <option>option 3</option>
-                  <option>option 4</option>
-                  <option>option 5</option>
-                </select>
-              </div>
-              <div class="col-sm-6">
-                <select class="form-control">
-                  <option>option 1</option>
-                  <option>option 2</option>
-                  <option>option 3</option>
-                  <option>option 4</option>
-                  <option>option 5</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Slot Duration</label><br>
-        1 hr
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Slot Duration</label>
-        <div class="slider-blue">
-          <input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200"
-                 data-slider-step="5" data-slider-value="[-100,100]" data-slider-orientation="horizontal"
-                 data-slider-selection="before" data-slider-tooltip="show">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
