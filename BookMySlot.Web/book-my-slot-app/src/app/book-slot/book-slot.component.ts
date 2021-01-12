@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CustomerSlotService } from '../services/customer-slot.service';
+import { SlotSchedulerService } from '../services/slot-scheduler.service';
 import { BookSlots } from '../shared/book-slots';
 import { CustomerSlots } from '../shared/customer-slots';
 import { ResolverError } from '../shared/resolver-error';
@@ -15,7 +16,7 @@ export class BookSlotComponent implements OnInit {
 
   customerAvailableSlots: BookSlots;
 
-  constructor(private customerSlotService: CustomerSlotService, private route: ActivatedRoute) { }
+  constructor(private customerSlotService: CustomerSlotService, private slotSchedulerService: SlotSchedulerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -38,7 +39,7 @@ export class BookSlotComponent implements OnInit {
     let slotScheduler = new SlotScheduler();
     slotScheduler.slotModelKey = slotInformation;
     
-    this.customerSlotService.scheduleSlot(slotScheduler)
+    this.slotSchedulerService.scheduleSlot(slotScheduler)
       .subscribe(
         (data: boolean) => {
           this.customerAvailableSlots.slotModelsInforamtion.splice(index, 1);
