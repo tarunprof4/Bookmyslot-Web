@@ -18,6 +18,8 @@ import { AddHeaderInterceptor } from './shared/Interceptors/add-header.intercept
 import { BsDatepickerConfig, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TimepickerConfig, TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 
 export function getDatepickerConfig(): BsDatepickerConfig {
   return Object.assign(new BsDatepickerConfig(), {
@@ -57,6 +59,7 @@ export function getTimepickerConfig(): TimepickerConfig {
   ],
   imports: [
     BrowserModule,
+    InfiniteScrollModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,

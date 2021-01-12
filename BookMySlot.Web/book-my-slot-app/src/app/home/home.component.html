@@ -1,74 +1,75 @@
-<div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1 class="m-0"></h1>
-        </div><!-- /.col -->
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item active"></li>
-          </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </div>
+<div  class="content-wrapper scroll-infinite" infiniteScroll (scrolled)="getFeeds()" [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" [scrollWindow]="false">
+<!--<div  class="content-wrapper" >-->
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0"></h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item active"></li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
 
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1 class="m-0"></h1>
-        </div><!-- /.col -->
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item active"></li>
-          </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </div>
-  <!-- /.content-header -->
-  <!-- Main content -->
-  <section class="content">
-    <div class="container-fluid">
-      <!-- Small boxes (Stat box) -->
-      <div class="row">
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0"></h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item active"></li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
 
 
 
 
-        <div class="col-md-6" *ngFor="let customerSlot of customerSlots">
+      <div class="col-md-6 " *ngFor="let customerSlot of customerSlots">
 
-          <div class="card card-primary card-outline">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-2">
-                  <ul class="users-list clearfix">
-                    <li>
-                      <img src="assets/dist/img/user8-128x128.jpg" alt="User Image" style="width:67px; height:67px;">
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-sm-10">
-                  <h5 class="card-title"><span>{{customerSlot.customerModel.firstName}}</span><span>  &nbsp;&nbsp;  </span> <span>{{customerSlot.customerModel.lastName}}</span></h5>
+        <div class="card card-primary card-outline">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-2">
+                <ul class="users-list clearfix">
+                  <li>
+                    <img src="assets/dist/img/user8-128x128.jpg" alt="User Image" style="width:67px; height:67px;">
+                  </li>
+                </ul>
+              </div>
+              <div class="col-sm-10">
+                <h5 class="card-title"><span>{{customerSlot.customerModel.firstName}}</span><span>  &nbsp;&nbsp;  </span> <span>{{customerSlot.customerModel.lastName}}</span></h5>
 
-                  <p class="card-text">
-                    Software Developer
-                    <br />
-                  </p>
+                <p class="card-text">
+                  Software Developer
+                  <br />
+                </p>
 
-                  <a  class="card-link" (click)="onBook(customerSlot.customerModel.id)">Book Slot</a>
-                </div>
+                <a class="card-link" (click)="onBook(customerSlot.customerModel.id)">Book Slot</a>
               </div>
             </div>
-          </div><!-- /.card -->
-        </div>
-
+          </div>
+        </div><!-- /.card -->
       </div>
 
     </div>
-    <!-- /.row (main row) -->
-  </section>
-</div><!-- /.container-fluid -->
+
+  </div>
+  <!-- /.row (main row) -->
+</section>
+  </div><!-- /.container-fluid -->

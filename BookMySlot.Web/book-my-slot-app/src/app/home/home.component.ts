@@ -14,13 +14,13 @@ import { ResolverError } from '../shared/resolver-error';
 
 export class HomeComponent implements OnInit {
 
+  private getFeed: boolean = true;
+  private paginationIndex: number = PaginationConstants.StartPage;
   customerSlots: CustomerSlots[];
 
   constructor(private customerSlotService: CustomerSlotService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-
-    
 
     let initCustomerSlots: CustomerSlots[] | ResolverError = this.route.snapshot.data['resolvedHomeSlots'];
 
@@ -41,15 +41,30 @@ export class HomeComponent implements OnInit {
     
   }
 
+  onScroll() {
+    console.log('scrolled!!');
+  }
+
   getFeeds() {
-    this.customerSlotService.getDistinctCustomersNearestSlotFromToday(1, PaginationConstants.PageSize)
-      .subscribe(
-        (data: CustomerSlots[]) => {
-          console.log("get customer slots " + data);
-          this.customerSlots = data;
-          console.log(this.customerSlots);
-        },
-        (err: any) => console.log(err)
-      );
+
+    if (this.getFeed) {
+
+      this.paginationIndex = this.paginationIndex + 1;
+      this.customerSlotService.getDistinctCustomersNearestSlotFromToday(this.paginationIndex, PaginationConstants.PageSize)
+        .subscribe(
+          (data: CustomerSlots[]) => {
+            this.customerSlots = this.customerSlots.concat(data);
+          },
+          (err: any) => {
+            console.log("no more records");
+            this.getFeed = false;
+          }
+        );
+
+
+
+    }
+
+
   }
 }
