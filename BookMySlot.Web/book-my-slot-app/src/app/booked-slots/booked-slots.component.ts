@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookedSlotService } from '../services/booked-slot.service';
+import { EmailService } from '../services/email.service';
 import { SlotService } from '../services/slot.service';
 import { BookedSlot } from '../shared/booked-slot';
 import { CancelledSlotInformation } from '../shared/cancelled-slot-information';
@@ -18,7 +19,7 @@ export class BookedSlotsComponent implements OnInit {
   customerCancelledSlots: CancelledSlotInformation[] = [];
   bookedBy: string = "26eca53c21344dea874c99cc1df9ceef";
 
-  constructor(private bookedSlotService: BookedSlotService, private slotService: SlotService, private route: ActivatedRoute) { }
+  constructor(private bookedSlotService: BookedSlotService, private emailService: EmailService,  private slotService: SlotService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -35,7 +36,13 @@ export class BookedSlotsComponent implements OnInit {
 
 
   onResendEmail(bookedSlotModelInformation: string) {
-
+    this.emailService.resendSlotInformation(bookedSlotModelInformation, this.bookedBy)
+      .subscribe(
+        (data: boolean) => {
+          console.log(data);
+        },
+        (err: any) => console.log(err)
+      );
   }
 
 
@@ -55,6 +62,7 @@ export class BookedSlotsComponent implements OnInit {
 
 
   getBookedSlots() {
+
 
     this.bookedSlotService.getCustomerBookedSlots(this.bookedBy)
       .subscribe(
@@ -87,7 +95,6 @@ export class BookedSlotsComponent implements OnInit {
   }
 
   getCancelledSlots() {
-    var key = "26eca53c21344dea874c99cc1df9ceef";
     this.bookedSlotService.getCustomerCancelledSlots(this.bookedBy)
       .subscribe(
         (data: CancelledSlotInformation[]) => {

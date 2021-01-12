@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { EmailService } from '../services/email.service';
 import { SharedSlotService } from '../services/shared-slot.service';
 import { SlotService } from '../services/slot.service';
 import { CancelledSlotDetails } from '../shared/cancelled-slot-details';
@@ -21,7 +22,7 @@ export class SharedSlotsComponent implements OnInit {
 
   sharedSlotBy: string = "10a5b1d6d1a7497eb4b59bf95e0793a2";
 
-  constructor(private sharedSlotService: SharedSlotService, private slotService: SlotService, private route: ActivatedRoute) { }
+  constructor(private sharedSlotService: SharedSlotService, private emailService: EmailService, private slotService: SlotService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -42,8 +43,14 @@ export class SharedSlotsComponent implements OnInit {
   
 
 
-  onResendEmail() {
-
+  onResendEmail(sharedSlotModelInformation: string,) {
+    this.emailService.resendSlotInformation(sharedSlotModelInformation, this.sharedSlotBy)
+      .subscribe(
+        (data: boolean) => {
+          console.log(data);
+        },
+        (err: any) => console.log(err)
+      );
   }
 
 
