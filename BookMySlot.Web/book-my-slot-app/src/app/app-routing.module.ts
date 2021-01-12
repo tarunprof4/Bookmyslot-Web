@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'booked-slots', component: BookedSlotsComponent, resolve: { resolvedCustomerBookedSlots: BookedSlotResolverService } },
   { path: 'profile-settings', component: ProfileSettingsComponent, resolve: { resolvedProfileSettings: ProfileSettingsResolverService } },
   
-  { path: '', redirectTo: '/shared-slots', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
