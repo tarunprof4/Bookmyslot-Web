@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerSlotService } from '../services/customer-slot.service';
+import { HttpStatusConstants } from '../shared/constants/http-status-constants';
 import { PaginationConstants } from '../shared/constants/pagination-constants';
 import { CustomerSlots } from '../shared/customer-slots';
 import { ResolverError } from '../shared/resolver-error';
@@ -14,7 +15,8 @@ import { ResolverError } from '../shared/resolver-error';
 
 export class HomeComponent implements OnInit {
 
-  customerSlots: CustomerSlots[];
+  customerSlots: CustomerSlots[] = [];
+  resolverError: ResolverError;
 
   constructor(private customerSlotService: CustomerSlotService, private route: ActivatedRoute, private router: Router) { }
 
@@ -25,6 +27,11 @@ export class HomeComponent implements OnInit {
     let initCustomerSlots: CustomerSlots[] | ResolverError = this.route.snapshot.data['resolvedHomeSlots'];
 
     if (initCustomerSlots instanceof ResolverError) {
+      this.resolverError = initCustomerSlots;
+      if (this.resolverError.statusCode == HttpStatusConstants.NotFound) {
+        this.resolverError.errors = [];
+      }
+
     }
     else {
 

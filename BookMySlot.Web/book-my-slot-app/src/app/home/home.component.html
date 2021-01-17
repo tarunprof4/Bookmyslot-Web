@@ -1,3 +1,6 @@
+
+
+
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <div class="content-header">
@@ -59,12 +62,46 @@
                     <br />
                   </p>
 
-                  <a  class="card-link" (click)="onBook(customerSlot.customerModel.id)">Book Slot</a>
+                  <a class="card-link" (click)="onBook(customerSlot.customerModel.id)">Book Slot</a>
                 </div>
               </div>
             </div>
           </div><!-- /.card -->
         </div>
+
+
+
+        <div *ngIf="customerSlots.length  == 0">
+          <div *ngIf="resolverError.errors.length  == 0">
+            <div class="card card-primary card-outline card-outline-tabs">
+
+              <div class="card-body">
+                <div class="row">
+                  <p>No slots shared by anyone as of now</p>
+                  <p>
+                    You can search your favourite person and request him to share the slot by:
+                    1) Searching the person
+                    2) On His Page click on Please share slot button
+                    Or you can share the slot by clicking here
+                    <a routerLink="/share-slot" class="nav-link">
+                      ShareSlot
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div *ngIf="resolverError.errors.length  != 0" class="card card-primary card-outline card-outline-tabs" >
+            <div *ngFor="let error of resolverError.errors">
+              <span>{{error}}</span>
+            </div>
+          </div>
+        </div>
+
+
+
 
       </div>
 
