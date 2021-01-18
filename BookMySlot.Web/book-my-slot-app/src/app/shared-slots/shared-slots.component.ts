@@ -4,6 +4,7 @@ import { EmailService } from '../services/email.service';
 import { SharedSlotService } from '../services/shared-slot.service';
 import { SlotService } from '../services/slot.service';
 import { CancelledSlotDetails } from '../shared/cancelled-slot-details';
+import { HttpStatusConstants } from '../shared/constants/http-status-constants';
 import { ResolverError } from '../shared/resolver-error';
 import { ShareSlot } from '../shared/shared-slot';
 
@@ -19,6 +20,7 @@ export class SharedSlotsComponent implements OnInit {
   customerYetToBeBookedSlots: ShareSlot[] = [];
   customerCompletedSlots: ShareSlot[] = [];
   customerCancelledSlots: CancelledSlotDetails[] = [];
+  resolverError: ResolverError;
 
   sharedSlotBy: string = "26eca53c21344dea874c99cc1df9ceef";
 
@@ -29,6 +31,10 @@ export class SharedSlotsComponent implements OnInit {
     let initCustomerBookedSlots: ShareSlot[] | ResolverError = this.route.snapshot.data['resolvedCustomerBookedSlots'];
 
     if (initCustomerBookedSlots instanceof ResolverError) {
+      this.resolverError = initCustomerBookedSlots;
+      if (this.resolverError.statusCode == HttpStatusConstants.NotFound) {
+        this.resolverError.errors = [];
+      }
     }
     else {
 
