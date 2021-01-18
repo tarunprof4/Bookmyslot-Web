@@ -8,7 +8,7 @@ export class ModalComponent {
   getSuccessModalComponent(): ModalComponent {
     let modalComponent = new ModalComponent();
     modalComponent.title = this.success;
-    modalComponent.bodyItems = ['Saved Successfully'];
+    modalComponent.bodyItems = ['Saved Details Successfully'];
     return modalComponent;
   }
 

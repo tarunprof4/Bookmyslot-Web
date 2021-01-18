@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { BookedSlotService } from '../services/booked-slot.service';
 import { EmailService } from '../services/email.service';
 import { SlotService } from '../services/slot.service';
@@ -7,6 +8,9 @@ import { BookedSlot } from '../shared/booked-slot';
 import { CancelledSlotInformation } from '../shared/cancelled-slot-information';
 import { HttpStatusConstants } from '../shared/constants/http-status-constants';
 import { ResolverError } from '../shared/resolver-error';
+import { ModalComponent } from '../shared/ui-controls/modal-component';
+import { ModalFailureComponent } from '../ui-controls/modal-failure/modal-failure.component';
+import { ModalSuccessComponent } from '../ui-controls/modal-success/modal-success.component';
 
 @Component({
   selector: 'app-booked-slots',
@@ -20,8 +24,10 @@ export class BookedSlotsComponent implements OnInit {
   customerCancelledSlots: CancelledSlotInformation[] = [];
   resolverError: ResolverError = new ResolverError();
   bookedBy: string = "10a5b1d6d1a7497eb4b59bf95e0793a2";
+  private bsModalRef: BsModalRef;
+  private modalComponent = new ModalComponent();
 
-  constructor(private bookedSlotService: BookedSlotService, private emailService: EmailService,  private slotService: SlotService, private route: ActivatedRoute) { }
+  constructor(private bookedSlotService: BookedSlotService, private emailService: EmailService, private slotService: SlotService, private route: ActivatedRoute, private modalService: BsModalService) { }
 
   ngOnInit(): void {
 
@@ -45,9 +51,17 @@ export class BookedSlotsComponent implements OnInit {
     this.emailService.resendSlotInformation(bookedSlotModelInformation, this.bookedBy)
       .subscribe(
         (data: boolean) => {
-          console.log(data);
+          let successModalComponent = this.modalComponent.getSuccessModalComponent();
+          this.bsModalRef = this.modalService.show(ModalSuccessComponent);
+          this.bsModalRef.content.title = successModalComponent.title;
+          this.bsModalRef.content.bodyItems = successModalComponent.bodyItems;
         },
-        (err: any) => console.log(err)
+        (err: any) => {
+          let failureModalComponent = this.modalComponent.getFailureModalComponent();
+          this.bsModalRef = this.modalService.show(ModalFailureComponent);
+          this.bsModalRef.content.title = failureModalComponent.title;
+          this.bsModalRef.content.bodyItems = err.errors;
+        }
       );
   }
 
@@ -58,8 +72,17 @@ export class BookedSlotsComponent implements OnInit {
       .subscribe(
         (data: boolean) => {
           this.customerBookedSlots.splice(index, 1);
+          let successModalComponent = this.modalComponent.getSuccessModalComponent();
+          this.bsModalRef = this.modalService.show(ModalSuccessComponent);
+          this.bsModalRef.content.title = successModalComponent.title;
+          this.bsModalRef.content.bodyItems = successModalComponent.bodyItems;
         },
-        (err: any) => console.log(err)
+        (err: any) => {
+          let failureModalComponent = this.modalComponent.getFailureModalComponent();
+          this.bsModalRef = this.modalService.show(ModalFailureComponent);
+          this.bsModalRef.content.title = failureModalComponent.title;
+          this.bsModalRef.content.bodyItems = err.errors;
+        }
       );
 
 
@@ -74,12 +97,16 @@ export class BookedSlotsComponent implements OnInit {
       .subscribe(
         (data: BookedSlot[]) => {
           this.customerBookedSlots = data;
-
-          console.log("got getBookedSlots " + this.customerBookedSlots);
-
-          console.log(data);
         },
-        (err: any) => console.log(err)
+        (err: any) => {
+          this.customerBookedSlots = [];
+          if (err.statusCode != HttpStatusConstants.NotFound) {
+            let failureModalComponent = this.modalComponent.getFailureModalComponent();
+            this.bsModalRef = this.modalService.show(ModalFailureComponent);
+            this.bsModalRef.content.title = failureModalComponent.title;
+            this.bsModalRef.content.bodyItems = err.errors;
+          }
+        }
       );
 
   }
@@ -89,12 +116,16 @@ export class BookedSlotsComponent implements OnInit {
       .subscribe(
         (data: BookedSlot[]) => {
           this.customerCompletedSlots = data;
-
-          console.log("got getCompletedSlots " + this.customerCompletedSlots);
-
-          console.log(data);
         },
-        (err: any) => console.log(err)
+        (err: any) => {
+          this.customerCompletedSlots = [];
+          if (err.statusCode != HttpStatusConstants.NotFound) {
+            let failureModalComponent = this.modalComponent.getFailureModalComponent();
+            this.bsModalRef = this.modalService.show(ModalFailureComponent);
+            this.bsModalRef.content.title = failureModalComponent.title;
+            this.bsModalRef.content.bodyItems = err.errors;
+          }
+        }
       );
 
 
@@ -105,12 +136,16 @@ export class BookedSlotsComponent implements OnInit {
       .subscribe(
         (data: CancelledSlotInformation[]) => {
           this.customerCancelledSlots = data;
-
-          console.log("got getCompletedSlots " + this.customerCompletedSlots);
-
-          console.log(data);
         },
-        (err: any) => console.log(err)
+        (err: any) => {
+          this.customerCancelledSlots = [];
+          if (err.statusCode != HttpStatusConstants.NotFound) {
+            let failureModalComponent = this.modalComponent.getFailureModalComponent();
+            this.bsModalRef = this.modalService.show(ModalFailureComponent);
+            this.bsModalRef.content.title = failureModalComponent.title;
+            this.bsModalRef.content.bodyItems = err.errors;
+          }
+        }
       );
   }
 
