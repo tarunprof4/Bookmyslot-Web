@@ -15,7 +15,7 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let email = "a@gmail.com";
+    let email = "b@gmail.com";
     this.customerService.getProfileSettings(email)
       .subscribe(
         (data: ProfileSettings) => {
