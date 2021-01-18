@@ -18,7 +18,7 @@ export class BookedSlotsComponent implements OnInit {
   customerBookedSlots: BookedSlot[] = [];
   customerCompletedSlots: BookedSlot[] = [];
   customerCancelledSlots: CancelledSlotInformation[] = [];
-  resolverError: ResolverError;
+  resolverError: ResolverError = new ResolverError();
   bookedBy: string = "10a5b1d6d1a7497eb4b59bf95e0793a2";
 
   constructor(private bookedSlotService: BookedSlotService, private emailService: EmailService,  private slotService: SlotService, private route: ActivatedRoute) { }

@@ -20,7 +20,7 @@ export class SharedSlotsComponent implements OnInit {
   customerYetToBeBookedSlots: ShareSlot[] = [];
   customerCompletedSlots: ShareSlot[] = [];
   customerCancelledSlots: CancelledSlotDetails[] = [];
-  resolverError: ResolverError;
+  resolverError: ResolverError = new ResolverError();
 
   sharedSlotBy: string = "26eca53c21344dea874c99cc1df9ceef";
 

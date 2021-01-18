@@ -16,7 +16,7 @@ import { ResolverError } from '../shared/resolver-error';
 export class HomeComponent implements OnInit {
 
   customerSlots: CustomerSlots[] = [];
-  resolverError: ResolverError;
+  resolverError: ResolverError = new ResolverError();
 
   constructor(private customerSlotService: CustomerSlotService, private route: ActivatedRoute, private router: Router) { }
 

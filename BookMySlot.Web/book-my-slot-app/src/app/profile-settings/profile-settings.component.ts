@@ -20,7 +20,7 @@ export class ProfileSettingsComponent implements OnInit {
   public regexConstants = RegexConstants;
   public profileSettings: ProfileSettings;
   public genders: string[];
-  resolverError: ResolverError;
+  resolverError: ResolverError = new ResolverError();
 
   ngOnInit(): void {
 

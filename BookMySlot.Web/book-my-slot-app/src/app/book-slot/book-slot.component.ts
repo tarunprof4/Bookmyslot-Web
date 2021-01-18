@@ -14,7 +14,7 @@ import { SlotScheduler } from '../shared/slot-scheduler';
 export class BookSlotComponent implements OnInit {
 
   customerAvailableSlots: BookSlots = new BookSlots();
-  resolverError: ResolverError;
+  resolverError: ResolverError = new ResolverError();
 
   constructor(private slotSchedulerService: SlotSchedulerService, private route: ActivatedRoute) { }
 
