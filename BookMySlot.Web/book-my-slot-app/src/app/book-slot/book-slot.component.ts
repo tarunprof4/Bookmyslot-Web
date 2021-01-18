@@ -47,12 +47,10 @@ export class BookSlotComponent implements OnInit {
       .subscribe(
         (data: boolean) => {
           this.customerAvailableSlots.slotModelsInforamtion.splice(index, 1);
-
-          console.log("get customer slots " + data);
-          
-          console.log(data);
         },
-        (err: any) => console.log(err)
+        (err: any) => {
+          console.log(err);
+        }
       );
 
 
