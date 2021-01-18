@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { SlotSchedulerService } from '../services/slot-scheduler.service';
 import { BookSlots } from '../shared/book-slots';
 import { HttpStatusConstants } from '../shared/constants/http-status-constants';
 import { ResolverError } from '../shared/resolver-error';
 import { SlotScheduler } from '../shared/slot-scheduler';
+import { ModalComponent } from '../shared/ui-controls/modal-component';
+import { ModalFailureComponent } from '../ui-controls/modal-failure/modal-failure.component';
+import { ModalSuccessComponent } from '../ui-controls/modal-success/modal-success.component';
 
 @Component({
   selector: 'app-book-slot',
@@ -15,8 +19,10 @@ export class BookSlotComponent implements OnInit {
 
   customerAvailableSlots: BookSlots = new BookSlots();
   resolverError: ResolverError = new ResolverError();
+  private bsModalRef: BsModalRef;
+  private modalComponent = new ModalComponent();
 
-  constructor(private slotSchedulerService: SlotSchedulerService, private route: ActivatedRoute) { }
+  constructor(private slotSchedulerService: SlotSchedulerService, private route: ActivatedRoute, private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.customerAvailableSlots.slotModelsInforamtion = [];
@@ -57,4 +63,20 @@ export class BookSlotComponent implements OnInit {
 
   }
 
+
+
+  //openModalWithComponent() {
+  //  let successModalComponent = this.modalComponent.getSuccessModalComponent();
+  //  this.bsModalRef = this.modalService.show(ModalSuccessComponent);
+  //  this.bsModalRef.content.title = successModalComponent.title;
+  //  this.bsModalRef.content.bodyItems = successModalComponent.bodyItems;
+  //}
+
+
+
+  
 }
+
+
+
+

@@ -6,6 +6,10 @@ import { NgForm } from '@angular/forms';
 import { SlotConstants } from '../shared/constants/slot-constants';
 import { TimezoneConstants } from '../shared/constants/timezone-constants';
 import { AppMessagesConstants } from '../shared/constants/app-messages-constants';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ModalComponent } from '../shared/ui-controls/modal-component';
+import { ModalSuccessComponent } from '../ui-controls/modal-success/modal-success.component';
+import { ModalFailureComponent } from '../ui-controls/modal-failure/modal-failure.component';
 
 @Component({
   selector: 'app-share-slot',
@@ -14,7 +18,7 @@ import { AppMessagesConstants } from '../shared/constants/app-messages-constants
 })
 export class ShareSlotComponent implements OnInit {
 
-  constructor(private slotService: SlotService, private timezoneService: TimezoneService) { }
+  constructor(private slotService: SlotService, private timezoneService: TimezoneService, private modalService: BsModalService) { }
 
   slotDetails: SlotDetails;
   timeZones: string[];
@@ -31,6 +35,9 @@ export class ShareSlotComponent implements OnInit {
   validendTime = true;
 
   validationErrors: string[] = [];
+  private bsModalRef: BsModalRef;
+  private modalComponent = new ModalComponent();
+
   ngOnInit(): void {
     this.slotDetails = new SlotDetails();
     this.slotDetails.title = "";
@@ -47,10 +54,10 @@ export class ShareSlotComponent implements OnInit {
     this.slotEndTime.setMinutes(this.slotDate.getMinutes() + SlotConstants.DefaultSlotDurationDifference);
 
     this.slotDuration = this.getSlotDuration(this.slotStartTime, this.slotEndTime);
-    
+
   }
 
- 
+
   saveSlot(slotDetailsForm: NgForm) {
     this.validationErrors.length = 0;
     this.sanitizeSlotDetails(this.slotDetails);
@@ -64,9 +71,18 @@ export class ShareSlotComponent implements OnInit {
       this.slotService.saveSlotDetails(this.slotDetails, this.slotDate, this.slotStartTime, this.slotEndTime)
         .subscribe(
           (data: string) => {
-            console.log("saved slot Details");
+            let successModalComponent = this.modalComponent.getSuccessModalComponent();
+            this.bsModalRef = this.modalService.show(ModalSuccessComponent);
+            this.bsModalRef.content.title = successModalComponent.title;
+            this.bsModalRef.content.bodyItems = successModalComponent.bodyItems;
           },
-          (err: any) => console.log(err)
+          (err: any) => {
+            console.log(err);
+            let successModalComponent = this.modalComponent.getFailureModalComponent();
+            this.bsModalRef = this.modalService.show(ModalFailureComponent);
+            this.bsModalRef.content.title = successModalComponent.title;
+            this.bsModalRef.content.bodyItems = err.errors;
+          }
         );
     }
   }

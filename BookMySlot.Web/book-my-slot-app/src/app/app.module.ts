@@ -17,7 +17,10 @@ import { AddHeaderInterceptor } from './shared/Interceptors/add-header.intercept
 import { BsDatepickerConfig, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TimepickerConfig, TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
 import { NgxSpinnerModule } from 'ngx-bootstrap-spinner';
+import { ModalSuccessComponent } from './ui-controls/modal-success/modal-success.component';
+import { ModalFailureComponent } from './ui-controls/modal-failure/modal-failure.component';
 
 export function getDatepickerConfig(): BsDatepickerConfig {
   return Object.assign(new BsDatepickerConfig(), {
@@ -43,6 +46,13 @@ export function getTimepickerConfig(): TimepickerConfig {
   });
 }
 
+
+export function getModalConfig(): BsModalRef {
+  return Object.assign(new BsModalRef(), {
+    animated: true
+  });
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +64,8 @@ export function getTimepickerConfig(): TimepickerConfig {
     SharedSlotsComponent,
     BookedSlotsComponent,
     ProfileSettingsComponent,
+    ModalSuccessComponent,
+    ModalFailureComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,12 +75,14 @@ export function getTimepickerConfig(): TimepickerConfig {
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
+    ModalModule.forRoot(),
     NgxSpinnerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },
     { provide: BsDatepickerConfig, useFactory: getDatepickerConfig },
-    { provide: TimepickerConfig, useFactory: getTimepickerConfig  },
+    { provide: TimepickerConfig, useFactory: getTimepickerConfig },
+    { provide: BsModalRef, useFactory: getModalConfig },
   ],
   bootstrap: [AppComponent]
 })
