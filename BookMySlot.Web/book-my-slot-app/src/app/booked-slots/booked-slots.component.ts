@@ -51,16 +51,10 @@ export class BookedSlotsComponent implements OnInit {
     this.emailService.resendSlotInformation(bookedSlotModelInformation, this.bookedBy)
       .subscribe(
         (data: boolean) => {
-          let successModalComponent = this.modalComponent.getSuccessModalComponent();
-          this.bsModalRef = this.modalService.show(ModalSuccessComponent);
-          this.bsModalRef.content.title = successModalComponent.title;
-          this.bsModalRef.content.bodyItems = successModalComponent.bodyItems;
+          this.showSuccessModal();
         },
         (err: any) => {
-          let failureModalComponent = this.modalComponent.getFailureModalComponent();
-          this.bsModalRef = this.modalService.show(ModalFailureComponent);
-          this.bsModalRef.content.title = failureModalComponent.title;
-          this.bsModalRef.content.bodyItems = err.errors;
+          this.showFailureModal(err);
         }
       );
   }
@@ -72,16 +66,10 @@ export class BookedSlotsComponent implements OnInit {
       .subscribe(
         (data: boolean) => {
           this.customerBookedSlots.splice(index, 1);
-          let successModalComponent = this.modalComponent.getSuccessModalComponent();
-          this.bsModalRef = this.modalService.show(ModalSuccessComponent);
-          this.bsModalRef.content.title = successModalComponent.title;
-          this.bsModalRef.content.bodyItems = successModalComponent.bodyItems;
+          this.showSuccessModal();
         },
         (err: any) => {
-          let failureModalComponent = this.modalComponent.getFailureModalComponent();
-          this.bsModalRef = this.modalService.show(ModalFailureComponent);
-          this.bsModalRef.content.title = failureModalComponent.title;
-          this.bsModalRef.content.bodyItems = err.errors;
+          this.showFailureModal(err);
         }
       );
 
@@ -101,10 +89,7 @@ export class BookedSlotsComponent implements OnInit {
         (err: any) => {
           this.customerBookedSlots = [];
           if (err.statusCode != HttpStatusConstants.NotFound) {
-            let failureModalComponent = this.modalComponent.getFailureModalComponent();
-            this.bsModalRef = this.modalService.show(ModalFailureComponent);
-            this.bsModalRef.content.title = failureModalComponent.title;
-            this.bsModalRef.content.bodyItems = err.errors;
+            this.showFailureModal(err);
           }
         }
       );
@@ -120,10 +105,7 @@ export class BookedSlotsComponent implements OnInit {
         (err: any) => {
           this.customerCompletedSlots = [];
           if (err.statusCode != HttpStatusConstants.NotFound) {
-            let failureModalComponent = this.modalComponent.getFailureModalComponent();
-            this.bsModalRef = this.modalService.show(ModalFailureComponent);
-            this.bsModalRef.content.title = failureModalComponent.title;
-            this.bsModalRef.content.bodyItems = err.errors;
+            this.showFailureModal(err);
           }
         }
       );
@@ -140,13 +122,27 @@ export class BookedSlotsComponent implements OnInit {
         (err: any) => {
           this.customerCancelledSlots = [];
           if (err.statusCode != HttpStatusConstants.NotFound) {
-            let failureModalComponent = this.modalComponent.getFailureModalComponent();
-            this.bsModalRef = this.modalService.show(ModalFailureComponent);
-            this.bsModalRef.content.title = failureModalComponent.title;
-            this.bsModalRef.content.bodyItems = err.errors;
+            this.showFailureModal(err);
           }
         }
       );
+  }
+
+
+
+
+  private showSuccessModal() {
+    let successModalComponent = this.modalComponent.getSuccessModalComponent();
+    this.bsModalRef = this.modalService.show(ModalSuccessComponent);
+    this.bsModalRef.content.title = successModalComponent.title;
+    this.bsModalRef.content.bodyItems = successModalComponent.bodyItems;
+  }
+
+  private showFailureModal(err: any) {
+    let failureModalComponent = this.modalComponent.getFailureModalComponent();
+    this.bsModalRef = this.modalService.show(ModalFailureComponent);
+    this.bsModalRef.content.title = failureModalComponent.title;
+    this.bsModalRef.content.bodyItems = err.errors;
   }
 
 }
