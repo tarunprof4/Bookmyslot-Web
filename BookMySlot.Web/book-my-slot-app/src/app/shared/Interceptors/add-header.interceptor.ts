@@ -28,8 +28,8 @@ export class AddHeaderInterceptor implements HttpInterceptor {
     return next.handle(jsonReq)
       .pipe(
         tap(event => {
+          this.spinner.hide();
           if (event.type === HttpEventType.Response) {
-            this.spinner.hide();
             console.log("Interceptor response" + event.body);
           }
         })

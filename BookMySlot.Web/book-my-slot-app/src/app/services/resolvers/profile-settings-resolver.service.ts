@@ -18,10 +18,7 @@ export class ProfileSettingsResolverService implements Resolve<ProfileSettings |
     //let emailId = route.data['emailId'];
     return this.customerService.getProfileSettings("b@gmail.com")
       .pipe(
-        catchError(
-          err =>
-            of(err)
-        )
+        catchError(err => of(err))
       );
   }
 }

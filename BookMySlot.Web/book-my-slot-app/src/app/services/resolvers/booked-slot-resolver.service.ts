@@ -19,10 +19,7 @@ export class BookedSlotResolverService implements Resolve<BookedSlot[] | Resolve
     let key = "10a5b1d6d1a7497eb4b59bf95e0793a2";
     return this.bookedSlotService.getCustomerBookedSlots(key)
       .pipe(
-        catchError(
-          err =>
-            of(err)
-        )
+        catchError(err => of(err))
       );
   }
 }

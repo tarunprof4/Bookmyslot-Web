@@ -21,10 +21,7 @@ export class BookSlotResolverService implements Resolve<BookSlots | ResolverErro
     let key = route.paramMap.get('key');
     return this.customerSlotService.getCustomerAvailableSlots(PaginationConstants.StartPage, PaginationConstants.PageSize, key)
       .pipe(
-        catchError(
-          err =>
-            of(err)
-        )
+        catchError(err => of(err))
       );
   }
 }

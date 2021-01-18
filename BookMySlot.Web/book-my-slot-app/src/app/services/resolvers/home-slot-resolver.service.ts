@@ -18,10 +18,7 @@ export class HomeSlotResolverService implements Resolve<CustomerSlots | Resolver
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<CustomerSlots | ResolverError> {
     return this.customerSlotService.getDistinctCustomersNearestSlotFromToday(PaginationConstants.StartPage, PaginationConstants.PageSize)
       .pipe(
-        catchError(
-          err =>
-            of(err)
-        )
+        catchError(err => of(err))
       );
   }
 }

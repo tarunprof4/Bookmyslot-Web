@@ -49,7 +49,7 @@ export class SharedSlotsComponent implements OnInit {
   
 
 
-  onResendEmail(sharedSlotModelInformation: string,) {
+  onResendEmail(sharedSlotModelInformation: string) {
     this.emailService.resendSlotInformation(sharedSlotModelInformation, this.sharedSlotBy)
       .subscribe(
         (data: boolean) => {
