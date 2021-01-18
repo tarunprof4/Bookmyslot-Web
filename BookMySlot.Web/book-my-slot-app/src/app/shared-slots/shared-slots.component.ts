@@ -20,7 +20,7 @@ export class SharedSlotsComponent implements OnInit {
   customerCompletedSlots: ShareSlot[] = [];
   customerCancelledSlots: CancelledSlotDetails[] = [];
 
-  sharedSlotBy: string = "10a5b1d6d1a7497eb4b59bf95e0793a2";
+  sharedSlotBy: string = "26eca53c21344dea874c99cc1df9ceef";
 
   constructor(private sharedSlotService: SharedSlotService, private emailService: EmailService, private slotService: SlotService, private route: ActivatedRoute) { }
 

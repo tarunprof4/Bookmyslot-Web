@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CustomerSlotService } from '../services/customer-slot.service';
 import { SlotSchedulerService } from '../services/slot-scheduler.service';
 import { BookSlots } from '../shared/book-slots';
-import { CustomerSlots } from '../shared/customer-slots';
 import { ResolverError } from '../shared/resolver-error';
 import { SlotScheduler } from '../shared/slot-scheduler';
 
@@ -16,7 +14,7 @@ export class BookSlotComponent implements OnInit {
 
   customerAvailableSlots: BookSlots;
 
-  constructor(private customerSlotService: CustomerSlotService, private slotSchedulerService: SlotSchedulerService, private route: ActivatedRoute) { }
+  constructor(private slotSchedulerService: SlotSchedulerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
