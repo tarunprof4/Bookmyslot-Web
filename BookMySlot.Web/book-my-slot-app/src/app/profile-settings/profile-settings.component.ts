@@ -46,7 +46,9 @@ export class ProfileSettingsComponent implements OnInit {
         (data: boolean) => {
           console.log("saved " + data);
         },
-        (err: any) => console.log(err)
+        (err: any) => {
+          
+        }
       );
   }
 

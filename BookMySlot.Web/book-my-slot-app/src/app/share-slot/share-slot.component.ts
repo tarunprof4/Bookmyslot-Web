@@ -78,9 +78,9 @@ export class ShareSlotComponent implements OnInit {
           },
           (err: any) => {
             console.log(err);
-            let successModalComponent = this.modalComponent.getFailureModalComponent();
+            let failureModalComponent = this.modalComponent.getFailureModalComponent();
             this.bsModalRef = this.modalService.show(ModalFailureComponent);
-            this.bsModalRef.content.title = successModalComponent.title;
+            this.bsModalRef.content.title = failureModalComponent.title;
             this.bsModalRef.content.bodyItems = err.errors;
           }
         );

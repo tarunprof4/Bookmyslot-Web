@@ -53,24 +53,22 @@ export class BookSlotComponent implements OnInit {
       .subscribe(
         (data: boolean) => {
           this.customerAvailableSlots.slotModelsInforamtion.splice(index, 1);
+          let successModalComponent = this.modalComponent.getSuccessModalComponent();
+          this.bsModalRef = this.modalService.show(ModalSuccessComponent);
+          this.bsModalRef.content.title = successModalComponent.title;
+          this.bsModalRef.content.bodyItems = successModalComponent.bodyItems;
         },
         (err: any) => {
-          console.log(err);
+          let failureModalComponent = this.modalComponent.getFailureModalComponent();
+          this.bsModalRef = this.modalService.show(ModalFailureComponent);
+          this.bsModalRef.content.title = failureModalComponent.title;
+          this.bsModalRef.content.bodyItems = err.errors;
         }
       );
 
 
 
   }
-
-
-
-  //openModalWithComponent() {
-  //  let successModalComponent = this.modalComponent.getSuccessModalComponent();
-  //  this.bsModalRef = this.modalService.show(ModalSuccessComponent);
-  //  this.bsModalRef.content.title = successModalComponent.title;
-  //  this.bsModalRef.content.bodyItems = successModalComponent.bodyItems;
-  //}
 
 
 
