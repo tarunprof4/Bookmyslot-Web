@@ -9,15 +9,17 @@ import {
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Guid } from "guid-typescript";
+import { NgxSpinnerService } from 'ngx-bootstrap-spinner';
 
 
 @Injectable()
 export class AddHeaderInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(private spinner: NgxSpinnerService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
+    this.spinner.show();
     let requestId = Guid.create().toString();
     let jsonReq: HttpRequest<any> = req.clone({
       setHeaders: { 'Content-Type': 'application/json', 'ui-request-id': requestId }
@@ -27,6 +29,7 @@ export class AddHeaderInterceptor implements HttpInterceptor {
       .pipe(
         tap(event => {
           if (event.type === HttpEventType.Response) {
+            this.spinner.hide();
             console.log("Interceptor response" + event.body);
           }
         })

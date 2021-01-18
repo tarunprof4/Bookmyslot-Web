@@ -13,11 +13,11 @@ import { BookedSlotsComponent } from './booked-slots/booked-slots.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { CustomerService } from './services/customer.service';
 import { AddHeaderInterceptor } from './shared/Interceptors/add-header.interceptor';
 import { BsDatepickerConfig, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TimepickerConfig, TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { NgxSpinnerModule } from 'ngx-bootstrap-spinner';
 
 export function getDatepickerConfig(): BsDatepickerConfig {
   return Object.assign(new BsDatepickerConfig(), {
@@ -63,6 +63,7 @@ export function getTimepickerConfig(): TimepickerConfig {
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
+    NgxSpinnerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },
