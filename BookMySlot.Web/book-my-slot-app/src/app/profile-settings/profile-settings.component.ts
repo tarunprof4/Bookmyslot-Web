@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { CustomerService } from '../services/customer.service';
 import { GenderService } from '../services/gender.service';
 import { HttpStatusConstants } from '../shared/constants/http-status-constants';
 import { RegexConstants } from '../shared/constants/regex-constants';
 import { ProfileSettings } from '../shared/profile-settings';
 import { ResolverError } from '../shared/resolver-error';
+import { ModalComponent } from '../shared/ui-controls/modal-component';
+import { ModalFailureComponent } from '../ui-controls/modal-failure/modal-failure.component';
+import { ModalSuccessComponent } from '../ui-controls/modal-success/modal-success.component';
 
 @Component({
   selector: 'app-profile-settings',
@@ -15,12 +19,14 @@ import { ResolverError } from '../shared/resolver-error';
 })
 export class ProfileSettingsComponent implements OnInit {
 
-  constructor(private customerService: CustomerService, private genderService: GenderService, private route: ActivatedRoute) { }
+  constructor(private customerService: CustomerService, private genderService: GenderService, private route: ActivatedRoute, private modalService: BsModalService) { }
 
   public regexConstants = RegexConstants;
   public profileSettings: ProfileSettings;
   public genders: string[];
   resolverError: ResolverError = new ResolverError();
+  private bsModalRef: BsModalRef;
+  private modalComponent = new ModalComponent();
 
   ngOnInit(): void {
 
@@ -44,10 +50,16 @@ export class ProfileSettingsComponent implements OnInit {
     this.customerService.updateProfileSettings(profileSettings)
       .subscribe(
         (data: boolean) => {
-          console.log("saved " + data);
+          let successModalComponent = this.modalComponent.getSuccessModalComponent();
+          this.bsModalRef = this.modalService.show(ModalSuccessComponent);
+          this.bsModalRef.content.title = successModalComponent.title;
+          this.bsModalRef.content.bodyItems = successModalComponent.bodyItems;
         },
         (err: any) => {
-          
+          let failureModalComponent = this.modalComponent.getFailureModalComponent();
+          this.bsModalRef = this.modalService.show(ModalFailureComponent);
+          this.bsModalRef.content.title = failureModalComponent.title;
+          this.bsModalRef.content.bodyItems = err.errors;
         }
       );
   }
