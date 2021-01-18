@@ -5,6 +5,7 @@ import { EmailService } from '../services/email.service';
 import { SlotService } from '../services/slot.service';
 import { BookedSlot } from '../shared/booked-slot';
 import { CancelledSlotInformation } from '../shared/cancelled-slot-information';
+import { HttpStatusConstants } from '../shared/constants/http-status-constants';
 import { ResolverError } from '../shared/resolver-error';
 
 @Component({
@@ -17,6 +18,7 @@ export class BookedSlotsComponent implements OnInit {
   customerBookedSlots: BookedSlot[] = [];
   customerCompletedSlots: BookedSlot[] = [];
   customerCancelledSlots: CancelledSlotInformation[] = [];
+  resolverError: ResolverError;
   bookedBy: string = "10a5b1d6d1a7497eb4b59bf95e0793a2";
 
   constructor(private bookedSlotService: BookedSlotService, private emailService: EmailService,  private slotService: SlotService, private route: ActivatedRoute) { }
@@ -26,6 +28,10 @@ export class BookedSlotsComponent implements OnInit {
     let initCustomerBookedSlots: BookedSlot[] | ResolverError = this.route.snapshot.data['resolvedCustomerBookedSlots'];
 
     if (initCustomerBookedSlots instanceof ResolverError) {
+      this.resolverError = initCustomerBookedSlots;
+      if (this.resolverError.statusCode == HttpStatusConstants.NotFound) {
+        this.resolverError.errors = [];
+      }
     }
     else {
 
