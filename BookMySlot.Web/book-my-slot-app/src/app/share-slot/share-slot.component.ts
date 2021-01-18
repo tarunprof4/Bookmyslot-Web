@@ -19,6 +19,7 @@ export class ShareSlotComponent implements OnInit {
   slotDetails: SlotDetails;
   timeZones: string[];
 
+  slotDate: Date = this.getTodaysDate();
   slotMinDate: Date = this.getTodaysDate();
   slotMaxDate: Date = this.getTodaysDate();
   slotStartTime: Date | undefined = this.getTodaysDate();
@@ -33,18 +34,17 @@ export class ShareSlotComponent implements OnInit {
   ngOnInit(): void {
     this.slotDetails = new SlotDetails();
     this.slotDetails.title = "";
-    this.slotDetails.slotDate = this.getTodaysDate();
 
 
     this.timeZones = this.timezoneService.getTimeZones();
     this.slotDetails.timeZone = TimezoneConstants.India;
 
     this.slotMaxDate.setDate(this.slotMaxDate.getDate() + SlotConstants.SlotLastDateDifference);
-    this.slotDetails.slotDate.setDate(this.slotDetails.slotDate.getDate() + SlotConstants.DefaultSlotDateDifference);
+    this.slotDate.setDate(this.slotDate.getDate() + SlotConstants.DefaultSlotDateDifference);
 
 
-    this.slotStartTime.setMinutes(this.slotDetails.slotDate.getMinutes());
-    this.slotEndTime.setMinutes(this.slotDetails.slotDate.getMinutes() + SlotConstants.DefaultSlotDurationDifference);
+    this.slotStartTime.setMinutes(this.slotDate.getMinutes());
+    this.slotEndTime.setMinutes(this.slotDate.getMinutes() + SlotConstants.DefaultSlotDurationDifference);
 
     this.slotDuration = this.getSlotDuration(this.slotStartTime, this.slotEndTime);
     
@@ -61,7 +61,7 @@ export class ShareSlotComponent implements OnInit {
     }
 
     if (slotDetailsForm.valid && this.validstartTime && this.validendTime && this.slotDuration && this.slotDuration >= SlotConstants.DefaultSlotDurationDifference) {
-      this.slotService.saveSlotDetails(this.slotDetails, this.slotStartTime, this.slotEndTime)
+      this.slotService.saveSlotDetails(this.slotDetails, this.slotDate, this.slotStartTime, this.slotEndTime)
         .subscribe(
           (data: string) => {
             console.log("saved slot Details");

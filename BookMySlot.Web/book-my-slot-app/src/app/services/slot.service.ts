@@ -6,20 +6,23 @@ import { CancelSlot } from '../shared/cancel-slot';
 import { HttpStatusConstants } from '../shared/constants/http-status-constants';
 import { ResolverError } from '../shared/resolver-error';
 import { SlotDetails } from '../shared/slot-details';
+import { DateTimeHelperService } from './date-time-helper.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SlotService {
-  
+
   private slotDetailsUrl = '/api/v1/slot';
   private cancelSlotUrl = 'api/v1/Slot/CancelSlot';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private dateTimeHelperService: DateTimeHelperService) { }
 
-  public saveSlotDetails(slotDetails: SlotDetails, slotStartTime: Date, slotEndTime: Date): Observable<string | ResolverError> {
-    slotDetails.slotStartTime = this.getTimeSpan(slotStartTime);
-    slotDetails.slotEndTime = this.getTimeSpan(slotEndTime);
+  public saveSlotDetails(slotDetails: SlotDetails, slotDate: Date, slotStartTime: Date, slotEndTime: Date): Observable<string | ResolverError> {
+    slotDetails.slotDate = this.dateTimeHelperService.getDateString(slotDate);
+    slotDetails.slotStartTime = this.dateTimeHelperService.getTimeSpan(slotStartTime);
+    slotDetails.slotEndTime = this.dateTimeHelperService.getTimeSpan(slotEndTime);
+
     return this.httpClient.post<string>(this.slotDetailsUrl, slotDetails).pipe(
       //tap((email: string) => console.log(email)),
       catchError(err => this.handleHttpError(err))
@@ -37,35 +40,11 @@ export class SlotService {
   }
 
 
-  private getTimeSpan(date: Date): string {
-    let timeSpan = date.getHours() + ":" + date.getMinutes() + ":" + "0";
-    return timeSpan;
-  }
+
 
   private handleHttpError(error: HttpErrorResponse): Observable<ResolverError> {
     let resolverError = new ResolverError();
 
-    resolverError.statusCode = error.status;
-    console.log(error);
-
-
-    if (resolverError.statusCode == HttpStatusConstants.NotFound) {
-      resolverError.errors.push("No records found");
-    }
-
-    else if (resolverError.statusCode == HttpStatusConstants.BadRequest) {
-      resolverError.errors = error.error;
-    }
-
-    else if (resolverError.statusCode == HttpStatusConstants.InternalServerError) {
-      resolverError.errors.push("Some issue with service please try later");
-    }
-
-
-    else if (resolverError.statusCode == HttpStatusConstants.GatewayTimeOut) {
-      resolverError.errors.push("Some issue with service please try later");
-    }
-
-    return throwError(resolverError);
+    return resolverError.handleHttpError(error);
   }
 }
