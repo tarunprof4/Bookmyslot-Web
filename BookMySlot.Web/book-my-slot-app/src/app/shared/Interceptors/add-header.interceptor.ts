@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,
@@ -20,9 +21,9 @@ export class AddHeaderInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     this.spinner.show();
-    let requestId = Guid.create().toString();
+    let correlationId = Guid.create().toString();
     let jsonReq: HttpRequest<any> = req.clone({
-      setHeaders: { 'Content-Type': 'application/json', 'ui-request-id': requestId }
+      setHeaders: { 'Content-Type': 'application/json', 'cor-relation-id': correlationId }
     });
 
     return next.handle(jsonReq)
