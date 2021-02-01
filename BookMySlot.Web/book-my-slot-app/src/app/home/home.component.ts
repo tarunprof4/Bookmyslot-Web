@@ -18,9 +18,10 @@ export class HomeComponent implements OnInit {
   customerSlots: CustomerSlots[] = [];
   resolverError: ResolverError = new ResolverError();
 
-  constructor(private customerSlotService: CustomerSlotService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private customerSlotService: CustomerSlotService, private route: ActivatedRoute,  private router: Router) { }
 
   ngOnInit(): void {
+
     let initCustomerSlots: CustomerSlots[] | ResolverError = this.route.snapshot.data['resolvedHomeSlots'];
 
     if (initCustomerSlots instanceof ResolverError) {

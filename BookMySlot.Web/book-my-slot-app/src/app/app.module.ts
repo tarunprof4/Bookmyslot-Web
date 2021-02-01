@@ -21,6 +21,10 @@ import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
 import { NgxSpinnerModule } from 'ngx-bootstrap-spinner';
 import { ModalSuccessComponent } from './ui-controls/modal-success/modal-success.component';
 import { ModalFailureComponent } from './ui-controls/modal-failure/modal-failure.component';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+import { LoginComponent } from './login/login.component';
+import { NgxWebstorageModule } from 'ngx-webstorage';
+
 
 export function getDatepickerConfig(): BsDatepickerConfig {
   return Object.assign(new BsDatepickerConfig(), {
@@ -53,6 +57,9 @@ export function getModalConfig(): BsModalRef {
   });
 }
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,6 +73,7 @@ export function getModalConfig(): BsModalRef {
     ProfileSettingsComponent,
     ModalSuccessComponent,
     ModalFailureComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,13 +84,33 @@ export function getModalConfig(): BsModalRef {
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
     ModalModule.forRoot(),
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    SocialLoginModule,
+    NgxWebstorageModule.forRoot(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },
     { provide: BsDatepickerConfig, useFactory: getDatepickerConfig },
     { provide: TimepickerConfig, useFactory: getTimepickerConfig },
     { provide: BsModalRef, useFactory: getModalConfig },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '952200248622-8cn9oq0n1fnp0rjga6vsb9oh67kkkt8s.apps.googleusercontent.com'
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('2817970748513714')
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    }
   ],
   bootstrap: [AppComponent]
 })

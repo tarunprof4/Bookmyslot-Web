@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+  import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BookSlotComponent } from './book-slot/book-slot.component';
 import { BookedSlotsComponent } from './booked-slots/booked-slots.component';
@@ -22,8 +22,8 @@ const routes: Routes = [
   { path: 'booked-slots', component: BookedSlotsComponent, resolve: { resolvedCustomerBookedSlots: BookedSlotResolverService } },
   { path: 'profile-settings', component: ProfileSettingsComponent, resolve: { resolvedProfileSettings: ProfileSettingsResolverService } },
   
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', redirectTo: '/home', pathMatch: 'full' },
+  //{ path: '', redirectTo: '/', pathMatch: 'full' },
+  //{ path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SocialAuthService } from 'angularx-social-login';
 import { CustomerService } from '../services/customer.service';
 import { ProfileSettings } from '../shared/profile-settings';
 
@@ -9,7 +10,7 @@ import { ProfileSettings } from '../shared/profile-settings';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private customerService: CustomerService) { }
+  constructor(private customerService: CustomerService, private authService: SocialAuthService) { }
 
   profileSettings: ProfileSettings;
 
@@ -25,5 +26,12 @@ export class NavBarComponent implements OnInit {
         (err: any) => console.log(err)
       );
   }
+
+
+
+  logOut(): void {
+    this.authService.signOut();
+  }
+
 
 }
