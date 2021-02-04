@@ -12,18 +12,20 @@ import { ProfileSettingsResolverService } from './services/resolvers/profile-set
 import { SharedSlotResolverService } from './services/resolvers/shared-slot-resolver.service';
 import { ShareSlotComponent } from './share-slot/share-slot.component';
 import { SharedSlotsComponent } from './shared-slots/shared-slots.component';
+import { RoutingConstants } from './shared/constants/routing-constants';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent, resolve: { resolvedHomeSlots: HomeSlotResolverService } },
-  { path: 'book-slot/:key', component: BookSlotComponent, resolve: { resolvedBookCustomerSlots: BookSlotResolverService } },
-  { path: 'share-slot', component: ShareSlotComponent },
-  { path: 'shared-slots', component: SharedSlotsComponent, resolve: { resolvedCustomerBookedSlots: SharedSlotResolverService } },
-  { path: 'booked-slots', component: BookedSlotsComponent, resolve: { resolvedCustomerBookedSlots: BookedSlotResolverService } },
-  { path: 'profile-settings', component: ProfileSettingsComponent, resolve: { resolvedProfileSettings: ProfileSettingsResolverService } },
+  { path: RoutingConstants.Home, component: HomeComponent, resolve: { resolvedHomeSlots: HomeSlotResolverService }, canActivate: [AuthGuard] },
+  { path: RoutingConstants.BookSlot, component: BookSlotComponent, resolve: { resolvedBookCustomerSlots: BookSlotResolverService }, canActivate: [AuthGuard] },
+  { path: RoutingConstants.ShareSlot, component: ShareSlotComponent, canActivate: [AuthGuard] },
+  { path: RoutingConstants.SharedSlots, component: SharedSlotsComponent, resolve: { resolvedCustomerBookedSlots: SharedSlotResolverService }, canActivate: [AuthGuard] },
+  { path: RoutingConstants.BookedSlots, component: BookedSlotsComponent, resolve: { resolvedCustomerBookedSlots: BookedSlotResolverService }, canActivate: [AuthGuard] },
+  { path: RoutingConstants.ProfileSettings, component: ProfileSettingsComponent, resolve: { resolvedProfileSettings: ProfileSettingsResolverService }, canActivate: [AuthGuard] },
   
   //{ path: '', redirectTo: '/', pathMatch: 'full' },
-  //{ path: '**', redirectTo: '/', pathMatch: 'full' },
+  //{ path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({
@@ -31,3 +33,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+
+

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FacebookLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { SessionStorageService } from 'ngx-webstorage';
+import { AuthConstants } from '../shared/constants/auth-constants';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class AuthService {
 
   isUserLoggedIn(): boolean {
 
-    let user = this.sessionStorageService.retrieve("user");
+    let user = this.sessionStorageService.retrieve(AuthConstants.JwtAuthAccessToken);
     if (user) {
       return true;
     }

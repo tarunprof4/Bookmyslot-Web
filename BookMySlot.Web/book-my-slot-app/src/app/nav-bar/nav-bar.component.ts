@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SocialAuthService } from 'angularx-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { CustomerService } from '../services/customer.service';
 import { ProfileSettings } from '../shared/profile-settings';
 
@@ -30,7 +30,8 @@ export class NavBarComponent implements OnInit {
 
 
   logOut(): void {
-    this.authService.signOut();
+    this.authService.refreshAuthToken(FacebookLoginProvider.PROVIDER_ID);
+    //this.authService.signOut();
   }
 
 

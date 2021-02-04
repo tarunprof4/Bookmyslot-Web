@@ -11,19 +11,27 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Guid } from "guid-typescript";
 import { NgxSpinnerService } from 'ngx-bootstrap-spinner';
+import { SessionStorageService } from 'ngx-webstorage';
+import { SocialUser } from 'angularx-social-login';
+import { AuthConstants } from '../constants/auth-constants';
 
 
 @Injectable()
 export class AddHeaderInterceptor implements HttpInterceptor {
 
-  constructor(private spinner: NgxSpinnerService) {}
+  user: SocialUser;
+
+  constructor(private spinner: NgxSpinnerService, private sessionStorageService: SessionStorageService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     this.spinner.show();
     let correlationId = Guid.create().toString();
+    this.user = this.sessionStorageService.retrieve(AuthConstants.JwtAuthAccessToken);
+    let accessToken = this.user.authToken;
+
     let jsonReq: HttpRequest<any> = req.clone({
-      setHeaders: { 'Content-Type': 'application/json', 'cor-relation-id': correlationId }
+      setHeaders: { 'Content-Type': 'application/json', 'cor-relation-id': correlationId, 'Authorization': `Bearer ${accessToken}` }
     });
 
     return next.handle(jsonReq)
