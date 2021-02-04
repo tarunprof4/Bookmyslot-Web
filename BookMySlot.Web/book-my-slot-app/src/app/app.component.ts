@@ -14,7 +14,7 @@ import { RoutingConstants } from './shared/constants/routing-constants';
 export class AppComponent {
   title = 'book-my-slot-app test 1';
   loggedIn: boolean;
-  user: SocialUser;
+  
 
   constructor(private socialAuthService: SocialAuthService, private router: Router, private sessionStorageService: SessionStorageService) { }
 
@@ -24,7 +24,7 @@ export class AppComponent {
     
     this.socialAuthService.authState.subscribe((user) => {
       this.loggedIn = (user != null);
-      this.sessionStorageService.store(AuthConstants.JwtAuthAccessToken, user);
+      
 
       //if (this.loggedIn) {
       //  this.router.navigate([RoutingConstants.Home]);

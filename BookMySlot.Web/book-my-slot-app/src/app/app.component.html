@@ -1,13 +1,11 @@
   <div class="wrapper">
 
 
-  <app-login *ngIf="!loggedIn"></app-login>
+  <!--<app-login *ngIf="!loggedIn"></app-login>-->
 
-  <div *ngIf="loggedIn">
-    <app-header></app-header>
-    <app-nav-bar></app-nav-bar>
+    <app-header  *ngIf="loggedIn"></app-header>
+    <app-nav-bar  *ngIf="loggedIn"></app-nav-bar>
     <router-outlet></router-outlet>
-  </div>
 
 
   <ngx-bootstrap-spinner loadingText="loading"></ngx-bootstrap-spinner>

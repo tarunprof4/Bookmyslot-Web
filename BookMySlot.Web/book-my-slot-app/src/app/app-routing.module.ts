@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BookSlotComponent } from './book-slot/book-slot.component';
 import { BookedSlotsComponent } from './booked-slots/booked-slots.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { BookSlotResolverService } from './services/resolvers/book-slot-resolver.service';
 import { BookedSlotResolverService } from './services/resolvers/booked-slot-resolver.service';
@@ -17,6 +18,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
 
 
 const routes: Routes = [
+  { path: RoutingConstants.Login, component: LoginComponent },
   { path: RoutingConstants.Home, component: HomeComponent, resolve: { resolvedHomeSlots: HomeSlotResolverService }, canActivate: [AuthGuard] },
   { path: RoutingConstants.BookSlot, component: BookSlotComponent, resolve: { resolvedBookCustomerSlots: BookSlotResolverService }, canActivate: [AuthGuard] },
   { path: RoutingConstants.ShareSlot, component: ShareSlotComponent, canActivate: [AuthGuard] },
@@ -24,7 +26,7 @@ const routes: Routes = [
   { path: RoutingConstants.BookedSlots, component: BookedSlotsComponent, resolve: { resolvedCustomerBookedSlots: BookedSlotResolverService }, canActivate: [AuthGuard] },
   { path: RoutingConstants.ProfileSettings, component: ProfileSettingsComponent, resolve: { resolvedProfileSettings: ProfileSettingsResolverService }, canActivate: [AuthGuard] },
   
-  //{ path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: '', redirectTo: RoutingConstants.Login, pathMatch: 'full' },
   //{ path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
