@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
     if (loggedIn) {
       return true;
     }
-    this.router.navigate([RoutingConstants.Login]);
+    this.router.navigate([RoutingConstants.Empty]);
     return false;
   }
   

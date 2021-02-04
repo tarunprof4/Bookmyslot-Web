@@ -1,5 +1,5 @@
 export const RoutingConstants = {
-  Login: 'login',
+  Empty: '',
   Home: 'home',
   BookSlot: 'book-slot/:key',
   ShareSlot: 'share-slot',

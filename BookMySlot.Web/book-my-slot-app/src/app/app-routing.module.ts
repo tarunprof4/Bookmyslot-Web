@@ -18,16 +18,16 @@ import { AuthGuard } from './shared/guards/auth.guard';
 
 
 const routes: Routes = [
-  { path: RoutingConstants.Login, component: LoginComponent },
+  { path: RoutingConstants.Empty, component: LoginComponent },
   { path: RoutingConstants.Home, component: HomeComponent, resolve: { resolvedHomeSlots: HomeSlotResolverService }, canActivate: [AuthGuard] },
   { path: RoutingConstants.BookSlot, component: BookSlotComponent, resolve: { resolvedBookCustomerSlots: BookSlotResolverService }, canActivate: [AuthGuard] },
   { path: RoutingConstants.ShareSlot, component: ShareSlotComponent, canActivate: [AuthGuard] },
   { path: RoutingConstants.SharedSlots, component: SharedSlotsComponent, resolve: { resolvedCustomerBookedSlots: SharedSlotResolverService }, canActivate: [AuthGuard] },
   { path: RoutingConstants.BookedSlots, component: BookedSlotsComponent, resolve: { resolvedCustomerBookedSlots: BookedSlotResolverService }, canActivate: [AuthGuard] },
   { path: RoutingConstants.ProfileSettings, component: ProfileSettingsComponent, resolve: { resolvedProfileSettings: ProfileSettingsResolverService }, canActivate: [AuthGuard] },
-  
-  { path: '', redirectTo: RoutingConstants.Login, pathMatch: 'full' },
-  //{ path: '**', redirectTo: '/home', pathMatch: 'full' },
+
+  //{ path: '', redirectTo: RoutingConstants.Home, pathMatch: 'full' },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({
