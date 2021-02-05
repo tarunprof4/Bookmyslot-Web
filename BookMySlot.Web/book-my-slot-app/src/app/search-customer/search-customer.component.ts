@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { fromEvent } from 'rxjs';
+import { fromEvent, Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map, switchMap } from 'rxjs/operators';
 import { SearchService } from '../services/search.service';
+import { ResolverError } from '../shared/resolver-error';
 import { SearchCustomer } from '../shared/search-customer';
 
 @Component({
@@ -19,19 +20,26 @@ export class SearchCustomerComponent implements OnInit {
 
 
 
-    //let searchBox = document.getElementById('search-customer-box');
+    let searchBox = document.getElementById('search-customer-box');
 
-    //let typeahead = fromEvent(searchBox, 'input').pipe(
-    //  map((e: KeyboardEvent) => (e.target as HTMLInputElement).value),
-    //  filter(text => text.length > 2),
-    //  debounceTime(10),
-    //  distinctUntilChanged(),
-    //  switchMap(searchTerm => ajax(`/api/endpoint?search=${searchTerm}`))
-    //);
+    let typeahead = fromEvent(searchBox, 'input').pipe(
+      map((e: KeyboardEvent) => (e.target as HTMLInputElement).value),
+      filter(text => text.length > 2),
+      debounceTime(10),
+      distinctUntilChanged(),
+      switchMap(searchTerm => this.searchService.searchCustomers(searchTerm))
+    );
 
-    //typeahead.subscribe(data => {
-    //  // Handle the data from the API
-    //});
+    typeahead.subscribe(
+      (data: SearchCustomer[]) => {
+        console.log(data);
+        this.searchedCustomers = data;
+      },
+      (err: any) => {
+        console.log(err);
+        this.searchedCustomers = [];
+      }
+    );
 
 
   }
@@ -39,17 +47,17 @@ export class SearchCustomerComponent implements OnInit {
 
 
 
-  onSearch(searchKey: string) {
-    this.searchService.searchCustomers(searchKey)
-      .subscribe(
-        (data: SearchCustomer[]) => {
-          this.searchedCustomers = data;
-        },
-        (err: any) => {
-          this.searchedCustomers = [];
-        }
-      );
-  }
+  //onSearch(searchKey: string): Observable<SearchCustomer[] | ResolverError > {
+  //  this.searchService.searchCustomers(searchKey)
+  //    .subscribe(
+  //      (data: SearchCustomer[]) => {
+  //        this.searchedCustomers = data;
+  //      },
+  //      (err: any) => {
+  //        this.searchedCustomers = [];
+  //      }
+  //    );
+  //}
 
 
 
