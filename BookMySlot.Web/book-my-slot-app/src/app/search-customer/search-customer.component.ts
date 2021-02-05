@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { fromEvent } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map, switchMap } from 'rxjs/operators';
 import { SearchService } from '../services/search.service';
 import { SearchCustomer } from '../shared/search-customer';
 
@@ -14,6 +16,24 @@ export class SearchCustomerComponent implements OnInit {
   constructor(private searchService: SearchService) { }
 
   ngOnInit(): void {
+
+
+
+    //let searchBox = document.getElementById('search-customer-box');
+
+    //let typeahead = fromEvent(searchBox, 'input').pipe(
+    //  map((e: KeyboardEvent) => (e.target as HTMLInputElement).value),
+    //  filter(text => text.length > 2),
+    //  debounceTime(10),
+    //  distinctUntilChanged(),
+    //  switchMap(searchTerm => ajax(`/api/endpoint?search=${searchTerm}`))
+    //);
+
+    //typeahead.subscribe(data => {
+    //  // Handle the data from the API
+    //});
+
+
   }
 
 
@@ -30,5 +50,14 @@ export class SearchCustomerComponent implements OnInit {
         }
       );
   }
+
+
+
+  onSearchSelectedCustomer(id: string) {
+    console.log(id);
+  }
+
+
+
 
 }
