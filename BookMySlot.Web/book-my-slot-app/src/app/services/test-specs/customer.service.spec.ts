@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
+import { CustomerService } from '../customer.service';
 
-import { TimezoneService } from './timezone.service';
 
-describe('TimezoneService', () => {
-  let service: TimezoneService;
+describe('CustomerService', () => {
+  let service: CustomerService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(TimezoneService);
+    service = TestBed.inject(CustomerService);
   });
 
   it('should be created', () => {
