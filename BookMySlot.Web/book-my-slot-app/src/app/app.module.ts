@@ -22,6 +22,9 @@ import { NgxSpinnerModule } from 'ngx-bootstrap-spinner';
 import { ModalSuccessComponent } from './ui-controls/modal-success/modal-success.component';
 import { ModalFailureComponent } from './ui-controls/modal-failure/modal-failure.component';
 import { SearchCustomerComponent } from './search-customer/search-customer.component';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { TypeaheadConfig } from 'ngx-bootstrap/typeahead';
+
 
 export function getDatepickerConfig(): BsDatepickerConfig {
   return Object.assign(new BsDatepickerConfig(), {
@@ -54,6 +57,15 @@ export function getModalConfig(): BsModalRef {
   });
 }
 
+
+export function getTypeaheadConfig(): TypeaheadConfig {
+  return Object.assign(new TypeaheadConfig(), {
+    hideResultsOnBlur: false,
+    isAnimated: true,
+    minLength : 1
+  });
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,13 +90,16 @@ export function getModalConfig(): BsModalRef {
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
     ModalModule.forRoot(),
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    TypeaheadModule.forRoot(),
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },
     { provide: BsDatepickerConfig, useFactory: getDatepickerConfig },
     { provide: TimepickerConfig, useFactory: getTimepickerConfig },
     { provide: BsModalRef, useFactory: getModalConfig },
+    { provide: TypeaheadConfig, useFactory: getTypeaheadConfig },
   ],
   bootstrap: [AppComponent]
 })

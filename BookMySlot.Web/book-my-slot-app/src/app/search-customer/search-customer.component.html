@@ -1,4 +1,4 @@
-<form class="form-inline  d-inline">
+<!--<form class="form-inline  d-inline">
   <div class="input-group input-group-sm">
     <input id="search-customer-box" class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
     <div class="input-group-append">
@@ -22,10 +22,39 @@
         <span class="description">Created by</span>
       </div>
     </div>
-   
-  
+
+
 
   </div>
 
 
-</form>
+</form>-->
+
+<ng-template #customItemTemplate let-model="searchedCustomer">
+
+  <div class="row" >
+    <div class="col-md-4" >
+      <div class="user-block">
+        <img class="img-circle img-bordered-sm" src="assets/dist/img/user1-128x128.jpg" alt="user image">
+        <span class="username">
+          <a><span>{{searchedCustomer.fullName}}</span></a>
+        </span>
+        
+      </div>
+    </div>
+  </div>
+
+
+</ng-template>
+
+
+
+<input [(ngModel)]="search"
+       [typeahead]="searchedCustomers"
+       (typeaheadOnSelect)="onSearchSelectedCustomer($event)"
+       [typeaheadItemTemplate]="customItemTemplate"
+              [typeaheadScrollable]="true"
+              typeaheadWaitMs="1000"
+              [typeaheadAsync]="true"
+
+       class="form-control">
