@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
+import { SharedSlotResolverService } from '../shared-slot-resolver.service';
 
-import { SharedSlotResolverService } from './shared-slot-resolver.service';
 
 describe('SharedSlotResolverService', () => {
   let service: SharedSlotResolverService;

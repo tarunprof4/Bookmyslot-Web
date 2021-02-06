@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { BookedSlotService } from '../services/booked-slot.service';
@@ -7,6 +8,7 @@ import { SlotService } from '../services/slot.service';
 import { BookedSlot } from '../shared/booked-slot';
 import { CancelledSlotInformation } from '../shared/cancelled-slot-information';
 import { HttpStatusConstants } from '../shared/constants/http-status-constants';
+import { PageTitleConstants } from '../shared/constants/page-title-constants';
 import { ResolverError } from '../shared/resolver-error';
 import { ModalComponent } from '../shared/ui-controls/modal-component';
 import { ModalFailureComponent } from '../ui-controls/modal-failure/modal-failure.component';
@@ -27,10 +29,10 @@ export class BookedSlotsComponent implements OnInit {
   private bsModalRef: BsModalRef;
   private modalComponent = new ModalComponent();
 
-  constructor(private bookedSlotService: BookedSlotService, private emailService: EmailService, private slotService: SlotService, private route: ActivatedRoute, private modalService: BsModalService) { }
+  constructor(private bookedSlotService: BookedSlotService, private emailService: EmailService, private slotService: SlotService, private route: ActivatedRoute, private modalService: BsModalService, private title: Title) { }
 
   ngOnInit(): void {
-
+    this.title.setTitle(PageTitleConstants.BookedSlots);
     let initCustomerBookedSlots: BookedSlot[] | ResolverError = this.route.snapshot.data['resolvedCustomerBookedSlots'];
 
     if (initCustomerBookedSlots instanceof ResolverError) {
