@@ -36,6 +36,8 @@ import { HomeSlotResolverService } from './services/resolvers/home-slot-resolver
 import { BookSlotResolverService } from './services/resolvers/book-slot-resolver.service';
 import { ProfileSettingsResolverService } from './services/resolvers/profile-settings-resolver.service';
 import { SharedSlotResolverService } from './services/resolvers/shared-slot-resolver.service';
+import { SearchCustomerComponent } from './search-customer/search-customer.component';
+import { TypeaheadConfig, TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
