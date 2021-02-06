@@ -28,7 +28,7 @@ export class SharedSlotsComponent implements OnInit {
   private bsModalRef: BsModalRef;
   private modalComponent = new ModalComponent();
 
-  sharedSlotBy: string = "26eca53c21344dea874c99cc1df9ceef";
+  sharedSlotBy: string = "29645471f47c4555918da55aed49b23a";
 
   constructor(private sharedSlotService: SharedSlotService, private emailService: EmailService, private slotService: SlotService, private route: ActivatedRoute, private modalService: BsModalService) { }
 
