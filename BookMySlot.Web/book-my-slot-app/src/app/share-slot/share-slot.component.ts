@@ -10,6 +10,8 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ModalComponent } from '../shared/ui-controls/modal-component';
 import { ModalSuccessComponent } from '../ui-controls/modal-success/modal-success.component';
 import { ModalFailureComponent } from '../ui-controls/modal-failure/modal-failure.component';
+import { Title } from '@angular/platform-browser';
+import { PageTitleConstants } from '../shared/constants/page-title-constants';
 
 @Component({
   selector: 'app-share-slot',
@@ -18,7 +20,7 @@ import { ModalFailureComponent } from '../ui-controls/modal-failure/modal-failur
 })
 export class ShareSlotComponent implements OnInit {
 
-  constructor(private slotService: SlotService, private timezoneService: TimezoneService, private modalService: BsModalService) { }
+  constructor(private slotService: SlotService, private timezoneService: TimezoneService, private modalService: BsModalService, private title: Title) { }
 
   slotDetails: SlotDetails;
   timeZones: string[];
@@ -39,6 +41,7 @@ export class ShareSlotComponent implements OnInit {
   private modalComponent = new ModalComponent();
 
   ngOnInit(): void {
+    this.title.setTitle(PageTitleConstants.ShareSlot);
     this.slotDetails = new SlotDetails();
     this.slotDetails.title = "";
 

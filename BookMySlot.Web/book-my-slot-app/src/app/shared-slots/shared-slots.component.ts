@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { EmailService } from '../services/email.service';
@@ -6,6 +7,7 @@ import { SharedSlotService } from '../services/shared-slot.service';
 import { SlotService } from '../services/slot.service';
 import { CancelledSlotDetails } from '../shared/cancelled-slot-details';
 import { HttpStatusConstants } from '../shared/constants/http-status-constants';
+import { PageTitleConstants } from '../shared/constants/page-title-constants';
 import { ResolverError } from '../shared/resolver-error';
 import { ShareSlot } from '../shared/shared-slot';
 import { ModalComponent } from '../shared/ui-controls/modal-component';
@@ -30,10 +32,10 @@ export class SharedSlotsComponent implements OnInit {
 
   sharedSlotBy: string = "29645471f47c4555918da55aed49b23a";
 
-  constructor(private sharedSlotService: SharedSlotService, private emailService: EmailService, private slotService: SlotService, private route: ActivatedRoute, private modalService: BsModalService) { }
+  constructor(private sharedSlotService: SharedSlotService, private emailService: EmailService, private slotService: SlotService, private route: ActivatedRoute, private modalService: BsModalService, private title: Title) { }
 
   ngOnInit(): void {
-
+    this.title.setTitle(PageTitleConstants.SharedSlots);
     let initCustomerBookedSlots: ShareSlot[] | ResolverError = this.route.snapshot.data['resolvedCustomerBookedSlots'];
 
     if (initCustomerBookedSlots instanceof ResolverError) {

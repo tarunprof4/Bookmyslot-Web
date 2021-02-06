@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { CustomerService } from '../services/customer.service';
 import { GenderService } from '../services/gender.service';
 import { HttpStatusConstants } from '../shared/constants/http-status-constants';
+import { PageTitleConstants } from '../shared/constants/page-title-constants';
 import { RegexConstants } from '../shared/constants/regex-constants';
 import { ProfileSettings } from '../shared/profile-settings';
 import { ResolverError } from '../shared/resolver-error';
@@ -19,7 +21,7 @@ import { ModalSuccessComponent } from '../ui-controls/modal-success/modal-succes
 })
 export class ProfileSettingsComponent implements OnInit {
 
-  constructor(private customerService: CustomerService, private genderService: GenderService, private route: ActivatedRoute, private modalService: BsModalService) { }
+  constructor(private customerService: CustomerService, private genderService: GenderService, private route: ActivatedRoute, private modalService: BsModalService, private title: Title) { }
 
   public regexConstants = RegexConstants;
   public profileSettings: ProfileSettings;
@@ -29,7 +31,7 @@ export class ProfileSettingsComponent implements OnInit {
   private modalComponent = new ModalComponent();
 
   ngOnInit(): void {
-
+    this.title.setTitle(PageTitleConstants.ProfileSettings);
     let initProfileSettings: ProfileSettings | ResolverError = this.route.snapshot.data['resolvedProfileSettings'];
 
     if (initProfileSettings instanceof ResolverError) {
