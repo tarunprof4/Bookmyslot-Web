@@ -36,7 +36,7 @@ export class SearchCustomerComponent implements OnInit {
 
 
       map((e: KeyboardEvent) => (e.target as HTMLInputElement).value),
-     
+
       debounceTime(300),
       distinctUntilChanged(),
 
@@ -47,19 +47,12 @@ export class SearchCustomerComponent implements OnInit {
           return of([]);
         }
         return this.searchService.searchCustomers(term).pipe(
-
-
           catchError((err: ResolverError) => {
             this.searchedErrors = err.errors;
             return of([]);
           })
         );
-
-      }
-      ),
-
-
-
+      }),
     );
 
 

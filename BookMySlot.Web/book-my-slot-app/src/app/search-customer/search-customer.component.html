@@ -13,7 +13,7 @@
 
 
   <div class="row" *ngFor="let searchedCustomer of searchedCustomers">
-    <div class="col-md-4" (click)="onSearchSelectedCustomer(searchedCustomer.id)">
+    <div class="col-md-4" (click)="onSearchSelectedCustomer(searchedCustomer.fullName)">
       <div class="user-block">
         <img class="img-circle img-bordered-sm" src="assets/dist/img/user1-128x128.jpg" alt="user image">
         <span class="username">
