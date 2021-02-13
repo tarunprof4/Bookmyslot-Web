@@ -36,9 +36,7 @@ export class SearchCustomerComponent implements OnInit {
 
 
       map((e: KeyboardEvent) => (e.target as HTMLInputElement).value),
-      //filter(text =>
-      //  text.length > 2
-      //),
+     
       debounceTime(300),
       distinctUntilChanged(),
 

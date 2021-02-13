@@ -37,7 +37,6 @@ import { BookSlotResolverService } from './services/resolvers/book-slot-resolver
 import { ProfileSettingsResolverService } from './services/resolvers/profile-settings-resolver.service';
 import { SharedSlotResolverService } from './services/resolvers/shared-slot-resolver.service';
 import { SearchCustomerComponent } from './search-customer/search-customer.component';
-import { TypeaheadConfig, TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -72,13 +71,7 @@ export function getModalConfig(): BsModalRef {
 }
 
 
-export function getTypeaheadConfig(): TypeaheadConfig {
-  return Object.assign(new TypeaheadConfig(), {
-    hideResultsOnBlur: false,
-    isAnimated: true,
-    minLength : 1
-  });
-}
+
 
 @NgModule({
   declarations: [
@@ -105,8 +98,6 @@ export function getTypeaheadConfig(): TypeaheadConfig {
     TimepickerModule.forRoot(),
     ModalModule.forRoot(),
     NgxSpinnerModule,
-    TypeaheadModule.forRoot(),
-
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },
