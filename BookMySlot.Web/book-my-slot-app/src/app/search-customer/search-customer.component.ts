@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { fromEvent, noop, Observable, Observer, of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, map, switchMap, tap } from 'rxjs/operators';
+import { fromEvent, noop, Observable, Observer, of, throwError } from 'rxjs';
+import { catchError, debounceTime, distinctUntilChanged, filter, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 import { SearchService } from '../services/search.service';
 import { ResolverError } from '../shared/resolver-error';
 import { SearchCustomer } from '../shared/search-customer';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ModalComponent } from '../shared/ui-controls/modal-component';
+
 
 @Component({
   selector: 'app-search-customer',
@@ -13,78 +16,81 @@ import { SearchCustomer } from '../shared/search-customer';
 export class SearchCustomerComponent implements OnInit {
 
   search: string = '';
-  searchedCustomers: Observable<SearchCustomer[] | ResolverError>;
+  searchedCustomers$: Observable<SearchCustomer[] | ResolverError>;
+
+  searchedCustomers: SearchCustomer[] = [];
+  searchedErrors: string[] = [];
+
+  private bsModalRef: BsModalRef;
+  private modalComponent = new ModalComponent();
 
   constructor(private searchService: SearchService) { }
-
-  //ngOnInit(): void {
-
-
-
-  //  //let searchBox = document.getElementById('search-customer-box');
-
-  //  //let typeahead = fromEvent(searchBox, 'input').pipe(
-  //  //  map((e: KeyboardEvent) => (e.target as HTMLInputElement).value),
-  //  //  filter(text => text.length > 2),
-  //  //  debounceTime(10),
-  //  //  distinctUntilChanged(),
-  //  //  switchMap(searchTerm => this.searchService.searchCustomers(searchTerm))
-  //  //);
-
-  //  //typeahead.subscribe(
-  //  //  (data: SearchCustomer[]) => {
-  //  //    console.log(data);
-  //  //    this.searchedCustomers = data;
-  //  //  },
-  //  //  (err: any) => {
-  //  //    console.log(err);
-  //  //    this.searchedCustomers = [];
-  //  //  }
-  //  //);
-
-
-  //}
-
-
-
-
-  //onSearch(searchKey: string): Observable<SearchCustomer[] | ResolverError > {
-  //  this.searchService.searchCustomers(searchKey)
-  //    .subscribe(
-  //      (data: SearchCustomer[]) => {
-  //        this.searchedCustomers = data;
-  //      },
-  //      (err: any) => {
-  //        this.searchedCustomers = [];
-  //      }
-  //    );
-  //}
-
 
   ngOnInit(): void {
 
 
-    this.searchedCustomers = new Observable((observer: Observer<string>) => {
-      observer.next(this.search);
-    }).pipe(
-      
-      debounceTime(10),
+
+    let searchBox = document.getElementById('search-customer-box');
+
+    let typeahead = fromEvent(searchBox, 'input').pipe(
+
+
+      map((e: KeyboardEvent) => (e.target as HTMLInputElement).value),
+      //filter(text =>
+      //  text.length > 2
+      //),
+      debounceTime(300),
       distinctUntilChanged(),
-      switchMap(searchTerm => this.searchService.searchCustomers(searchTerm))
+
+
+      switchMap((term: string) => {
+        this.searchedErrors = [];
+        if (!term) {
+          return of([]);
+        }
+        return this.searchService.searchCustomers(term).pipe(
+
+
+          catchError((err: ResolverError) => {
+            this.searchedErrors = err.errors;
+            return of([]);
+          })
+        );
+
+      }
+      ),
+
+
+
     );
 
-    //this.searchedCustomers.subscribe(
-    //  (data: SearchCustomer[]) => {
-    //    console.log(data);
-    //    return of(data);
-    //  },
-    //  (err: any) => {
-    //    console.log(err);
-    //    //this.searchedcustomers = [];
-    //  }
-    //);
+
+
+    typeahead.subscribe(
+      (data: SearchCustomer[]) => {
+        console.log("success");
+        this.searchedCustomers = data;
+      },
+      //(err: ResolverError) => {
+      //  console.log("fail");
+      //  console.log(err);
+      //  this.searchedCustomers = []
+      //  //this.searchedCustomers = err.errors;
+      //},
+      //() => {
+      //  console.log("complete");
+      //  //this.searchedCustomers = err.errors;
+      //},
+    );
+
 
   }
+
+
+
+
+
+
 
   onSearchSelectedCustomer(id: string) {
     console.log(id);
@@ -93,13 +99,6 @@ export class SearchCustomerComponent implements OnInit {
 
 
 
-
-  selected: string;
-  states: string[] = [
-    'Alabama',
-    'Alaska',
-    
-  ];
 
 
 }
