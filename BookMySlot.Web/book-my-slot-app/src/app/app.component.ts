@@ -14,7 +14,6 @@ import { RoutingConstants } from './shared/constants/routing-constants';
 export class AppComponent {
   title = 'book-my-slot-app test 1';
   loggedIn: boolean;
-  
 
   constructor(private socialAuthService: SocialAuthService, private router: Router, private sessionStorageService: SessionStorageService) { }
 

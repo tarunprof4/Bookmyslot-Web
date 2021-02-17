@@ -33,10 +33,7 @@ export class LoginComponent implements OnInit {
 
         if (loggedIn) {
 
-          var socialLoginToken = new SocialLoginToken();
-          socialLoginToken.provider = "google";
-          socialLoginToken.token = user.idToken;
-          this.loginService.loginSocialUser(socialLoginToken)
+          this.loginService.loginSocialUser(user)
             .subscribe(
               (token: string) => {
                 this.sessionStorageService.store(AuthConstants.JwtAuthAccessToken, token);

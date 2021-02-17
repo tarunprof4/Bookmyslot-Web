@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { SocialUser } from 'angularx-social-login';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ResolverError } from '../shared/resolver-error';
@@ -22,8 +23,8 @@ export class LoginService {
 
 
 
-  public loginSocialUser(socialLoginToken: SocialLoginToken): Observable<string | ResolverError> {
-    return this.httpClient.post<string>(this.socialLoginUrl, socialLoginToken).pipe(
+  public loginSocialUser(socialUser: SocialUser): Observable<string | ResolverError> {
+    return this.httpClient.post<string>(this.socialLoginUrl, socialUser).pipe(
 
       catchError(err => this.handleHttpError(err))
     );

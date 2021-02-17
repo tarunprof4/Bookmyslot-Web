@@ -31,7 +31,8 @@ export class NavBarComponent implements OnInit {
 
   logOut(): void {
     //this.authService.refreshAuthToken(FacebookLoginProvider.PROVIDER_ID);
-    this.authService.signOut();
+    //this.authService.signOut();
+
   }
 
 
