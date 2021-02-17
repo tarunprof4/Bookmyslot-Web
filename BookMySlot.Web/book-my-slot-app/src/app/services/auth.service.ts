@@ -16,8 +16,8 @@ export class AuthService {
 
   isUserLoggedIn(): boolean {
 
-    let user = this.sessionStorageService.retrieve(AuthConstants.JwtAuthAccessToken);
-    if (user) {
+    let accessToken = this.sessionStorageService.retrieve(AuthConstants.JwtAuthAccessToken);
+    if (accessToken) {
       return true;
     }
 

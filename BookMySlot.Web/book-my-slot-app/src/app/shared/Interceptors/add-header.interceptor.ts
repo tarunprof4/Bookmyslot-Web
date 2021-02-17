@@ -19,7 +19,6 @@ import { AuthConstants } from '../constants/auth-constants';
 @Injectable()
 export class AddHeaderInterceptor implements HttpInterceptor {
 
-  user: SocialUser;
 
   constructor(private spinner: NgxSpinnerService, private sessionStorageService: SessionStorageService) {}
 
@@ -27,8 +26,8 @@ export class AddHeaderInterceptor implements HttpInterceptor {
 
     this.spinner.show();
     let correlationId = Guid.create().toString();
-    this.user = this.sessionStorageService.retrieve(AuthConstants.JwtAuthAccessToken);
-    let accessToken = this.user.authToken;
+    let accessToken = this.sessionStorageService.retrieve(AuthConstants.JwtAuthAccessToken);
+     
 
     let jsonReq: HttpRequest<any> = req.clone({
       setHeaders: { 'Content-Type': 'application/json', 'cor-relation-id': correlationId, 'Authorization': `Bearer ${accessToken}` }

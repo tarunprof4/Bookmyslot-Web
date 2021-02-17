@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
+import { AuthService } from '../services/auth.service';
+import { LoginService } from '../services/login.service';
 import { AuthConstants } from '../shared/constants/auth-constants';
 import { RoutingConstants } from '../shared/constants/routing-constants';
+import { SocialLoginToken } from '../shared/social-login-token';
 
 @Component({
   selector: 'app-login',
@@ -14,18 +17,43 @@ import { RoutingConstants } from '../shared/constants/routing-constants';
 
 export class LoginComponent implements OnInit {
 
-  constructor(private socialAuthService: SocialAuthService, private sessionStorageService: SessionStorageService, private router: Router) { }
-
+  constructor(private socialAuthService: SocialAuthService, private authService: AuthService, private sessionStorageService: SessionStorageService, private router: Router, private loginService: LoginService) { }
   ngOnInit(): void {
 
-    this.socialAuthService.authState.subscribe((user) => {
-      let loggedIn = (user != null);
-      this.sessionStorageService.store(AuthConstants.JwtAuthAccessToken, user);
 
-      if (loggedIn) {
-        this.router.navigate([RoutingConstants.Home]);
-      }
-    });
+    let isUserLoggedIn = this.authService.isUserLoggedIn();
+    if (isUserLoggedIn) {
+      this.router.navigate([RoutingConstants.Home]);
+    }
+
+
+    else {
+      this.socialAuthService.authState.subscribe((user) => {
+        let loggedIn = (user != null);
+
+        if (loggedIn) {
+
+          var socialLoginToken = new SocialLoginToken();
+          socialLoginToken.provider = "google";
+          socialLoginToken.token = user.idToken;
+          this.loginService.loginSocialUser(socialLoginToken)
+            .subscribe(
+              (token: string) => {
+                this.sessionStorageService.store(AuthConstants.JwtAuthAccessToken, token);
+                this.router.navigate([RoutingConstants.Home]);
+              },
+              (err: any) => {
+                console.log("login failed");
+              }
+            );
+
+        }
+      });
+    }
+   
+
+
+   
 
   }
 
