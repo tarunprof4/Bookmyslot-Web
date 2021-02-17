@@ -36,46 +36,15 @@
   <script src="assets/plugins/jquery/jquery.min.js"></script>
   <script src="assets/plugins/jquery-ui/jquery-ui.min.js"></script>
 
-  <script>
-    $.widget.bridge('uibutton', $.ui.button)
-  </script>
-
   <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/plugins/daterangepicker/daterangepicker.js"></script>
+  
   <script src="assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
   <script src="assets/dist/js/adminlte.js"></script>
   <script src="assets/plugins/bootstrap-slider/bootstrap-slider.min.js"></script>
   <script src="assets/dist/js/demo.js"></script>
 
 
-  <script>
-
-    /* BOOTSTRAP SLIDER */
-    $('.slider').bootstrapSlider();
-    $('.toastsDefaultSuccess').click(function () {
-      $(document).Toasts('create', {
-        class: 'bg-success',
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
-        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
-    $('.toastsDefaultDanger').click(function () {
-      $(document).Toasts('create', {
-        class: 'bg-danger',
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
-        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
-    function openOffcanvas1() {
-      document.getElementById("myOffcanvas").style.width = "250px";
-    }
-    function closeOffcanvas() {
-      document.getElementById("myOffcanvas").style.width = "0%";
-      document.body.style.backgroundColor = "white";
-    }
-  </script>
+  
 
 </body>
 </html>
