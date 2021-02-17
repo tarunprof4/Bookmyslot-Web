@@ -2,8 +2,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
 import { BookedSlot } from '../shared/booked-slot';
-import { CancelledSlotDetails } from '../shared/cancelled-slot-details';
 import { CancelledSlotInformation } from '../shared/cancelled-slot-information';
 import { ResolverError } from '../shared/resolver-error';
 

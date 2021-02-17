@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ProfileSettings } from '../shared/profile-settings';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { ResolverError } from '../shared/resolver-error';
 
 
