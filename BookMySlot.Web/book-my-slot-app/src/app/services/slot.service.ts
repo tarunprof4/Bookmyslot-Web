@@ -1,9 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { CancelSlot } from '../shared/cancel-slot';
-import { HttpStatusConstants } from '../shared/constants/http-status-constants';
 import { ResolverError } from '../shared/resolver-error';
 import { SlotDetails } from '../shared/slot-details';
 import { DateTimeHelperService } from './date-time-helper.service';

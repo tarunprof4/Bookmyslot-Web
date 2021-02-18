@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
+import { ProfileSettingsResolverService } from '../profile-settings-resolver.service';
 
-import { ProfileSettingsResolverService } from './profile-settings-resolver.service';
 
 describe('ProfileSettingsResolverService', () => {
   let service: ProfileSettingsResolverService;

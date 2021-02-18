@@ -3,92 +3,52 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Company Name</title>
+
   <base href="/">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <!-- Google Font: Source Sans Pro -->
-  <!--<link rel="stylesheet" href="assets/dist/css/googleapis.css">
-  <link rel="stylesheet" href="assets/dist/css/fontawesome.css">
-  <link rel="stylesheet" href="assets/dist/css/ionicframework.css">-->
 
-  <link rel="stylesheet" href="https://unpkg.com/ngx-bootstrap/datepicker/bs-datepicker.css">
 
+
+  <!-- Original -->
+  <!--<link rel="stylesheet" href="https://unpkg.com/ngx-bootstrap/datepicker/bs-datepicker.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-
-
-
-  <!-- Theme style -->
   <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
-  <!-- overlayScrollbars -->
   <link rel="stylesheet" href="assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="assets/dist/css/custom.css">-->
+  <!-- Original  End-->
 
 
-  <!-- Theme style -->
+
+  <link rel="stylesheet" href="assets/dist/css/bs-datepicker.css">
+  <link rel="stylesheet" href="assets/dist/css/googleapis.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="assets/dist/css/ionicframework.css">
+
+  <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <link rel="stylesheet" href="assets/dist/css/custom.css">
+
+
 
 </head>
 <body class="hold-transition layout-fixed">
 
   <app-root></app-root>
 
-  <!-- jQuery -->
   <script src="assets/plugins/jquery/jquery.min.js"></script>
-  <!-- jQuery UI 1.11.4 -->
   <script src="assets/plugins/jquery-ui/jquery-ui.min.js"></script>
 
-  <script>
-    $.widget.bridge('uibutton', $.ui.button)
-  </script>
-
-  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-  <!-- Bootstrap 4 -->
   <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- date-range-picker -->
-  <script src="assets/plugins/daterangepicker/daterangepicker.js"></script>
-  <!-- overlayScrollbars -->
+  
   <script src="assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-  <!-- AdminLTE App -->
   <script src="assets/dist/js/adminlte.js"></script>
-
   <script src="assets/plugins/bootstrap-slider/bootstrap-slider.min.js"></script>
-
-  <!-- AdminLTE for demo purposes -->
   <script src="assets/dist/js/demo.js"></script>
 
 
-  <script>
-
-    /* BOOTSTRAP SLIDER */
-    $('.slider').bootstrapSlider();
-    $('.toastsDefaultSuccess').click(function () {
-      $(document).Toasts('create', {
-        class: 'bg-success',
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
-        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
-    $('.toastsDefaultDanger').click(function () {
-      $(document).Toasts('create', {
-        class: 'bg-danger',
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
-        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
-    function openOffcanvas1() {
-      document.getElementById("myOffcanvas").style.width = "250px";
-    }
-    function closeOffcanvas() {
-      document.getElementById("myOffcanvas").style.width = "0%";
-      //document.getElementById("mainContent").style.marginLeft = "0%";
-      document.body.style.backgroundColor = "white";
-      //document.getElementById("myCanvasNav").style.width = "0%";
-      //document.getElementById("myCanvasNav").style.opacity = "0";
-    }
-  </script>
+  
 
 </body>
 </html>

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
-import { of } from 'rxjs';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ResolverError } from '../../shared/resolver-error';
 import { ShareSlot } from '../../shared/shared-slot';

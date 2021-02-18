@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerSlotService } from '../services/customer-slot.service';
 import { HttpStatusConstants } from '../shared/constants/http-status-constants';
+import { PageTitleConstants } from '../shared/constants/page-title-constants';
 import { PaginationConstants } from '../shared/constants/pagination-constants';
 import { CustomerSlots } from '../shared/customer-slots';
 import { ResolverError } from '../shared/resolver-error';
@@ -18,10 +20,10 @@ export class HomeComponent implements OnInit {
   customerSlots: CustomerSlots[] = [];
   resolverError: ResolverError = new ResolverError();
 
-  constructor(private customerSlotService: CustomerSlotService, private route: ActivatedRoute,  private router: Router) { }
+  constructor(private customerSlotService: CustomerSlotService, private route: ActivatedRoute, private router: Router, private title: Title) { }
 
   ngOnInit(): void {
-
+    this.title.setTitle(PageTitleConstants.Home);
     let initCustomerSlots: CustomerSlots[] | ResolverError = this.route.snapshot.data['resolvedHomeSlots'];
 
     if (initCustomerSlots instanceof ResolverError) {

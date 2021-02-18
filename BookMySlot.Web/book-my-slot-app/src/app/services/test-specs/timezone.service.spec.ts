@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
+import { TimezoneService } from '../timezone.service';
 
-import { SlotSchedulerService } from './slot-scheduler.service';
 
-describe('SlotSchedulerService', () => {
-  let service: SlotSchedulerService;
+describe('TimezoneService', () => {
+  let service: TimezoneService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SlotSchedulerService);
+    service = TestBed.inject(TimezoneService);
   });
 
   it('should be created', () => {

@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ProfileSettings } from '../shared/profile-settings';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { ResolverError } from '../shared/resolver-error';
-import { HttpStatusConstants } from '../shared/constants/http-status-constants';
 
 
 @Injectable({
@@ -14,7 +13,7 @@ export class CustomerService {
 
 
   //private profileSettingsUrl = '/api/v1/profileSettings';
-  private profileSettingsUrl = '/api/v1/customer';
+  private profileSettingsUrl = '/api/v1/ProfileSettings';
 
 
   constructor(private httpClient: HttpClient) { }

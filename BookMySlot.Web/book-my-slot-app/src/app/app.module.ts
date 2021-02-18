@@ -21,6 +21,23 @@ import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
 import { NgxSpinnerModule } from 'ngx-bootstrap-spinner';
 import { ModalSuccessComponent } from './ui-controls/modal-success/modal-success.component';
 import { ModalFailureComponent } from './ui-controls/modal-failure/modal-failure.component';
+import { BookedSlotService } from './services/booked-slot.service';
+import { CustomerService } from './services/customer.service';
+import { CustomerSlotService } from './services/customer-slot.service';
+import { DateTimeHelperService } from './services/date-time-helper.service';
+import { EmailService } from './services/email.service';
+import { GenderService } from './services/gender.service';
+import { SlotService } from './services/slot.service';
+import { SharedSlotService } from './services/shared-slot.service';
+import { SlotSchedulerService } from './services/slot-scheduler.service';
+import { TimezoneService } from './services/timezone.service';
+import { BookedSlotResolverService } from './services/resolvers/booked-slot-resolver.service';
+import { HomeSlotResolverService } from './services/resolvers/home-slot-resolver.service';
+import { BookSlotResolverService } from './services/resolvers/book-slot-resolver.service';
+import { ProfileSettingsResolverService } from './services/resolvers/profile-settings-resolver.service';
+import { SharedSlotResolverService } from './services/resolvers/shared-slot-resolver.service';
+import { SearchCustomerComponent } from './search-customer/search-customer.component';
+
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 import { LoginComponent } from './login/login.component';
 import { NgxWebstorageModule } from 'ngx-webstorage';
@@ -73,6 +90,7 @@ export function getModalConfig(): BsModalRef {
     ProfileSettingsComponent,
     ModalSuccessComponent,
     ModalFailureComponent,
+    SearchCustomerComponent,
     LoginComponent,
   ],
   imports: [
@@ -93,6 +111,21 @@ export function getModalConfig(): BsModalRef {
     { provide: BsDatepickerConfig, useFactory: getDatepickerConfig },
     { provide: TimepickerConfig, useFactory: getTimepickerConfig },
     { provide: BsModalRef, useFactory: getModalConfig },
+    BookedSlotService,
+    CustomerService,
+    CustomerSlotService,
+    DateTimeHelperService,
+    EmailService,
+    GenderService,
+    SharedSlotService,
+    SlotService,
+    SlotSchedulerService,
+    TimezoneService,
+    BookedSlotResolverService,
+    BookSlotResolverService,
+    HomeSlotResolverService,
+    ProfileSettingsResolverService,
+    SharedSlotResolverService
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

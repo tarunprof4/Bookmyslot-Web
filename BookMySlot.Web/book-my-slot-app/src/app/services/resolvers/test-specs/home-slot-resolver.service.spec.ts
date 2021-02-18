@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
+import { HomeSlotResolverService } from '../home-slot-resolver.service';
 
-import { HomeSlotResolverService } from './home-slot-resolver.service';
 
 describe('HomeSlotResolverService', () => {
   let service: HomeSlotResolverService;

@@ -1,0 +1,40 @@
+<form class="form-inline  d-inline">
+  <div class="input-group input-group-sm">
+    <input id="search-customer-box" class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+    <div class="input-group-append">
+      <button class="btn btn-navbar" type="submit">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="row" *ngFor="let searchedCustomer of searchedCustomers">
+    <div class="col-md-4" (click)="onSearchSelectedCustomer(searchedCustomer.fullName)">
+      <div class="user-block">
+        <img class="img-circle img-bordered-sm" src="assets/dist/img/user1-128x128.jpg" alt="user image">
+        <span class="username">
+          <a><span>{{searchedCustomer.fullName}}</span></a>
+        </span>
+        <span class="description">Created by</span>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row" *ngFor="let searchedError of searchedErrors">
+    <div class="col-md-4" >
+      <div class="user-block">
+        <span class="username">
+          <a><span>{{searchedError}}</span></a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+</form>
+
+

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { SlotSchedulerService } from '../services/slot-scheduler.service';
 import { BookSlots } from '../shared/book-slots';
 import { HttpStatusConstants } from '../shared/constants/http-status-constants';
+import { PageTitleConstants } from '../shared/constants/page-title-constants';
 import { ResolverError } from '../shared/resolver-error';
 import { SlotScheduler } from '../shared/slot-scheduler';
 import { ModalComponent } from '../shared/ui-controls/modal-component';
@@ -22,9 +24,10 @@ export class BookSlotComponent implements OnInit {
   private bsModalRef: BsModalRef;
   private modalComponent = new ModalComponent();
 
-  constructor(private slotSchedulerService: SlotSchedulerService, private route: ActivatedRoute, private modalService: BsModalService) { }
+  constructor(private slotSchedulerService: SlotSchedulerService, private route: ActivatedRoute, private modalService: BsModalService, private title: Title) { }
 
   ngOnInit(): void {
+    this.title.setTitle(PageTitleConstants.BookSlot);
     this.customerAvailableSlots.slotModelsInforamtion = [];
     let initCustomerAvailableSlots: BookSlots | ResolverError = this.route.snapshot.data['resolvedBookCustomerSlots'];
 
