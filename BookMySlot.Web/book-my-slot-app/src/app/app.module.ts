@@ -125,7 +125,7 @@ export function getModalConfig(): BsModalRef {
     BookSlotResolverService,
     HomeSlotResolverService,
     ProfileSettingsResolverService,
-    SharedSlotResolverService
+    SharedSlotResolverService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
