@@ -15,15 +15,17 @@ export class AppComponent {
   title = 'book-my-slot-app test 1';
   loggedIn: boolean;
 
-  constructor(private socialAuthService: SocialAuthService, private router: Router, private sessionStorageService: SessionStorageService) { }
+  constructor(private authService: AuthService,private socialAuthService: SocialAuthService, private router: Router, private sessionStorageService: SessionStorageService) { }
 
   ngOnInit() {
 
     
     
     this.socialAuthService.authState.subscribe((user) => {
-      this.loggedIn = (user != null);
-      
+      //this.loggedIn = (user != null);
+
+
+      this.loggedIn = this.authService.isUserLoggedIn();
 
       //if (this.loggedIn) {
       //  this.router.navigate([RoutingConstants.Home]);

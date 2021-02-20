@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
             .subscribe(
               (token: string) => {
                 this.sessionStorageService.store(AuthConstants.JwtAuthAccessToken, token);
+                this.socialAuthService.signOut();
                 this.router.navigate([RoutingConstants.Home]);
               },
               (err: any) => {
