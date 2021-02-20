@@ -29,29 +29,25 @@ export class LoginComponent implements OnInit {
 
     else {
       this.socialAuthService.authState.subscribe((user) => {
-        let loggedIn = (user != null);
 
-        if (loggedIn) {
+        this.loginService.loginSocialUser(user)
+          .subscribe(
+            (token: string) => {
+              this.sessionStorageService.store(AuthConstants.JwtAuthAccessToken, token);
+              
+              this.router.navigate([RoutingConstants.Home]);
+            },
+            (err: any) => {
+              console.log("login failed");
+            }
+          );
 
-          this.loginService.loginSocialUser(user)
-            .subscribe(
-              (token: string) => {
-                this.sessionStorageService.store(AuthConstants.JwtAuthAccessToken, token);
-                this.socialAuthService.signOut();
-                this.router.navigate([RoutingConstants.Home]);
-              },
-              (err: any) => {
-                console.log("login failed");
-              }
-            );
-
-        }
       });
     }
-   
 
 
-   
+
+
 
   }
 

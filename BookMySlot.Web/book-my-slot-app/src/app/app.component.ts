@@ -19,13 +19,13 @@ export class AppComponent {
 
   ngOnInit() {
 
-    
+    this.loggedIn = this.authService.isUserLoggedIn();
     
     this.socialAuthService.authState.subscribe((user) => {
-      //this.loggedIn = (user != null);
+      this.loggedIn = (user != null);
 
 
-      this.loggedIn = this.authService.isUserLoggedIn();
+      //this.socialAuthService.signOut();
 
       //if (this.loggedIn) {
       //  this.router.navigate([RoutingConstants.Home]);

@@ -76,7 +76,6 @@ export function getModalConfig(): BsModalRef {
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -129,7 +128,7 @@ export function getModalConfig(): BsModalRef {
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
-        autoLogin: true,
+        autoLogin: false,
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
@@ -139,7 +138,7 @@ export function getModalConfig(): BsModalRef {
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('2817970748513714')
+            provider: new FacebookLoginProvider('180612660487206')
           }
         ]
       } as SocialAuthServiceConfig,
