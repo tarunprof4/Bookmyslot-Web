@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 import { ResolverError } from '../shared/resolver-error';
 import { SlotScheduler } from '../shared/slot-scheduler';
 
@@ -12,7 +13,9 @@ import { SlotScheduler } from '../shared/slot-scheduler';
 
 export class SlotSchedulerService {
 
-  private slotSchedulerUrl = '/api/v1/SlotScheduler';
+  
+  //private slotSchedulerUrl = '/api/v1/SlotScheduler';
+  private slotSchedulerUrl = environment.apiUrl + '/api/v1/SlotScheduler';
 
   constructor(private httpClient: HttpClient) { }
 

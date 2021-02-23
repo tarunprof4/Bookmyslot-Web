@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 import { ResolverError } from '../shared/resolver-error';
 import { SearchCustomer } from '../shared/search-customer';
 
@@ -10,7 +11,10 @@ import { SearchCustomer } from '../shared/search-customer';
 })
 export class SearchService {
 
-  private searchCustomerUrl = '/api/v1/searchcustomer';
+  //private searchCustomerUrl = '/api/v1/searchcustomer';
+  private searchCustomerUrl = environment.apiUrl + '/api/v1/searchcustomer';
+
+
   constructor(private httpClient: HttpClient) { }
 
 

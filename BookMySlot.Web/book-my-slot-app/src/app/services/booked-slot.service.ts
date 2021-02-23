@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 import { BookedSlot } from '../shared/booked-slot';
 import { CancelledSlotInformation } from '../shared/cancelled-slot-information';
@@ -13,9 +14,15 @@ import { ResolverError } from '../shared/resolver-error';
 
 export class BookedSlotService {
 
-  private getCustomerBookedSlotsUrl = 'api/v1/CustomerBookedSlot/GetCustomerBookedSlots';
-  private getCustomerCompletedSlotsUrl = 'api/v1/CustomerBookedSlot/GetCustomerCompletedSlots';
-  private getCustomerCancelledSlotsUrl = 'api/v1/CustomerBookedSlot/GetCustomerCancelledSlots';
+  private getCustomerBookedSlotsUrl = environment.apiUrl + 'api/v1/CustomerBookedSlot/GetCustomerBookedSlots';
+  private getCustomerCompletedSlotsUrl = environment.apiUrl + 'api/v1/CustomerBookedSlot/GetCustomerCompletedSlots';
+  private getCustomerCancelledSlotsUrl = environment.apiUrl + 'api/v1/CustomerBookedSlot/GetCustomerCancelledSlots';
+
+
+  //private getCustomerBookedSlotsUrl = 'api/v1/CustomerBookedSlot/GetCustomerBookedSlots';
+  //private getCustomerCompletedSlotsUrl = 'api/v1/CustomerBookedSlot/GetCustomerCompletedSlots';
+  //private getCustomerCancelledSlotsUrl = 'api/v1/CustomerBookedSlot/GetCustomerCancelledSlots';
+
 
   constructor(private httpClient: HttpClient) { }
 

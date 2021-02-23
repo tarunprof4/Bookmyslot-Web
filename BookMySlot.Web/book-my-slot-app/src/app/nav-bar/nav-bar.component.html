@@ -19,24 +19,16 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-header">EXAMPLES</li>
           <li class="nav-item">
-            <a class="nav-link" (click)="logOut()">
-              <i class="nav-icon fas fa-sign-out"></i>
-              <p>
-                Logout
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="/home" class="nav-link">
+            <a routerLink="home" class="nav-link">
               <i class="nav-icon far fa-home"></i>
               <p>
                 Home
               </p>
             </a>
           </li>
-
+         
           <li class="nav-item">
-            <a href="/share-slot" class="nav-link">
+            <a routerLink="share-slot" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Share slot
@@ -44,7 +36,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/shared-slots" class="nav-link">
+            <a routerLink="shared-slots" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Shared Slots
@@ -52,7 +44,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/booked-slots" class="nav-link">
+            <a routerLink="booked-slots" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Booked Slots
@@ -60,7 +52,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/profile-settings" class="nav-link">
+            <a routerLink="profile-settings" class="nav-link">
               <i class="nav-icon far fa-user-circle"></i>
               <p>
                 Profile Settings
@@ -83,7 +75,14 @@
               </p>
             </a>
           </li>
-
+          <li class="nav-item">
+            <a href="login.html" class="nav-link">
+              <i class="nav-icon fas fa-sign-out"></i>
+              <p>
+                Logout
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
 
