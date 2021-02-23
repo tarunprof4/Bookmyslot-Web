@@ -18,10 +18,10 @@ export class SharedSlotService {
   //private getCustomerCompletedSlotsUrl = 'api/v1/CustomerSharedSlot/GetCustomerCompletedSlots';
   //private getCustomerCancelledSlotsUrl = 'api/v1/CustomerSharedSlot/GetCustomerCancelledSlots';
 
-  private getCustomerYetToBeBookedSlotsUrl = environment.apiUrl + 'api/v1/CustomerSharedSlot/GetCustomerYetToBeBookedSlots';
-  private getCustomerBookedSlotsUrl = environment.apiUrl + 'api/v1/CustomerSharedSlot/GetCustomerBookedSlots';
-  private getCustomerCompletedSlotsUrl = environment.apiUrl + 'api/v1/CustomerSharedSlot/GetCustomerCompletedSlots';
-  private getCustomerCancelledSlotsUrl = environment.apiUrl + 'api/v1/CustomerSharedSlot/GetCustomerCancelledSlots';
+  private getCustomerYetToBeBookedSlotsUrl = environment.apiUrl + '/api/v1/CustomerSharedSlot/GetCustomerYetToBeBookedSlots';
+  private getCustomerBookedSlotsUrl = environment.apiUrl + '/api/v1/CustomerSharedSlot/GetCustomerBookedSlots';
+  private getCustomerCompletedSlotsUrl = environment.apiUrl + '/api/v1/CustomerSharedSlot/GetCustomerCompletedSlots';
+  private getCustomerCancelledSlotsUrl = environment.apiUrl + '/api/v1/CustomerSharedSlot/GetCustomerCancelledSlots';
 
 
   constructor(private httpClient: HttpClient) { }

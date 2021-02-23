@@ -22,6 +22,10 @@ export class ResolverError {
       resolverError.errors = error.error;
     }
 
+    else if (resolverError.statusCode == HttpStatusConstants.UnAuthorized) {
+      resolverError.errors.push("UnAuthorized");
+    }
+
     else if (resolverError.statusCode == HttpStatusConstants.InternalServerError) {
       resolverError.errors.push("Some issue with service please try later");
     }

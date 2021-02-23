@@ -14,9 +14,9 @@ import { ResolverError } from '../shared/resolver-error';
 
 export class BookedSlotService {
 
-  private getCustomerBookedSlotsUrl = environment.apiUrl + 'api/v1/CustomerBookedSlot/GetCustomerBookedSlots';
-  private getCustomerCompletedSlotsUrl = environment.apiUrl + 'api/v1/CustomerBookedSlot/GetCustomerCompletedSlots';
-  private getCustomerCancelledSlotsUrl = environment.apiUrl + 'api/v1/CustomerBookedSlot/GetCustomerCancelledSlots';
+  private getCustomerBookedSlotsUrl = environment.apiUrl + '/api/v1/CustomerBookedSlot/GetCustomerBookedSlots';
+  private getCustomerCompletedSlotsUrl = environment.apiUrl + '/api/v1/CustomerBookedSlot/GetCustomerCompletedSlots';
+  private getCustomerCancelledSlotsUrl = environment.apiUrl + '/api/v1/CustomerBookedSlot/GetCustomerCancelledSlots';
 
 
   //private getCustomerBookedSlotsUrl = 'api/v1/CustomerBookedSlot/GetCustomerBookedSlots';

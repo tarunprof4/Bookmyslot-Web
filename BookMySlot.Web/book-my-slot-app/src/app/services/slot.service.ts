@@ -14,7 +14,7 @@ import { DateTimeHelperService } from './date-time-helper.service';
 export class SlotService {
 
   private slotDetailsUrl = environment.apiUrl + '/api/v1/slot';
-  private cancelSlotUrl = environment.apiUrl + 'api/v1/Slot/CancelSlot';
+  private cancelSlotUrl = environment.apiUrl + '/api/v1/Slot/CancelSlot';
   //private slotDetailsUrl = '/api/v1/slot';
   //private cancelSlotUrl = 'api/v1/Slot/CancelSlot';
 

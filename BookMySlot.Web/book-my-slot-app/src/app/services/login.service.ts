@@ -16,7 +16,7 @@ import { SocialLoginToken } from '../shared/social-login-token';
 export class LoginService {
 
 
-  private socialLoginUrl = environment.apiUrl + 'api/v1/Login/SocialCustomerLogin';
+  private socialLoginUrl = environment.apiUrl + '/api/v1/Login/SocialCustomerLogin';
   //private socialLoginUrl = 'api/v1/Login/SocialCustomerLogin';
 
 

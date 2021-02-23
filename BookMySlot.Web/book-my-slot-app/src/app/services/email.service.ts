@@ -13,7 +13,7 @@ import { ResolverError } from '../shared/resolver-error';
 export class EmailService {
 
   //private resendEmailUrl = 'api/v1/Email/ResendSlotInformation';
-  private resendEmailUrl = environment.apiUrl + 'api/v1/Email/ResendSlotInformation';
+  private resendEmailUrl = environment.apiUrl + '/api/v1/Email/ResendSlotInformation';
 
 
   constructor(private httpClient: HttpClient) { }
