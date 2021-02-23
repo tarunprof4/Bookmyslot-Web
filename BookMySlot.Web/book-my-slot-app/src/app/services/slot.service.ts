@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 import { CancelSlot } from '../shared/cancel-slot';
 import { ResolverError } from '../shared/resolver-error';
 import { SlotDetails } from '../shared/slot-details';
@@ -12,8 +13,10 @@ import { DateTimeHelperService } from './date-time-helper.service';
 })
 export class SlotService {
 
-  private slotDetailsUrl = '/api/v1/slot';
-  private cancelSlotUrl = 'api/v1/Slot/CancelSlot';
+  private slotDetailsUrl = environment.apiUrl + '/api/v1/slot';
+  private cancelSlotUrl = environment.apiUrl + 'api/v1/Slot/CancelSlot';
+  //private slotDetailsUrl = '/api/v1/slot';
+  //private cancelSlotUrl = 'api/v1/Slot/CancelSlot';
 
   constructor(private httpClient: HttpClient, private dateTimeHelperService: DateTimeHelperService) { }
 
