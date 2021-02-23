@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ResolverError } from '../shared/resolver-error';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -12,8 +13,8 @@ import { ResolverError } from '../shared/resolver-error';
 export class CustomerService {
 
 
-  //private profileSettingsUrl = '/api/v1/profileSettings';
-  private profileSettingsUrl = '/api/v1/ProfileSettings';
+  private profileSettingsUrl = environment.apiUrl + '/api/v1/profileSettings';
+  //private profileSettingsUrl = '/api/v1/ProfileSettings';
 
 
   constructor(private httpClient: HttpClient) { }
@@ -40,7 +41,7 @@ export class CustomerService {
   }
 
 
- 
+
 
 
   private handleHttpError(error: HttpErrorResponse): Observable<ResolverError> {

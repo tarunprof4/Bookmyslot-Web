@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 import { BookSlots } from '../shared/book-slots';
 import { CustomerSlots } from '../shared/customer-slots';
 import { ResolverError } from '../shared/resolver-error';
@@ -14,9 +15,13 @@ import { SlotScheduler } from '../shared/slot-scheduler';
 
 export class CustomerSlotService {
 
-  private getDistinctCustomersNearestSlotFromTodayUrl = '/api/v1/CustomerSlot/GetDistinctCustomersNearestSlotFromToday';
-  private getCustomerAvailableSlotsUrl = '/api/v1/CustomerSlot/GetCustomerAvailableSlots';
-  private slotSchedulerUrl = '/api/v1/SlotScheduler';
+  //private getDistinctCustomersNearestSlotFromTodayUrl = '/api/v1/CustomerSlot/GetDistinctCustomersNearestSlotFromToday';
+  //private getCustomerAvailableSlotsUrl = '/api/v1/CustomerSlot/GetCustomerAvailableSlots';
+  //private slotSchedulerUrl = '/api/v1/SlotScheduler';
+
+  private getDistinctCustomersNearestSlotFromTodayUrl = environment.apiUrl + '/api/v1/CustomerSlot/GetDistinctCustomersNearestSlotFromToday';
+  private getCustomerAvailableSlotsUrl = environment.apiUrl + '/api/v1/CustomerSlot/GetCustomerAvailableSlots';
+  private slotSchedulerUrl = environment.apiUrl + '/api/v1/SlotScheduler';
 
   constructor(private httpClient: HttpClient) { }
 
