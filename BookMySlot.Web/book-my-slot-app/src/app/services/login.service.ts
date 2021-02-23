@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { SocialUser } from 'angularx-social-login';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 import { ResolverError } from '../shared/resolver-error';
 import { SocialLoginToken } from '../shared/social-login-token';
 
@@ -15,8 +16,8 @@ import { SocialLoginToken } from '../shared/social-login-token';
 export class LoginService {
 
 
-  //private profileSettingsUrl = '/api/v1/profileSettings';
-  private socialLoginUrl = 'api/v1/Login/SocialCustomerLogin';
+  private socialLoginUrl = environment.apiUrl + 'api/v1/Login/SocialCustomerLogin';
+  //private socialLoginUrl = 'api/v1/Login/SocialCustomerLogin';
 
 
   constructor(private httpClient: HttpClient) { }
