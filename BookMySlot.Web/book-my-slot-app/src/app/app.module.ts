@@ -133,7 +133,7 @@ export function getModalConfig(): BsModalRef {
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '952200248622-8cn9oq0n1fnp0rjga6vsb9oh67kkkt8s.apps.googleusercontent.com'
+              '44462035680-mjdhi2mvqoe54011ehdp7749gh4o5gnf.apps.googleusercontent.com'
             )
           },
           {
