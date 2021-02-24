@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { CustomerService } from '../services/customer.service';
+import { RoutingConstants } from '../shared/constants/routing-constants';
 import { ProfileSettings } from '../shared/profile-settings';
 
 @Component({
@@ -11,13 +12,14 @@ import { ProfileSettings } from '../shared/profile-settings';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private customerService: CustomerService, private authService: AuthService, private socialAuthService: SocialAuthService) { }
+  constructor(private customerService: CustomerService, private authService: AuthService, private router: Router) { }
 
   profileSettings: ProfileSettings;
+  routingConstants = RoutingConstants;
 
   ngOnInit(): void {
 
-    let email = "b@gmail.com";
+    
     this.customerService.getProfileSettings()
       .subscribe(
         (data: ProfileSettings) => {
@@ -32,6 +34,7 @@ export class NavBarComponent implements OnInit {
 
   logOut(): void {
     this.authService.logOut();
+    this.router.navigate([RoutingConstants.Empty]);
   }
 
 
