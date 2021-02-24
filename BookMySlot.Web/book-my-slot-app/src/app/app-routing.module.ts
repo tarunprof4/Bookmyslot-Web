@@ -18,7 +18,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
 
 
 const routes: Routes = [
-  { path: RoutingConstants.Empty, component: LoginComponent },
+  { path: RoutingConstants.Empty, component: LoginComponent, pathMatch: 'full' },
   { path: RoutingConstants.Home, component: HomeComponent, resolve: { resolvedHomeSlots: HomeSlotResolverService }, canActivate: [AuthGuard] },
   { path: RoutingConstants.BookSlot, component: BookSlotComponent, resolve: { resolvedBookCustomerSlots: BookSlotResolverService }, canActivate: [AuthGuard] },
   { path: RoutingConstants.ShareSlot, component: ShareSlotComponent, canActivate: [AuthGuard] },
