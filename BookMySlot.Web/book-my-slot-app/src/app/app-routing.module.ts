@@ -26,8 +26,7 @@ const routes: Routes = [
   { path: RoutingConstants.BookedSlots, component: BookedSlotsComponent, resolve: { resolvedCustomerBookedSlots: BookedSlotResolverService }, canActivate: [AuthGuard] },
   { path: RoutingConstants.ProfileSettings, component: ProfileSettingsComponent, resolve: { resolvedProfileSettings: ProfileSettingsResolverService }, canActivate: [AuthGuard] },
 
-  //{ path: '', redirectTo: RoutingConstants.Home, pathMatch: 'full' },
-  { path: '**', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: RoutingConstants.Home, pathMatch: 'full' },
 ];
 
 @NgModule({
