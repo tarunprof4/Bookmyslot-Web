@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
-import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
+import { LocalStorageService } from 'ngx-webstorage';
 import { AuthService } from '../services/auth.service';
 import { LoginService } from '../services/login.service';
 import { AuthConstants } from '../shared/constants/auth-constants';
 import { RoutingConstants } from '../shared/constants/routing-constants';
-import { SocialLoginToken } from '../shared/social-login-token';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +16,7 @@ import { SocialLoginToken } from '../shared/social-login-token';
 
 export class LoginComponent implements OnInit {
 
-  constructor(private socialAuthService: SocialAuthService, private authService: AuthService, private sessionStorageService: SessionStorageService, private router: Router, private loginService: LoginService) { }
+  constructor(private socialAuthService: SocialAuthService, private authService: AuthService, private localStorageService: LocalStorageService, private router: Router, private loginService: LoginService) { }
   ngOnInit(): void {
 
 
@@ -33,7 +32,7 @@ export class LoginComponent implements OnInit {
         this.loginService.loginSocialUser(user)
           .subscribe(
             (token: string) => {
-              this.sessionStorageService.store(AuthConstants.JwtAuthAccessToken, token);
+              this.localStorageService.store(AuthConstants.JwtAuthAccessToken, token);
               
               this.router.navigate([RoutingConstants.Home]);
             },

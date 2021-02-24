@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FacebookLoginProvider, SocialAuthService } from 'angularx-social-login';
-import { SessionStorageService } from 'ngx-webstorage';
+import { LocalStorageService } from 'ngx-webstorage';
 import { AuthConstants } from '../shared/constants/auth-constants';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { AuthConstants } from '../shared/constants/auth-constants';
 })
 export class AuthService {
 
-  constructor(private sessionStorageService: SessionStorageService) { }
+  constructor(private localStorageService: LocalStorageService) { }
 
   facebookLoginProvider: FacebookLoginProvider = new FacebookLoginProvider('2817970748513714');
 
@@ -16,7 +16,7 @@ export class AuthService {
 
   isUserLoggedIn(): boolean {
 
-    let accessToken = this.sessionStorageService.retrieve(AuthConstants.JwtAuthAccessToken);
+    let accessToken = this.localStorageService.retrieve(AuthConstants.JwtAuthAccessToken);
     if (accessToken) {
       return true;
     }
@@ -24,5 +24,10 @@ export class AuthService {
     return false;
   }
 
+
+
+  logOut() {
+    this.localStorageService.clear(AuthConstants.JwtAuthAccessToken);
+  }
 
 }
