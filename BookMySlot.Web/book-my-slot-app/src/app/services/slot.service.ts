@@ -31,10 +31,9 @@ export class SlotService {
     );
   }
 
-  public cancelSlot(slotKey: string, deletedBy: string): Observable<boolean | ResolverError> {
+  public cancelSlot(slotKey: string): Observable<boolean | ResolverError> {
     let cancelSlot = new CancelSlot();
     cancelSlot.slotKey = slotKey;
-    cancelSlot.cancelledBy = deletedBy;
     return this.httpClient.post<boolean>(this.cancelSlotUrl, cancelSlot).pipe(
       catchError(err => this.handleHttpError(err))
     );

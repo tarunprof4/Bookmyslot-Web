@@ -16,8 +16,7 @@ export class BookedSlotResolverService implements Resolve<BookedSlot[] | Resolve
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<BookedSlot[] | ResolverError> {
 
-    let key = "10a5b1d6d1a7497eb4b59bf95e0793a2";
-    return this.bookedSlotService.getCustomerBookedSlots(key)
+    return this.bookedSlotService.getCustomerBookedSlots()
       .pipe(
         catchError(err => of(err))
       );

@@ -25,7 +25,6 @@ export class BookedSlotsComponent implements OnInit {
   customerCompletedSlots: BookedSlot[] = [];
   customerCancelledSlots: CancelledSlotInformation[] = [];
   resolverError: ResolverError = new ResolverError();
-  bookedBy: string = "10a5b1d6d1a7497eb4b59bf95e0793a2";
   private bsModalRef: BsModalRef;
   private modalComponent = new ModalComponent();
 
@@ -50,7 +49,7 @@ export class BookedSlotsComponent implements OnInit {
 
 
   onResendEmail(bookedSlotModelInformation: string) {
-    this.emailService.resendSlotInformation(bookedSlotModelInformation, this.bookedBy)
+    this.emailService.resendSlotInformation(bookedSlotModelInformation)
       .subscribe(
         (data: boolean) => {
           this.showSuccessModal();
@@ -64,7 +63,7 @@ export class BookedSlotsComponent implements OnInit {
 
   onBookedSlotCancel(bookedSlotModelInformation: string, index: number) {
 
-    this.slotService.cancelSlot(bookedSlotModelInformation, this.bookedBy)
+    this.slotService.cancelSlot(bookedSlotModelInformation)
       .subscribe(
         (data: boolean) => {
           this.customerBookedSlots.splice(index, 1);
@@ -83,7 +82,7 @@ export class BookedSlotsComponent implements OnInit {
   getBookedSlots() {
 
 
-    this.bookedSlotService.getCustomerBookedSlots(this.bookedBy)
+    this.bookedSlotService.getCustomerBookedSlots()
       .subscribe(
         (data: BookedSlot[]) => {
           this.customerBookedSlots = data;
@@ -99,7 +98,7 @@ export class BookedSlotsComponent implements OnInit {
   }
 
   getCompletedSlots() {
-    this.bookedSlotService.getCustomerCompletedSlots(this.bookedBy)
+    this.bookedSlotService.getCustomerCompletedSlots()
       .subscribe(
         (data: BookedSlot[]) => {
           this.customerCompletedSlots = data;
@@ -116,7 +115,7 @@ export class BookedSlotsComponent implements OnInit {
   }
 
   getCancelledSlots() {
-    this.bookedSlotService.getCustomerCancelledSlots(this.bookedBy)
+    this.bookedSlotService.getCustomerCancelledSlots()
       .subscribe(
         (data: CancelledSlotInformation[]) => {
           this.customerCancelledSlots = data;

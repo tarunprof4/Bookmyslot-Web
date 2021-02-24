@@ -26,26 +26,23 @@ export class BookedSlotService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getCustomerBookedSlots(key: string): Observable<BookedSlot[] | ResolverError> {
-    let url = `${this.getCustomerBookedSlotsUrl + "?customerId=" + key}`;
-    return this.httpClient.get<BookedSlot[]>(url)
+  public getCustomerBookedSlots(): Observable<BookedSlot[] | ResolverError> {
+    return this.httpClient.get<BookedSlot[]>(this.getCustomerBookedSlotsUrl)
       .pipe(
         catchError(err => this.handleHttpError(err))
       );
   }
 
-  public getCustomerCompletedSlots(key: string): Observable<BookedSlot[] | ResolverError> {
-    let url = `${this.getCustomerCompletedSlotsUrl + "?customerId=" + key}`;
-    return this.httpClient.get<BookedSlot[]>(url)
+  public getCustomerCompletedSlots(): Observable<BookedSlot[] | ResolverError> {
+    return this.httpClient.get<BookedSlot[]>(this.getCustomerCompletedSlotsUrl)
       .pipe(
         catchError(err => this.handleHttpError(err))
       );
   }
 
 
-  public getCustomerCancelledSlots(key: string): Observable<CancelledSlotInformation[] | ResolverError> {
-    let url = `${this.getCustomerCancelledSlotsUrl + "?customerId=" + key}`;
-    return this.httpClient.get<CancelledSlotInformation[]>(url)
+  public getCustomerCancelledSlots(): Observable<CancelledSlotInformation[] | ResolverError> {
+    return this.httpClient.get<CancelledSlotInformation[]>(this.getCustomerCancelledSlotsUrl)
       .pipe(
         catchError(err => this.handleHttpError(err))
       );

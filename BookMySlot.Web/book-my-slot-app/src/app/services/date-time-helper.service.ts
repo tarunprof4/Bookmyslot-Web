@@ -16,7 +16,7 @@ export class DateTimeHelperService {
 
 
   getDateString(date: Date): string {
-    let dateString = date.getDate() + "-" + date.getMonth() + 1 + "-" + date.getFullYear();
+    let dateString = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
     return dateString;
   }
 }

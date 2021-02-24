@@ -20,10 +20,9 @@ export class EmailService {
 
 
 
-  public resendSlotInformation(slotKey: string, resendTo: string): Observable<boolean | ResolverError> {
+  public resendSlotInformation(slotKey: string): Observable<boolean | ResolverError> {
     let resendSlotInformation = new ResendSlotInformation();
     resendSlotInformation.resendSlotModel = slotKey;
-    resendSlotInformation.resendTo = resendTo;
     return this.httpClient.post<boolean>(this.resendEmailUrl, resendSlotInformation).pipe(
       catchError(err => this.handleHttpError(err))
     );

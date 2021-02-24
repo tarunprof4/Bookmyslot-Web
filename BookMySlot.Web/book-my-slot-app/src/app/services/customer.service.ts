@@ -19,11 +19,8 @@ export class CustomerService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getProfileSettings(email: string): Observable<ProfileSettings | ResolverError> {
-
-    let profileSettingsUrlById = `${this.profileSettingsUrl}/${email}`;
-
-    return this.httpClient.get<ProfileSettings>(profileSettingsUrlById)
+  public getProfileSettings(): Observable<ProfileSettings | ResolverError> {
+    return this.httpClient.get<ProfileSettings>(this.profileSettingsUrl)
       .pipe(
         catchError(err => this.handleHttpError(err))
       );

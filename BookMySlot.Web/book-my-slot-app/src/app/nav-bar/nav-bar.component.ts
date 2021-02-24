@@ -18,7 +18,7 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
 
     let email = "b@gmail.com";
-    this.customerService.getProfileSettings(email)
+    this.customerService.getProfileSettings()
       .subscribe(
         (data: ProfileSettings) => {
           console.log("saved " + data);
@@ -31,9 +31,7 @@ export class NavBarComponent implements OnInit {
 
 
   logOut(): void {
-    //this.authService.refreshAuthToken(FacebookLoginProvider.PROVIDER_ID);
     this.authService.logOut();
-
   }
 
 

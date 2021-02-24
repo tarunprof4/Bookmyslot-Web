@@ -46,7 +46,6 @@ export class CustomerSlotService {
 
   public scheduleSlot(slotScheduler: SlotScheduler): Observable<boolean | ResolverError> {
     return this.httpClient.post<boolean>(this.slotSchedulerUrl, slotScheduler).pipe(
-      //tap((email: string) => console.log(email)),
       catchError(err => this.handleHttpError(err))
     );
   }

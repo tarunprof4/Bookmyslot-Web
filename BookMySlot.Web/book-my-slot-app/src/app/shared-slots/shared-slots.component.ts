@@ -30,8 +30,6 @@ export class SharedSlotsComponent implements OnInit {
   private bsModalRef: BsModalRef;
   private modalComponent = new ModalComponent();
 
-  sharedSlotBy: string = "29645471f47c4555918da55aed49b23a";
-
   constructor(private sharedSlotService: SharedSlotService, private emailService: EmailService, private slotService: SlotService, private route: ActivatedRoute, private modalService: BsModalService, private title: Title) { }
 
   ngOnInit(): void {
@@ -58,7 +56,7 @@ export class SharedSlotsComponent implements OnInit {
 
 
   onResendEmail(sharedSlotModelInformation: string) {
-    this.emailService.resendSlotInformation(sharedSlotModelInformation, this.sharedSlotBy)
+    this.emailService.resendSlotInformation(sharedSlotModelInformation)
       .subscribe(
         (data: boolean) => {
           this.showSuccessModal();
@@ -73,7 +71,7 @@ export class SharedSlotsComponent implements OnInit {
   onBookedSlotCancel(sharedSlotModelInformation: string, index: number) {
 
 
-    this.slotService.cancelSlot(sharedSlotModelInformation, this.sharedSlotBy)
+    this.slotService.cancelSlot(sharedSlotModelInformation)
       .subscribe(
         (data: boolean) => {
           this.customerBookedSlots.splice(index, 1);
@@ -88,7 +86,7 @@ export class SharedSlotsComponent implements OnInit {
   onYetToBeBookedSlotCancel(sharedSlotModelInformation: string, index: number) {
 
 
-    this.slotService.cancelSlot(sharedSlotModelInformation, this.sharedSlotBy)
+    this.slotService.cancelSlot(sharedSlotModelInformation)
       .subscribe(
         (data: boolean) => {
           this.customerYetToBeBookedSlots.splice(index, 1);
@@ -104,7 +102,7 @@ export class SharedSlotsComponent implements OnInit {
   getBookedSlots() {
 
 
-    this.sharedSlotService.getCustomerBookedSlots(this.sharedSlotBy)
+    this.sharedSlotService.getCustomerBookedSlots()
       .subscribe(
         (data: ShareSlot[]) => {
           this.customerBookedSlots = data;
@@ -126,7 +124,7 @@ export class SharedSlotsComponent implements OnInit {
   getYetToBeBookedSlots() {
 
 
-    this.sharedSlotService.getCustomerYetToBeBookedSlots(this.sharedSlotBy)
+    this.sharedSlotService.getCustomerYetToBeBookedSlots()
       .subscribe(
         (data: ShareSlot[]) => {
           this.customerYetToBeBookedSlots = data;
@@ -148,7 +146,7 @@ export class SharedSlotsComponent implements OnInit {
   getCompletedSlots() {
 
 
-    this.sharedSlotService.getCustomerCompletedSlots(this.sharedSlotBy)
+    this.sharedSlotService.getCustomerCompletedSlots()
       .subscribe(
         (data: ShareSlot[]) => {
           this.customerCompletedSlots = data;
@@ -171,7 +169,7 @@ export class SharedSlotsComponent implements OnInit {
   getCancelledSlots() {
 
 
-    this.sharedSlotService.getCustomerCancelledSlots(this.sharedSlotBy)
+    this.sharedSlotService.getCustomerCancelledSlots()
       .subscribe(
         (data: CancelledSlotDetails[]) => {
           this.customerCancelledSlots = data;

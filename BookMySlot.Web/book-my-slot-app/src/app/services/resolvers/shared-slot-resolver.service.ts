@@ -17,8 +17,7 @@ export class SharedSlotResolverService implements Resolve<ShareSlot[] | Resolver
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ShareSlot[] | ResolverError> {
 
-    let key = "26eca53c21344dea874c99cc1df9ceef";
-    return this.sharedSlotService.getCustomerBookedSlots(key)
+    return this.sharedSlotService.getCustomerBookedSlots()
       .pipe(
         catchError(
           err =>

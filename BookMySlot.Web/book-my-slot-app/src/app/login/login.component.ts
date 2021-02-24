@@ -58,9 +58,6 @@ export class LoginComponent implements OnInit {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
-  refreshToken(): void {
-    this.socialAuthService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
-  }
 
 
 }

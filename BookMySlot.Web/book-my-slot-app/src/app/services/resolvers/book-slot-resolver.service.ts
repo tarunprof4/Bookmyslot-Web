@@ -4,7 +4,6 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { BookSlots } from '../../shared/book-slots';
 import { PaginationConstants } from '../../shared/constants/pagination-constants';
-import { CustomerSlots } from '../../shared/customer-slots';
 import { ResolverError } from '../../shared/resolver-error';
 import { CustomerSlotService } from '../customer-slot.service';
 

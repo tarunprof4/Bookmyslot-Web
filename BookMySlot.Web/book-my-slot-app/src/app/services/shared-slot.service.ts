@@ -26,35 +26,31 @@ export class SharedSlotService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getCustomerYetToBeBookedSlots(key: string): Observable<ShareSlot[] | ResolverError> {
-    let url = `${this.getCustomerYetToBeBookedSlotsUrl + "?customerId=" + key}`;
-    return this.httpClient.get<ShareSlot[]>(url)
+  public getCustomerYetToBeBookedSlots(): Observable<ShareSlot[] | ResolverError> {
+    return this.httpClient.get<ShareSlot[]>(this.getCustomerYetToBeBookedSlotsUrl)
       .pipe(
         catchError(err => this.handleHttpError(err))
       );
   }
 
 
-  public getCustomerBookedSlots(key: string): Observable<ShareSlot[] | ResolverError> {
-    let url = `${this.getCustomerBookedSlotsUrl + "?customerId=" + key}`;
-    return this.httpClient.get<ShareSlot[]>(url)
+  public getCustomerBookedSlots(): Observable<ShareSlot[] | ResolverError> {
+    return this.httpClient.get<ShareSlot[]>(this.getCustomerBookedSlotsUrl)
       .pipe(
         catchError(err => this.handleHttpError(err))
       );
   }
 
-  public getCustomerCompletedSlots(key: string): Observable<ShareSlot[] | ResolverError> {
-    let url = `${this.getCustomerCompletedSlotsUrl + "?customerId=" + key}`;
-    return this.httpClient.get<ShareSlot[]>(url)
+  public getCustomerCompletedSlots(): Observable<ShareSlot[] | ResolverError> {
+    return this.httpClient.get<ShareSlot[]>(this.getCustomerCompletedSlotsUrl)
       .pipe(
         catchError(err => this.handleHttpError(err))
       );
   }
 
 
-  public getCustomerCancelledSlots(key: string): Observable<CancelledSlotDetails[] | ResolverError> {
-    let url = `${this.getCustomerCancelledSlotsUrl + "?customerId=" + key}`;
-    return this.httpClient.get<CancelledSlotDetails[]>(url)
+  public getCustomerCancelledSlots(): Observable<CancelledSlotDetails[] | ResolverError> {
+    return this.httpClient.get<CancelledSlotDetails[]>(this.getCustomerCancelledSlotsUrl)
       .pipe(
         catchError(err => this.handleHttpError(err))
       );
