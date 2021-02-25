@@ -15,11 +15,12 @@ import { ShareSlotComponent } from './share-slot/share-slot.component';
 import { SharedSlotsComponent } from './shared-slots/shared-slots.component';
 import { RoutingConstants } from './shared/constants/routing-constants';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { NoAuthGuard } from './shared/guards/no-auth.guard';
 
 
 const routes: Routes = [
-  { path: RoutingConstants.Empty, component: LoginComponent, pathMatch: 'full' },
-  { path: RoutingConstants.Register, component: RegisterComponent },
+  { path: RoutingConstants.Empty, component: LoginComponent, pathMatch: 'full', canActivate: [NoAuthGuard] },
+  { path: RoutingConstants.Register, component: RegisterComponent, canActivate: [NoAuthGuard] },
   { path: RoutingConstants.Home, component: HomeComponent, resolve: { resolvedHomeSlots: HomeSlotResolverService }, canActivate: [AuthGuard] },
   { path: RoutingConstants.BookSlot, component: BookSlotComponent, resolve: { resolvedBookCustomerSlots: BookSlotResolverService }, canActivate: [AuthGuard] },
   { path: RoutingConstants.ShareSlot, component: ShareSlotComponent, canActivate: [AuthGuard] },

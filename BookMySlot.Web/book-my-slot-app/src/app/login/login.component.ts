@@ -24,39 +24,26 @@ export class LoginComponent implements OnInit {
 
     this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
 
-    let isUserLoggedIn = this.authService.isUserLoggedIn();
-    if (isUserLoggedIn) {
-      this.router.navigate([RoutingConstants.Home]);
-    }
+    this.socialAuthService.authState.subscribe((user) => {
 
+      this.loginService.loginSocialUser(user)
+        .subscribe(
+          (token: string) => {
+            this.authService.logIn(token);
 
-    else {
-      this.socialAuthService.authState.subscribe((user) => {
-
-        this.loginService.loginSocialUser(user)
-          .subscribe(
-            (token: string) => {
-              this.localStorageService.store(AuthConstants.JwtAuthAccessToken, token);
-
-              if (this.returnUrl) {
-                this.router.navigateByUrl(this.returnUrl);
-              } else {
-                this.router.navigate([RoutingConstants.Home]);
-              }
-
-            },
-            (err: any) => {
-              console.log("login failed");
+            if (this.returnUrl) {
+              this.router.navigateByUrl(this.returnUrl);
+            } else {
+              this.router.navigate([RoutingConstants.Home]);
             }
-          );
 
-      });
-    }
+          },
+          (err: any) => {
+            console.log("login failed");
+          }
+        );
 
-
-
-
-
+    });
   }
 
   signInWithGoogle(): void {

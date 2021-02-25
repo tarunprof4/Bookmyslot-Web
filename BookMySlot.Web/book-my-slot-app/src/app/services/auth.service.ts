@@ -24,7 +24,9 @@ export class AuthService {
     return false;
   }
 
-
+  logIn(token: string) {
+    this.localStorageService.store(AuthConstants.JwtAuthAccessToken, token);
+  }
 
   logOut() {
     this.localStorageService.clear(AuthConstants.JwtAuthAccessToken);
