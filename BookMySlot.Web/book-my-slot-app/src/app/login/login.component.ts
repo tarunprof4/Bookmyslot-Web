@@ -4,7 +4,6 @@ import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from 'a
 import { LocalStorageService } from 'ngx-webstorage';
 import { AuthService } from '../services/auth.service';
 import { LoginService } from '../services/login.service';
-import { AuthConstants } from '../shared/constants/auth-constants';
 import { RoutingConstants } from '../shared/constants/routing-constants';
 
 @Component({
