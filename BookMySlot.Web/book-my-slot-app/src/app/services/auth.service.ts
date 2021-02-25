@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import { SocialAuthService } from 'angularx-social-login';
 import { LocalStorageService } from 'ngx-webstorage';
-import { Observable, Subscriber } from 'rxjs';
+import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
 import { AuthConstants } from '../shared/constants/auth-constants';
 
 @Injectable({
@@ -8,14 +9,10 @@ import { AuthConstants } from '../shared/constants/auth-constants';
 })
 export class AuthService {
 
-  constructor(private localStorageService: LocalStorageService) { }
+  constructor(private localStorageService: LocalStorageService, private socialAuthService: SocialAuthService) { }
 
   private loggedIn = this.isUserLoggedIn();
-  public logger = new Observable<boolean>((observer: Subscriber<boolean>) => {
-    observer.next(this.loggedIn);
-  });
-
-
+  public logInStatus$ = new BehaviorSubject<boolean>(this.loggedIn);
 
   isUserLoggedIn(): boolean {
 
@@ -28,13 +25,17 @@ export class AuthService {
   }
 
   logIn(token: string) {
-    this.loggedIn = true;
     this.localStorageService.store(AuthConstants.JwtAuthAccessToken, token);
+    this.loggedIn = true;
+    this.logInStatus$.next(this.loggedIn);
   }
 
   logOut() {
-    this.loggedIn = false;
     this.localStorageService.clear(AuthConstants.JwtAuthAccessToken);
+    this.socialAuthService.signOut();
+
+    this.loggedIn = false;
+    this.logInStatus$.next(this.loggedIn);
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SessionStorageService } from 'ngx-webstorage';
+import { SocialAuthService } from 'angularx-social-login';
 import { AuthService } from '../services/auth.service';
 import { CustomerService } from '../services/customer.service';
 import { RoutingConstants } from '../shared/constants/routing-constants';
@@ -20,11 +20,6 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //let customerInfo = this.sessionStorageService.retrieve(StorageConstants.CustomerInformation);
-    //if (customerInfo) {
-    //  this.profileSettings = customerInfo;
-    //}
-    
     this.customerService.getProfileSettings()
       .subscribe(
         (data: ProfileSettings) => {

@@ -4,6 +4,7 @@ import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from 'a
 import { LocalStorageService } from 'ngx-webstorage';
 import { AuthService } from '../services/auth.service';
 import { LoginService } from '../services/login.service';
+import { AppConstants } from '../shared/constants/app-constants';
 import { RoutingConstants } from '../shared/constants/routing-constants';
 
 @Component({
@@ -21,26 +22,29 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+    this.returnUrl = this.route.snapshot.queryParamMap.get(AppConstants.ReturnUrl);
 
     this.socialAuthService.authState.subscribe((user) => {
 
-      this.loginService.loginSocialUser(user)
-        .subscribe(
-          (token: string) => {
-            this.authService.logIn(token);
+      if (user != null) {
+        this.loginService.loginSocialUser(user)
+          .subscribe(
+            (token: string) => {
+              this.authService.logIn(token);
 
-            if (this.returnUrl) {
-              this.router.navigateByUrl(this.returnUrl);
-            } else {
-              this.router.navigate([RoutingConstants.Home]);
+              if (this.returnUrl) {
+                this.router.navigateByUrl(this.returnUrl);
+              } else {
+                this.router.navigate([RoutingConstants.Home]);
+              }
+
+            },
+            (err: any) => {
+              console.log("login failed");
             }
-
-          },
-          (err: any) => {
-            console.log("login failed");
-          }
-        );
+          );
+      }
+    
 
     });
   }

@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
 
 
-    this.authService.logger.subscribe((data) => {
+    this.authService.logInStatus$.subscribe((data) => {
       console.log("logged in stat" + data);
       this.loggedIn = data;
     });
