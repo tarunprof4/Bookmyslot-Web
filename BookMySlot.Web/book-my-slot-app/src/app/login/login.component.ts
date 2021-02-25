@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 import { LocalStorageService } from 'ngx-webstorage';
 import { AuthService } from '../services/auth.service';
 import { LoginService } from '../services/login.service';
@@ -25,28 +25,29 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParamMap.get(AppConstants.ReturnUrl);
 
     this.socialAuthService.authState.subscribe((user) => {
-
       if (user != null) {
-        this.loginService.loginSocialUser(user)
-          .subscribe(
-            (token: string) => {
-              this.authService.logIn(token);
-
-              if (this.returnUrl) {
-                this.router.navigateByUrl(this.returnUrl);
-              } else {
-                this.router.navigate([RoutingConstants.Home]);
-              }
-
-            },
-            (err: any) => {
-              console.log("login failed");
-            }
-          );
+        this.login(user, this.returnUrl);
       }
-    
-
     });
+  }
+
+  private login(user: SocialUser, returnUrl: string) {
+    this.loginService.loginSocialUser(user)
+      .subscribe(
+        (token: string) => {
+          this.authService.logIn(token);
+
+          if (returnUrl) {
+            this.router.navigateByUrl(returnUrl);
+          } else {
+            this.router.navigate([RoutingConstants.Home]);
+          }
+
+        },
+        (err: any) => {
+          console.log("login failed");
+        }
+      );
   }
 
   signInWithGoogle(): void {

@@ -12,34 +12,13 @@ import { AuthService } from './services/auth.service';
 export class AppComponent implements OnInit{
   loggedIn: boolean;
 
-  constructor(private authService: AuthService, private socialAuthService: SocialAuthService, private router: Router) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-
-
     this.authService.logInStatus$.subscribe((data) => {
-      console.log("logged in stat" + data);
       this.loggedIn = data;
     });
-
-    //this.loggedIn = this.authService.isUserLoggedIn();
-    
-    //this.socialAuthService.authState.subscribe((user) => {
-    //  this.loggedIn = (user != null);
-
-
-    //  //this.socialAuthService.signOut();
-
-    //  //if (this.loggedIn) {
-    //  //  this.router.navigate([RoutingConstants.Home]);
-    //  //}
-    //});
-
-
-
   }
-
-
 }
 
 
