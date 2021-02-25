@@ -26,14 +26,13 @@ export class AuthService {
 
   logIn(token: string) {
     this.localStorageService.store(AuthConstants.JwtAuthAccessToken, token);
+    this.socialAuthService.signOut();
     this.loggedIn = true;
     this.logInStatus$.next(this.loggedIn);
   }
 
   logOut() {
     this.localStorageService.clear(AuthConstants.JwtAuthAccessToken);
-    this.socialAuthService.signOut();
-
     this.loggedIn = false;
     this.logInStatus$.next(this.loggedIn);
   }
