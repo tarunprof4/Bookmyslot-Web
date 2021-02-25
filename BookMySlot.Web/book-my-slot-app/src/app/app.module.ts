@@ -41,6 +41,7 @@ import { SearchCustomerComponent } from './search-customer/search-customer.compo
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 import { LoginComponent } from './login/login.component';
 import { NgxWebstorageModule } from 'ngx-webstorage';
+import { RegisterComponent } from './register/register.component';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -91,6 +92,7 @@ export function getModalConfig(): BsModalRef {
     ModalFailureComponent,
     SearchCustomerComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

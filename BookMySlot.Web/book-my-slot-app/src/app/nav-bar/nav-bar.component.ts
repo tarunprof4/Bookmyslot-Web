@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SessionStorageService } from 'ngx-webstorage';
 import { AuthService } from '../services/auth.service';
 import { CustomerService } from '../services/customer.service';
 import { RoutingConstants } from '../shared/constants/routing-constants';
+import { StorageConstants } from '../shared/constants/storage-constants';
 import { ProfileSettings } from '../shared/profile-settings';
 
 @Component({
@@ -12,19 +14,23 @@ import { ProfileSettings } from '../shared/profile-settings';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private customerService: CustomerService, private authService: AuthService, private router: Router) { }
+  constructor(private customerService: CustomerService, private authService: AuthService, private router: Router, private sessionStorageService: SessionStorageService) { }
 
   profileSettings: ProfileSettings;
   routingConstants = RoutingConstants;
 
   ngOnInit(): void {
 
+    //let customerInfo = this.sessionStorageService.retrieve(StorageConstants.CustomerInformation);
+    //if (customerInfo) {
+    //  this.profileSettings = customerInfo;
+    //}
     
     this.customerService.getProfileSettings()
       .subscribe(
         (data: ProfileSettings) => {
-          console.log("saved " + data);
           this.profileSettings = data;
+          this.sessionStorageService.store(StorageConstants.CustomerInformation, data);
         },
         (err: any) => console.log(err)
       );

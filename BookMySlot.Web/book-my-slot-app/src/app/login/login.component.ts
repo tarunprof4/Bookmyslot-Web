@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { LocalStorageService } from 'ngx-webstorage';
 import { AuthService } from '../services/auth.service';
@@ -16,9 +16,13 @@ import { RoutingConstants } from '../shared/constants/routing-constants';
 
 export class LoginComponent implements OnInit {
 
-  constructor(private socialAuthService: SocialAuthService, private authService: AuthService, private localStorageService: LocalStorageService, private router: Router, private loginService: LoginService) { }
+  constructor(private socialAuthService: SocialAuthService, private route: ActivatedRoute, private authService: AuthService, private localStorageService: LocalStorageService, private router: Router, private loginService: LoginService) { }
+
+  returnUrl: string;
+
   ngOnInit(): void {
 
+    this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
 
     let isUserLoggedIn = this.authService.isUserLoggedIn();
     if (isUserLoggedIn) {
@@ -33,8 +37,13 @@ export class LoginComponent implements OnInit {
           .subscribe(
             (token: string) => {
               this.localStorageService.store(AuthConstants.JwtAuthAccessToken, token);
-              
-              this.router.navigate([RoutingConstants.Home]);
+
+              if (this.returnUrl) {
+                this.router.navigateByUrl(this.returnUrl);
+              } else {
+                this.router.navigate([RoutingConstants.Home]);
+              }
+
             },
             (err: any) => {
               console.log("login failed");
@@ -58,6 +67,8 @@ export class LoginComponent implements OnInit {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
-
+  register(): void {
+    this.router.navigate([RoutingConstants.Register]);
+  }
 
 }
