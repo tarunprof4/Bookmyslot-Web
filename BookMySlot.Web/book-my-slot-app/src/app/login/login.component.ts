@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
-import { LocalStorageService } from 'ngx-webstorage';
+import { shareReplay } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 import { LoginService } from '../services/login.service';
 import { AppConstants } from '../shared/constants/app-constants';
@@ -14,21 +14,25 @@ import { RoutingConstants } from '../shared/constants/routing-constants';
 })
 
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
-  constructor(private socialAuthService: SocialAuthService, private route: ActivatedRoute, private authService: AuthService, private localStorageService: LocalStorageService, private router: Router, private loginService: LoginService) { }
+  constructor(private socialAuthService: SocialAuthService, private route: ActivatedRoute, private authService: AuthService, private router: Router, private loginService: LoginService) { }
 
   returnUrl: string;
+  loginSubscriber: any = {};
+
 
   ngOnInit(): void {
 
     this.returnUrl = this.route.snapshot.queryParamMap.get(AppConstants.ReturnUrl);
 
-    this.socialAuthService.authState.subscribe((user) => {
+    this.loginSubscriber = this.socialAuthService.authState.subscribe((user) => {
       if (user != null) {
         this.login(user, this.returnUrl);
       }
     });
+
+
   }
 
   private login(user: SocialUser, returnUrl: string) {
@@ -60,6 +64,10 @@ export class LoginComponent implements OnInit {
 
   register(): void {
     this.router.navigate([RoutingConstants.Register]);
+  }
+
+  ngOnDestroy() {
+    this.loginSubscriber.unsubscribe();
   }
 
 }
