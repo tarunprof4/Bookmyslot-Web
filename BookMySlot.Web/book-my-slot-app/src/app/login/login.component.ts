@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
-import { shareReplay } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 import { LoginService } from '../services/login.service';
 import { AppConstants } from '../shared/constants/app-constants';
