@@ -4,5 +4,6 @@ export const PageTitleConstants = {
   ShareSlot: 'Bookmyslot- Share Slot',
   SharedSlots: 'Bookmyslot- Shares Slots',
   BookedSlots: 'Bookmyslot- Booked Slots',
-  ProfileSettings: 'Bookmyslot- ProfileSettings',
+  ProfileSettings: 'Bookmyslot- Profile Settings',
+  CustomerSettings: 'Bookmyslot- Customer Settings',
 };

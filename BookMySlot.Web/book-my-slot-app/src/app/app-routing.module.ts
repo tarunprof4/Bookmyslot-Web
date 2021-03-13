@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: RoutingConstants.SharedSlots, component: SharedSlotsComponent, resolve: { resolvedCustomerBookedSlots: SharedSlotResolverService }, canActivate: [AuthGuard] },
   { path: RoutingConstants.BookedSlots, component: BookedSlotsComponent, resolve: { resolvedCustomerBookedSlots: BookedSlotResolverService }, canActivate: [AuthGuard] },
   { path: RoutingConstants.ProfileSettings, component: ProfileSettingsComponent, resolve: { resolvedProfileSettings: ProfileSettingsResolverService }, canActivate: [AuthGuard] },
-  { path: RoutingConstants.CustomerSettings, component: CustomerSettingsComponent, canActivate: [AuthGuard] },
+  { path: RoutingConstants.CustomerSettings, component: CustomerSettingsComponent, resolve: { resolvedCustomerSettings: CustomerSettingsResolverService }, canActivate: [AuthGuard] },
 
   { path: '**', redirectTo: RoutingConstants.Home, pathMatch: 'full' },
 ];
