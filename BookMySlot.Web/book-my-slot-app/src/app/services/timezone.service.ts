@@ -9,7 +9,7 @@ export class TimezoneService {
 
   }
 
-  timeZones: string[] = ['EST', 'India Standard Time'];
+  timeZones: string[] = ['Europe/London', 'Asia/Kolkata'];
 
   public getTimeZones(): string[] {
     return this.timeZones;

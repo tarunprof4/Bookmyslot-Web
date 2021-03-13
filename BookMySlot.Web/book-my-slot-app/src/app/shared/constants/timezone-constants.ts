@@ -1,3 +1,3 @@
 export const TimezoneConstants = {
-  India: 'India Standard Time',
+  India: 'Asia/Kolkata',
 };
