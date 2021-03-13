@@ -7,5 +7,6 @@ export const RoutingConstants = {
   SharedSlots: 'shared-slots',
   BookedSlots: 'booked-slots',
   ProfileSettings: 'profile-settings',
+  CustomerSettings: 'customer-settings',
 };
 

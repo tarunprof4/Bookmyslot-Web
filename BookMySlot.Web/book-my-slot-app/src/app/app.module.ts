@@ -42,6 +42,8 @@ import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, So
 import { LoginComponent } from './login/login.component';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { RegisterComponent } from './register/register.component';
+import { CustomerSettingsComponent } from './customer-settings/customer-settings.component';
+import { CustomerSettingsService } from './services/customer-settings.service';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -93,6 +95,7 @@ export function getModalConfig(): BsModalRef {
     SearchCustomerComponent,
     LoginComponent,
     RegisterComponent,
+    CustomerSettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -127,6 +130,7 @@ export function getModalConfig(): BsModalRef {
     HomeSlotResolverService,
     ProfileSettingsResolverService,
     SharedSlotResolverService,
+    CustomerSettingsService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
