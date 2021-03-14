@@ -11,14 +11,18 @@ export class DateTimeHelperService {
   }
 
   getTimeSpan(date: Date): string {
-    //let timeSpan = date.getHours() + ":" + date.getMinutes() + ":" + "0";
     let timeSpan = date.getHours() + DelimiterConstants.Time + date.getMinutes() + DelimiterConstants.Time + date.getSeconds();
     return timeSpan;
   }
 
 
-  getDateString(date: Date): string {
-    let dateString = (date.getMonth() + 1) + DelimiterConstants.Date + date.getDate() + DelimiterConstants.Date + date.getFullYear();
+
+  getDateStringWithPadding(date: Date): string {
+    let dateString =
+      ('0' + (date.getMonth() + 1)).slice(-2) + DelimiterConstants.Date +
+      ('0' + date.getDate()).slice(-2) + DelimiterConstants.Date +
+      date.getFullYear();
+
     return dateString;
   }
 }

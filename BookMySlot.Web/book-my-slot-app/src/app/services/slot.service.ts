@@ -21,7 +21,7 @@ export class SlotService {
   constructor(private httpClient: HttpClient, private dateTimeHelperService: DateTimeHelperService) { }
 
   public saveSlotDetails(slotDetails: SlotDetails, slotDate: Date, slotStartTime: Date, slotEndTime: Date): Observable<string | ResolverError> {
-    slotDetails.slotDate = this.dateTimeHelperService.getDateString(slotDate);
+    slotDetails.slotDate = this.dateTimeHelperService.getDateStringWithPadding(slotDate);
     slotDetails.slotStartTime = this.dateTimeHelperService.getTimeSpan(slotStartTime);
     slotDetails.slotEndTime = this.dateTimeHelperService.getTimeSpan(slotEndTime);
 
