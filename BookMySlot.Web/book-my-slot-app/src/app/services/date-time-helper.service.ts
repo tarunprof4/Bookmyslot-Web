@@ -10,11 +10,19 @@ export class DateTimeHelperService {
 
   }
 
-  getTimeSpan(date: Date): string {
+  getTimeSpanString(date: Date): string {
     let timeSpan = date.getHours() + DelimiterConstants.Time + date.getMinutes() + DelimiterConstants.Time + date.getSeconds();
     return timeSpan;
   }
 
+  getTotalMinutesFromTimeSpanString(timeSpan: string): number {
+    var arr = timeSpan.split(DelimiterConstants.Time);
+    let hours = parseInt(arr[0]);
+    let minutes = parseInt(arr[1]);
+    let totalMinutes = (hours * 60) + minutes;
+
+    return totalMinutes;
+  }
 
 
   getDateStringWithPadding(date: Date): string {

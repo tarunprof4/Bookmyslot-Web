@@ -24,8 +24,8 @@ export class SlotService {
 
   public saveSlotDetails(slotDetails: SlotDetails, slotDate: Date, slotStartTime: Date, slotEndTime: Date): Observable<string | ResolverError> {
     slotDetails.slotDate = this.dateTimeHelperService.getDateStringWithPadding(slotDate);
-    slotDetails.slotStartTime = this.dateTimeHelperService.getTimeSpan(slotStartTime);
-    slotDetails.slotEndTime = this.dateTimeHelperService.getTimeSpan(slotEndTime);
+    slotDetails.slotStartTime = this.dateTimeHelperService.getTimeSpanString(slotStartTime);
+    slotDetails.slotEndTime = this.dateTimeHelperService.getTimeSpanString(slotEndTime);
 
     return this.httpClient.post<string>(this.slotDetailsUrl, slotDetails).pipe(
       //tap((email: string) => console.log(email)),

@@ -24,7 +24,6 @@ export class TimezoneService {
   private initCountryTimeZone(): void {
     for (let countryWithTimeZone of this.countryWithTimeZones) {
       var arr = countryWithTimeZone.split(DelimiterConstants.CountryWithTimeZone);
-      console.log(countryWithTimeZone);
       let countryName = arr[0];
       let timeZone = arr[1];
       let countryTimeZone = new CountryTimeZone();

@@ -18,6 +18,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CountryConstants } from '../shared/constants/country-constants';
 import { CountryService } from '../services/country-service';
 import { CountryTimeZone } from '../shared/country-timezone';
+import { DateTimeHelperService } from '../services/date-time-helper.service';
 
 @Component({
   selector: 'app-share-slot',
@@ -26,7 +27,9 @@ import { CountryTimeZone } from '../shared/country-timezone';
 })
 export class ShareSlotComponent implements OnInit {
 
-  constructor(private slotService: SlotService, private timezoneService: TimezoneService, private countryService: CountryService, private route: ActivatedRoute, private modalService: BsModalService, private title: Title) { }
+  constructor(private slotService: SlotService, private timezoneService: TimezoneService,
+    private countryService: CountryService, private route: ActivatedRoute, private modalService: BsModalService,
+    private title: Title, private dateTimeHelperService: DateTimeHelperService) { }
 
   slotDetails: SlotDetails;
   countries: string[];
@@ -53,6 +56,8 @@ export class ShareSlotComponent implements OnInit {
     this.slotDetails = new SlotDetails();
     this.countries = this.countryService.getCountries();
     this.countryTimeZones = this.timezoneService.getCountryTimeZones();
+    this.slotMaxDate.setDate(this.slotMaxDate.getDate() + SlotConstants.SlotLastDateDifference);
+    this.slotDate.setDate(this.slotDate.getDate() + SlotConstants.DefaultSlotDateDifference);
 
     let initLastSharedSlot: LastSharedSlot | ResolverError = this.route.snapshot.data['resolvedLastSharedSlot'];
 
@@ -60,23 +65,16 @@ export class ShareSlotComponent implements OnInit {
       this.slotDetails.title = "";
       this.slotDetails.country = CountryConstants.India;
       this.slotDetails.timeZone = TimezoneConstants.India;
-      
+      this.slotStartTime.setMinutes(this.slotDate.getMinutes());
+      this.slotEndTime.setMinutes(this.slotDate.getMinutes() + SlotConstants.DefaultSlotDurationDifference);
     }
     else {
       this.slotDetails.title = initLastSharedSlot.title;
       this.slotDetails.country = initLastSharedSlot.country;
       this.slotDetails.timeZone = initLastSharedSlot.timeZone;
+      this.slotStartTime.setMinutes(this.dateTimeHelperService.getTotalMinutesFromTimeSpanString(initLastSharedSlot.slotStartTime));
+      this.slotEndTime.setMinutes(this.dateTimeHelperService.getTotalMinutesFromTimeSpanString(initLastSharedSlot.slotEndTime));
     }
-
-
-    
-
-    this.slotMaxDate.setDate(this.slotMaxDate.getDate() + SlotConstants.SlotLastDateDifference);
-    this.slotDate.setDate(this.slotDate.getDate() + SlotConstants.DefaultSlotDateDifference);
-
-
-    this.slotStartTime.setMinutes(this.slotDate.getMinutes());
-    this.slotEndTime.setMinutes(this.slotDate.getMinutes() + SlotConstants.DefaultSlotDurationDifference);
 
     this.slotDuration = this.getSlotDuration(this.slotStartTime, this.slotEndTime);
   }
