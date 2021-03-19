@@ -16,7 +16,7 @@ export class SlotService {
 
   private slotDetailsUrl = environment.apiUrl + '/api/v1/slot';
   private cancelSlotUrl = environment.apiUrl + '/api/v1/Slot/CancelSlot';
-  private lastSharedSlotUrl = environment.apiUrl + '/api/v1/CustomerLastSharedSlot/GetCustomerLastSlot';
+  private lastSharedSlotUrl = environment.apiUrl + '/api/v1/CustomerLastSharedSlot';
   //private slotDetailsUrl = '/api/v1/slot';
   //private cancelSlotUrl = 'api/v1/Slot/CancelSlot';
 

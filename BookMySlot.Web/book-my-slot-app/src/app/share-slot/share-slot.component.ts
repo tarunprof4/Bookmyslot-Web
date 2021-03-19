@@ -15,6 +15,8 @@ import { PageTitleConstants } from '../shared/constants/page-title-constants';
 import { ResolverError } from '../shared/resolver-error';
 import { LastSharedSlot } from '../shared/last-shared-slot';
 import { ActivatedRoute } from '@angular/router';
+import { CountryConstants } from '../shared/constants/country-constants';
+import { CountryService } from '../services/country-service';
 
 @Component({
   selector: 'app-share-slot',
@@ -23,10 +25,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ShareSlotComponent implements OnInit {
 
-  constructor(private slotService: SlotService, private timezoneService: TimezoneService, private route: ActivatedRoute, private modalService: BsModalService, private title: Title) { }
+  constructor(private slotService: SlotService, private timezoneService: TimezoneService, private countryService: CountryService, private route: ActivatedRoute, private modalService: BsModalService, private title: Title) { }
 
   slotDetails: SlotDetails;
+  countries: string[];
   timeZones: string[];
+  
 
   slotDate: Date = this.getTodaysDate();
   slotMinDate: Date = this.getTodaysDate();
@@ -45,24 +49,26 @@ export class ShareSlotComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle(PageTitleConstants.ShareSlot);
-  
+    this.slotDetails = new SlotDetails();
+    this.countries = this.countryService.getCountries();
+    this.timeZones = this.timezoneService.getTimeZones();
 
     let initLastSharedSlot: LastSharedSlot | ResolverError = this.route.snapshot.data['resolvedLastSharedSlot'];
 
     if (initLastSharedSlot instanceof ResolverError) {
+      this.slotDetails.title = "";
+      this.slotDetails.country = CountryConstants.India;
+      this.slotDetails.timeZone = TimezoneConstants.India;
+      
     }
     else {
-      this.slotDetails = initLastSharedSlot.slotModel;
-    }
-
-    if (!this.slotDetails) {
-      this.slotDetails = new SlotDetails();
-      this.slotDetails.title = "";
+      this.slotDetails.title = initLastSharedSlot.title;
+      this.slotDetails.country = initLastSharedSlot.country;
+      this.slotDetails.timeZone = initLastSharedSlot.timeZone;
     }
 
 
-    this.timeZones = this.timezoneService.getTimeZones();
-    this.slotDetails.timeZone = TimezoneConstants.India;
+    
 
     this.slotMaxDate.setDate(this.slotMaxDate.getDate() + SlotConstants.SlotLastDateDifference);
     this.slotDate.setDate(this.slotDate.getDate() + SlotConstants.DefaultSlotDateDifference);
@@ -72,7 +78,6 @@ export class ShareSlotComponent implements OnInit {
     this.slotEndTime.setMinutes(this.slotDate.getMinutes() + SlotConstants.DefaultSlotDurationDifference);
 
     this.slotDuration = this.getSlotDuration(this.slotStartTime, this.slotEndTime);
-
   }
 
 
