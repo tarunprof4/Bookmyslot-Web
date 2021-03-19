@@ -29,6 +29,23 @@
 
             <div class="row">
 
+
+              <div class="form-group col-sm-6 col-md-4">
+                <div class="form-group">
+                  <label>Country</label>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <select name="country" [(ngModel)]="slotDetails.country" class="form-control" required>
+                        <option disabled>Select</option>
+                        <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
               <div class="form-group col-sm-6 col-md-4">
                 <div class="form-group">
                   <label>TimeZone</label>
@@ -36,7 +53,7 @@
                     <div class="col-sm-6">
                       <select name="timeZone" [(ngModel)]="slotDetails.timeZone" class="form-control" required>
                         <option disabled>Select</option>
-                        <option *ngFor="let timeZone of timeZones" [value]="timeZone">{{timeZone}}</option>
+                        <option *ngFor="let countryTimeZone of countryTimeZones" [value]="countryTimeZone.timeZone">{{countryTimeZone.timeZone}}</option>
                       </select>
                     </div>
                   </div>
@@ -74,7 +91,7 @@
                   </div>
 
 
-                  <input type="text" name="slotDate" #slotDatePicker="bsDatepicker"  readonly bsDatepicker [(ngModel)]="slotDate"
+                  <input type="text" name="slotDate" #slotDatePicker="bsDatepicker" readonly bsDatepicker [(ngModel)]="slotDate"
                          [minDate]="slotMinDate" [maxDate]="slotMaxDate" />
 
 

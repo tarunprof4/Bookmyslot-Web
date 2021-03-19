@@ -17,6 +17,7 @@ import { LastSharedSlot } from '../shared/last-shared-slot';
 import { ActivatedRoute } from '@angular/router';
 import { CountryConstants } from '../shared/constants/country-constants';
 import { CountryService } from '../services/country-service';
+import { CountryTimeZone } from '../shared/country-timezone';
 
 @Component({
   selector: 'app-share-slot',
@@ -29,7 +30,7 @@ export class ShareSlotComponent implements OnInit {
 
   slotDetails: SlotDetails;
   countries: string[];
-  timeZones: string[];
+  countryTimeZones: CountryTimeZone[];
   
 
   slotDate: Date = this.getTodaysDate();
@@ -51,7 +52,7 @@ export class ShareSlotComponent implements OnInit {
     this.title.setTitle(PageTitleConstants.ShareSlot);
     this.slotDetails = new SlotDetails();
     this.countries = this.countryService.getCountries();
-    this.timeZones = this.timezoneService.getTimeZones();
+    this.countryTimeZones = this.timezoneService.getCountryTimeZones();
 
     let initLastSharedSlot: LastSharedSlot | ResolverError = this.route.snapshot.data['resolvedLastSharedSlot'];
 

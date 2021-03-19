@@ -9,7 +9,7 @@ export class CountryService {
 
   }
 
-  countries: string[] = ['Andorra', 'United Arab Emirates', 'Afghanistan', 'Antigua & Barbuda', 'Anguilla', 'Albania',
+  private countries: string[] = ['Andorra', 'United Arab Emirates', 'Afghanistan', 'Antigua & Barbuda', 'Anguilla', 'Albania',
     'Armenia', 'Angola', 'Antarctica', 'Argentina', 'Samoa (American)', 'Austria', 'Australia', 'Aruba', 'Åland Islands',
     'Azerbaijan', 'Bosnia & Herzegovina', 'Barbados', 'Bangladesh', 'Belgium', 'Burkina Faso', 'Bulgaria', 'Bahrain',
     'Burundi', 'Benin', 'St Barthelemy', 'Bermuda', 'Brunei', 'Bolivia', 'Caribbean NL', 'Brazil', 'Bahamas', 'Bhutan',
