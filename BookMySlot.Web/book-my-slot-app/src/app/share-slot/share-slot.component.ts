@@ -12,6 +12,9 @@ import { ModalSuccessComponent } from '../ui-controls/modal-success/modal-succes
 import { ModalFailureComponent } from '../ui-controls/modal-failure/modal-failure.component';
 import { Title } from '@angular/platform-browser';
 import { PageTitleConstants } from '../shared/constants/page-title-constants';
+import { ResolverError } from '../shared/resolver-error';
+import { LastSharedSlot } from '../shared/last-shared-slot';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-share-slot',
@@ -20,7 +23,7 @@ import { PageTitleConstants } from '../shared/constants/page-title-constants';
 })
 export class ShareSlotComponent implements OnInit {
 
-  constructor(private slotService: SlotService, private timezoneService: TimezoneService, private modalService: BsModalService, private title: Title) { }
+  constructor(private slotService: SlotService, private timezoneService: TimezoneService, private route: ActivatedRoute, private modalService: BsModalService, private title: Title) { }
 
   slotDetails: SlotDetails;
   timeZones: string[];
@@ -42,8 +45,20 @@ export class ShareSlotComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle(PageTitleConstants.ShareSlot);
-    this.slotDetails = new SlotDetails();
-    this.slotDetails.title = "";
+  
+
+    let initLastSharedSlot: LastSharedSlot | ResolverError = this.route.snapshot.data['resolvedLastSharedSlot'];
+
+    if (initLastSharedSlot instanceof ResolverError) {
+    }
+    else {
+      this.slotDetails = initLastSharedSlot.slotModel;
+    }
+
+    if (!this.slotDetails) {
+      this.slotDetails = new SlotDetails();
+      this.slotDetails.title = "";
+    }
 
 
     this.timeZones = this.timezoneService.getTimeZones();

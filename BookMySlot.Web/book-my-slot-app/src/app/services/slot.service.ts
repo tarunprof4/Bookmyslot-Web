@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { CancelSlot } from '../shared/cancel-slot';
+import { LastSharedSlot } from '../shared/last-shared-slot';
 import { ResolverError } from '../shared/resolver-error';
 import { SlotDetails } from '../shared/slot-details';
 import { DateTimeHelperService } from './date-time-helper.service';
@@ -15,6 +16,7 @@ export class SlotService {
 
   private slotDetailsUrl = environment.apiUrl + '/api/v1/slot';
   private cancelSlotUrl = environment.apiUrl + '/api/v1/Slot/CancelSlot';
+  private lastSharedSlotUrl = environment.apiUrl + '/api/v1/CustomerLastSharedSlot/GetCustomerLastSlot';
   //private slotDetailsUrl = '/api/v1/slot';
   //private cancelSlotUrl = 'api/v1/Slot/CancelSlot';
 
@@ -41,6 +43,15 @@ export class SlotService {
   }
 
 
+
+
+  public getLastSharedSlot(): Observable<LastSharedSlot | ResolverError> {
+    return this.httpClient.get<LastSharedSlot>(this.lastSharedSlotUrl)
+      .pipe(
+        catchError(err => this.handleHttpError(err))
+      );
+
+  }
 
 
   private handleHttpError(error: HttpErrorResponse): Observable<ResolverError> {
