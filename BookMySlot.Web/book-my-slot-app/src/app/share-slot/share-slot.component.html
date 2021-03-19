@@ -53,7 +53,7 @@
                     <div class="col-sm-6">
                       <select name="timeZone" [(ngModel)]="slotDetails.timeZone" class="form-control" required>
                         <option disabled>Select</option>
-                        <option *ngFor="let countryTimeZone of countryTimeZones" [value]="countryTimeZone.timeZone">{{countryTimeZone.timeZone}}</option>
+                        <option *ngFor="let countryTimeZone of filteredCountryTimeZones" [value]="countryTimeZone.timeZone">{{countryTimeZone.timeZone}}</option>
                       </select>
                     </div>
                   </div>

@@ -33,7 +33,8 @@ export class ShareSlotComponent implements OnInit {
 
   slotDetails: SlotDetails;
   countries: string[];
-  countryTimeZones: CountryTimeZone[];
+  private countryTimeZones: CountryTimeZone[];
+  filteredCountryTimeZones: CountryTimeZone[];
   
 
   slotDate: Date = this.getTodaysDate();
@@ -76,6 +77,7 @@ export class ShareSlotComponent implements OnInit {
       this.slotEndTime.setMinutes(this.dateTimeHelperService.getTotalMinutesFromTimeSpanString(initLastSharedSlot.slotEndTime));
     }
 
+    this.filteredCountryTimeZones = this.filterTimeZonesByCountry(this.countryTimeZones, this.slotDetails.country);
     this.slotDuration = this.getSlotDuration(this.slotStartTime, this.slotEndTime);
   }
 
@@ -109,7 +111,9 @@ export class ShareSlotComponent implements OnInit {
     }
   }
 
-
+  private filterTimeZonesByCountry(allCountryTimeZones: CountryTimeZone[], country: string): CountryTimeZone[] {
+    return allCountryTimeZones.filter(a => a.countryName === country);
+  }
 
   onStartTimechange(slotStartTime: Date): void {
     this.slotDuration = this.getSlotDuration(slotStartTime, this.slotEndTime);
