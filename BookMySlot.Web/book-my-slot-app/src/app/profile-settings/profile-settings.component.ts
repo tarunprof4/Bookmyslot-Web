@@ -49,6 +49,8 @@ export class ProfileSettingsComponent implements OnInit {
 
 
   onUpdate(profileSettingsForm: NgForm, profileSettings: ProfileSettings) {
+    
+
     this.customerService.updateProfileSettings(profileSettings)
       .subscribe(
         (data: boolean) => {
@@ -56,6 +58,7 @@ export class ProfileSettingsComponent implements OnInit {
           this.bsModalRef = this.modalService.show(ModalSuccessComponent);
           this.bsModalRef.content.title = successModalComponent.title;
           this.bsModalRef.content.bodyItems = successModalComponent.bodyItems;
+          window.location.reload(true);
         },
         (err: any) => {
           let failureModalComponent = this.modalComponent.getFailureModalComponent();
