@@ -34,7 +34,7 @@
               <div class="form-group col-sm-6 col-md-4">
                 <label for="exampleInputEmail1">Title</label>
 
-                <input type="text" name="firstName" class="form-control" placeholder="First Name" [(ngModel)]="profileSettings.firstName" required #firstName="ngModel" pattern="regexConstants.OnlyAlphabets" />
+                <input type="text" name="firstName" class="form-control" placeholder="First Name" [(ngModel)]="profileSettings.firstName" required #firstName="ngModel"  pattern="{{regexConstants.OnlyAlphabets}}" />
                 <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
                   <div *ngIf="firstName.errors.required">
                     First Name is required.
@@ -45,7 +45,7 @@
                 </div>
 
 
-                <input type="text" name="lastName" class="form-control" placeholder="Last Name" [(ngModel)]="profileSettings.lastName" required #lastName="ngModel" pattern="regexConstants.OnlyAlphabets" />
+                <input type="text" name="lastName" class="form-control" placeholder="Last Name" [(ngModel)]="profileSettings.lastName" required #lastName="ngModel" pattern="{{regexConstants.OnlyAlphabets}}" />
                 <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
                      class="alert alert-danger">
                   <div *ngIf="lastName.errors.required">

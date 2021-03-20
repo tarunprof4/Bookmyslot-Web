@@ -23,9 +23,10 @@ export class ProfileSettingsComponent implements OnInit {
 
   constructor(private customerService: CustomerService, private genderService: GenderService, private route: ActivatedRoute, private modalService: BsModalService, private title: Title) { }
 
-  public regexConstants = RegexConstants;
-  public profileSettings: ProfileSettings;
-  public genders: string[];
+  regexConstants = RegexConstants;
+  profileSettings: ProfileSettings;
+  genders: string[];
+
   resolverError: ResolverError = new ResolverError();
   private bsModalRef: BsModalRef;
   private modalComponent = new ModalComponent();
