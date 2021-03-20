@@ -115,6 +115,13 @@ export class ShareSlotComponent implements OnInit {
     return allCountryTimeZones.filter(a => a.countryName === country);
   }
 
+
+  onCountrychange(country: string): void {
+    console.log(country);
+    this.filteredCountryTimeZones = this.filterTimeZonesByCountry(this.countryTimeZones, country);
+  }
+
+
   onStartTimechange(slotStartTime: Date): void {
     this.slotDuration = this.getSlotDuration(slotStartTime, this.slotEndTime);
   }
