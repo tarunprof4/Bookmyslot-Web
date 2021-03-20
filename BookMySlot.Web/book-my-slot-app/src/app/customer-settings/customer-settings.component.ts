@@ -3,9 +3,14 @@ import { NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { CountryService } from '../services/country-service';
 import { CustomerSettingsService } from '../services/customer-settings.service';
+import { TimezoneService } from '../services/timezone.service';
+import { CountryConstants } from '../shared/constants/country-constants';
 import { HttpStatusConstants } from '../shared/constants/http-status-constants';
 import { PageTitleConstants } from '../shared/constants/page-title-constants';
+import { TimezoneConstants } from '../shared/constants/timezone-constants';
+import { CountryTimeZone } from '../shared/country-timezone';
 import { CustomerSettings } from '../shared/customer-settings';
 import { ResolverError } from '../shared/resolver-error';
 import { ModalComponent } from '../shared/ui-controls/modal-component';
@@ -19,15 +24,25 @@ import { ModalSuccessComponent } from '../ui-controls/modal-success/modal-succes
 })
 export class CustomerSettingsComponent implements OnInit {
 
-  constructor(private customerSettingsService: CustomerSettingsService, private route: ActivatedRoute, private modalService: BsModalService, private title: Title) { }
+  constructor(private customerSettingsService: CustomerSettingsService, private timezoneService: TimezoneService,
+    private countryService: CountryService, private route: ActivatedRoute, private modalService: BsModalService, private title: Title) { }
 
-  public customerSettings = new  CustomerSettings();
+  public customerSettings = new CustomerSettings();
+  countries: string[];
+  private countryTimeZones: CountryTimeZone[];
+  filteredCountryTimeZones: CountryTimeZone[];
+
   resolverError: ResolverError = new ResolverError();
   private bsModalRef: BsModalRef;
   private modalComponent = new ModalComponent();
 
+  
+
   ngOnInit(): void {
     this.title.setTitle(PageTitleConstants.CustomerSettings);
+    this.countries = this.countryService.getCountries();
+    this.countryTimeZones = this.timezoneService.getCountryTimeZones();
+
     let initCustomerSettings: CustomerSettings | ResolverError = this.route.snapshot.data['resolvedCustomerSettings'];
 
     if (initCustomerSettings instanceof ResolverError) {
@@ -35,17 +50,27 @@ export class CustomerSettingsComponent implements OnInit {
       if (this.resolverError.statusCode == HttpStatusConstants.NotFound) {
         console.log("no customer settings");
         this.resolverError.errors = [];
+        this.customerSettings.country = CountryConstants.India;
+        this.customerSettings.timeZone = TimezoneConstants.India;
       }
     }
     else {
       this.customerSettings = initCustomerSettings;
-      console.log("customer settings found " + this.customerSettings);
     }
+
+    this.filteredCountryTimeZones = this.filterTimeZonesByCountry(this.countryTimeZones, this.customerSettings.country);
+  }
+
+
+
+  onCountrychange(country: string): void {
+    console.log(country);
+    this.filteredCountryTimeZones = this.filterTimeZonesByCountry(this.countryTimeZones, country);
+    this.customerSettings.timeZone = this.filteredCountryTimeZones[0].timeZone;
   }
 
 
   onUpdate() {
-    this.customerSettings.timeZone = "Asia/Kolkata";
     this.customerSettingsService.updateCustomerSettings(this.customerSettings)
       .subscribe(
         (data: boolean) => {
@@ -62,6 +87,12 @@ export class CustomerSettingsComponent implements OnInit {
         }
       );
   }
+
+
+  private filterTimeZonesByCountry(allCountryTimeZones: CountryTimeZone[], country: string): CountryTimeZone[] {
+    return allCountryTimeZones.filter(a => a.countryName === country);
+  }
+
 
 
 }
