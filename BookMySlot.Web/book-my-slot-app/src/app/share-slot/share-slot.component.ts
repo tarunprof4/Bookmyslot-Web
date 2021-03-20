@@ -119,6 +119,7 @@ export class ShareSlotComponent implements OnInit {
   onCountrychange(country: string): void {
     console.log(country);
     this.filteredCountryTimeZones = this.filterTimeZonesByCountry(this.countryTimeZones, country);
+    this.slotDetails.timeZone = this.filteredCountryTimeZones[0].timeZone;
   }
 
 

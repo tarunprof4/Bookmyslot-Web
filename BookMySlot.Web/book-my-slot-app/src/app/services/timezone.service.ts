@@ -14,7 +14,7 @@ export class TimezoneService {
 
 
   public getCountryTimeZones(): CountryTimeZone[] {
-    if (this.countryTimeZones.length == 0) {
+    if (this.countryTimeZones.length === 0) {
       this.initCountryTimeZone();
     }
     return this.countryTimeZones;
