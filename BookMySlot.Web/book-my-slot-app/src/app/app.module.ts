@@ -44,6 +44,7 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
 import { RegisterComponent } from './register/register.component';
 import { CustomerSettingsComponent } from './customer-settings/customer-settings.component';
 import { CustomerSettingsService } from './services/customer-settings.service';
+import { DurationPipe } from './shared/pipes/duration.pipe';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -96,6 +97,7 @@ export function getModalConfig(): BsModalRef {
     LoginComponent,
     RegisterComponent,
     CustomerSettingsComponent,
+    DurationPipe,
   ],
   imports: [
     BrowserModule,
