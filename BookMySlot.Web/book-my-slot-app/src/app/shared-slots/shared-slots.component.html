@@ -91,10 +91,15 @@
                       Slot Time Date
                       <b class="d-block">{{customerBookedSlot.slotModel.slotStartZonedDateTime | nodaTime:customerBookedSlot.slotModel.country}}</b>
                     </p>
-                 
+
                     <p class="text-sm col-md-4 col-sm-6">
-                     Slot Duration
+                      Slot Duration
                       <b class="d-block">{{customerBookedSlot.slotModel.slotDuration | duration}} </b>
+                    </p>
+
+                    <p class="text-sm col-md-4 col-sm-6">
+                      Slot Meeting Link
+                      <b class="d-block">{{customerBookedSlot.slotModel.slotMeetingLink}} </b>
                     </p>
 
                     <p class="text-sm col-md-4 col-sm-6">
