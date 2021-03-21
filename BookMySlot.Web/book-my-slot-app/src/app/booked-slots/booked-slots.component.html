@@ -94,24 +94,16 @@
                       <b class="d-block">{{customerBookedSlot.slotModel.title}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
-                      Date
-                      <b class="d-block">{{customerBookedSlot.slotModel.slotDate}}</b>
+                      Slot Time
+                      <b class="d-block">{{customerBookedSlot.slotModel.slotStartZonedDateTime | nodaTime:customerBookedSlot.slotModel.country}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
-                      Start Time
-                      <b class="d-block">{{customerBookedSlot.slotModel.slotStartTime}}</b>
+                      Slot Duration
+                      <b class="d-block">{{customerBookedSlot.slotModel.slotDuration | duration}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
-                      End Time
-                      <b class="d-block">{{customerBookedSlot.slotModel.slotEndTime}}</b>
-                    </p>
-                    <p class="text-sm col-md-4 col-sm-6">
-                      End Time
-                      <b class="d-block">{{customerBookedSlot.slotModel.timeZone}}</b>
-                    </p>
-                    <p class="text-sm col-md-4 col-sm-6">
-                      Duration
-                      <b class="d-block">{{customerBookedSlot.slotModel.slotDuration}}</b>
+                      Slot Meeting Link
+                      <b class="d-block">{{customerBookedSlot.slotModel.slotMeetingLink}}</b>
                     </p>
                   </div>
                 </div>
@@ -155,24 +147,12 @@
                       <b class="d-block">{{customerCompletedSlot.slotModel.title}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
-                      Date
-                      <b class="d-block">{{customerCompletedSlot.slotModel.slotDate}}</b>
+                      Slot Time
+                      <b class="d-block">{{customerCompletedSlot.slotModel.slotStartZonedDateTime | nodaTime:customerCompletedSlot.slotModel.country}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
-                      Start Time
-                      <b class="d-block">{{customerCompletedSlot.slotModel.slotStartTime}}</b>
-                    </p>
-                    <p class="text-sm col-md-4 col-sm-6">
-                      End Time
-                      <b class="d-block">{{customerCompletedSlot.slotModel.slotEndTime}}</b>
-                    </p>
-                    <p class="text-sm col-md-4 col-sm-6">
-                      End Time
-                      <b class="d-block">{{customerCompletedSlot.slotModel.timeZone}}</b>
-                    </p>
-                    <p class="text-sm col-md-4 col-sm-6">
-                      Duration
-                      <b class="d-block">{{customerCompletedSlot.slotModel.slotDuration}}</b>
+                      Slot Duration
+                      <b class="d-block">{{customerCompletedSlot.slotModel.slotDuration | duration}}</b>
                     </p>
                   </div>
                 </div>
@@ -206,24 +186,12 @@
                       <b class="d-block">{{customerCancelledSlot.cancelledSlotModel.title}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
-                      Date
-                      <b class="d-block">{{customerCancelledSlot.cancelledSlotModel.slotDate}}</b>
+                      Slot Time
+                      <b class="d-block">{{customerCancelledSlot.slotModel.slotStartZonedDateTime | nodaTime:customerCancelledSlot.slotModel.country}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
-                      Start Time
-                      <b class="d-block">{{customerCancelledSlot.cancelledSlotModel.slotStartTime}}</b>
-                    </p>
-                    <p class="text-sm col-md-4 col-sm-6">
-                      End Time
-                      <b class="d-block">{{customerCancelledSlot.cancelledSlotModel.slotEndTime}}</b>
-                    </p>
-                    <p class="text-sm col-md-4 col-sm-6">
-                      End Time
-                      <b class="d-block">{{customerCancelledSlot.cancelledSlotModel.timeZone}}</b>
-                    </p>
-                    <p class="text-sm col-md-4 col-sm-6">
-                      Duration
-                      <b class="d-block">{{customerCancelledSlot.cancelledSlotModel.slotDuration}}</b>
+                      Slot Duration
+                      <b class="d-block">{{customerCancelledSlot.cancelledSlotModel.slotDuration | duration}}</b>
                     </p>
                   
                   </div>
