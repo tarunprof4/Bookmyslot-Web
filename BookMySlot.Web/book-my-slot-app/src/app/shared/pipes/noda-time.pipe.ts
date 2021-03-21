@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { parse } from 'url';
+import { DateTimeConstants } from '../constants/date-time-constants';
 import { DelimiterConstants } from '../constants/delimiter-constants';
 
 @Pipe({
@@ -19,8 +20,8 @@ export class NodaTimePipe implements PipeTransform {
     let month = parseInt(dayArray[0]);
     let date = parseInt(dayArray[1]);
     let year = parseInt(dayArray[2]);
-    let formattedDate = date + ',' + month + ' ' + year;
 
+    let formattedDate = date + ',' + DateTimeConstants.month_names_short[month-1] + ' ' + year;
     let formattedNodaTime = formattedDate + ' ' + time + ' ' + offset + ' ' + timeZone + ' (' + country + ') GMT';
     return formattedNodaTime;
   }
