@@ -31,27 +31,30 @@
             <div class="col-md-12">
               <div class="text-muted row">
                 <p class="text-sm col-md-4 col-sm-6">
-                  <span>{{slotModel.key.title}}</span>
-                  <b class="d-block">Deveint Inc</b>
+                  Title
+                  <b class="d-block"><span>{{slotModel.key.title}}</span></b>
                 </p>
+
+                <p class="text-sm col-md-4 col-sm-6">
+                  Country
+                  <b class="d-block"><span>{{slotModel.key.country}}</span></b>
+                </p>
+
                 <p class="text-sm col-md-4 col-sm-6">
                   Date
-                  <b class="d-block"><span>{{slotModel.key.slotDate}}</span></b>
+                  <b class="d-block"><span>{{slotModel.key.slotStartZonedDateTime}}</span></b>
                 </p>
                 <p class="text-sm col-md-4 col-sm-6">
-                  Start Time
+                  Start Time (24hrs)
                   <b class="d-block"><span>{{slotModel.key.slotStartTime}}</span></b>
                 </p>
                 <p class="text-sm col-md-4 col-sm-6">
-                  End Time
+                  End Time (24hrs)
                   <b class="d-block"><span>{{slotModel.key.slotEndTime}}</span></b>
                 </p>
+
                 <p class="text-sm col-md-4 col-sm-6">
-                  TimeZone
-                  <b class="d-block"><span>{{slotModel.key.timeZone}}</span></b>
-                </p>
-                <p class="text-sm col-md-4 col-sm-6">
-                  Slot Duration
+                  Slot Duration (mins)
                   <b class="d-block"><span>{{slotModel.key.slotDuration}}</span></b>
                 </p>
               </div>
