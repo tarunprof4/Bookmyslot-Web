@@ -45,6 +45,7 @@ import { RegisterComponent } from './register/register.component';
 import { CustomerSettingsComponent } from './customer-settings/customer-settings.component';
 import { CustomerSettingsService } from './services/customer-settings.service';
 import { DurationPipe } from './shared/pipes/duration.pipe';
+import { NodaTimePipe } from './shared/pipes/noda-time.pipe';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -98,6 +99,7 @@ export function getModalConfig(): BsModalRef {
     RegisterComponent,
     CustomerSettingsComponent,
     DurationPipe,
+    NodaTimePipe,
   ],
   imports: [
     BrowserModule,

@@ -7,11 +7,13 @@ import { DelimiterConstants } from '../constants/delimiter-constants';
 })
 export class DurationPipe implements PipeTransform {
 
-  constructor(private dateTimeHelperService: DateTimeHelperService) {}
+  constructor() {}
 
-  transform(value: string, timeIn?: string): number {
-    let totalMinutes = this.dateTimeHelperService.getTotalMinutesFromTimeSpanString(value);
-    return totalMinutes;
+  transform(value: string): string {
+    var arr = value.split(DelimiterConstants.Time);
+    let hours = parseInt(arr[0]);
+    let minutes = parseInt(arr[1]);
+    return hours + ' hrs' + ' ' + minutes + ' mins';
   }
 
 }
