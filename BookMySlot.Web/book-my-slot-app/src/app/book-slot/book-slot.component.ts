@@ -31,7 +31,6 @@ export class BookSlotComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle(PageTitleConstants.BookSlot);
-    this.customerAvailableSlots.bookAvailableSlotModels = [];
     let initCustomerAvailableSlots: BookSlots | ResolverError = this.route.snapshot.data['resolvedBookCustomerSlots'];
 
     if (initCustomerAvailableSlots instanceof ResolverError) {
