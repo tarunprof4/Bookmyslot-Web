@@ -108,8 +108,8 @@
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <button type="button" class="btn bg-gradient-primary" (click)="onResendEmail(customerBookedSlot.item3)">Resend Email</button>
-                  <button type="button" class="btn btn-default" (click)="onBookedSlotCancel(customerBookedSlot.item3, i)">Cancel</button>
+                  <button type="button" class="btn bg-gradient-primary" (click)="onResendEmail(customerBookedSlot.slotInformation)">Resend Email</button>
+                  <button type="button" class="btn btn-default" (click)="onBookedSlotCancel(customerBookedSlot.slotInformation, i)">Cancel</button>
                 </div>
                 <hr class="col-md-12">
 
@@ -164,6 +164,7 @@
               </div>
 
             </div>
+
             <div class="tab-pane fade" id="custom-tabs-four-messages" role="tabpanel" aria-labelledby="custom-tabs-four-messages-tab">
 
               <div *ngIf="customerCancelledSlots.length  == 0">no slots found</div>
@@ -186,7 +187,7 @@
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Time
-                      <b class="d-block">{{customerCancelledSlot.slotModel.slotStartZonedDateTime | nodaTime:customerCancelledSlot.slotModel.country}}</b>
+                      <b class="d-block">{{customerCancelledSlot.cancelledSlotModel.slotStartZonedDateTime | nodaTime:customerCancelledSlot.cancelledSlotModel.country}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Duration
