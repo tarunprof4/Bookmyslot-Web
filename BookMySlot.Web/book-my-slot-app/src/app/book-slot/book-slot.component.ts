@@ -6,6 +6,7 @@ import { SlotSchedulerService } from '../services/slot-scheduler.service';
 import { BookSlots } from '../shared/book-slots';
 import { HttpStatusConstants } from '../shared/constants/http-status-constants';
 import { PageTitleConstants } from '../shared/constants/page-title-constants';
+import { RoutingConstants } from '../shared/constants/routing-constants';
 import { ResolverError } from '../shared/resolver-error';
 import { SlotScheduler } from '../shared/slot-scheduler';
 import { ModalComponent } from '../shared/ui-controls/modal-component';
@@ -20,6 +21,8 @@ import { ModalSuccessComponent } from '../ui-controls/modal-success/modal-succes
 export class BookSlotComponent implements OnInit {
 
   customerAvailableSlots: BookSlots = new BookSlots();
+  routingConstants = RoutingConstants;
+
   resolverError: ResolverError = new ResolverError();
   private bsModalRef: BsModalRef;
   private modalComponent = new ModalComponent();
@@ -28,7 +31,7 @@ export class BookSlotComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle(PageTitleConstants.BookSlot);
-    this.customerAvailableSlots.slotModelsInforamtion = [];
+    this.customerAvailableSlots.bookAvailableSlotModels = [];
     let initCustomerAvailableSlots: BookSlots | ResolverError = this.route.snapshot.data['resolvedBookCustomerSlots'];
 
     if (initCustomerAvailableSlots instanceof ResolverError) {
@@ -38,7 +41,6 @@ export class BookSlotComponent implements OnInit {
       }
     }
     else {
-
       this.customerAvailableSlots = initCustomerAvailableSlots;
       console.log(" resolver get customer slots " + this.customerAvailableSlots);
     }
@@ -55,7 +57,7 @@ export class BookSlotComponent implements OnInit {
     this.slotSchedulerService.scheduleSlot(slotScheduler)
       .subscribe(
         (data: boolean) => {
-          this.customerAvailableSlots.slotModelsInforamtion.splice(index, 1);
+          this.customerAvailableSlots.bookAvailableSlotModels.splice(index, 1);
           let successModalComponent = this.modalComponent.getSuccessModalComponent();
           this.bsModalRef = this.modalService.show(ModalSuccessComponent);
           this.bsModalRef.content.title = successModalComponent.title;

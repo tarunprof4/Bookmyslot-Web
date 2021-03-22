@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { parse } from 'url';
 import { DateTimeConstants } from '../constants/date-time-constants';
 import { DelimiterConstants } from '../constants/delimiter-constants';
 
@@ -9,6 +8,10 @@ import { DelimiterConstants } from '../constants/delimiter-constants';
 export class NodaTimePipe implements PipeTransform {
 
   transform(value: string, country: string): string {
+
+    if (!country) {
+      return "";
+    }
 
     var arr = value.split(DelimiterConstants.ZonedDateTime);
     let day = arr[0];
