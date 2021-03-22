@@ -26,23 +26,23 @@ export class SharedSlotService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getCustomerYetToBeBookedSlots(): Observable<ShareSlot[] | ResolverError> {
-    return this.httpClient.get<ShareSlot[]>(this.getCustomerYetToBeBookedSlotsUrl)
+  public getCustomerYetToBeBookedSlots(): Observable<ShareSlot | ResolverError> {
+    return this.httpClient.get<ShareSlot>(this.getCustomerYetToBeBookedSlotsUrl)
       .pipe(
         catchError(err => this.handleHttpError(err))
       );
   }
 
 
-  public getCustomerBookedSlots(): Observable<ShareSlot[] | ResolverError> {
-    return this.httpClient.get<ShareSlot[]>(this.getCustomerBookedSlotsUrl)
+  public getCustomerBookedSlots(): Observable<ShareSlot | ResolverError> {
+    return this.httpClient.get<ShareSlot>(this.getCustomerBookedSlotsUrl)
       .pipe(
         catchError(err => this.handleHttpError(err))
       );
   }
 
-  public getCustomerCompletedSlots(): Observable<ShareSlot[] | ResolverError> {
-    return this.httpClient.get<ShareSlot[]>(this.getCustomerCompletedSlotsUrl)
+  public getCustomerCompletedSlots(): Observable<ShareSlot | ResolverError> {
+    return this.httpClient.get<ShareSlot>(this.getCustomerCompletedSlotsUrl)
       .pipe(
         catchError(err => this.handleHttpError(err))
       );

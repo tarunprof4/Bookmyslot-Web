@@ -64,7 +64,7 @@
 
 
 
-              <div *ngIf="customerBookedSlots.length  == 0">
+              <div *ngIf="customerBookedSlots.sharedSlotModels.length  == 0">
                 <div *ngIf="resolverError.errors.length  == 0">
                   no  slots found
                 </div>
@@ -79,38 +79,38 @@
 
 
 
-              <div class="row" *ngFor="let customerBookedSlot of customerBookedSlots;let i = index">
+              <div class="row" *ngFor="let customerBookedSlot of customerBookedSlots.sharedSlotModels;let i = index">
 
                 <div class="col-md-8">
                   <div class="text-muted row">
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Title
-                      <b class="d-block">{{customerBookedSlot.slotModel.title}}</b>
+                      <b class="d-block">{{customerBookedSlot.item2.title}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Time Date
-                      <b class="d-block">{{customerBookedSlot.slotModel.slotStartZonedDateTime | nodaTime:customerBookedSlot.slotModel.country}}</b>
+                      <b class="d-block">{{customerBookedSlot.item2.slotStartZonedDateTime | nodaTime:customerBookedSlot.item2.country}}</b>
                     </p>
 
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Duration
-                      <b class="d-block">{{customerBookedSlot.slotModel.slotDuration | duration}} </b>
+                      <b class="d-block">{{customerBookedSlot.item2.slotDuration | duration}} </b>
                     </p>
 
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Meeting Link
-                      <b class="d-block">{{customerBookedSlot.slotModel.slotMeetingLink}} </b>
+                      <b class="d-block">{{customerBookedSlot.item2.slotModel.slotMeetingLink}} </b>
                     </p>
 
                     <p class="text-sm col-md-4 col-sm-6">
                       Booked By
-                      <b class="d-block"><span>{{customerBookedSlot.bookedByCustomerModel.firstName}}</span>&nbsp;&nbsp;&nbsp;<span>{{customerBookedSlot.bookedByCustomerModel.lastName}}</span></b>
+                      <b class="d-block"><span>{{customerBookedSlot.item1.firstName}}</span>&nbsp;&nbsp;&nbsp;<span>{{customerBookedSlot.item1.lastName}}</span></b>
                     </p>
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <button type="button" class="btn bg-gradient-primary" (click)="onResendEmail(customerBookedSlot.sharedSlotModelInformation)">Resend Email</button>
-                  <button type="button" class="btn btn-default" (click)="onBookedSlotCancel(customerBookedSlot.sharedSlotModelInformation, i)">Cancel</button>
+                  <button type="button" class="btn bg-gradient-primary" (click)="onResendEmail(customerBookedSlot.item3)">Resend Email</button>
+                  <button type="button" class="btn btn-default" (click)="onBookedSlotCancel(customerBookedSlot.item3, i)">Cancel</button>
                 </div>
                 <hr class="col-md-12">
 
@@ -124,29 +124,29 @@
 
             <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
 
-              <div *ngIf="customerYetToBeBookedSlots.length  == 0">no  slots found</div>
+              <div *ngIf="customerYetToBeBookedSlots.sharedSlotModels.length  == 0">no  slots found</div>
 
 
-              <div class="row" *ngFor="let customerYetToBeBookedSlot of customerYetToBeBookedSlots;let i = index">
+              <div class="row" *ngFor="let customerYetToBeBookedSlot of customerYetToBeBookedSlots.sharedSlotModels;let i = index">
 
                 <div class="col-md-8">
                   <div class="text-muted row">
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Title
-                      <b class="d-block">{{customerYetToBeBookedSlot.slotModel.title}}</b>
+                      <b class="d-block">{{customerYetToBeBookedSlot.item2.title}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
                      Slot Time
-                      <b class="d-block">{{customerYetToBeBookedSlot.slotModel.slotStartZonedDateTime | nodaTime:customerYetToBeBookedSlot.slotModel.country}}</b>
+                      <b class="d-block">{{customerYetToBeBookedSlot.item2.slotStartZonedDateTime | nodaTime:customerYetToBeBookedSlot.item2.country}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Duration
-                      <b class="d-block">{{customerYetToBeBookedSlot.slotModel.slotDuration | duration}}</b>
+                      <b class="d-block">{{customerYetToBeBookedSlot.item2.slotDuration | duration}}</b>
                     </p>
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <button type="button" class="btn bg-gradient-primary" (click)="onYetToBeBookedSlotCancel(customerYetToBeBookedSlot.sharedSlotModelInformation, i)">Cancel</button>
+                  <button type="button" class="btn bg-gradient-primary" (click)="onYetToBeBookedSlotCancel(customerYetToBeBookedSlot.item3, i)">Cancel</button>
                 </div>
                 <hr class="col-md-12">
 
@@ -162,28 +162,28 @@
             <div class="tab-pane fade" id="custom-tabs-four-messages" role="tabpanel" aria-labelledby="custom-tabs-four-messages-tab">
 
 
-              <div *ngIf="customerCompletedSlots.length  == 0">no  slots found</div>
+              <div *ngIf="customerCompletedSlots.sharedSlotModels.length  == 0">no  slots found</div>
 
-              <div class="row" *ngFor="let customerCompletedSlot of customerCompletedSlots">
+              <div class="row" *ngFor="let customerCompletedSlot of customerCompletedSlots.sharedSlotModels">
 
                 <div class="col-md-8">
                   <div class="text-muted row">
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Title
-                      <b class="d-block">{{customerCompletedSlot.slotModel.title}}</b>
+                      <b class="d-block">{{customerCompletedSlot.item2.title}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Time
-                      <b class="d-block">{{customerCompletedSlot.slotModel.slotStartZonedDateTime | nodaTime:customerCompletedSlot.slotModel.country}}</b>
+                      <b class="d-block">{{customerCompletedSlot.item2.slotStartZonedDateTime | nodaTime:customerCompletedSlot.item2.country}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
                      Slot Duration
-                      <b class="d-block">{{customerCompletedSlot.slotModel.slotDuration | duration}}</b>
+                      <b class="d-block">{{customerCompletedSlot.item2.slotDuration | duration}}</b>
                     </p>
 
                     <p class="text-sm col-md-4 col-sm-6">
                       Booked By
-                      <b class="d-block"><span>{{customerCompletedSlot.bookedByCustomerModel.firstName}}</span>&nbsp;&nbsp;&nbsp;<span>{{customerCompletedSlot.bookedByCustomerModel.lastName}}</span></b>
+                      <b class="d-block"><span>{{customerCompletedSlot.item1.firstName}}</span>&nbsp;&nbsp;&nbsp;<span>{{customerCompletedSlot.item1.lastName}}</span></b>
                     </p>
 
                   </div>

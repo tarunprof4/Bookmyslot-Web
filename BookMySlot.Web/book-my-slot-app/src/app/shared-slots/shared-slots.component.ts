@@ -22,9 +22,9 @@ import { ModalSuccessComponent } from '../ui-controls/modal-success/modal-succes
 export class SharedSlotsComponent implements OnInit {
 
 
-  customerBookedSlots: ShareSlot[] = [];
-  customerYetToBeBookedSlots: ShareSlot[] = [];
-  customerCompletedSlots: ShareSlot[] = [];
+  customerBookedSlots: ShareSlot = new ShareSlot();
+  customerYetToBeBookedSlots: ShareSlot = new ShareSlot();
+  customerCompletedSlots: ShareSlot = new ShareSlot();
   customerCancelledSlots: CancelledSlotDetails[] = [];
   resolverError: ResolverError = new ResolverError();
   private bsModalRef: BsModalRef;
@@ -34,7 +34,7 @@ export class SharedSlotsComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle(PageTitleConstants.SharedSlots);
-    let initCustomerBookedSlots: ShareSlot[] | ResolverError = this.route.snapshot.data['resolvedCustomerBookedSlots'];
+    let initCustomerBookedSlots: ShareSlot | ResolverError = this.route.snapshot.data['resolvedCustomerBookedSlots'];
 
     if (initCustomerBookedSlots instanceof ResolverError) {
       this.resolverError = initCustomerBookedSlots;
@@ -74,7 +74,7 @@ export class SharedSlotsComponent implements OnInit {
     this.slotService.cancelSlot(sharedSlotModelInformation)
       .subscribe(
         (data: boolean) => {
-          this.customerBookedSlots.splice(index, 1);
+          this.customerBookedSlots.sharedSlotModels.splice(index, 1);
           this.showSuccessModal();
         },
         (err: any) => {
@@ -89,7 +89,7 @@ export class SharedSlotsComponent implements OnInit {
     this.slotService.cancelSlot(sharedSlotModelInformation)
       .subscribe(
         (data: boolean) => {
-          this.customerYetToBeBookedSlots.splice(index, 1);
+          this.customerYetToBeBookedSlots.sharedSlotModels.splice(index, 1);
           this.showSuccessModal();
         },
         (err: any) => {
@@ -104,7 +104,7 @@ export class SharedSlotsComponent implements OnInit {
 
     this.sharedSlotService.getCustomerBookedSlots()
       .subscribe(
-        (data: ShareSlot[]) => {
+        (data: ShareSlot) => {
           this.customerBookedSlots = data;
 
           console.log("got getBookedSlots " + this.customerYetToBeBookedSlots);
@@ -112,7 +112,7 @@ export class SharedSlotsComponent implements OnInit {
           console.log(data);
         },
         (err: any) => {
-          this.customerBookedSlots = [];
+          this.customerBookedSlots.sharedSlotModels = [];
           if (err.statusCode != HttpStatusConstants.NotFound) {
             this.showFailureModal(err);
           }
@@ -126,7 +126,7 @@ export class SharedSlotsComponent implements OnInit {
 
     this.sharedSlotService.getCustomerYetToBeBookedSlots()
       .subscribe(
-        (data: ShareSlot[]) => {
+        (data: ShareSlot) => {
           this.customerYetToBeBookedSlots = data;
 
           console.log("got getYetToBeBooked " + this.customerYetToBeBookedSlots);
@@ -134,7 +134,7 @@ export class SharedSlotsComponent implements OnInit {
           console.log(data);
         },
         (err: any) => {
-          this.customerYetToBeBookedSlots = [];
+          this.customerYetToBeBookedSlots.sharedSlotModels = [];
           if (err.statusCode != HttpStatusConstants.NotFound) {
             this.showFailureModal(err);
           }
@@ -148,7 +148,7 @@ export class SharedSlotsComponent implements OnInit {
 
     this.sharedSlotService.getCustomerCompletedSlots()
       .subscribe(
-        (data: ShareSlot[]) => {
+        (data: ShareSlot) => {
           this.customerCompletedSlots = data;
 
           console.log("got getCompletedSlots " + this.customerYetToBeBookedSlots);
@@ -156,7 +156,7 @@ export class SharedSlotsComponent implements OnInit {
           console.log(data);
         },
         (err: any) => {
-          this.customerCompletedSlots = [];
+          this.customerCompletedSlots.sharedSlotModels = [];
           if (err.statusCode != HttpStatusConstants.NotFound) {
             this.showFailureModal(err);
           }
