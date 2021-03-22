@@ -39,15 +39,15 @@
         <div class="card-header p-0 border-bottom-0">
           <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
             <li class="nav-item" (click)="getBookedSlots()">
-              <a class="nav-link active" id="custom-tabs-four-home-tab" href="#custom-tabs-four-home" data-toggle="pill"  role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">Booked</a>
+              <a class="nav-link active" id="custom-tabs-four-home-tab" href="#custom-tabs-four-home" data-toggle="pill" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">Booked</a>
             </li>
             <li class="nav-item" (click)="getCompletedSlots()">
-              <a class="nav-link" id="custom-tabs-four-profile-tab" href="#custom-tabs-four-profile" data-toggle="pill"  role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Completed</a>
+              <a class="nav-link" id="custom-tabs-four-profile-tab" href="#custom-tabs-four-profile" data-toggle="pill" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Completed</a>
             </li>
             <li class="nav-item" (click)="getCancelledSlots()">
-              <a class="nav-link" id="custom-tabs-four-messages-tab" href="#custom-tabs-four-messages" data-toggle="pill"  role="tab" aria-controls="custom-tabs-four-messages" aria-selected="false">Cancelled</a>
+              <a class="nav-link" id="custom-tabs-four-messages-tab" href="#custom-tabs-four-messages" data-toggle="pill" role="tab" aria-controls="custom-tabs-four-messages" aria-selected="false">Cancelled</a>
             </li>
-          
+
 
           </ul>
         </div>
@@ -63,7 +63,7 @@
 
             <div class="tab-pane fade active show" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
 
-              <div *ngIf="customerBookedSlots.length  == 0">
+              <div *ngIf="customerBookedSlots.bookedSlotModels.length  == 0">
                 <div *ngIf="resolverError.errors.length  == 0">
                   no slots found
                 </div>
@@ -77,12 +77,12 @@
               </div>
 
 
-              <div class="row" *ngFor="let customerBookedSlot of customerBookedSlots;let i = index">
+              <div class="row" *ngFor="let customerBookedSlot of customerBookedSlots.bookedSlotModels;let i = index">
                 <div class="col-md-4">
                   <div class="user-block">
                     <img class="img-circle img-bordered-sm" src="assets/dist/img/user1-128x128.jpg" alt="user image">
                     <span class="username">
-                      <a href="#"><span>{{customerBookedSlot.createdByCustomerModel.firstName}}</span>&nbsp;&nbsp;&nbsp;<span>{{customerBookedSlot.createdByCustomerModel.lastName}}</span></a>
+                      <a href="#"><span>{{customerBookedSlot.item1.firstName}}</span>&nbsp;&nbsp;&nbsp;<span>{{customerBookedSlot.item1.lastName}}</span></a>
                     </span>
                     <span class="description">Created by</span>
                   </div>
@@ -91,25 +91,25 @@
                   <div class="text-muted row">
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Title
-                      <b class="d-block">{{customerBookedSlot.slotModel.title}}</b>
+                      <b class="d-block">{{customerBookedSlot.item2.slotModel.title}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Time
-                      <b class="d-block">{{customerBookedSlot.slotModel.slotStartZonedDateTime | nodaTime:customerBookedSlot.slotModel.country}}</b>
+                      <b class="d-block">{{customerBookedSlot.item2.slotModel.slotStartZonedDateTime | nodaTime:customerBookedSlot.item2.slotModel.country}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Duration
-                      <b class="d-block">{{customerBookedSlot.slotModel.slotDuration | duration}}</b>
+                      <b class="d-block">{{customerBookedSlot.item2.slotModel.slotDuration | duration}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Meeting Link
-                      <b class="d-block">{{customerBookedSlot.slotModel.slotMeetingLink}}</b>
+                      <b class="d-block">{{customerBookedSlot.item2.slotModel.slotMeetingLink}}</b>
                     </p>
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <button type="button" class="btn bg-gradient-primary" (click)="onResendEmail(customerBookedSlot.bookedSlotModelInformation)">Resend Email</button>
-                  <button type="button" class="btn btn-default" (click)="onBookedSlotCancel(customerBookedSlot.bookedSlotModelInformation, i)">Cancel</button>
+                  <button type="button" class="btn bg-gradient-primary" (click)="onResendEmail(customerBookedSlot.item3)">Resend Email</button>
+                  <button type="button" class="btn btn-default" (click)="onBookedSlotCancel(customerBookedSlot.item3, i)">Cancel</button>
                 </div>
                 <hr class="col-md-12">
 
@@ -128,14 +128,14 @@
 
             <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
 
-              <div *ngIf="customerCompletedSlots.length  == 0">no slots found</div>
+              <div *ngIf="customerCompletedSlots.bookedSlotModels.length  == 0">no slots found</div>
 
-              <div class="row" *ngFor="let customerCompletedSlot of customerCompletedSlots">
+              <div class="row" *ngFor="let customerCompletedSlot of customerCompletedSlots.bookedSlotModels">
                 <div class="col-md-4">
                   <div class="user-block">
                     <img class="img-circle img-bordered-sm" src="assets/dist/img/user1-128x128.jpg" alt="user image">
                     <span class="username">
-                      <a href="#"><span>{{customerCompletedSlot.createdByCustomerModel.firstName}}</span>&nbsp;&nbsp;&nbsp;<span>{{customerCompletedSlot.createdByCustomerModel.lastName}}</span></a>
+                      <a href="#"><span>{{customerCompletedSlot.item1.firstName}}</span>&nbsp;&nbsp;&nbsp;<span>{{customerCompletedSlot.item1.lastName}}</span></a>
                     </span>
                     <span class="description">Created by</span>
                   </div>
@@ -144,20 +144,19 @@
                   <div class="text-muted row">
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Title
-                      <b class="d-block">{{customerCompletedSlot.slotModel.title}}</b>
+                      <b class="d-block">{{customerCompletedSlot.item2.slotModel.title}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Time
-                      <b class="d-block">{{customerCompletedSlot.slotModel.slotStartZonedDateTime | nodaTime:customerCompletedSlot.slotModel.country}}</b>
+                      <b class="d-block">{{customerCompletedSlot.item2.slotModel.slotStartZonedDateTime | nodaTime:customerCompletedSlot.item2.slotModel.country}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Duration
-                      <b class="d-block">{{customerCompletedSlot.slotModel.slotDuration | duration}}</b>
+                      <b class="d-block">{{customerCompletedSlot.item2.slotModel.slotDuration | duration}}</b>
                     </p>
                   </div>
                 </div>
                 <div class="col-md-12">
-                  
                 </div>
                 <hr class="col-md-12">
 
@@ -193,7 +192,7 @@
                       Slot Duration
                       <b class="d-block">{{customerCancelledSlot.cancelledSlotModel.slotDuration | duration}}</b>
                     </p>
-                  
+
                   </div>
                 </div>
                 <div class="col-md-12">
@@ -206,7 +205,7 @@
 
             </div>
 
-            
+
           </div>
         </div>
         <!-- /.card -->
@@ -217,5 +216,3 @@
 
   </section>
 </div><!-- /.container-fluid -->
-
-

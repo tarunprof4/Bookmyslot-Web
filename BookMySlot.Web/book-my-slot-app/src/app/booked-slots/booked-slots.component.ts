@@ -21,8 +21,8 @@ import { ModalSuccessComponent } from '../ui-controls/modal-success/modal-succes
 })
 export class BookedSlotsComponent implements OnInit {
 
-  customerBookedSlots: BookedSlot[] = [];
-  customerCompletedSlots: BookedSlot[] = [];
+  customerBookedSlots: BookedSlot = new BookedSlot();
+  customerCompletedSlots: BookedSlot = new BookedSlot();
   customerCancelledSlots: CancelledSlotInformation[] = [];
   resolverError: ResolverError = new ResolverError();
   private bsModalRef: BsModalRef;
@@ -32,7 +32,7 @@ export class BookedSlotsComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle(PageTitleConstants.BookedSlots);
-    let initCustomerBookedSlots: BookedSlot[] | ResolverError = this.route.snapshot.data['resolvedCustomerBookedSlots'];
+    let initCustomerBookedSlots: BookedSlot | ResolverError = this.route.snapshot.data['resolvedCustomerBookedSlots'];
 
     if (initCustomerBookedSlots instanceof ResolverError) {
       this.resolverError = initCustomerBookedSlots;
@@ -66,7 +66,7 @@ export class BookedSlotsComponent implements OnInit {
     this.slotService.cancelSlot(bookedSlotModelInformation)
       .subscribe(
         (data: boolean) => {
-          this.customerBookedSlots.splice(index, 1);
+          this.customerBookedSlots.bookedSlotModels.splice(index, 1);
           this.showSuccessModal();
         },
         (err: any) => {
@@ -84,11 +84,11 @@ export class BookedSlotsComponent implements OnInit {
 
     this.bookedSlotService.getCustomerBookedSlots()
       .subscribe(
-        (data: BookedSlot[]) => {
+        (data: BookedSlot) => {
           this.customerBookedSlots = data;
         },
         (err: any) => {
-          this.customerBookedSlots = [];
+          this.customerBookedSlots.bookedSlotModels = [];
           if (err.statusCode != HttpStatusConstants.NotFound) {
             this.showFailureModal(err);
           }
@@ -100,11 +100,11 @@ export class BookedSlotsComponent implements OnInit {
   getCompletedSlots() {
     this.bookedSlotService.getCustomerCompletedSlots()
       .subscribe(
-        (data: BookedSlot[]) => {
+        (data: BookedSlot) => {
           this.customerCompletedSlots = data;
         },
         (err: any) => {
-          this.customerCompletedSlots = [];
+          this.customerCompletedSlots.bookedSlotModels = [];
           if (err.statusCode != HttpStatusConstants.NotFound) {
             this.showFailureModal(err);
           }

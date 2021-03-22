@@ -26,15 +26,15 @@ export class BookedSlotService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getCustomerBookedSlots(): Observable<BookedSlot[] | ResolverError> {
-    return this.httpClient.get<BookedSlot[]>(this.getCustomerBookedSlotsUrl)
+  public getCustomerBookedSlots(): Observable<BookedSlot | ResolverError> {
+    return this.httpClient.get<BookedSlot>(this.getCustomerBookedSlotsUrl)
       .pipe(
         catchError(err => this.handleHttpError(err))
       );
   }
 
-  public getCustomerCompletedSlots(): Observable<BookedSlot[] | ResolverError> {
-    return this.httpClient.get<BookedSlot[]>(this.getCustomerCompletedSlotsUrl)
+  public getCustomerCompletedSlots(): Observable<BookedSlot | ResolverError> {
+    return this.httpClient.get<BookedSlot>(this.getCustomerCompletedSlotsUrl)
       .pipe(
         catchError(err => this.handleHttpError(err))
       );
