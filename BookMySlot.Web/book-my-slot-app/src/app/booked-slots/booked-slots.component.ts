@@ -9,6 +9,7 @@ import { BookedSlot } from '../shared/booked-slot';
 import { CancelledSlotInformation } from '../shared/cancelled-slot-information';
 import { HttpStatusConstants } from '../shared/constants/http-status-constants';
 import { PageTitleConstants } from '../shared/constants/page-title-constants';
+import { RoutingConstants } from '../shared/constants/routing-constants';
 import { ResolverError } from '../shared/resolver-error';
 import { ModalComponent } from '../shared/ui-controls/modal-component';
 import { ModalFailureComponent } from '../ui-controls/modal-failure/modal-failure.component';
@@ -21,6 +22,7 @@ import { ModalSuccessComponent } from '../ui-controls/modal-success/modal-succes
 })
 export class BookedSlotsComponent implements OnInit {
 
+  routingConstants = RoutingConstants;
   customerBookedSlots: BookedSlot = new BookedSlot();
   customerCompletedSlots: BookedSlot = new BookedSlot();
   customerCancelledSlots: CancelledSlotInformation[] = [];

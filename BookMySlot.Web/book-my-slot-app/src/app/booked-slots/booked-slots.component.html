@@ -105,6 +105,21 @@
                       Slot Meeting Link
                       <b class="d-block">{{customerBookedSlot.item2.slotMeetingLink}}</b>
                     </p>
+
+                    <p class="text-sm col-md-4 col-sm-6" *ngIf="customerBookedSlots.bookedByCustomerCountry">
+                      Slot Time In Your TimeZone(24 hrs)
+                      <b class="d-block"><span>{{customerBookedSlot.item2.customerSlotStartZonedDateTime | nodaTime:customerBookedSlots.bookedByCustomerCountry }}</span></b>
+                    </p>
+
+
+                    <p class="text-sm col-md-4 col-sm-6" *ngIf="!customerBookedSlots.bookedByCustomerCountry">
+                      Please set your timezone to see the slot time in your timezone
+                      <a routerLink="/{{routingConstants.CustomerSettings}}" class="nav-link">
+                        <i class="nav-icon far fa-home"></i>
+                      </a>
+                    </p>
+
+
                   </div>
                 </div>
                 <div class="col-md-12">
