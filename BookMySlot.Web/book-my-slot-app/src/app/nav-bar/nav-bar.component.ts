@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { CustomerService } from '../services/customer.service';
 import { RoutingConstants } from '../shared/constants/routing-constants';
 import { ProfileSettings } from '../shared/profile-settings';
+import { ProfileSummary } from '../shared/profile-summary';
 
 @Component({
   selector: 'app-nav-bar',
@@ -14,15 +15,15 @@ export class NavBarComponent implements OnInit {
 
   constructor(private customerService: CustomerService, private authService: AuthService, private router: Router) { }
 
-  profileSettings: ProfileSettings;
+  profileSummary: ProfileSummary;
   routingConstants = RoutingConstants;
 
   ngOnInit(): void {
 
-    this.customerService.getProfileSettings()
+    this.customerService.getProfileSummary()
       .subscribe(
-        (data: ProfileSettings) => {
-          this.profileSettings = data;
+        (data: ProfileSummary) => {
+          this.profileSummary = data;
         },
         (err: any) => console.log(err)
       );

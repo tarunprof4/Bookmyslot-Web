@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ResolverError } from '../shared/resolver-error';
 import { environment } from '../../environments/environment';
+import { ProfileSummary } from '../shared/profile-summary';
 
 
 @Injectable({
@@ -13,11 +14,21 @@ import { environment } from '../../environments/environment';
 export class CustomerService {
 
 
+  private profileSummaryUrl = environment.apiUrl + '/api/v1/customer';
   private profileSettingsUrl = environment.apiUrl + '/api/v1/profileSettings';
   //private profileSettingsUrl = '/api/v1/ProfileSettings';
 
 
   constructor(private httpClient: HttpClient) { }
+
+
+  public getProfileSummary(): Observable<ProfileSummary | ResolverError> {
+    return this.httpClient.get<ProfileSummary>(this.profileSummaryUrl)
+      .pipe(
+        catchError(err => this.handleHttpError(err))
+      );
+
+  }
 
   public getProfileSettings(): Observable<ProfileSettings | ResolverError> {
     return this.httpClient.get<ProfileSettings>(this.profileSettingsUrl)
@@ -26,7 +37,6 @@ export class CustomerService {
       );
 
   }
-
 
 
 
