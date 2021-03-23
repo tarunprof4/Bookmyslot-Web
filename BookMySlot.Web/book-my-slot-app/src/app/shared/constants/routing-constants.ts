@@ -8,5 +8,6 @@ export const RoutingConstants = {
   BookedSlots: 'booked-slots',
   ProfileSettings: 'profile-settings',
   CustomerSettings: 'customer-settings',
+  UpdateProfilePicture: 'update-profile-picture',
 };
 

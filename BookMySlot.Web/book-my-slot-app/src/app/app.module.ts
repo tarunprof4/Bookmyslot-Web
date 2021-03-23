@@ -46,6 +46,7 @@ import { CustomerSettingsComponent } from './customer-settings/customer-settings
 import { CustomerSettingsService } from './services/customer-settings.service';
 import { DurationPipe } from './shared/pipes/duration.pipe';
 import { NodaTimePipe } from './shared/pipes/noda-time.pipe';
+import { UpdateProfilePictureComponent } from './update-profile-picture/update-profile-picture.component';
 
 
 export function getDatepickerConfig(): BsDatepickerConfig {
@@ -100,6 +101,7 @@ export function getModalConfig(): BsModalRef {
     CustomerSettingsComponent,
     DurationPipe,
     NodaTimePipe,
+    UpdateProfilePictureComponent,
   ],
   imports: [
     BrowserModule,

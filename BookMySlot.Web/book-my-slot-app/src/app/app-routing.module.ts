@@ -19,6 +19,7 @@ import { SharedSlotsComponent } from './shared-slots/shared-slots.component';
 import { RoutingConstants } from './shared/constants/routing-constants';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { NoAuthGuard } from './shared/guards/no-auth.guard';
+import { UpdateProfilePictureComponent } from './update-profile-picture/update-profile-picture.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: RoutingConstants.BookedSlots, component: BookedSlotsComponent, resolve: { resolvedCustomerBookedSlots: BookedSlotResolverService }, canActivate: [AuthGuard] },
   { path: RoutingConstants.ProfileSettings, component: ProfileSettingsComponent, resolve: { resolvedProfileSettings: ProfileSettingsResolverService }, canActivate: [AuthGuard] },
   { path: RoutingConstants.CustomerSettings, component: CustomerSettingsComponent, resolve: { resolvedCustomerSettings: CustomerSettingsResolverService }, canActivate: [AuthGuard] },
+  { path: RoutingConstants.UpdateProfilePicture, component: UpdateProfilePictureComponent, canActivate: [AuthGuard] },
 
   { path: '**', redirectTo: RoutingConstants.Home, pathMatch: 'full' },
 ];
