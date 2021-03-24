@@ -6,4 +6,5 @@ export const PageTitleConstants = {
   BookedSlots: 'Bookmyslot- Booked Slots',
   ProfileSettings: 'Bookmyslot- Profile Settings',
   CustomerSettings: 'Bookmyslot- Customer Settings',
+  UpdateProfilePicture: 'Bookmyslot- Update Profile Picture',
 };

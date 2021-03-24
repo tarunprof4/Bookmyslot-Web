@@ -39,6 +39,8 @@
                 <div class="form-group">
                   <label>Update Profile Pic</label>
                   <div class="row">
+                    <input type="file" id="uploader" (change)="onFileSelected($event)"   />
+
                     <!--<div class="col-sm-6">
                       <select name="country" (ngModelChange)="onCountrychange($event)" [(ngModel)]="customerSettings.country" class="form-control" required>
                         <option disabled>Select</option>

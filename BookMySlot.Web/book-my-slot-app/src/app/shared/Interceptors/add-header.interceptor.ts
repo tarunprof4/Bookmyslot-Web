@@ -29,7 +29,7 @@ export class AddHeaderInterceptor implements HttpInterceptor {
      
 
     let jsonReq: HttpRequest<any> = req.clone({
-      setHeaders: { 'Content-Type': 'application/json', 'cor-relation-id': correlationId, 'Authorization': `Bearer ${accessToken}` }
+      //setHeaders: { 'Content-Type': 'application/json', 'cor-relation-id': correlationId, 'Authorization': `Bearer ${accessToken}` }
     });
 
     return next.handle(jsonReq)
