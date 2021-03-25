@@ -22,7 +22,7 @@ export class UpdateProfilePictureComponent implements OnInit {
   constructor(private fileService: FileService, private modalService: BsModalService, private title: Title) { }
 
   ngOnInit(): void {
-    this.title.setTitle(PageTitleConstants.up);
+    this.title.setTitle(PageTitleConstants.UpdateProfilePicture);
   }
 
 
