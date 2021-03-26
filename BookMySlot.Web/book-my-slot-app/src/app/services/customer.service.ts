@@ -16,6 +16,7 @@ export class CustomerService {
 
   private profileSummaryUrl = environment.apiUrl + '/api/v1/customer';
   private profileSettingsUrl = environment.apiUrl + '/api/v1/profileSettings';
+  private profilePicUpdateUrl = environment.apiUrl + '/api/v1/ProfilePicture/UpdateProfilePicture';
   //private profileSettingsUrl = '/api/v1/ProfileSettings';
 
 
@@ -49,10 +50,7 @@ export class CustomerService {
 
 
   public updateProfilePicture(file: FormData): Observable<boolean | ResolverError> {
-
-    let uploadProfilePictureUrl = 'https://localhost:44305/api/v1/file/UpdateCustomerProfile';
-
-    return this.httpClient.put<boolean>(uploadProfilePictureUrl, file).pipe(
+    return this.httpClient.put<boolean>(this.profilePicUpdateUrl, file).pipe(
       catchError(err => this.handleHttpError(err))
     );
 

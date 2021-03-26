@@ -26,12 +26,20 @@ export class AddHeaderInterceptor implements HttpInterceptor {
     this.spinner.show();
     let correlationId = Guid.create().toString();
     let accessToken = this.localStorageService.retrieve(AuthConstants.JwtAuthAccessToken);
-     
+
+    console.log("header");
+    console.log(req.headers);
+
+    //let jsonReq: HttpRequest<any> = req.clone({
+    //  setHeaders: { 'Content-Type': 'application/json', 'cor-relation-id': correlationId, 'Authorization': `Bearer ${accessToken}` }
+    //});
+
 
     let jsonReq: HttpRequest<any> = req.clone({
-      //setHeaders: { 'Content-Type': 'application/json', 'cor-relation-id': correlationId, 'Authorization': `Bearer ${accessToken}` }
+      setHeaders: { 'cor-relation-id': correlationId, 'Authorization': `Bearer ${accessToken}` }
     });
 
+    
     return next.handle(jsonReq)
       .pipe(
         tap(event => {

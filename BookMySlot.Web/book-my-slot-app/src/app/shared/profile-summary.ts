@@ -3,4 +3,5 @@ export class ProfileSummary {
   lastName: string;
   bioHeadLine: string;
   isVerified: string;
+  profilePictureUrl: string
 }

@@ -7,9 +7,14 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <div class="card-body box-profile">
-      <div class="text-center">
-        <img class="profile-user-img img-fluid img-circle" src="assets/dist/img/user4-128x128.jpg" alt="User profile picture">
+
+
+      <div class="text-center" *ngIf="profileSummary">
+        <img class="profile-user-img img-fluid img-circle" src="{{profileSummary.profilePictureUrl}}"
+             onerror="this.onerror=null; this.src='assets/dist/img/user4-128x128.jpg'">
       </div>
+
+   
 
       <h3 class="profile-username text-center" *ngIf="profileSummary">
         <span>{{profileSummary.firstName}}</span>&nbsp;&nbsp;&nbsp;<span>{{profileSummary.lastName}}</span>
@@ -17,7 +22,7 @@
         <p class="text-muted text-center">IsVerifed {{profileSummary.isVerified}}</p>
       </h3>
 
-      
+
       <hr />
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
