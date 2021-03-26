@@ -1,9 +1,6 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
-import { ResolverError } from '../shared/resolver-error';
+import { FileConstants } from '../shared/constants/file-constants';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,33 +9,25 @@ import { ResolverError } from '../shared/resolver-error';
 
 export class FileService {
 
-  //private searchCustomerUrl = '/api/v1/searchcustomer';
-  //private searchCustomerUrl = environment.apiUrl + '/api/v1/searchcustomer';
   
-  private uploadFileUrl = 'https://localhost:44305/api/v1/file';
 
 
-  constructor(private httpClient: HttpClient) { }
 
+  constructor() { }
 
-  public updateProfilePicture(file: FormData): Observable<boolean | ResolverError> {
-
-    let updateCustomerProfile = "UpdateCustomerProfile";
-    let uploadProfilePictureUrl = `${this.uploadFileUrl}/${updateCustomerProfile}`;
-
-    return this.httpClient.put<boolean>(uploadProfilePictureUrl, file).pipe(
-      catchError(err => this.handleHttpError(err))
-    );
-
+  IsImageSizeValid(file: File): boolean {
+    var fileSize = file.size;
+    if (fileSize > FileConstants.ImageMaxSizeInMB) {
+      return false;
+    }
+    return true;
   }
 
 
-  private handleHttpError(error: HttpErrorResponse): Observable<ResolverError> {
-    let resolverError = new ResolverError();
-
-    return resolverError.handleHttpError(error);
+  IsImageValid(file: File): boolean {
+    let isImageValid = FileConstants.ImageAllowedFormats.includes(file.type);
+    return isImageValid;
   }
-
 
 
 }

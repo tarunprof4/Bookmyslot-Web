@@ -37,16 +37,20 @@
 
               <div class="form-group col-sm-6 col-md-4">
                 <div class="form-group">
-                  <label>Update Profile Pic</label>
                   <div class="row">
-                    <input type="file" id="uploader" (change)="onFileSelected($event)"   />
+                    <span>
+                      To shorten the image - please use this link https://www.reduceimages.com/
+                    </span>
 
-                    <!--<div class="col-sm-6">
-                      <select name="country" (ngModelChange)="onCountrychange($event)" [(ngModel)]="customerSettings.country" class="form-control" required>
-                        <option disabled>Select</option>
-                        <option *ngFor="let country of countries" [value]="country">{{country}}</option>
-                      </select>
-                    </div>-->
+                    <br />
+                    <span>Supported Format: Jpeg, Jpg, Png, Gif(Max Size: 3MB)</span>
+
+                    <img [src]="uploadedFileUrl" height="50"> <br />
+                    <input type="file" accept="{{allowedImageFormats}}" id="uploader" (change)="onFileSelected($event)" />
+
+
+                    <button type="button" class="btn bg-gradient-primary" (click)="onUpload()">Upload</button>
+
                   </div>
                 </div>
               </div>

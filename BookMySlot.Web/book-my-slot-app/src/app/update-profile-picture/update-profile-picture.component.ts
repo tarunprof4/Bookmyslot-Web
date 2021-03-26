@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { CustomerService } from '../services/customer.service';
 import { FileService } from '../services/file.service';
-import { FileTypeConstants } from '../shared/constants/file-type-constants';
+import { FileConstants } from '../shared/constants/file-constants';
 import { PageTitleConstants } from '../shared/constants/page-title-constants';
 import { ModalComponent } from '../shared/ui-controls/modal-component';
 import { ModalFailureComponent } from '../ui-controls/modal-failure/modal-failure.component';
@@ -15,11 +16,15 @@ import { ModalSuccessComponent } from '../ui-controls/modal-success/modal-succes
 })
 export class UpdateProfilePictureComponent implements OnInit {
 
-  selectedFile: File;
+  uploadedFile: File;
+  uploadedFileUrl = '';
+
   private bsModalRef: BsModalRef;
   private modalComponent = new ModalComponent();
+  allowedImageFormats = FileConstants.ImageAllowedFormats;
+  
 
-  constructor(private fileService: FileService, private modalService: BsModalService, private title: Title) { }
+  constructor(private customerService: CustomerService, private fileService: FileService, private modalService: BsModalService, private title: Title) { }
 
   ngOnInit(): void {
     this.title.setTitle(PageTitleConstants.UpdateProfilePicture);
@@ -27,18 +32,43 @@ export class UpdateProfilePictureComponent implements OnInit {
 
 
   onFileSelected(event) {
-    this.selectedFile = <File>event.target.files[0];
-    if (this.selectedFile) {
-      return this.upload();
+
+    let file = <File>event.target.files[0];
+    console.log(console);
+
+
+    console.log(this.fileService.IsImageValid(file));
+
+    this.fileService.IsImageSizeValid(file);
+    if (!this.fileService.IsImageValid(file)) {
+      return;
     }
+
+    if (!this.fileService.IsImageSizeValid(file)) {
+      return;
+    }
+
+    this.uploadedFile = file;
+    
+
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); 
+
+      reader.onload = (event) => { 
+        this.uploadedFileUrl = event.target.result as string;
+      }
+    }
+  
   }
 
 
-  private upload() {
-    const fd = new FormData();
-    fd.append(FileTypeConstants.Image, this.selectedFile, this.selectedFile.name);
+  onUpload() {
+    let file = new FormData();
+    file.append(FileConstants.Image, this.uploadedFile, this.uploadedFile.name);
 
-    this.fileService.updateProfilePicture(fd)
+    this.customerService.updateProfilePicture(file)
       .subscribe(
         (data: boolean) => {
           let successModalComponent = this.modalComponent.getSuccessModalComponent();

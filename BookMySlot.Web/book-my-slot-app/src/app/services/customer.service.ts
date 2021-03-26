@@ -48,6 +48,17 @@ export class CustomerService {
   }
 
 
+  public updateProfilePicture(file: FormData): Observable<boolean | ResolverError> {
+
+    let uploadProfilePictureUrl = 'https://localhost:44305/api/v1/file';
+
+    return this.httpClient.put<boolean>(uploadProfilePictureUrl, file).pipe(
+      catchError(err => this.handleHttpError(err))
+    );
+
+  }
+
+
 
 
 
