@@ -56,7 +56,7 @@ export class UpdateProfilePictureComponent implements OnInit {
     }
 
     let file = new FormData();
-    file.append(FileConstants.Image, this.uploadedFile, this.uploadedFile.name);
+    file.append(FileConstants.Image, this.uploadedFile);
 
     this.customerService.updateProfilePicture(file)
       .subscribe(

@@ -27,8 +27,6 @@ export class AddHeaderInterceptor implements HttpInterceptor {
     let correlationId = Guid.create().toString();
     let accessToken = this.localStorageService.retrieve(AuthConstants.JwtAuthAccessToken);
 
-    console.log("header");
-    console.log(req.headers);
 
     //let jsonReq: HttpRequest<any> = req.clone({
     //  setHeaders: { 'Content-Type': 'application/json', 'cor-relation-id': correlationId, 'Authorization': `Bearer ${accessToken}` }
