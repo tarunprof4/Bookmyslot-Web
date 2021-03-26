@@ -15,7 +15,7 @@ export class FileService {
 
   constructor() { }
 
-  IsImageSizeValid(file: File): boolean {
+  private isImageSizeValid(file: File): boolean {
     var fileSize = file.size;
     if (fileSize > FileConstants.ImageMaxSizeInMB) {
       return false;
@@ -24,9 +24,15 @@ export class FileService {
   }
 
 
-  IsImageValid(file: File): boolean {
+  private isImageFormatValid(file: File): boolean {
     let isImageValid = FileConstants.ImageAllowedFormats.includes(file.type);
     return isImageValid;
+  }
+
+  IsImageValid(file: File): boolean {
+
+    return this.isImageFormatValid(file) && this.isImageSizeValid(file);
+
   }
 
 

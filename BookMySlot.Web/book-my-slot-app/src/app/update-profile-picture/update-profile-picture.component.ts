@@ -33,29 +33,14 @@ export class UpdateProfilePictureComponent implements OnInit {
 
   onFileSelected(event) {
 
-    let file = <File>event.target.files[0];
-    console.log(console);
-
-
-    console.log(this.fileService.IsImageValid(file));
-
-    this.fileService.IsImageSizeValid(file);
-    if (!this.fileService.IsImageValid(file)) {
-      return;
-    }
-
-    if (!this.fileService.IsImageSizeValid(file)) {
-      return;
-    }
-
-    this.uploadedFile = file;
-    
-
     if (event.target.files && event.target.files[0]) {
+      let file = <File>event.target.files[0];
+
+      if (!this.fileService.IsImageValid(file)) {
+        return;
+      }
       var reader = new FileReader();
-
-      reader.readAsDataURL(event.target.files[0]); 
-
+      reader.readAsDataURL(file); 
       reader.onload = (event) => { 
         this.uploadedFileUrl = event.target.result as string;
       }
@@ -87,4 +72,6 @@ export class UpdateProfilePictureComponent implements OnInit {
 
 
   }
+
+  
 }
