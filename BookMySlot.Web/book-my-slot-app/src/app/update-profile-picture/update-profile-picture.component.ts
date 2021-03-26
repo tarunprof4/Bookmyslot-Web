@@ -50,6 +50,10 @@ export class UpdateProfilePictureComponent implements OnInit {
 
 
   onUpload() {
+    if (!this.uploadedFile) {
+      return;
+    }
+
     let file = new FormData();
     file.append(FileConstants.Image, this.uploadedFile, this.uploadedFile.name);
 

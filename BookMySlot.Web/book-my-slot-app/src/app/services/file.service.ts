@@ -9,10 +9,6 @@ import { FileConstants } from '../shared/constants/file-constants';
 
 export class FileService {
 
-  
-
-
-
   constructor() { }
 
   private isImageSizeValid(file: File): boolean {
@@ -30,10 +26,6 @@ export class FileService {
   }
 
   IsImageValid(file: File): boolean {
-
     return this.isImageFormatValid(file) && this.isImageSizeValid(file);
-
   }
-
-
 }
