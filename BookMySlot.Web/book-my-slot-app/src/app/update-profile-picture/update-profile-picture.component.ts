@@ -39,6 +39,7 @@ export class UpdateProfilePictureComponent implements OnInit {
       if (!this.fileService.IsImageValid(file)) {
         return;
       }
+      this.uploadedFile = file;
       var reader = new FileReader();
       reader.readAsDataURL(file); 
       reader.onload = (event) => { 
