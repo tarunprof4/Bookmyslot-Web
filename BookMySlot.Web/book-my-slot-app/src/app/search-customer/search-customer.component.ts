@@ -22,6 +22,7 @@ export class SearchCustomerComponent implements OnInit {
   searchedCustomers: SearchCustomer[] = [];
   searchedErrors: string[] = [];
 
+  searchConstants = SearchConstants;
   
   constructor(private searchService: SearchService) { }
 
@@ -42,7 +43,7 @@ export class SearchCustomerComponent implements OnInit {
       switchMap((term: string) => {
         this.searchedErrors = [];
         this.searchText = term;
-        if (!term || term.length < 4) {
+        if (!term || term.length < this.searchConstants.SearchCustomerMinimumCharacters) {
           return of([]);
         }
         return this.searchService.searchCustomers(term).pipe(
