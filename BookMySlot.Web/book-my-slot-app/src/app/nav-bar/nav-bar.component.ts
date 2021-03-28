@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { CustomerService } from '../services/customer.service';
 import { RoutingConstants } from '../shared/constants/routing-constants';
-import { ProfileSettings } from '../shared/profile-settings';
 import { ProfileSummary } from '../shared/profile-summary';
 
 @Component({

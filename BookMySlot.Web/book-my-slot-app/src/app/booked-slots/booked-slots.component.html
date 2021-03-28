@@ -189,7 +189,7 @@
                   <div class="user-block">
                     <img class="img-circle img-bordered-sm" src="assets/dist/img/user1-128x128.jpg" alt="user image">
                     <span class="username">
-                      <a href="#"><span>{{customerCancelledSlot.cancelledByCustomerModel.firstName}}</span>&nbsp;&nbsp;&nbsp;<span>{{customerCancelledSlot.cancelledByCustomerModel.lastName}}</span></a>
+                      <a href="#"><span>{{customerCancelledSlot.cancelledByCustomerViewModel.firstName}}</span>&nbsp;&nbsp;&nbsp;<span>{{customerCancelledSlot.cancelledByCustomerViewModel.lastName}}</span></a>
                     </span>
                     <span class="description">Cancelled by</span>
                   </div>
@@ -198,15 +198,15 @@
                   <div class="text-muted row">
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Title
-                      <b class="d-block">{{customerCancelledSlot.cancelledSlotModel.title}}</b>
+                      <b class="d-block">{{customerCancelledSlot.cancelledSlotViewModel.title}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Time
-                      <b class="d-block">{{customerCancelledSlot.cancelledSlotModel.slotStartZonedDateTime | nodaTime:customerCancelledSlot.cancelledSlotModel.country}}</b>
+                      <b class="d-block">{{customerCancelledSlot.cancelledSlotViewModel.slotStartZonedDateTime | nodaTime:customerCancelledSlot.cancelledSlotViewModel.country}}</b>
                     </p>
                     <p class="text-sm col-md-4 col-sm-6">
                       Slot Duration
-                      <b class="d-block">{{customerCancelledSlot.cancelledSlotModel.slotDuration | duration}}</b>
+                      <b class="d-block">{{customerCancelledSlot.cancelledSlotViewModel.slotDuration | duration}}</b>
                     </p>
 
                   </div>
