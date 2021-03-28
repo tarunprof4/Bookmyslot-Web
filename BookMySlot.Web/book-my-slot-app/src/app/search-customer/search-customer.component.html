@@ -11,6 +11,18 @@
 
 
 
+  <div class="row" *ngIf="searchText.length  < 4">
+    <div class="col-md-4">
+      <div class="user-block">
+        <span class="username">
+          <p><span>min charcters to start search 4</span></p>
+          <p><span>@username - @tarunabc</span></p>
+          <p><span>#name - #tarun</span></p>
+        </span>
+      </div>
+    </div>
+  </div>
+
 
   <div class="row" *ngFor="let searchedCustomer of searchedCustomers">
     <div class="col-md-4" (click)="onSearchSelectedCustomer(searchedCustomer.fullName)">
@@ -25,8 +37,11 @@
   </div>
 
 
+
+
+
   <div class="row" *ngFor="let searchedError of searchedErrors">
-    <div class="col-md-4" >
+    <div class="col-md-4">
       <div class="user-block">
         <span class="username">
           <a><span>{{searchedError}}</span></a>

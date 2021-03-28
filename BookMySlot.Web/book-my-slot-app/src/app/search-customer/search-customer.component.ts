@@ -6,6 +6,7 @@ import { ResolverError } from '../shared/resolver-error';
 import { SearchCustomer } from '../shared/search-customer';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ModalComponent } from '../shared/ui-controls/modal-component';
+import { SearchConstants } from '../shared/constants/search-constants';
 
 
 @Component({
@@ -15,11 +16,13 @@ import { ModalComponent } from '../shared/ui-controls/modal-component';
 })
 export class SearchCustomerComponent implements OnInit {
 
-  search: string = '';
+  searchText: string = '';
   searchedCustomers$: Observable<SearchCustomer[] | ResolverError>;
 
   searchedCustomers: SearchCustomer[] = [];
   searchedErrors: string[] = [];
+
+  
 
   private bsModalRef: BsModalRef;
   private modalComponent = new ModalComponent();
@@ -29,7 +32,6 @@ export class SearchCustomerComponent implements OnInit {
   ngOnInit(): void {
 
 
-
     let searchBox = document.getElementById('search-customer-box');
 
     let typeahead = fromEvent(searchBox, 'input').pipe(
@@ -37,13 +39,14 @@ export class SearchCustomerComponent implements OnInit {
 
       map((e: KeyboardEvent) => (e.target as HTMLInputElement).value),
 
-      debounceTime(300),
+      debounceTime(1000),
       distinctUntilChanged(),
 
 
       switchMap((term: string) => {
         this.searchedErrors = [];
-        if (!term) {
+        this.searchText = term;
+        if (!term || term.length < 4) {
           return of([]);
         }
         return this.searchService.searchCustomers(term).pipe(
