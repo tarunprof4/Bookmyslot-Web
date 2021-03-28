@@ -23,10 +23,6 @@ export class SearchCustomerComponent implements OnInit {
   searchedErrors: string[] = [];
 
   
-
-  private bsModalRef: BsModalRef;
-  private modalComponent = new ModalComponent();
-
   constructor(private searchService: SearchService) { }
 
   ngOnInit(): void {
