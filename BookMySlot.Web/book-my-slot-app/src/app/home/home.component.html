@@ -50,19 +50,22 @@
                 <div class="col-sm-2">
                   <ul class="users-list clearfix">
                     <li>
-                      <img src="assets/dist/img/user8-128x128.jpg" alt="User Image" style="width:67px; height:67px;">
+                      
+                      <img src="{{customerSlot.profilePictureUrl}}"
+                           onerror="this.onerror=null; this.src='assets/dist/img/user8-128x128.jpg'"
+                           style="width:67px; height:67px;">
                     </li>
                   </ul>
                 </div>
                 <div class="col-sm-10">
-                  <h5 class="card-title"><span>{{customerSlot.customerModel.firstName}}</span><span>  &nbsp;&nbsp;  </span> <span>{{customerSlot.customerModel.lastName}}</span></h5>
+                  <h5 class="card-title"><span>{{customerSlot.firstName}}</span><span>  &nbsp;&nbsp;  </span> <span>{{customerSlot.lastName}}</span></h5>
 
                   <p class="card-text">
                     Software Developer
                     <br />
                   </p>
 
-                  <a class="card-link" (click)="onBook(customerSlot.customerModel.id)">Book Slot</a>
+                  <a class="card-link" (click)="onBook(customerSlot.id)">Book Slot</a>
                 </div>
               </div>
             </div>
