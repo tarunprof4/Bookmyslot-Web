@@ -24,7 +24,7 @@ export class AddHeaderInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     this.spinner.show();
-    let correlationId = Guid.create().toString();
+    let requestId = Guid.create().toString();
     let accessToken = this.localStorageService.retrieve(AuthConstants.JwtAuthAccessToken);
 
 
@@ -34,7 +34,7 @@ export class AddHeaderInterceptor implements HttpInterceptor {
 
 
     let jsonReq: HttpRequest<any> = req.clone({
-      setHeaders: { 'cor-relation-id': correlationId, 'Authorization': `Bearer ${accessToken}` }
+      setHeaders: { 'request-id': requestId, 'Authorization': `Bearer ${accessToken}` }
     });
 
     
