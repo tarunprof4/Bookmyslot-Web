@@ -34,7 +34,7 @@ export class AddHeaderInterceptor implements HttpInterceptor {
 
 
     let jsonReq: HttpRequest<any> = req.clone({
-      setHeaders: { 'request-id': requestId, 'Authorization': `Bearer ${accessToken}` }
+      setHeaders: { 'ui-request-id': requestId, 'Authorization': `Bearer ${accessToken}` }
     });
 
     
